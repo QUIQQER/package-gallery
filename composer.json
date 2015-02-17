@@ -1,0 +1,29 @@
+{
+    "name" : "quiqqer/gallery",
+    "type" : "quiqqer-library",
+    "description" : "Gallery for QUIQQER.",
+    "version" : "dev-master",
+    "license" : "GPL-2.0+",
+
+    "authors" : [{
+        "name": "Henning Leutz",
+        "email": "leutz@pcsg.de",
+        "homepage": "http://www.pcsg.de",
+        "role": "Developer"
+    }],
+
+    "support" : {
+        "email" : "support@pcsg.de"
+    },
+
+    "require": {
+        "quiqqer/quiqqer" : "*@dev"
+    },
+
+    "autoload": {
+        "psr-0" : {
+            "QUI" : "lib/"
+        }
+    }
+}
+
