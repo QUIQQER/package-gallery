@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+
+    <types>
+        <type type="types/gallery-site" icon="icon-picture">
+            <locale group="quiqqer/gallery" var="admin.types.gallery.entry" />
+            <desc>
+                <locale group="quiqqer/gallery" var="admin.types.gallery.entry.desc" />
+            </desc>
+
+            <!-- extra attributes -->
+            <attributes>
+                <attribute>quiqqer.settings.gallery.folderId</attribute>
+                <attribute>quiqqer.settings.gallery.max</attribute>
+                <attribute>quiqqer.settings.gallery.type</attribute>
+            </attributes>
+
+            <!-- list settings -->
+            <settings>
+
+                <category name="gallery-list-settings">
+                    <settings>
+                        <title>
+                            <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.title" />
+                        </title>
+
+                        <input conf="quiqqer.settings.gallery.folderId" type="text" class="media-folder">
+                            <text>
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.folderId" />
+                            </text>
+                        </input>
+                        <input conf="quiqqer.settings.gallery.max" type="number">
+                            <text>
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.max" />
+                            </text>
+                        </input>
+                    </settings>
+                </category>
+
+            </settings>
+        </type>
+    </types>
+
+</site>

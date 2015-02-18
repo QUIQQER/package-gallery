@@ -1,0 +1,26 @@
+<div itemscope itemtype="http://schema.org/ItemList">
+
+    {if $Template->getAttribute('content-header')}
+    <section class="content-header grid-100 mobile-grid-100 grid-parent">
+        <header>
+            <h1>{$Site->getAttribute('title')}</h1>
+        </header>
+
+        {if $Site->getAttribute('short')}
+        <div class="content-short grid-parent">
+            {$Site->getAttribute('short')}
+        </div>
+        {/if}
+    </section>
+    {/if}
+
+    {if $Template->getAttribute('content-body') && $Site->getAttribute('content')}
+    <section class="content-body grid-100 mobile-grid-100 grid-parent">
+        {$Site->getAttribute('content')}
+    </section>
+    {/if}
+
+    <section class="content-template grid-100 mobile-grid-100 grid-parent">
+        {$Gallery->create()}
+    </section>
+</div>

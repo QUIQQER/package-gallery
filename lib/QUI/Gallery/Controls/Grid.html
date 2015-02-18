@@ -1,0 +1,26 @@
+
+{if $Site}
+    {control control="\QUI\Controls\Sheets" Site=$Site sheets=$sheets}
+{/if}
+
+<section class="quiqqer-gallery-grid-list"
+         data-qui="package/quiqqer/gallery/bin/controls/Grid"
+>
+{foreach from=$images item=Image}
+    <div class="grid-33 mobile-grid-100 quiqqer-gallery-grid-entry">
+        <a href="{image image=$Image onlysrc=true}"
+           class="quiqqer-gallery-grid-entry-image"
+           target="_blank"
+        >
+            {image image=$Image height=250}
+        </a>
+        <div class="quiqqer-gallery-grid-entry-text">
+            {$Image->getAttribute('title')}
+        </div>
+    </div>
+{/foreach}
+</section>
+
+{if $Site}
+    {control control="\QUI\Controls\Sheets" Site=$Site sheets=$sheets}
+{/if}
