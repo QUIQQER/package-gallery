@@ -54,6 +54,10 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
          */
         $imageClick : function(event)
         {
+            if ( document.getSize().x < 767 ) {
+                return true;
+            }
+
             if ( typeOf( event ) === 'domevent' ) {
                 event.stop();
             }
