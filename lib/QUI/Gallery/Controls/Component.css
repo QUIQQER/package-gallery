@@ -11,9 +11,14 @@
     cursor: pointer;
     float: left;
     font-size: 26px;
-    line-height: 360px;
+    line-height: 320px;
     text-align: center;
     width: 40px;
+}
+
+.quiqqer-gallery-component-prev:hover,
+.quiqqer-gallery-component-next:hover {
+    background: #ddd;
 }
 
 .quiqqer-gallery-component-list {
