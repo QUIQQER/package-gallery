@@ -1,0 +1,59 @@
+
+/*****************************************/
+/* coverflow */
+/*****************************************/
+
+.coverflow-in {
+    -webkit-animation: rotate3DSlideInRight 0.3s 0.1s forwards;
+    animation: rotate3DSlideInRight 0.3s 0.1s forwards;
+}
+
+.coverflow-out {
+    -webkit-animation: rotate3DSlideOutLeft 0.3s forwards;
+    animation: rotate3DSlideOutLeft 0.3s forwards;
+}
+
+
+.quiqqer-gallery-component {
+    -webkit-perspective: 1400px;
+    perspective: 1400px;
+}
+
+@-webkit-keyframes rotate3DSlideInRight {
+    from {
+        -webkit-transform: translateX(40%) rotateY(-45deg) translateZ(-300px);
+    }
+    to {
+        -webkit-transform: translateX(0) rotateY(0deg) translateZ(0);
+        opacity: 1;
+    }
+}
+
+@keyframes rotate3DSlideInRight {
+    from {
+        -webkit-transform: translateX(40%) rotateY(-45deg) translateZ(-300px);
+        transform: translateX(40%) rotateY(-45deg) translateZ(-300px);
+    }
+    to {
+        -webkit-transform: translateX(0) rotateY(0deg) translateZ(0);
+        transform: translateX(0) rotateY(0deg) translateZ(0);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes rotate3DSlideOutLeft {
+    from {} /* Fixes Chrome issue 35.0.1916.114 (easing breaks) */
+    to {
+        -webkit-transform: translateX(-40%) rotateY(45deg) translateZ(-300px);
+        opacity: 0;
+    }
+}
+
+@keyframes rotate3DSlideOutLeft {
+    from {} /* Fixes Chrome issue 35.0.1916.114 (easing breaks) */
+    to {
+        -webkit-transform: translateX(-40%) rotateY(45deg) translateZ(-300px);
+        transform: translateX(-40%) rotateY(45deg) translateZ(-300px);
+        opacity: 0;
+    }
+}

@@ -34,6 +34,24 @@
                                 <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.max" />
                             </text>
                         </input>
+                        <select conf="quiqqer.settings.gallery.type">
+                            <text>
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.type" />
+                            </text>
+                            <option value="grid">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.type.grid" />
+                            </option>
+                            <option value="component-forwardPulse">
+                                <locale group="quiqqer/gallery"
+                                        var="quiqqer.gallery.settings.type.component-forwardPulse"
+                                />
+                            </option>
+                            <option value="component-coverflow">
+                                <locale group="quiqqer/gallery"
+                                        var="quiqqer.gallery.settings.type.coverflow"
+                                />
+                            </option>
+                        </select>
                     </settings>
                 </category>
 

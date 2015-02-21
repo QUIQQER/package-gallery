@@ -1,0 +1,63 @@
+
+/*****************************************/
+/* Forward pulse */
+/*****************************************/
+
+.forwardPulse-in {
+    -webkit-animation: growUp 0.4s 0.3s forwards;
+    animation: growUp 0.4s 0.3s forwards;
+}
+
+.forwardPulse-out {
+    -webkit-animation: elastScaleDown 0.4s forwards;
+    animation: elastScaleDown 0.4s forwards;
+}
+
+@-webkit-keyframes growUp {
+    0% {
+        -webkit-transform: scale(0);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes growUp {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes elastScaleDown {
+    from {} /* Fixes Chrome issue 35.0.1916.114 (easing breaks) */
+    30% {
+        -webkit-transform: scale(1.3);
+        opacity: .5;
+    }
+    100% {
+        -webkit-transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes elastScaleDown {
+    from {} /* Fixes Chrome issue 35.0.1916.114 (easing breaks) */
+    30% {
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+        opacity: .5;
+    }
+    100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
