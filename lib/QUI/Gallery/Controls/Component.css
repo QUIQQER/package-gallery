@@ -38,6 +38,7 @@
     left: 0;
     line-height: 320px;
     opacity: 0;
+    padding: 0;
     pointer-events: none;
     position: absolute;
     text-align: center;

@@ -1,0 +1,34 @@
+
+.qui-window-popup-image-buttons {
+    background: rgba(18, 21, 29, 0.85);
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    position: absolute;
+    width: 100%
+}
+
+.qui-window-popup-buttons-prev,
+.qui-window-popup-buttons-next {
+    cursor: pointer;
+    float: left;
+    line-height: 50px;
+    text-align: center;
+    width: 150px;
+}
+
+.qui-window-popup-buttons-text {
+    float: left;
+    line-height: 50px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: calc( 100% - 300px );
+}
+
+.qui-window-popup-image-preview {
+    height: 100%;
+    outline: none;
+    width: 100%;
+}
