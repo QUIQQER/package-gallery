@@ -28,19 +28,41 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
         Binds : [
             '$onImport',
             '$imageClick',
+            '$resizeImageWindow',
             'loadPrevImage',
-            'loadNextImage'
+            'loadNextImage',
+            'resize'
         ],
 
         initialize : function(options)
         {
             this.parent( options );
 
+            this.$ImageWindow = false;
+            this.$__resized   = false;
+
             this.addEvents({
                 onImport : this.$onImport
             });
 
-            this.$ImageWindow = false;
+            window.addEvent( 'resize', this.resize );
+        },
+
+        /**
+         * resize the control
+         */
+        resize : function()
+        {
+            var self = this;
+
+            if ( this.$__resized ) {
+                clearTimeout( this.$__resized );
+            }
+
+            // clear resize flags
+            self.$__resized = (function() {
+                self.$resizeImageWindow();
+            }).delay( 200 );
         },
 
         /**
@@ -151,6 +173,25 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
         },
 
         /**
+         * resizes the image window, if the window is open
+         */
+        $resizeImageWindow : function()
+        {
+            if ( !this.$ImageWindow ) {
+                return;
+            }
+
+            var currentSrc = this.$ImageWindow
+                                 .getElm()
+                                 .getElement( '.qui-window-popup-image-preview' )
+                                 .get( 'src' );
+
+            var Current = this.getElm().getElement( '[href="'+ currentSrc +'"]' );
+
+            this.loadImage( Current );
+        },
+
+        /**
          * Load an image in a popup
          * @param {HTMLElement} Link - Link Node of the Image
          */
@@ -165,7 +206,7 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
 
             var Win      = this.$ImageWindow,
                 Content  = Win.getContent(),
-                BtnText  = Win.getElm().getElement( '.qui-window-popup-buttons-text'),
+                BtnText  = Win.getElm().getElement( '.qui-window-popup-buttons-text' ),
                 WinImage = Content.getElement( '.qui-window-popup-image-preview' );
 
             Win.Loader.show();
@@ -199,7 +240,7 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                     }
 
                     // set height ?
-                    if ( height < docHeight )
+                    if ( height > docHeight )
                     {
                         pc = QUIMath.percent( docHeight, height );
 
@@ -211,7 +252,7 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                     Win.setAttribute( 'maxWidth', width );
                     Win.setAttribute( 'maxHeight', height );
 
-                    BtnText.set( 'html', Link.getElement( 'img').get( 'title' ) );
+                    BtnText.set( 'html', Link.getElement( 'img' ).get( 'title' ) );
 
                     Win.resize(true, function()
                     {
@@ -220,7 +261,7 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                         var Img = new Element('img', {
                             'class' : 'qui-window-popup-image-preview',
                             src     : Link.get( 'href' ),
-                            styles : {
+                            styles  : {
                                 opacity : 0
                             }
                         }).inject( Content );
@@ -249,8 +290,8 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                                  .getElement( '.qui-window-popup-image-preview' )
                                  .get( 'src' );
 
-            var Current = this.getElm().getElement( '[href="'+ currentSrc +'"]'),
-                Parent  = Current.getParent( '.quiqqer-gallery-grid-entry'),
+            var Current = this.getElm().getElement( '[href="'+ currentSrc +'"]' ),
+                Parent  = Current.getParent( '.quiqqer-gallery-grid-entry' ),
                 Next    = Parent.getNext( '.quiqqer-gallery-grid-entry' );
 
             if ( !Next ) {
@@ -274,8 +315,8 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                                  .getElement( '.qui-window-popup-image-preview' )
                                  .get( 'src' );
 
-            var Current = this.getElm().getElement( '[href="'+ currentSrc +'"]'),
-                Parent  = Current.getParent( '.quiqqer-gallery-grid-entry'),
+            var Current = this.getElm().getElement( '[href="'+ currentSrc +'"]' ),
+                Parent  = Current.getParent( '.quiqqer-gallery-grid-entry' ),
                 Prev    = Parent.getPrevious( '.quiqqer-gallery-grid-entry' );
 
             if ( !Prev ) {
