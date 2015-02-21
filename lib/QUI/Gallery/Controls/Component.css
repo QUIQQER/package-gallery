@@ -1,7 +1,8 @@
 
 .quiqqer-gallery-component {
     float: left;
-    height: 350px;
+    height: 360px;
+    padding: 20px;
     width: 100%;
 }
 
@@ -10,7 +11,7 @@
     cursor: pointer;
     float: left;
     font-size: 26px;
-    line-height: 350px;
+    line-height: 360px;
     text-align: center;
     width: 40px;
 }
@@ -18,7 +19,7 @@
 .quiqqer-gallery-component-list {
     clear: none !important;
     float: left !important;
-    height: 350px;
+    height: 320px;
     list-style: none;
     margin: 0 !important;
     overflow: hidden;
@@ -30,7 +31,7 @@
 .quiqqer-gallery-component-list li {
     height: 100%;
     left: 0;
-    line-height: 350px;
+    line-height: 320px;
     opacity: 0;
     pointer-events: none;
     position: absolute;
@@ -42,12 +43,25 @@
 }
 
 .quiqqer-gallery-component-list li img {
-    max-height: 100%;
-    max-width: 100%;
+    height: auto;
+    width: 100%;
     vertical-align:middle;
 }
 
 .quiqqer-gallery-component-list-current {
     opacity: 1 !important;
     z-index: 10 !important;
+}
+
+.quiqqer-gallery-component-textdisplay {
+    background: rgba( 0, 0, 0, 0.6 );
+    bottom: 0;
+    color: #fff;
+    height: 40px;
+    line-height: 20px;
+    padding: 10px 20px;
+    position: absolute;
+    white-space: nowrap;
+    width: 100%;
+    z-index: 11;
 }
