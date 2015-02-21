@@ -29,6 +29,7 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
             '$onImport',
             '$imageClick',
             '$resizeImageWindow',
+            '$keyup',
             'loadPrevImage',
             'loadNextImage',
             'resize'
@@ -160,11 +161,17 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                             click : self.loadNextImage
                         });
 
+
+                        // bind keys
+                        window.addEvent( 'keyup', self.$keyup );
+
                         self.loadImage( Link );
                     },
 
-                    onClose : function() {
+                    onClose : function()
+                    {
                         self.$ImageWindow = null;
+                        window.removeEvent( 'keyup', self.$keyup );
                     }
                 }
             });
@@ -324,6 +331,24 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
             }
 
             this.loadImage( Prev.getElement( 'a' ) );
+        },
+
+        /**
+         * key events
+         *
+         * @param {DOMEvent} event
+         */
+        $keyup : function(event)
+        {
+            if ( event.key == 'left' )
+            {
+                this.loadPrevImage();
+                return;
+            }
+
+            if ( event.key == 'right' ) {
+                this.loadNextImage();
+            }
         }
     });
 });
