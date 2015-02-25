@@ -58,8 +58,18 @@ define('package/quiqqer/gallery/bin/controls/Component', [
             }
 
             // clear resize flags
-            self.$__resized = (function() {
+            self.$__resized = (function()
+            {
                 self.getElm().getElements( 'img' ).set( 'data-resized', null );
+
+                var Current = self.getElm().getElement(
+                    '.quiqqer-gallery-component-list-current'
+                );
+
+                if ( Current ) {
+                    self.animateIn( Current );
+                }
+
             }).delay( 200 );
         },
 
@@ -209,7 +219,7 @@ define('package/quiqqer/gallery/bin/controls/Component', [
                 height = ( height * (pc / 100) ).round();
 
                 // set height?
-                if ( height < listSize.y )
+                if ( height > listSize.y )
                 {
                     pc = QUIMath.percent( listSize.y, height );
 

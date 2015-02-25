@@ -50,8 +50,11 @@
 
 .quiqqer-gallery-component-list li img {
     height: auto;
+    left: 0;
+    max-height: 100%;
     width: 100%;
-    vertical-align:middle;
+    position: absolute;
+    top: 0;
 }
 
 .quiqqer-gallery-component-list-current {
@@ -70,4 +73,42 @@
     white-space: nowrap;
     width: 100%;
     z-index: 11;
+}
+
+/** element queries
+ * ============================================== */
+
+.quiqqer-gallery-component[max-width~="500px"] {
+    height: 300px;
+}
+.quiqqer-gallery-component[max-width~="500px"] .quiqqer-gallery-component-prev,
+.quiqqer-gallery-component[max-width~="500px"] .quiqqer-gallery-component-next {
+    line-height: 260px;
+}
+.quiqqer-gallery-component[max-width~="500px"] .quiqqer-gallery-component-list {
+    height: 260px;
+}
+
+
+.quiqqer-gallery-component[max-width~="400px"] {
+    height: 220px;
+}
+.quiqqer-gallery-component[max-width~="400px"] .quiqqer-gallery-component-prev,
+.quiqqer-gallery-component[max-width~="400px"] .quiqqer-gallery-component-next {
+    line-height: 180px;
+}
+.quiqqer-gallery-component[max-width~="400px"] .quiqqer-gallery-component-list {
+    height: 180px;
+}
+
+
+.quiqqer-gallery-component[max-width~="350px"] {
+    height: 200px;
+}
+.quiqqer-gallery-component[max-width~="350px"] .quiqqer-gallery-component-prev,
+.quiqqer-gallery-component[max-width~="350px"] .quiqqer-gallery-component-next {
+    line-height: 160px;
+}
+.quiqqer-gallery-component[max-width~="350px"] .quiqqer-gallery-component-list {
+    height: 160px;
 }
