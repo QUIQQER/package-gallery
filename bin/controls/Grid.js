@@ -398,6 +398,11 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
             if ( event.key == 'right' ) {
                 this.loadNextImage();
             }
+
+            if ( event.key == 'esc' ) {
+                this.$ImageWindow.close();
+            }
         }
+
     });
 });
