@@ -9,12 +9,13 @@
 }
 
 .qui-window-popup-buttons-prev,
-.qui-window-popup-buttons-next {
+.qui-window-popup-buttons-next,
+.qui-window-popup-stats {
     cursor: pointer;
     float: left;
     line-height: 50px;
     text-align: center;
-    width: 150px;
+    width: 100px;
 }
 
 .qui-window-popup-buttons-text {

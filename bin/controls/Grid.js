@@ -1,6 +1,7 @@
 
 /**
  * Grid Gallery
+ * Functionality for the PHP Grid Control
  *
  * @module package/quiqqer/gallery/bin/controls/Grid
  * @author www.pcsg.de (Henning Leutz)
@@ -12,11 +13,12 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
     'qui/controls/Control',
     'qui/controls/windows/Popup',
     'qui/utils/Math',
+    'qui/utils/Elements',
     URL_BIN_DIR +'QUI/lib/Assets.js',
 
     'css!package/quiqqer/gallery/bin/controls/Grid.css'
 
-], function(QUI, QUIControl, QUIWin, QUIMath)
+], function(QUI, QUIControl, QUIWin, QUIMath, QUIElementUtils)
 {
     "use strict";
 
@@ -39,8 +41,11 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
         {
             this.parent( options );
 
-            this.$ImageWindow = false;
-            this.$__resized   = false;
+            this.$ImageWindow  = false;
+            this.$CompleteList = false;
+
+            this.$__resized = false;
+            this.$length    = 0;
 
             this.addEvents({
                 onImport : this.$onImport
@@ -71,11 +76,29 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
          */
         $onImport : function()
         {
-            var images = this.$Elm.getElements( '.quiqqer-gallery-grid-entry-image' );
+            var images = this.$Elm.getElements(
+                '.quiqqer-gallery-grid-entry-image'
+            );
 
             for ( var i = 0, len = images.length; i < len; i++ ) {
                 images[ i ].addEvent( 'click', this.$imageClick );
             }
+
+            // get the complete list
+            var completeList = this.$Elm.getElement(
+                '.quiqqer-gallery-grid-list-complete'
+            );
+
+            this.$CompleteList = new Element('div', {
+                html : completeList.innerHTML.replace('<!--', '').replace('-->', ''),
+                styles : {
+                    display : "none"
+                }
+            }).inject( this.$Elm );
+
+            this.$length = this.$CompleteList.getElements(
+                '.quiqqer-gallery-grid-list-complete-entry'
+            ).length;
         },
 
         /**
@@ -99,19 +122,23 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                 Target = Target.getParent( 'a' );
             }
 
-            this.$openWindow( Target );
+            var ImageEntry = this.$CompleteList.getElement(
+                '[data-src="'+ Target.get( 'href' ) +'"]'
+            );
+
+            this.$openWindow( ImageEntry );
         },
 
         /**
          * Create and open the Image window
          *
-         * @param {HTMLElement} Link - Link Node of the Image
+         * @param {HTMLElement} ImageEntry - Link Node of the Image
          */
-        $openWindow : function(Link)
+        $openWindow : function(ImageEntry)
         {
             if ( this.$ImageWindow )
             {
-                this.loadImage( Link );
+                this.loadImage( ImageEntry );
                 return;
             }
 
@@ -136,7 +163,8 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                                      '<div class="qui-window-popup-buttons-text"></div>' +
                                      '<div class="qui-window-popup-buttons-next">' +
                                          '<span class="fa fa-chevron-right icon-chevron-right"></span>' +
-                                     '</div>'
+                                     '</div>' +
+                                     '<div class="qui-window-popup-stats"></div>'
                         }).inject( Win.getElm() );
 
                         Content.setStyles({
@@ -165,7 +193,7 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                         // bind keys
                         window.addEvent( 'keyup', self.$keyup );
 
-                        self.loadImage( Link );
+                        self.loadImage( ImageEntry );
                     },
 
                     onClose : function()
@@ -193,27 +221,31 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                                  .getElement( '.qui-window-popup-image-preview' )
                                  .get( 'src' );
 
-            var Current = this.getElm().getElement( '[href="'+ currentSrc +'"]' );
+            var Current = this.$CompleteList.getElement(
+                '[data-src="'+ currentSrc +'"]'
+            );
 
             this.loadImage( Current );
         },
 
         /**
          * Load an image in a popup
-         * @param {HTMLElement} Link - Link Node of the Image
+         * @param {HTMLElement} ImageEntry - DIV Node of the Image
          */
-        loadImage : function(Link)
+        loadImage : function(ImageEntry)
         {
             if ( !this.$ImageWindow )
             {
-                this.$openWindow( Link );
+                this.$openWindow( ImageEntry );
                 return;
             }
 
 
-            var Win      = this.$ImageWindow,
+            var self     = this,
+                Win      = this.$ImageWindow,
                 Content  = Win.getContent(),
                 BtnText  = Win.getElm().getElement( '.qui-window-popup-buttons-text' ),
+                WinStats = Win.getElm().getElement( '.qui-window-popup-stats' ),
                 WinImage = Content.getElement( '.qui-window-popup-image-preview' );
 
             Win.Loader.show();
@@ -225,13 +257,13 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                 });
             }
 
-            Asset.image(Link.get( 'href' ), {
+            Asset.image(ImageEntry.get( 'data-src' ), {
                 onLoad: function(Image)
                 {
                     var pc;
 
                     var height  = Image.get( 'height' ),
-                        width   = Image.get( 'width'),
+                        width   = Image.get( 'width' ),
                         docSize = document.getSize();
 
                     var docWidth  = docSize.x - 100,
@@ -259,7 +291,17 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                     Win.setAttribute( 'maxWidth', width );
                     Win.setAttribute( 'maxHeight', height );
 
-                    BtnText.set( 'html', Link.getElement( 'img' ).get( 'title' ) );
+                    BtnText.set(
+                        'html',
+                        ImageEntry.getElement( '.title' ).get( 'html' )
+                    );
+
+                    var childIndex = QUIElementUtils.getChildIndex( ImageEntry ) + 1;
+
+                    WinStats.set(
+                        'html',
+                        childIndex +' von '+ self.$length
+                    );
 
                     Win.resize(true, function()
                     {
@@ -267,7 +309,7 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
 
                         var Img = new Element('img', {
                             'class' : 'qui-window-popup-image-preview',
-                            src     : Link.get( 'href' ),
+                            src     : ImageEntry.get( 'data-src' ),
                             styles  : {
                                 opacity : 0
                             }
@@ -297,15 +339,20 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                                  .getElement( '.qui-window-popup-image-preview' )
                                  .get( 'src' );
 
-            var Current = this.getElm().getElement( '[href="'+ currentSrc +'"]' ),
-                Parent  = Current.getParent( '.quiqqer-gallery-grid-entry' ),
-                Next    = Parent.getNext( '.quiqqer-gallery-grid-entry' );
+            var Current = this.$CompleteList.getElement(
+                '[data-src="'+ currentSrc +'"]'
+            );
 
-            if ( !Next ) {
-                Next = this.getElm().getFirst( '.quiqqer-gallery-grid-entry' );
+            var Next = Current.getNext( '.quiqqer-gallery-grid-list-complete-entry' );
+
+            if ( !Next )
+            {
+                Next = this.$CompleteList.getFirst(
+                    '.quiqqer-gallery-grid-list-complete-entry'
+                );
             }
 
-            this.loadImage( Next.getElement( 'a' ) );
+            this.loadImage( Next );
         },
 
         /**
@@ -322,15 +369,17 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                                  .getElement( '.qui-window-popup-image-preview' )
                                  .get( 'src' );
 
-            var Current = this.getElm().getElement( '[href="'+ currentSrc +'"]' ),
-                Parent  = Current.getParent( '.quiqqer-gallery-grid-entry' ),
-                Prev    = Parent.getPrevious( '.quiqqer-gallery-grid-entry' );
+            var Current = this.$CompleteList.getElement(
+                '[data-src="'+ currentSrc +'"]'
+            );
+
+            var Prev = Current.getPrevious( '.quiqqer-gallery-grid-list-complete-entry' );
 
             if ( !Prev ) {
-                Prev = this.getElm().getLast( '.quiqqer-gallery-grid-entry' );
+                Prev = this.$CompleteList.getLast( '.quiqqer-gallery-grid-list-complete-entry' );
             }
 
-            this.loadImage( Prev.getElement( 'a' ) );
+            this.loadImage( Prev );
         },
 
         /**

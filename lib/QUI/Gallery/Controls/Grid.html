@@ -19,6 +19,20 @@
         </div>
     </div>
 {/foreach}
+
+    <section class="quiqqer-gallery-grid-list-complete">
+        <!--
+        {foreach from=$completeList item=Image}
+            <div class="quiqqer-gallery-grid-list-complete-entry"
+                 data-src="{image image=$Image onlysrc=true rewrited=true}"
+            >
+                <div class="title">{$Image->getAttribute('title')}</div>
+                <div class="short">{$Image->getAttribute('title')}</div>
+            </div>
+        {/foreach}
+        -->
+    </section>
+
 </section>
 
 {if $Site}

@@ -14,6 +14,12 @@
 
             ]]></en>
         </locale>
+
+        <locale name="admin.types.gallery.entry">
+            <de><![CDATA[QUIQQER - Galerie Seite]]></de>
+            <en><![CDATA[QUIQQER - Gallery site]]></en>
+        </locale>
+
     </groups>
 
     <groups name="quiqqer/gallery" type="php">
@@ -32,6 +38,24 @@
             <de><![CDATA[Media-Ordner]]></de>
             <en><![CDATA[Media folder]]></en>
         </locale>
+
+        <locale name="quiqqer.gallery.settings.type">
+            <de><![CDATA[Galerie Aussehen]]></de>
+            <en><![CDATA[Gallery look]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.type.grid">
+            <de><![CDATA[Galerie Grid]]></de>
+            <en><![CDATA[Gallery grid]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.type.component-forwardPulse">
+            <de><![CDATA[Galerie mit Pulsier-Effekt]]></de>
+            <en><![CDATA[Gallery with pulse effect]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.type.component-coverflow">
+            <de><![CDATA[Galerie mit Coverflow-Effekt]]></de>
+            <en><![CDATA[Galerie width coverflow effect]]></en>
+        </locale>
+
 
     </groups>
 

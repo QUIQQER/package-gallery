@@ -48,7 +48,7 @@
                             </option>
                             <option value="component-coverflow">
                                 <locale group="quiqqer/gallery"
-                                        var="quiqqer.gallery.settings.type.coverflow"
+                                        var="quiqqer.gallery.settings.type.component-coverflow"
                                 />
                             </option>
                         </select>

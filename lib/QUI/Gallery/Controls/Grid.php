@@ -60,6 +60,8 @@ class Grid extends QUI\Control
             $max = 9;
         }
 
+        $completeList = $Folder->getImages();
+
         $images = $Folder->getImages(array(
             'limit' => $start .','. $max
         ));
@@ -76,7 +78,8 @@ class Grid extends QUI\Control
             'Folder'  => $Folder,
             'images'  => $images,
             'Site'    => $this->_getSite(),
-            'sheets'  => $sheets
+            'sheets'  => $sheets,
+            'completeList' => $completeList
         ));
 
         return $Engine->fetch( dirname( __FILE__ ) .'/Grid.html' );
