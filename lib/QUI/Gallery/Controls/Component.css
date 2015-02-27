@@ -1,42 +1,78 @@
 
 .quiqqer-gallery-component {
     float: left;
-    height: 360px;
-    padding: 20px;
+    position: relative;
     width: 100%;
+}
+
+.quiqqer-gallery-component::before {
+    content: "";
+    display: block;
+    /* initial ratio of 3:2, the real ratio should 66.666% */
+    padding-top: 67%;
+}
+
+.quiqqer-gallery-component-content {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .quiqqer-gallery-component-prev,
 .quiqqer-gallery-component-next {
+    background: rgba( 0, 0, 0, 0.5 );
+    border-radius: 3px;
     cursor: pointer;
     float: left;
     font-size: 26px;
-    line-height: 320px;
+    height: 60px;
+    position: absolute;
     text-align: center;
+    top: calc( 50% - 30px );
     width: 40px;
+    z-index: 10;
 }
 
+.quiqqer-gallery-component-prev {
+    left: 10px;
+}
+
+.quiqqer-gallery-component-next {
+    right: 10px;
+}
+
+.quiqqer-gallery-component-prev .fa,
+.quiqqer-gallery-component-next .fa {
+    color: #fff;
+    line-height: 60px;
+}
+/*
 .quiqqer-gallery-component-prev:hover,
 .quiqqer-gallery-component-next:hover {
     background: #ddd;
 }
+*/
 
 .quiqqer-gallery-component-list {
     clear: none !important;
     float: left !important;
-    height: 320px;
+    height: 100%;
     list-style: none;
     margin: 0 !important;
     overflow: hidden;
     padding: 0 !important;
     position: relative;
-    width: calc( 100% - 80px ) !important;
+    width: 100% !important;
+    z-index: 1;
 }
 
 .quiqqer-gallery-component-list li {
     height: 100%;
     left: 0;
     line-height: 320px;
+    margin: 0;
     opacity: 0;
     padding: 0;
     pointer-events: none;
@@ -77,6 +113,30 @@
 
 /** element queries
  * ============================================== */
+/*
+.quiqqer-gallery-component[max-width~="720px"] {
+    height: 480px;
+}
+.quiqqer-gallery-component[max-width~="720px"] .quiqqer-gallery-component-prev,
+.quiqqer-gallery-component[max-width~="720px"] .quiqqer-gallery-component-next {
+    line-height: 440px;
+}
+.quiqqer-gallery-component[max-width~="720px"] .quiqqer-gallery-component-list {
+    height: 440px;
+}
+
+
+.quiqqer-gallery-component[max-width~="600px"] {
+    height: 400px;
+}
+.quiqqer-gallery-component[max-width~="600px"] .quiqqer-gallery-component-prev,
+.quiqqer-gallery-component[max-width~="600px"] .quiqqer-gallery-component-next {
+    line-height: 360px;
+}
+.quiqqer-gallery-component[max-width~="600px"] .quiqqer-gallery-component-list {
+    height: 360px;
+}
+
 
 .quiqqer-gallery-component[max-width~="500px"] {
     height: 300px;
@@ -112,3 +172,4 @@
 .quiqqer-gallery-component[max-width~="350px"] .quiqqer-gallery-component-list {
     height: 160px;
 }
+*/

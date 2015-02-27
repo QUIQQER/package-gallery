@@ -1,12 +1,17 @@
+<div class="quiqqer-gallery-component-content">
+    <div class="quiqqer-gallery-component-prev">
+        <span class="fa fa-chevron-left"></span>
+    </div>
 
-<div class="quiqqer-gallery-component-prev fa fa-chevron-left"></div>
+    <ul class="quiqqer-gallery-component-list">
+        {foreach from=$images item=Image}
+        <li class="quiqqer-gallery-component-list-entry">
+            {image image=$Image}
+        </li>
+        {/foreach}
+    </ul>
 
-<ul class="quiqqer-gallery-component-list">
-    {foreach from=$images item=Image}
-    <li class="quiqqer-gallery-component-list-entry">
-        {image image=$Image}
-    </li>
-    {/foreach}
-</ul>
-
-<div class="quiqqer-gallery-component-next fa fa-chevron-right"></div>
+    <div class="quiqqer-gallery-component-next">
+        <span class="fa fa-chevron-right"></span>
+    </div>
+</div>

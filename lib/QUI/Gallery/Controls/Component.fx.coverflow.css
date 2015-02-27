@@ -3,36 +3,49 @@
 /* coverflow */
 /*****************************************/
 
-.coverflow-in {
-    -webkit-animation: rotate3DSlideInRight 0.3s 0.1s forwards;
-    animation: rotate3DSlideInRight 0.3s 0.1s forwards;
+.coverflow-in-right {
+    -webkit-animation: coverflow-effect-in-right 0.3s 0.1s forwards;
+    animation: coverflow-effect-in-right 0.3s 0.1s forwards;
 }
 
-.coverflow-out {
-    -webkit-animation: rotate3DSlideOutLeft 0.3s forwards;
-    animation: rotate3DSlideOutLeft 0.3s forwards;
+.coverflow-in-left {
+    -webkit-animation: coverflow-effect-in-left 0.3s 0.1s forwards;
+    animation: coverflow-effect-in-left 0.3s 0.1s forwards;
+}
+
+.coverflow-out-left {
+    -webkit-animation: coverflow-effect-out-left 0.3s forwards;
+    animation: coverflow-effect-out-left 0.3s forwards;
+}
+
+.coverflow-out-right {
+    -webkit-animation: coverflow-effect-out-right 0.3s forwards;
+    animation: coverflow-effect-out-right 0.3s forwards;
 }
 
 
-.quiqqer-gallery-component {
+.quiqqer-gallery-component-list {
     -webkit-perspective: 1400px;
     perspective: 1400px;
 }
 
-@-webkit-keyframes rotate3DSlideInRight {
+
+/** in from left
+ ================================================== */
+
+@-webkit-keyframes coverflow-effect-in-left {
     from {
-        -webkit-transform: translateX(40%) rotateY(-45deg) translateZ(-300px);
+        -webkit-transform: translateX(-40%) rotateY(45deg) translateZ(-300px);
     }
     to {
         -webkit-transform: translateX(0) rotateY(0deg) translateZ(0);
         opacity: 1;
     }
 }
-
-@keyframes rotate3DSlideInRight {
+@keyframes coverflow-effect-in-left {
     from {
-        -webkit-transform: translateX(40%) rotateY(-45deg) translateZ(-300px);
-        transform: translateX(40%) rotateY(-45deg) translateZ(-300px);
+        -webkit-transform: translateX(-40%) rotateY(45deg) translateZ(-300px);
+        transform: translateX(-40%) rotateY(45deg) translateZ(-300px);
     }
     to {
         -webkit-transform: translateX(0) rotateY(0deg) translateZ(0);
@@ -41,19 +54,79 @@
     }
 }
 
-@-webkit-keyframes rotate3DSlideOutLeft {
-    from {} /* Fixes Chrome issue 35.0.1916.114 (easing breaks) */
+/** in from right
+ ================================================== */
+
+@-webkit-keyframes coverflow-effect-in-right {
+    from {
+        -webkit-transform: translateX(40%) rotateY(-45deg) translateZ(-300px);
+        opacity: 0;
+    }
+    to {
+        -webkit-transform: translateX(0) rotateY(0deg) translateZ(0);
+        opacity: 1;
+    }
+}
+@keyframes coverflow-effect-in-right {
+    from {
+        -webkit-transform: translateX(40%) rotateY(-45deg) translateZ(-300px);
+        transform: translateX(40%) rotateY(-45deg) translateZ(-300px);
+        opacity: 0;
+    }
+    to {
+        -webkit-transform: translateX(0) rotateY(0deg) translateZ(0);
+        transform: translateX(0) rotateY(0deg) translateZ(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+/** out to left
+ ================================================== */
+
+@-webkit-keyframes coverflow-effect-out-left {
+    from {
+        opacity: 1;
+    }
     to {
         -webkit-transform: translateX(-40%) rotateY(45deg) translateZ(-300px);
         opacity: 0;
     }
 }
 
-@keyframes rotate3DSlideOutLeft {
-    from {} /* Fixes Chrome issue 35.0.1916.114 (easing breaks) */
+@keyframes coverflow-effect-out-left {
+    from {
+        opacity: 1;
+    }
     to {
         -webkit-transform: translateX(-40%) rotateY(45deg) translateZ(-300px);
         transform: translateX(-40%) rotateY(45deg) translateZ(-300px);
+        opacity: 0 !important;
+    }
+}
+
+/** out to right
+ ================================================== */
+
+@-webkit-keyframes coverflow-effect-out-right {
+    from {
+        opacity: 1;
+    }
+    to {
+        -webkit-transform: translateX(40%) rotateY(-45deg) translateZ(-300px);
+        opacity: 0;
+    }
+}
+
+@keyframes coverflow-effect-out-right {
+    from {
+        opacity: 1;
+    }
+    to {
+        -webkit-transform: translateX(40%) rotateY(-45deg) translateZ(-300px);
+        transform: translateX(40%) rotateY(-45deg) translateZ(-300px);
         opacity: 0;
     }
 }

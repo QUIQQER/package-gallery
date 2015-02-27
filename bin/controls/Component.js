@@ -34,10 +34,12 @@ define('package/quiqqer/gallery/bin/controls/Component', [
 
             this.$effect    = '';
             this.$__resized = false;
+            this.$__animate = false;
 
             this.$List      = null;
             this.$Display   = false;
             this.$FXDisplay = false;
+
 
             this.addEvents({
                 onImport: this.$onImport
@@ -122,6 +124,13 @@ define('package/quiqqer/gallery/bin/controls/Component', [
          */
         next : function()
         {
+            if ( this.$__animate ) {
+                return;
+            }
+
+            this.$__animate = true;
+
+
             var Current = this.getElm().getElement(
                 '.quiqqer-gallery-component-list-current'
             );
@@ -137,10 +146,14 @@ define('package/quiqqer/gallery/bin/controls/Component', [
             }
 
             if ( Current ) {
-                this.animateOut( Current );
+                this.animateOut( Current, 'left' );
             }
 
-            this.animateIn( Next );
+            this.animateIn( Next, 'right' );
+
+            (function() {
+                this.$__animate = false;
+            }).delay( 500, this );
         },
 
         /**
@@ -148,6 +161,12 @@ define('package/quiqqer/gallery/bin/controls/Component', [
          */
         prev : function()
         {
+            if ( this.$__animate ) {
+                return;
+            }
+
+            this.$__animate = true;
+
             var Current = this.getElm().getElement(
                 '.quiqqer-gallery-component-list-current'
             );
@@ -165,44 +184,65 @@ define('package/quiqqer/gallery/bin/controls/Component', [
 
 
             if ( Current ) {
-                this.animateOut( Current );
+                this.animateOut( Current, 'right' );
             }
 
-            this.animateIn( Prev );
+            this.animateIn( Prev, 'left' );
+
+            (function() {
+                this.$__animate = false;
+            }).delay( 500, this );
         },
 
         /**
          * Out Animate for an element
          * @param {HTMLElement} Elm
+         * @param {String} [direction] - left|right
          */
-        animateOut : function(Elm)
+        animateOut : function(Elm, direction)
         {
             var fx = this.$effect;
 
-            Elm.removeClass( fx +'-in' );
-            Elm.addClass( fx +'-out' );
+            direction = direction || 'left';
+
+            Elm.removeClass( 'quiqqer-gallery-component-list-current' );
+            Elm.removeClass( fx +'-in-left' );
+            Elm.removeClass( fx +'-in-right' );
+
+            switch ( direction )
+            {
+                case 'left':
+                    Elm.addClass( fx +'-out-left' );
+                break;
+
+                case 'right':
+                    Elm.addClass( fx +'-out-right' );
+                break;
+            }
+
 
             this.hideTextDisplay();
 
             (function()
             {
-                Elm.removeClass( fx +'-out' );
-                Elm.removeClass( 'quiqqer-gallery-component-list-current' );
-
+                Elm.removeClass( fx +'-out-left' );
+                Elm.removeClass( fx +'-out-right' );
             }).delay( 500 );
         },
 
         /**
          * In animation for an element
          * @param {HTMLElement} Elm
+         * @param {String} [direction] - left|right
          */
-        animateIn : function(Elm)
+        animateIn : function(Elm, direction)
         {
             var pc;
             var Image = Elm.getElement( 'img' ),
                 text  = Image.get( 'alt' ),
                 fx    = this.$effect;
 
+            direction = direction || 'right';
 
             if ( !Image.get( 'data-resized' ) )
             {
@@ -210,7 +250,6 @@ define('package/quiqqer/gallery/bin/controls/Component', [
                     imageSize = this.$getRealImageSize( Image ),
                     height    = imageSize.y,
                     width     = imageSize.x;
-
 
                 // set width
                 pc = QUIMath.percent( listSize.x, width );
@@ -227,13 +266,25 @@ define('package/quiqqer/gallery/bin/controls/Component', [
                     width  = ( width * (pc / 100) ).round();
                 }
 
+                var left = 0,
+                    top  = 0;
+
+                if ( width < listSize.x ) {
+                    left = (( listSize.x - width ) / 2).round();
+                }
+
+                if ( height < listSize.y ) {
+                    top = (( listSize.y - height ) / 2).round();
+                }
 
                 // set image proportions
                 Image.setStyles({
                     height    : height,
                     maxHeight : height,
                     width     : width,
-                    maxWidth  : width
+                    maxWidth  : width,
+                    left      : left,
+                    top       : top
                 });
 
                 Image.set( 'data-resized', 1 );
@@ -241,7 +292,16 @@ define('package/quiqqer/gallery/bin/controls/Component', [
 
 
             // slide in
-            Elm.addClass( fx +'-in' );
+            switch ( direction )
+            {
+                case 'left':
+                    Elm.addClass( fx +'-in-left' );
+                    break;
+
+                case 'right':
+                    Elm.addClass( fx +'-in-right' );
+                    break;
+            }
 
             if ( !text || text === '' ) {
                 text = Image.get( 'title' );
@@ -252,7 +312,8 @@ define('package/quiqqer/gallery/bin/controls/Component', [
             (function()
             {
                 Elm.addClass( 'quiqqer-gallery-component-list-current' );
-                Elm.removeClass( fx +'-in' );
+                Elm.removeClass( fx +'-in-left' );
+                Elm.removeClass( fx +'-in-right' );
 
             }).delay( 500 );
         },
