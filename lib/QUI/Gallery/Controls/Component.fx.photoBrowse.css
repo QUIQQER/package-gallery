@@ -1,0 +1,190 @@
+
+/** Photo Browse
+ *********************************************/
+
+.photoBrowse-in-right {
+    -webkit-animation: photoBrowse-effect-in-right 0.5s forwards;
+    animation: photoBrowse-effect-in-right 0.5s forwards;
+}
+
+.photoBrowse-in-left {
+    -webkit-animation: photoBrowse-effect-in-left 0.5s forwards;
+    animation: photoBrowse-effect-in-left 0.5s forwards;
+}
+
+
+.photoBrowse-out-left {
+    -webkit-animation: photoBrowse-effect-out-left 0.5s forwards;
+    animation: photoBrowse-effect-out-left 0.5s forwards;
+}
+
+.photoBrowse-out-right {
+    -webkit-animation: photoBrowse-effect-out-right 0.5s forwards;
+    animation: photoBrowse-effect-out-right 0.5s forwards
+}
+
+
+/** DOM
+ *********************************************/
+
+.quiqqer-gallery-component-photoBrowse ul {
+    -webkit-perspective: 1400px;
+    perspective: 1400px;
+    overflow: visible;
+}
+
+
+/** effects
+ *********************************************/
+
+@-webkit-keyframes photoBrowse-effect-in-right {
+    0% {
+        -webkit-transform: translateZ(-200px);
+        opacity: 0;
+    }
+    51% {
+        z-index: 10;
+        opacity: 1;
+    }
+    70% {
+        z-index: 10;
+        -webkit-transform: translateZ(50px);
+    }
+    100% {
+        z-index: 10;
+        -webkit-transform: translateZ(0px);
+        opacity: 1;
+    }
+}
+@keyframes photoBrowse-effect-in-right {
+    0% {
+        -webkit-transform: translateZ(-200px);
+        transform: translateZ(-200px);
+        opacity: 0;
+    }
+    51% {
+        z-index: 10;
+        opacity: 1;
+    }
+    70% {
+        z-index: 10;
+        -webkit-transform: translateZ(50px);
+        transform: translateZ(50px);
+    }
+    100% {
+        z-index: 10;
+        -webkit-transform: translateZ(0px);
+        transform: translateZ(0px);
+        opacity: 1;
+    }
+}
+
+
+@-webkit-keyframes photoBrowse-effect-in-left {
+    from {
+        opacity: 0;
+    }
+    50% {
+        -webkit-transform: translateX(-105%) rotateY(35deg) rotateX(10deg);
+        opacity: 1;
+    }
+    51% {
+        z-index: 10;
+    }
+    100% {
+        z-index: 10;
+        -webkit-transform: translateX(0%) rotateY(0deg) rotateX(0deg);
+        opacity: 1;
+    }
+}
+@keyframes photoBrowse-effect-in-left {
+    from {
+        opacity: 0;
+    }
+    50% {
+        -webkit-transform: translateX(-105%) rotateY(35deg) rotateX(10deg);
+        transform: translateX(-105%) rotateY(35deg) rotateX(10deg);
+        opacity: 1;
+    }
+    51% {
+        z-index: 10;
+    }
+    100% {
+        z-index: 10;
+        -webkit-transform: translateX(0%) rotateY(0deg) rotateX(0deg);
+        transform: translateX(0%) rotateY(0deg) rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes photoBrowse-effect-out-left {
+    from {
+        opacity: 1;
+    }
+    50% {
+        -webkit-transform: translateX(-105%) rotateY(35deg) rotateX(10deg);
+    }
+    51% {
+        opacity: 1;
+        z-index: 9;
+    }
+    100% {
+        z-index: 9;
+        -webkit-transform: translateX(0%) rotateY(0deg) rotateX(0deg);
+        opacity: 0;
+    }
+}
+@keyframes photoBrowse-effect-out-left {
+    from {
+        opacity: 1;
+    }
+    50% {
+        -webkit-transform: translateX(-105%) rotateY(35deg) rotateX(10deg);
+        transform: translateX(-105%) rotateY(35deg) rotateX(10deg);
+    }
+    51% {
+        opacity: 1;
+        z-index: 9;
+    }
+    100% {
+        z-index: 9;
+        -webkit-transform: translateX(0%) rotateY(0deg) rotateX(0deg);
+        transform: translateX(0%) rotateY(0deg) rotateX(0deg);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes photoBrowse-effect-out-right {
+    from {
+        opacity: 1;
+    }
+    30% {
+        -webkit-transform: translateZ(50px);
+    }
+    50% {
+        opacity: 1;
+        z-index: 9;
+    }
+    100% {
+        -webkit-transform: translateZ(-200px);
+        opacity: 0;
+    }
+}
+@keyframes photoBrowse-effect-out-right {
+    from {
+        opacity: 1;
+    }
+    30% {
+        -webkit-transform: translateZ(50px);
+        transform: translateZ(50px);
+    }
+    50% {
+        opacity: 1;
+        z-index: 9;
+    }
+    100% {
+        -webkit-transform: translateZ(-200px);
+        transform: translateZ(-200px);
+        opacity: 0;
+    }
+}

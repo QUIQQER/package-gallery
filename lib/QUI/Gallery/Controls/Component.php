@@ -47,6 +47,11 @@ class Component extends QUI\Control
                 $this->addCSSFile( $dir .'/Component.fx.coverflow.css' );
                 $this->setAttribute( 'data-effect', 'coverflow' );
             break;
+
+            case 'photoBrowse':
+                $this->addCSSFile( $dir .'/Component.fx.photoBrowse.css' );
+                $this->setAttribute( 'data-effect', 'photoBrowse' );
+            break;
         }
     }
 

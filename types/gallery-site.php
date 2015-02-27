@@ -38,6 +38,13 @@ switch ( $galleryType )
             'effect'   => 'coverflow'
         ));
     break;
+
+    case 'component-photoBrowse':
+        $Gallery = new QUI\Gallery\Controls\Component(array(
+            'folderId' => $folderId,
+            'effect'   => 'photoBrowse'
+        ));
+    break;
 }
 
 $Engine->assign(array(

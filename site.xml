@@ -39,7 +39,9 @@
                                 <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.type" />
                             </text>
                             <option value="grid">
-                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.type.grid" />
+                                <locale group="quiqqer/gallery"
+                                        var="quiqqer.gallery.settings.type.grid"
+                                />
                             </option>
                             <option value="component-forwardPulse">
                                 <locale group="quiqqer/gallery"
@@ -49,6 +51,11 @@
                             <option value="component-coverflow">
                                 <locale group="quiqqer/gallery"
                                         var="quiqqer.gallery.settings.type.component-coverflow"
+                                />
+                            </option>
+                            <option value="component-photoBrowse">
+                                <locale group="quiqqer/gallery"
+                                        var="quiqqer.gallery.settings.type.component-photoBrowse"
                                 />
                             </option>
                         </select>

@@ -40,6 +40,9 @@ define('package/quiqqer/gallery/bin/controls/Component', [
             this.$Display   = false;
             this.$FXDisplay = false;
 
+            this.$parentsOverflowAuto   = new Elements();
+            this.$parentsOverflowHidden = new Elements();
+
 
             this.addEvents({
                 onImport: this.$onImport
@@ -100,6 +103,20 @@ define('package/quiqqer/gallery/bin/controls/Component', [
 
             this.$FXDisplay = moofx( this.$Display );
 
+
+            var parents = this.getElm().getParents();
+
+            for ( var i = 0, len = parents.length; i < len; i++ )
+            {
+                if ( parents[ i ].getStyle( 'overflow-x' ) === 'auto' ) {
+                    this.$parentsOverflowAuto.push( parents[ i ] );
+                }
+
+                if ( parents[ i ].getStyle( 'overflow-x' ) === 'hidden' ) {
+                    this.$parentsOverflowHidden.push( parents[ i ] );
+                }
+            }
+
             this.showFirst();
         },
 
@@ -130,6 +147,9 @@ define('package/quiqqer/gallery/bin/controls/Component', [
 
             this.$__animate = true;
 
+            this.$parentsOverflowAuto.setStyle( 'overflowX', 'visible' );
+            this.$parentsOverflowHidden.setStyle( 'overflowX', 'visible' );
+
 
             var Current = this.getElm().getElement(
                 '.quiqqer-gallery-component-list-current'
@@ -151,8 +171,11 @@ define('package/quiqqer/gallery/bin/controls/Component', [
 
             this.animateIn( Next, 'right' );
 
-            (function() {
+            (function()
+            {
                 this.$__animate = false;
+                this.$parentsOverflowAuto.setStyle( 'overflowX', 'auto' );
+                this.$parentsOverflowHidden.setStyle( 'overflowX', 'hidden' );
             }).delay( 500, this );
         },
 
@@ -166,6 +189,9 @@ define('package/quiqqer/gallery/bin/controls/Component', [
             }
 
             this.$__animate = true;
+
+            this.$parentsOverflowAuto.setStyle( 'overflowX', 'visible' );
+            this.$parentsOverflowHidden.setStyle( 'overflowX', 'visible' );
 
             var Current = this.getElm().getElement(
                 '.quiqqer-gallery-component-list-current'
@@ -189,8 +215,11 @@ define('package/quiqqer/gallery/bin/controls/Component', [
 
             this.animateIn( Prev, 'left' );
 
-            (function() {
+            (function()
+            {
                 this.$__animate = false;
+                this.$parentsOverflowAuto.setStyle( 'overflowX', 'auto' );
+                this.$parentsOverflowHidden.setStyle( 'overflowX', 'hidden' );
             }).delay( 500, this );
         },
 
