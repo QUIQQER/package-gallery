@@ -18,6 +18,16 @@
     width: 100px;
 }
 
+.qui-window-popup-buttons-prev:hover,
+.qui-window-popup-buttons-next:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: rgba(18, 21, 29, 0.85);
+}
+
+.qui-window-popup-stats {
+    cursor: default;
+}
+
 .qui-window-popup-buttons-text {
     float: left;
     line-height: 50px;
