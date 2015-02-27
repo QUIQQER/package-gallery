@@ -58,6 +58,11 @@
                                         var="quiqqer.gallery.settings.type.component-photoBrowse"
                                 />
                             </option>
+                            <option value="component-ferrisWheel">
+                                <locale group="quiqqer/gallery"
+                                        var="quiqqer.gallery.settings.type.component-ferrisWheel"
+                                />
+                            </option>
                         </select>
                     </settings>
                 </category>

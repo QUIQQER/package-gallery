@@ -52,6 +52,11 @@ class Component extends QUI\Control
                 $this->addCSSFile( $dir .'/Component.fx.photoBrowse.css' );
                 $this->setAttribute( 'data-effect', 'photoBrowse' );
             break;
+
+            case 'ferrisWheel':
+                $this->addCSSFile( $dir .'/Component.fx.ferrisWheel.css' );
+                $this->setAttribute( 'data-effect', 'ferrisWheel' );
+            break;
         }
     }
 
