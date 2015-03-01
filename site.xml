@@ -63,6 +63,16 @@
                                         var="quiqqer.gallery.settings.type.component-ferrisWheel"
                                 />
                             </option>
+                            <option value="component-snake">
+                                <locale group="quiqqer/gallery"
+                                        var="quiqqer.gallery.settings.type.component-snake"
+                                />
+                            </option>
+                            <option value="component-slideBehind">
+                                <locale group="quiqqer/gallery"
+                                        var="quiqqer.gallery.settings.type.component-slideBehind"
+                                />
+                            </option>
                         </select>
                     </settings>
                 </category>

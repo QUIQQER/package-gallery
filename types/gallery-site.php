@@ -61,6 +61,20 @@ switch ( $galleryType )
             'effect'   => 'ferrisWheel'
         ));
     break;
+
+    case 'component-snake':
+        $Gallery = new QUI\Gallery\Controls\Component(array(
+            'folderId' => $Folder->getId(),
+            'effect'   => 'snake'
+        ));
+    break;
+
+    case 'component-slideBehind':
+        $Gallery = new QUI\Gallery\Controls\Component(array(
+            'folderId' => $Folder->getId(),
+            'effect'   => 'slideBehind'
+        ));
+    break;
 }
 
 $Engine->assign(array(
