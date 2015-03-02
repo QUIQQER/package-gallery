@@ -8,9 +8,9 @@ namespace QUI\Gallery\Controls;
 use QUI;
 
 /**
- * Class NewestEntries
+ * Class Slider
  *
- * @package quiqqer/blog
+ * @package quiqqer/gallery
  */
 class Slider extends QUI\Control
 {
@@ -24,7 +24,8 @@ class Slider extends QUI\Control
         $this->setAttributes(array(
             'Project'  => false,
             'folderId' => false,
-            'class'    => 'quiqqer-gallery-slider'
+            'class'    => 'quiqqer-gallery-slider',
+            'data-qui' => 'package/quiqqer/gallery/bin/controls/Slider'
         ));
 
         parent::setAttributes( $attributes );
@@ -75,5 +76,3 @@ class Slider extends QUI\Control
         return $Site;
     }
 }
-
-

@@ -1,0 +1,134 @@
+
+.quiqqer-gallery-slider {
+    box-shadow: 0 0 2px 2px #888;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.quiqqer-gallery-slider::before {
+    content: "";
+    display: block;
+    /* initial ratio of 3:2, the real ratio should be 66.666% */
+    padding-top: 67%;
+}
+
+.quiqqer-gallery-slider-content {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.quiqqer-gallery-slider-prev,
+.quiqqer-gallery-slider-next {
+    background: rgba( 0, 0, 0, 0.5 );
+    border-radius: 3px;
+    cursor: pointer;
+    float: left;
+    font-size: 26px;
+    height: 60px;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    top: calc( 50% - 30px );
+    transition: all 0.5s ease;
+    width: 40px;
+    z-index: 10;
+
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+}
+
+.quiqqer-gallery-slider:hover .quiqqer-gallery-slider-prev,
+.quiqqer-gallery-slider:hover .quiqqer-gallery-slider-next {
+    opacity: 1;
+}
+
+
+.quiqqer-gallery-slider-prev {
+    left: 10px;
+}
+
+.quiqqer-gallery-slider-next {
+    right: 10px;
+}
+
+.quiqqer-gallery-slider-prev:hover,
+.quiqqer-gallery-slider-next:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.quiqqer-gallery-slider .fa,
+.quiqqer-gallery-slider .fa {
+    color: #fff;
+    line-height: 60px;
+}
+
+.quiqqer-gallery-slider-title {
+    background: rgba( 0, 0, 0, 0.5 );
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    overflow: hidden;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+    z-index: 11;
+}
+
+.quiqqer-gallery-slider-title-header {
+    color: #fff;
+    font-weight: bold;
+}
+
+.quiqqer-gallery-slider-title-text {
+    color: #fff;
+}
+
+.quiqqer-gallery-slider-image {
+    position: absolute;
+    top: 0;
+    z-index: 9;
+}
+
+/** controls
+ * ========================================== */
+
+.quiqqer-gallery-slider-controls {
+    opacity: 0;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    transition: all 0.5s ease;
+    z-index: 10;
+
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+}
+
+.quiqqer-gallery-slider:hover .quiqqer-gallery-slider-controls {
+    opacity: 1;
+}
+
+.quiqqer-gallery-slider-controls .fa {
+    background: rgba( 0, 0, 0, 0.5 );
+    border: 2px solid transparent;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    float: left;
+    line-height: 30px;
+    margin: 0 5px;
+    padding: 0 10px;
+}
+
+.quiqqer-gallery-slider-controls .fa:hover {
+    background: rgba( 0, 0, 0, 0.8 );
+}

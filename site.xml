@@ -2,6 +2,7 @@
 <site>
 
     <types>
+        <!-- Gallery Components -->
         <type type="types/gallery-component" icon="icon-picture">
             <locale group="quiqqer/gallery" var="admin.types.gallery.component" />
             <desc>
@@ -69,6 +70,7 @@
             </settings>
         </type>
 
+        <!-- Gallery Grid -->
         <type type="types/gallery-grid" icon="icon-picture">
             <locale group="quiqqer/gallery" var="admin.types.gallery.grid" />
             <desc>
@@ -98,6 +100,38 @@
                         <input conf="quiqqer.settings.gallery.max" type="number">
                             <text>
                                 <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.max" />
+                            </text>
+                        </input>
+                    </settings>
+                </category>
+
+            </settings>
+        </type>
+
+        <!-- Gallery Slider -->
+        <type type="types/gallery-slider" icon="icon-picture">
+            <locale group="quiqqer/gallery" var="admin.types.gallery.slider" />
+            <desc>
+                <locale group="quiqqer/gallery" var="admin.types.gallery.slider.desc" />
+            </desc>
+
+            <!-- extra attributes -->
+            <attributes>
+                <attribute>quiqqer.settings.gallery.folderId</attribute>
+            </attributes>
+
+            <!-- list settings -->
+            <settings>
+
+                <category name="gallery-list-settings">
+                    <settings>
+                        <title>
+                            <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.title" />
+                        </title>
+
+                        <input conf="quiqqer.settings.gallery.folderId" type="text" class="media-folder">
+                            <text>
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.folderId" />
                             </text>
                         </input>
                     </settings>

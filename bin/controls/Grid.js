@@ -403,6 +403,5 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                 this.$ImageWindow.close();
             }
         }
-
     });
 });

@@ -9,9 +9,9 @@ namespace QUI\Gallery\Controls;
 use QUI;
 
 /**
- * Class NewestEntries
+ * Class Grid
  *
- * @package quiqqer/blog
+ * @package quiqqer/gallery
  */
 class Grid extends QUI\Control
 {
@@ -101,5 +101,3 @@ class Grid extends QUI\Control
         return $Site;
     }
 }
-
-
