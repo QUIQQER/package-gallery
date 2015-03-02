@@ -15,9 +15,14 @@
             ]]></en>
         </locale>
 
-        <locale name="admin.types.gallery.entry">
-            <de><![CDATA[QUIQQER - Galerie Seite]]></de>
-            <en><![CDATA[QUIQQER - Gallery site]]></en>
+        <locale name="admin.types.gallery.component">
+            <de><![CDATA[QUIQQER - Galerie Komponenten]]></de>
+            <en><![CDATA[QUIQQER - Gallery component]]></en>
+        </locale>
+
+        <locale name="admin.types.gallery.grid">
+            <de><![CDATA[QUIQQER - Galerie Grid]]></de>
+            <en><![CDATA[QUIQQER - Gallery grid]]></en>
         </locale>
 
     </groups>
@@ -47,15 +52,31 @@
             <de><![CDATA[Galerie Grid]]></de>
             <en><![CDATA[Gallery grid]]></en>
         </locale>
+
         <locale name="quiqqer.gallery.settings.type.component-forwardPulse">
             <de><![CDATA[Galerie mit Pulsier-Effekt]]></de>
             <en><![CDATA[Gallery with pulse effect]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.type.component-photoBrowse">
+            <de><![CDATA[Galerie mit Photo-Effekt]]></de>
+            <en><![CDATA[Gallery with photo effect]]></en>
         </locale>
         <locale name="quiqqer.gallery.settings.type.component-coverflow">
             <de><![CDATA[Galerie mit Coverflow-Effekt]]></de>
             <en><![CDATA[Galerie width coverflow effect]]></en>
         </locale>
-
+        <locale name="quiqqer.gallery.settings.type.component-ferrisWheel">
+            <de><![CDATA[Galerie mit Ferris-Wheel-Effekt]]></de>
+            <en><![CDATA[Galerie width ferris wheel effect]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.type.component-snake">
+            <de><![CDATA[Galerie mit Snake-Effekt]]></de>
+            <en><![CDATA[Galerie width snake effect]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.type.component-slideBehind">
+            <de><![CDATA[Galerie mit Slide-Behind-Effekt]]></de>
+            <en><![CDATA[Galerie width slide behind effect]]></en>
+        </locale>
 
     </groups>
 

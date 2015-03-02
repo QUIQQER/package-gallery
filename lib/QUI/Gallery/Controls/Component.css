@@ -8,7 +8,7 @@
 .quiqqer-gallery-component::before {
     content: "";
     display: block;
-    /* initial ratio of 3:2, the real ratio should 66.666% */
+    /* initial ratio of 3:2, the real ratio should be 66.666% */
     padding-top: 67%;
 }
 
@@ -48,12 +48,6 @@
     color: #fff;
     line-height: 60px;
 }
-/*
-.quiqqer-gallery-component-prev:hover,
-.quiqqer-gallery-component-next:hover {
-    background: #ddd;
-}
-*/
 
 .quiqqer-gallery-component-list {
     clear: none !important;
@@ -110,65 +104,6 @@
     z-index: 11;
 }
 
-/** element queries
- * ============================================== */
-/*
-.quiqqer-gallery-component[max-width~="720px"] {
-    height: 480px;
+.__quiqqer-gallery-component--body {
+    overflow-x: hidden !important;
 }
-.quiqqer-gallery-component[max-width~="720px"] .quiqqer-gallery-component-prev,
-.quiqqer-gallery-component[max-width~="720px"] .quiqqer-gallery-component-next {
-    line-height: 440px;
-}
-.quiqqer-gallery-component[max-width~="720px"] .quiqqer-gallery-component-list {
-    height: 440px;
-}
-
-
-.quiqqer-gallery-component[max-width~="600px"] {
-    height: 400px;
-}
-.quiqqer-gallery-component[max-width~="600px"] .quiqqer-gallery-component-prev,
-.quiqqer-gallery-component[max-width~="600px"] .quiqqer-gallery-component-next {
-    line-height: 360px;
-}
-.quiqqer-gallery-component[max-width~="600px"] .quiqqer-gallery-component-list {
-    height: 360px;
-}
-
-
-.quiqqer-gallery-component[max-width~="500px"] {
-    height: 300px;
-}
-.quiqqer-gallery-component[max-width~="500px"] .quiqqer-gallery-component-prev,
-.quiqqer-gallery-component[max-width~="500px"] .quiqqer-gallery-component-next {
-    line-height: 260px;
-}
-.quiqqer-gallery-component[max-width~="500px"] .quiqqer-gallery-component-list {
-    height: 260px;
-}
-
-
-.quiqqer-gallery-component[max-width~="400px"] {
-    height: 220px;
-}
-.quiqqer-gallery-component[max-width~="400px"] .quiqqer-gallery-component-prev,
-.quiqqer-gallery-component[max-width~="400px"] .quiqqer-gallery-component-next {
-    line-height: 180px;
-}
-.quiqqer-gallery-component[max-width~="400px"] .quiqqer-gallery-component-list {
-    height: 180px;
-}
-
-
-.quiqqer-gallery-component[max-width~="350px"] {
-    height: 200px;
-}
-.quiqqer-gallery-component[max-width~="350px"] .quiqqer-gallery-component-prev,
-.quiqqer-gallery-component[max-width~="350px"] .quiqqer-gallery-component-next {
-    line-height: 160px;
-}
-.quiqqer-gallery-component[max-width~="350px"] .quiqqer-gallery-component-list {
-    height: 160px;
-}
-*/

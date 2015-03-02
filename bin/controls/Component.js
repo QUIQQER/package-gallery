@@ -10,9 +10,10 @@ define('package/quiqqer/gallery/bin/controls/Component', [
 
     'qui/QUI',
     'qui/controls/Control',
+    'qui/controls/loader/Loader',
     'qui/utils/Math'
 
-], function(QUI, QUIControl, QUIMath)
+], function(QUI, QUIControl, QUILoader, QUIMath)
 {
     "use strict";
 
@@ -39,6 +40,7 @@ define('package/quiqqer/gallery/bin/controls/Component', [
             this.$List      = null;
             this.$Display   = false;
             this.$FXDisplay = false;
+            this.Loader     = new QUILoader();
 
             this.$parentsOverflowAuto   = new Elements();
             this.$parentsOverflowHidden = new Elements();
@@ -90,6 +92,11 @@ define('package/quiqqer/gallery/bin/controls/Component', [
             this.$List   = Elm.getElement( 'ul' );
             this.$effect = Elm.get( 'data-effect' );
 
+            this.Loader.inject( Elm );
+            this.Loader.show();
+
+            Elm.setStyle( 'overflow', 'hidden' );
+
             Prev.addEvent( 'click', this.prev );
             Next.addEvent( 'click', this.next );
 
@@ -122,6 +129,12 @@ define('package/quiqqer/gallery/bin/controls/Component', [
             }
 
             this.showFirst();
+
+            (function()
+            {
+                this.Loader.hide();
+                Elm.setStyle( 'overflow', null );
+            }).delay( 500, this );
         },
 
         /**
@@ -153,7 +166,7 @@ define('package/quiqqer/gallery/bin/controls/Component', [
 
             this.$parentsOverflowAuto.setStyle( 'overflowX', 'visible' );
             this.$parentsOverflowHidden.setStyle( 'overflowX', 'visible' );
-            document.body.setStyle( 'overflowX', 'hidden' );
+            document.body.addClass( '__quiqqer-gallery-component--body' );
 
 
             var Current = this.getElm().getElement(
@@ -181,7 +194,7 @@ define('package/quiqqer/gallery/bin/controls/Component', [
                 this.$__animate = false;
                 this.$parentsOverflowAuto.setStyle( 'overflowX', 'auto' );
                 this.$parentsOverflowHidden.setStyle( 'overflowX', 'hidden' );
-                document.body.setStyle( 'overflowX', null );
+                document.body.removeClass( '__quiqqer-gallery-component--body' );
 
             }).delay( 500, this );
         },
@@ -199,7 +212,7 @@ define('package/quiqqer/gallery/bin/controls/Component', [
 
             this.$parentsOverflowAuto.setStyle( 'overflowX', 'visible' );
             this.$parentsOverflowHidden.setStyle( 'overflowX', 'visible' );
-            document.body.setStyle( 'overflowX', 'hidden' );
+            document.body.addClass( '__quiqqer-gallery-component--body' );
 
             var Current = this.getElm().getElement(
                 '.quiqqer-gallery-component-list-current'
@@ -228,7 +241,7 @@ define('package/quiqqer/gallery/bin/controls/Component', [
                 this.$__animate = false;
                 this.$parentsOverflowAuto.setStyle( 'overflowX', 'auto' );
                 this.$parentsOverflowHidden.setStyle( 'overflowX', 'hidden' );
-                document.body.setStyle( 'overflowX', null );
+                document.body.removeClass( '__quiqqer-gallery-component--body' );
 
             }).delay( 500, this );
         },

@@ -2,16 +2,15 @@
 <site>
 
     <types>
-        <type type="types/gallery-site" icon="icon-picture">
-            <locale group="quiqqer/gallery" var="admin.types.gallery.entry" />
+        <type type="types/gallery-component" icon="icon-picture">
+            <locale group="quiqqer/gallery" var="admin.types.gallery.component" />
             <desc>
-                <locale group="quiqqer/gallery" var="admin.types.gallery.entry.desc" />
+                <locale group="quiqqer/gallery" var="admin.types.gallery.component.desc" />
             </desc>
 
             <!-- extra attributes -->
             <attributes>
                 <attribute>quiqqer.settings.gallery.folderId</attribute>
-                <attribute>quiqqer.settings.gallery.max</attribute>
                 <attribute>quiqqer.settings.gallery.type</attribute>
             </attributes>
 
@@ -29,20 +28,10 @@
                                 <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.folderId" />
                             </text>
                         </input>
-                        <input conf="quiqqer.settings.gallery.max" type="number">
-                            <text>
-                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.max" />
-                            </text>
-                        </input>
                         <select conf="quiqqer.settings.gallery.type">
                             <text>
                                 <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.type" />
                             </text>
-                            <option value="grid">
-                                <locale group="quiqqer/gallery"
-                                        var="quiqqer.gallery.settings.type.grid"
-                                />
-                            </option>
                             <option value="component-forwardPulse">
                                 <locale group="quiqqer/gallery"
                                         var="quiqqer.gallery.settings.type.component-forwardPulse"
@@ -74,6 +63,43 @@
                                 />
                             </option>
                         </select>
+                    </settings>
+                </category>
+
+            </settings>
+        </type>
+
+        <type type="types/gallery-grid" icon="icon-picture">
+            <locale group="quiqqer/gallery" var="admin.types.gallery.grid" />
+            <desc>
+                <locale group="quiqqer/gallery" var="admin.types.gallery.grid.desc" />
+            </desc>
+
+            <!-- extra attributes -->
+            <attributes>
+                <attribute>quiqqer.settings.gallery.folderId</attribute>
+                <attribute>quiqqer.settings.gallery.max</attribute>
+            </attributes>
+
+            <!-- list settings -->
+            <settings>
+
+                <category name="gallery-list-settings">
+                    <settings>
+                        <title>
+                            <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.title" />
+                        </title>
+
+                        <input conf="quiqqer.settings.gallery.folderId" type="text" class="media-folder">
+                            <text>
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.folderId" />
+                            </text>
+                        </input>
+                        <input conf="quiqqer.settings.gallery.max" type="number">
+                            <text>
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.max" />
+                            </text>
+                        </input>
                     </settings>
                 </category>
 

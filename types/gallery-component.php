@@ -1,8 +1,5 @@
 <?php
 
-$start = 0;
-$max   = $Site->getAttribute( 'quiqqer.settings.gallery.max' );
-
 $folder      = $Site->getAttribute( 'quiqqer.settings.gallery.folderId' );
 $galleryType = $Site->getAttribute( 'quiqqer.settings.gallery.type' );
 
@@ -15,25 +12,8 @@ try
     $Folder = $Site->getProject()->getMedia()->firstChild();
 }
 
-if ( !$max ) {
-    $max = 9;
-}
-
-if ( isset( $_REQUEST['sheet'] ) ) {
-    $start = ( (int)$_REQUEST['sheet'] - 1 ) * $max;
-}
-
-
 switch ( $galleryType )
 {
-    case 'grid':
-        $Gallery = new QUI\Gallery\Controls\Grid(array(
-            'max'      => $max,
-            'start'    => $start,
-            'folderId' => $Folder->getId()
-        ));
-    break;
-
     case 'component-forwardPulse':
         $Gallery = new QUI\Gallery\Controls\Component(array(
             'folderId' => $Folder->getId(),
