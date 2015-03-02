@@ -132,3 +132,7 @@
 .quiqqer-gallery-slider-controls .fa:hover {
     background: rgba( 0, 0, 0, 0.8 );
 }
+
+.quiqqer-gallery-slider-controls .fa.control-background-active {
+    background: #0069B4;
+}
