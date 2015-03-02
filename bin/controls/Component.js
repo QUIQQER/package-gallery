@@ -23,10 +23,11 @@ define('package/quiqqer/gallery/bin/controls/Component', [
         Type    : 'package/quiqqer/gallery/bin/controls/Component',
 
         Binds: [
-            '$onImport',
             'next',
             'prev',
-            'resize'
+            'resize',
+            '$onImport',
+            '$keyup'
         ],
 
         initialize: function (options)
@@ -51,6 +52,7 @@ define('package/quiqqer/gallery/bin/controls/Component', [
             });
 
             window.addEvent( 'resize', this.resize );
+            window.addEvent( 'keyup', this.$keyup );
         },
 
         /**
@@ -428,6 +430,24 @@ define('package/quiqqer/gallery/bin/controls/Component', [
                 x : sizes[ 0 ],
                 y : sizes[ 1 ]
             };
+        },
+        
+        /**
+         * key events
+         *
+         * @param {DOMEvent} event
+         */
+        $keyup : function(event)
+        {
+            if ( event.key == 'left' )
+            {
+                this.prev();
+                return;
+            }
+
+            if ( event.key == 'right' ) {
+                this.next();
+            }
         }
     });
 });

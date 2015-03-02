@@ -41,12 +41,40 @@ class Slider extends QUI\Control
      */
     public function getBody()
     {
-        $Engine  = QUI::getTemplateManager()->getEngine();
-        $Project = $this->_getProject();
-        $Media   = $Project->getMedia();
+        $Engine   = QUI::getTemplateManager()->getEngine();
+        $Project  = $this->_getProject();
+        $Media    = $Project->getMedia();
+        $folderId = $this->getAttribute( 'folderId' );
 
         /* @var $Folder \QUI\Projects\Media\Folder */
-        $Folder = $Media->get( $this->getAttribute( 'folderId' ) );
+        if ( strpos( $folderId, 'image.php' ) !== false )
+        {
+            try
+            {
+                $Folder = QUI\Projects\Media\Utils::getMediaItemByUrl( $folderId );
+
+            } catch ( QUI\Exception $Exception )
+            {
+                $Folder = false;
+            }
+
+        } else
+        {
+            try
+            {
+                $Folder = $Media->get( (int)$folderId );
+
+            } catch ( QUI\Exception $Exception )
+            {
+                $Folder = false;
+            }
+        }
+
+        if ( $Folder === false ) {
+            $Folder = $Media->firstChild();
+        }
+
+
         $images = $Folder->getImages();
 
         $Engine->assign(array(

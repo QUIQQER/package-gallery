@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <quiqqer>
+    <!-- new available bricks -->
     <bricks>
-        <!-- new available bricks -->
+
+        <!-- component brick -->
         <brick control="\QUI\Gallery\Controls\Component">
             <title>
                 <locale group="quiqqer/gallery" var="bricks.gallery.component.title" />
@@ -18,6 +20,23 @@
                 <setting name="effect">
                     <locale group="quiqqer/template-qui"
                             var="bricks.gallery.component.setting.effect"
+                    />
+                </setting>
+            </settings>
+        </brick>
+
+        <!-- slider brick -->
+        <brick control="\QUI\Gallery\Controls\Slider">
+            <title>
+                <locale group="quiqqer/gallery" var="bricks.gallery.slider.title" />
+            </title>
+            <description>
+                <locale group="quiqqer/gallery" var="bricks.gallery.slider.description" />
+            </description>
+            <settings>
+                <setting name="folderId" type="media-folder">
+                    <locale group="quiqqer/template-qui"
+                            var="bricks.gallery.component.setting.folderId"
                     />
                 </setting>
             </settings>

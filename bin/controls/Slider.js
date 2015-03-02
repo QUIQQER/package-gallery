@@ -35,7 +35,8 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
         options : {
             controls : true,
-            period   : 5000
+            period   : 5000,
+            shadow   : false
         },
 
         initialize: function (options)
@@ -150,6 +151,12 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
             this.$Next.addEvent( 'click', this.next );
             this.$Prev.addEvent( 'click', this.prev );
+
+            if ( this.getAttribute( 'shadow' ) ) {
+                this.$Elm.setStyle( 'boxShadow', '0 0 2px 2px #888' );
+            }
+
+            return this.$Elm;
         },
 
         /**
@@ -180,7 +187,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             var next = this.$current + 1;
 
             if ( typeof this.$images[ next ] === 'undefined' ) {
-                next = 1;
+                next = 0;
             }
 
             var self = this,
@@ -468,7 +475,6 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 }
             }).inject( this.$Container );
         },
-
 
         /**
          * key events
