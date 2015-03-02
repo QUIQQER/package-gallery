@@ -12,7 +12,7 @@
                 <locale group="quiqqer/gallery" var="bricks.gallery.component.description" />
             </description>
             <settings>
-                <setting name="folderId">
+                <setting name="folderId" class="media-folder">
                     <locale group="quiqqer/template-qui"
                             var="bricks.gallery.component.setting.folderId"
                     />
@@ -34,9 +34,9 @@
                 <locale group="quiqqer/gallery" var="bricks.gallery.slider.description" />
             </description>
             <settings>
-                <setting name="folderId" type="media-folder">
-                    <locale group="quiqqer/template-qui"
-                            var="bricks.gallery.component.setting.folderId"
+                <setting name="folderId" class="media-folder">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gallery.settings.folderId"
                     />
                 </setting>
             </settings>
