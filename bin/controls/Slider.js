@@ -105,6 +105,8 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          */
         create : function()
         {
+            var self = this;
+
             if ( !this.$Elm )
             {
                 this.$Elm = new Element('div', {
@@ -153,8 +155,17 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             this.$Play.addEvent( 'click', this.toggleAutoplay );
             this.$Random.addEvent( 'click', this.toggleRandomize );
 
-            this.$Next.addEvent( 'click', this.next );
-            this.$Prev.addEvent( 'click', this.prev );
+            this.$Next.addEvent('click', function()
+            {
+                self.stopAutoplay();
+                self.next();
+            });
+
+            this.$Prev.addEvent('click', function()
+            {
+                self.stopAutoplay();
+                self.prev();
+            });
 
             if ( this.getAttribute( 'shadow' ) ) {
                 this.$Elm.setStyle( 'boxShadow', '0 0 2px 2px #888' );
