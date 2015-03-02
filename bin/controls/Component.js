@@ -431,7 +431,7 @@ define('package/quiqqer/gallery/bin/controls/Component', [
                 y : sizes[ 1 ]
             };
         },
-        
+
         /**
          * key events
          *

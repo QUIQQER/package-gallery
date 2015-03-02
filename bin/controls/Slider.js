@@ -11,11 +11,12 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
     'qui/QUI',
     'qui/controls/Control',
     'qui/controls/loader/Loader',
+    'qui/controls/loader/Progress',
     'qui/utils/Math',
 
     URL_BIN_DIR +'QUI/lib/Assets.js'
 
-], function(QUI, QUIControl, QUILoader, QUIMath)
+], function(QUI, QUIControl, QUILoader, QUIProgress, QUIMath)
 {
     "use strict";
 
@@ -45,7 +46,9 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
             this.$__animate = false;
 
-            this.Loader     = new QUILoader();
+            this.Loader = new QUILoader();
+
+            this.$Progress  = new QUIProgress();
             this.$Container = null;
             this.$Next      = null;
             this.$Prev      = null;
@@ -130,6 +133,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             });
 
             this.Loader.inject( this.$Elm );
+            this.$Progress.inject( this.$Elm );
 
             this.$Container = this.$Elm.getElement( '.quiqqer-gallery-slider-content' );
             this.$Next      = this.$Elm.getElement( '.quiqqer-gallery-slider-next' );
@@ -505,8 +509,12 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 clearInterval( this.$autoplayInterval );
             }
 
+            this.$Progress.increment( this.getAttribute('period') );
+
             this.$autoplayInterval = (function()
             {
+                this.$Progress.increment( this.getAttribute('period') );
+
                 if ( this.$randomize ) {
                     this.$current = Number.random( 0, this.$images.length-1 );
                 }
@@ -521,6 +529,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          */
         stopAutoplay : function()
         {
+            this.$Progress.reset();
             this.$Play.removeClass( 'control-background-active' );
             this.stopRandomize();
 
