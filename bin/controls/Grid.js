@@ -244,6 +244,7 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
             var self     = this,
                 Win      = this.$ImageWindow,
                 Content  = Win.getContent(),
+                Buttons  = Win.getElm().getElement( '.qui-window-popup-image-buttons' ),
                 BtnText  = Win.getElm().getElement( '.qui-window-popup-buttons-text' ),
                 WinStats = Win.getElm().getElement( '.qui-window-popup-stats' ),
                 WinImage = Content.getElement( '.qui-window-popup-image-preview' );
@@ -291,10 +292,35 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                     Win.setAttribute( 'maxWidth', width );
                     Win.setAttribute( 'maxHeight', height );
 
-                    BtnText.set(
-                        'html',
-                        ImageEntry.getElement( '.title' ).get( 'html' )
-                    );
+                    var header = ImageEntry.getElement( '.title' ).get( 'html'),
+                        short  = ImageEntry.getElement( '.short' ).get( 'html' );
+
+                    var text = '<div class="qui-window-popup-image-preview-header">'+ header +'</div>' +
+                               '<div class="qui-window-popup-image-preview-text">'+ short +'</div>';
+
+                    BtnText.set( 'html', text );
+
+                    // get dimensions
+                    var Temp = BtnText.clone().inject( BtnText.getParent() );
+
+                    Temp.setStyles({
+                        height     : 0,
+                        visibility : 'hidden'
+                    });
+
+                    var dimensions = Temp.getScrollSize(),
+                        newHeight  = dimensions.y + 10;
+
+                    Temp.destroy();
+
+                    if ( newHeight < 50 ) {
+                        newHeight = 50;
+                    }
+
+                    moofx( Buttons ).animate({
+                        height : newHeight
+                    });
+
 
                     var childIndex = QUIElementUtils.getChildIndex( ImageEntry ) + 1;
 

@@ -30,11 +30,8 @@
 
 .qui-window-popup-buttons-text {
     float: left;
-    line-height: 50px;
     overflow: hidden;
-    text-align: center;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    padding: 10px;
     width: calc( 100% - 300px );
 }
 
@@ -42,4 +39,15 @@
     height: 100%;
     outline: none;
     width: 100%;
+}
+
+.qui-window-popup-image-preview-header {
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+}
+
+.qui-window-popup-image-preview-text {
+    color: #fff;
+    text-align: left;
 }
