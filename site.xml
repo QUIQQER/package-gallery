@@ -13,6 +13,7 @@
             <attributes>
                 <attribute>quiqqer.settings.gallery.folderId</attribute>
                 <attribute>quiqqer.settings.gallery.type</attribute>
+                <attribute>quiqqer.settings.gallery.sort</attribute>
             </attributes>
 
             <!-- list settings -->
@@ -64,6 +65,36 @@
                                 />
                             </option>
                         </select>
+
+                        <select conf="quiqqer.settings.gallery.sort">
+                            <text>
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort" />
+                            </text>
+                            <option value="title DESC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.titleDESC" />
+                            </option>
+                            <option value="title ASC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.titleASC" />
+                            </option>
+                            <option value="name DESC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.nameDESC" />
+                            </option>
+                            <option value="name ASC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.nameASC" />
+                            </option>
+                            <option value="c_date DESC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.c_dateDESC" />
+                            </option>
+                            <option value="c_date ASC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.c_dateASC" />
+                            </option>
+                            <option value="e_date DESC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.e_dateDESC" />
+                            </option>
+                            <option value="e_date ASC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.e_dateASC" />
+                            </option>
+                        </select>
                     </settings>
                 </category>
 
@@ -81,6 +112,7 @@
             <attributes>
                 <attribute>quiqqer.settings.gallery.folderId</attribute>
                 <attribute>quiqqer.settings.gallery.max</attribute>
+                <attribute>quiqqer.settings.gallery.sort</attribute>
             </attributes>
 
             <!-- list settings -->
@@ -102,6 +134,36 @@
                                 <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.max" />
                             </text>
                         </input>
+
+                        <select conf="quiqqer.settings.gallery.sort">
+                            <text>
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort" />
+                            </text>
+                            <option value="title DESC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.titleDESC" />
+                            </option>
+                            <option value="title ASC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.titleASC" />
+                            </option>
+                            <option value="name DESC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.nameDESC" />
+                            </option>
+                            <option value="name ASC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.nameASC" />
+                            </option>
+                            <option value="c_date DESC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.c_dateDESC" />
+                            </option>
+                            <option value="c_date ASC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.c_dateASC" />
+                            </option>
+                            <option value="e_date DESC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.e_dateDESC" />
+                            </option>
+                            <option value="e_date ASC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.e_dateASC" />
+                            </option>
+                        </select>
                     </settings>
                 </category>
 
@@ -118,6 +180,7 @@
             <!-- extra attributes -->
             <attributes>
                 <attribute>quiqqer.settings.gallery.folderId</attribute>
+                <attribute>quiqqer.settings.gallery.sort</attribute>
             </attributes>
 
             <!-- list settings -->
@@ -134,6 +197,36 @@
                                 <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.folderId" />
                             </text>
                         </input>
+
+                        <select conf="quiqqer.settings.gallery.sort">
+                            <text>
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort" />
+                            </text>
+                            <option value="title DESC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.titleDESC" />
+                            </option>
+                            <option value="title ASC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.titleASC" />
+                            </option>
+                            <option value="name DESC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.nameDESC" />
+                            </option>
+                            <option value="name ASC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.nameASC" />
+                            </option>
+                            <option value="c_date DESC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.c_dateDESC" />
+                            </option>
+                            <option value="c_date ASC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.c_dateASC" />
+                            </option>
+                            <option value="e_date DESC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.e_dateDESC" />
+                            </option>
+                            <option value="e_date ASC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.e_dateASC" />
+                            </option>
+                        </select>
                     </settings>
                 </category>
 

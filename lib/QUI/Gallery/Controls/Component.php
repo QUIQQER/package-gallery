@@ -26,7 +26,8 @@ class Component extends QUI\Control
             'Project'   => false,
             'folderId'  => false,
             'class'     => 'quiqqer-gallery-component control-background',
-            'qui-class' => 'package/quiqqer/gallery/bin/controls/Component'
+            'qui-class' => 'package/quiqqer/gallery/bin/controls/Component',
+            'order'     => 'title ASC'
         ));
 
         parent::setAttributes( $attributes );
@@ -94,12 +95,35 @@ class Component extends QUI\Control
 
         }
 
+        switch ( $this->getAttribute( 'order' ) )
+        {
+            case 'title DESC':
+            case 'title ASC':
+
+            case 'name DESC':
+            case 'name ASC':
+
+            case 'c_date DESC':
+            case 'c_date ASC':
+
+            case 'e_date DESC':
+            case 'e_date ASC':
+                $order = $this->getAttribute( 'order' );
+            break;
+
+            default:
+                $order = 'name DESC';
+            break;
+        }
+
         $Engine->assign(array(
             'Rewrite' => QUI::getRewrite(),
             'this'    => $this,
             'Folder'  => $Folder,
-            'images'  => $Folder->getImages(),
-            'Site'    => $this->_getSite()
+            'Site'    => $this->_getSite(),
+            'images'  => $Folder->getImages(array(
+                'order' => $order
+            ))
         ));
 
         return $Engine->fetch( dirname( __FILE__ ) .'/Component.html' );

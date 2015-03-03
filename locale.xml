@@ -78,6 +78,45 @@
             <en><![CDATA[Galerie width slide behind effect]]></en>
         </locale>
 
+        <!-- site types sort-->
+        <locale name="quiqqer.gallery.settings.sort">
+            <de><![CDATA[Bilder Sortierung]]></de>
+            <en><![CDATA[Picture sorting]]></en>
+        </locale>
+
+        <locale name="quiqqer.gallery.settings.sort.titleDESC">
+            <de><![CDATA[Title absteigend]]></de>
+            <en><![CDATA[Title descending]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.sort.titleASC">
+            <de><![CDATA[Title aufsteigend]]></de>
+            <en><![CDATA[Title ascending]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.sort.nameDESC">
+            <de><![CDATA[Name absteigend]]></de>
+            <en><![CDATA[Name descending]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.sort.nameASC">
+            <de><![CDATA[Name aufsteigend]]></de>
+            <en><![CDATA[Name ascending]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.sort.c_dateDESC">
+            <de><![CDATA[Erstellungsdatum absteigend]]></de>
+            <en><![CDATA[Create date descending]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.sort.c_dateASC">
+            <de><![CDATA[Erstellungsdatum aufsteigend]]></de>
+            <en><![CDATA[Create date ascending]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.sort.e_dateDESC">
+            <de><![CDATA[Änderungensdatum absteigend]]></de>
+            <en><![CDATA[Edit date descending]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.sort.e_dateASC">
+            <de><![CDATA[Änderungensdatum aufsteigend]]></de>
+            <en><![CDATA[Edit date ascending]]></en>
+        </locale>
+
     </groups>
 
 </locales>

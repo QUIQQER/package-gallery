@@ -25,7 +25,8 @@ class Slider extends QUI\Control
             'Project'  => false,
             'folderId' => false,
             'class'    => 'quiqqer-gallery-slider',
-            'data-qui' => 'package/quiqqer/gallery/bin/controls/Slider'
+            'data-qui' => 'package/quiqqer/gallery/bin/controls/Slider',
+            'order'    => 'title ASC'
         ));
 
         parent::setAttributes( $attributes );
@@ -74,8 +75,30 @@ class Slider extends QUI\Control
             $Folder = $Media->firstChild();
         }
 
+        switch ( $this->getAttribute( 'order' ) )
+        {
+            case 'title DESC':
+            case 'title ASC':
 
-        $images = $Folder->getImages();
+            case 'name DESC':
+            case 'name ASC':
+
+            case 'c_date DESC':
+            case 'c_date ASC':
+
+            case 'e_date DESC':
+            case 'e_date ASC':
+                $order = $this->getAttribute( 'order' );
+                break;
+
+            default:
+                $order = 'name DESC';
+                break;
+        }
+
+        $images = $Folder->getImages(array(
+            'order' => $order
+        ));
 
         $Engine->assign(array(
             'Rewrite' => QUI::getRewrite(),

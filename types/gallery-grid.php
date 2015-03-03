@@ -24,7 +24,8 @@ if ( isset( $_REQUEST['sheet'] ) ) {
 $Gallery = new QUI\Gallery\Controls\Grid(array(
     'max'      => $max,
     'start'    => $start,
-    'folderId' => $Folder->getId()
+    'folderId' => $Folder->getId(),
+    'order'    => $Site->getAttribute( 'quiqqer.settings.gallery.sort' )
 ));
 
 $Engine->assign(array(

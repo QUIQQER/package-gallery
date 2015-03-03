@@ -27,7 +27,8 @@ class Grid extends QUI\Control
             'start'    => 0,
             'Project'  => false,
             'folderId' => false,
-            'class'    => 'quiqqer-gallery-grid'
+            'class'    => 'quiqqer-gallery-grid',
+            'order'    => 'title ASC'
         ));
 
         parent::setAttributes( $attributes );
@@ -52,6 +53,27 @@ class Grid extends QUI\Control
         $start  = $this->getAttribute( 'start' );
         $max    = $this->getAttribute( 'max' );
 
+        switch ( $this->getAttribute( 'order' ) )
+        {
+            case 'title DESC':
+            case 'title ASC':
+
+            case 'name DESC':
+            case 'name ASC':
+
+            case 'c_date DESC':
+            case 'c_date ASC':
+
+            case 'e_date DESC':
+            case 'e_date ASC':
+                $order = $this->getAttribute( 'order' );
+            break;
+
+            default:
+                $order = 'name DESC';
+            break;
+        }
+
         if ( !is_numeric( $start ) ) {
             $start = 0;
         }
@@ -63,7 +85,8 @@ class Grid extends QUI\Control
         $completeList = $Folder->getImages();
 
         $images = $Folder->getImages(array(
-            'limit' => $start .','. $max
+            'limit' => $start .','. $max,
+            'order' => $order
         ));
 
         $count = $Folder->getImages(array(

@@ -17,42 +17,48 @@ switch ( $galleryType )
     case 'component-forwardPulse':
         $Gallery = new QUI\Gallery\Controls\Component(array(
             'folderId' => $Folder->getId(),
-            'effect'   => 'forwardPulse'
+            'effect'   => 'forwardPulse',
+            'order'    => $Site->getAttribute( 'quiqqer.settings.gallery.sort' )
         ));
     break;
 
     case 'component-coverflow':
         $Gallery = new QUI\Gallery\Controls\Component(array(
             'folderId' => $Folder->getId(),
-            'effect'   => 'coverflow'
+            'effect'   => 'coverflow',
+            'order'    => $Site->getAttribute( 'quiqqer.settings.gallery.sort' )
         ));
     break;
 
     case 'component-photoBrowse':
         $Gallery = new QUI\Gallery\Controls\Component(array(
             'folderId' => $Folder->getId(),
-            'effect'   => 'photoBrowse'
+            'effect'   => 'photoBrowse',
+            'order'    => $Site->getAttribute( 'quiqqer.settings.gallery.sort' )
         ));
     break;
 
     case 'component-ferrisWheel':
         $Gallery = new QUI\Gallery\Controls\Component(array(
             'folderId' => $Folder->getId(),
-            'effect'   => 'ferrisWheel'
+            'effect'   => 'ferrisWheel',
+            'order'    => $Site->getAttribute( 'quiqqer.settings.gallery.sort' )
         ));
     break;
 
     case 'component-snake':
         $Gallery = new QUI\Gallery\Controls\Component(array(
             'folderId' => $Folder->getId(),
-            'effect'   => 'snake'
+            'effect'   => 'snake',
+            'order'    => $Site->getAttribute( 'quiqqer.settings.gallery.sort' )
         ));
     break;
 
     case 'component-slideBehind':
         $Gallery = new QUI\Gallery\Controls\Component(array(
             'folderId' => $Folder->getId(),
-            'effect'   => 'slideBehind'
+            'effect'   => 'slideBehind',
+            'order'    => $Site->getAttribute( 'quiqqer.settings.gallery.sort' )
         ));
     break;
 }
