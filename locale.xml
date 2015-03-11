@@ -25,6 +25,11 @@
             <en><![CDATA[QUIQQER - Gallery grid]]></en>
         </locale>
 
+        <locale name="admin.types.gallery.slider">
+            <de><![CDATA[QUIQQER - Galerie Slider]]></de>
+            <en><![CDATA[QUIQQER - Gallery Slider]]></en>
+        </locale>
+
     </groups>
 
     <groups name="quiqqer/gallery" type="php">
