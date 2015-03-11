@@ -327,7 +327,7 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                     WinStats.set(
                         'html',
                         childIndex +' von '+ self.$length
-                    );
+                    ); // #locale
 
                     Win.resize(true, function()
                     {

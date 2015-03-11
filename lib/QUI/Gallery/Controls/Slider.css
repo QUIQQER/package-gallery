@@ -48,6 +48,10 @@
     opacity: 1;
 }
 
+.quiqqer-gallery-slider:hover .quiqqer-gallery-slider-title {
+    opacity: 0;
+}
+
 
 .quiqqer-gallery-slider-prev {
     left: 10px;
@@ -77,7 +81,7 @@
     padding: 10px;
     position: absolute;
     width: 100%;
-    z-index: 11;
+    z-index: 2;
 }
 
 .quiqqer-gallery-slider-title-header {
@@ -87,12 +91,21 @@
 
 .quiqqer-gallery-slider-title-text {
     color: #fff;
+    opacity: 1;
+    transition: all 0.5s ease;
+
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
 }
 
 .quiqqer-gallery-slider-image {
+    height: auto;
+    max-width: 100%;
     position: absolute;
     top: 0;
-    z-index: 9;
+    z-index: 1;
 }
 
 /** controls
@@ -113,7 +126,7 @@
 }
 
 .quiqqer-gallery-slider:hover .quiqqer-gallery-slider-controls {
-    opacity: 1;
+    opacity: 2;
 }
 
 .quiqqer-gallery-slider-controls .fa {

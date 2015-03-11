@@ -39,11 +39,15 @@
 .quiqqer-gallery-grid-entry-text {
     clear: both;
     float: left;
-    padding: 10px 0 5px;
+    padding: 0 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 100%;
+}
+
+.quiqqer-gallery-grid-list-complete {
+    display: none;
 }
 
 @media screen and (max-width: 767px) {
