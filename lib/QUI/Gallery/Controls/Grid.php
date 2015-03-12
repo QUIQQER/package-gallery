@@ -82,7 +82,9 @@ class Grid extends QUI\Control
             $max = 9;
         }
 
-        $completeList = $Folder->getImages();
+        $completeList = $Folder->getImages(array(
+            'order' => $order
+        ));
 
         $images = $Folder->getImages(array(
             'limit' => $start .','. $max,
