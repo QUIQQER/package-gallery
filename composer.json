@@ -1,6 +1,6 @@
 {
     "name" : "quiqqer/gallery",
-    "type" : "quiqqer-library",
+    "type" : "quiqqer-module",
     "description" : "Gallery for QUIQQER.",
     "version" : "dev-master",
     "license" : "GPL-2.0+",
