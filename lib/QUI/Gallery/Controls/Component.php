@@ -7,6 +7,7 @@
 namespace QUI\Gallery\Controls;
 
 use QUI;
+use QUI\Projects\Media\Utils;
 
 /**
  * Class Component
@@ -84,9 +85,17 @@ class Component extends QUI\Control
         /* @var $Folder \QUI\Projects\Media\Folder */
         try
         {
-            $Folder = $Media->get( $this->getAttribute('folderId') );
+            $folderId = $this->getAttribute('folderId');
 
-            if ( !QUI\Projects\Media\Utils::isFolder( $Folder ) ) {
+            if ( Utils::isMediaUrl( $folderId ) )
+            {
+                $Folder = Utils::getMediaItemByUrl( $folderId );
+            } else
+            {
+                $Folder = $Media->get( $this->getAttribute('folderId') );
+            }
+
+            if ( !Utils::isFolder( $Folder ) ) {
                 return '';
             }
 
