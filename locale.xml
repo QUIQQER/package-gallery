@@ -1,45 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locales>
-
     <groups name="quiqqer/gallery" datatype="php,js">
         <locale name="package.title">
             <de><![CDATA[QUIQQER - Galerie]]></de>
             <en><![CDATA[QUIQQER - Gallery]]></en>
         </locale>
         <locale name="package.description" html="true">
-            <de><![CDATA[
-
-            ]]></de>
-            <en><![CDATA[
-
-            ]]></en>
+            <de><![CDATA[]]></de>
+            <en><![CDATA[]]></en>
         </locale>
-
         <locale name="admin.types.gallery.component">
             <de><![CDATA[QUIQQER - Galerie Komponenten]]></de>
             <en><![CDATA[QUIQQER - Gallery component]]></en>
         </locale>
-
         <locale name="admin.types.gallery.grid">
             <de><![CDATA[QUIQQER - Galerie Grid]]></de>
             <en><![CDATA[QUIQQER - Gallery grid]]></en>
         </locale>
-
         <locale name="admin.types.gallery.slider">
             <de><![CDATA[QUIQQER - Galerie Slider]]></de>
             <en><![CDATA[QUIQQER - Gallery Slider]]></en>
         </locale>
-
     </groups>
-
-    <groups name="quiqqer/gallery" type="php">
-
-        <!-- site types -->
+    <groups name="quiqqer/gallery" datatype="php">
         <locale name="quiqqer.gallery.settings.title">
             <de><![CDATA[Galerie Einstellungen]]></de>
             <en><![CDATA[Gallery settings]]></en>
         </locale>
-
         <locale name="quiqqer.gallery.settings.max">
             <de><![CDATA[Maximale Bilderanzahl]]></de>
             <en><![CDATA[Max images]]></en>
@@ -48,7 +35,6 @@
             <de><![CDATA[Media-Ordner]]></de>
             <en><![CDATA[Media folder]]></en>
         </locale>
-
         <locale name="quiqqer.gallery.settings.type">
             <de><![CDATA[Galerie Aussehen]]></de>
             <en><![CDATA[Gallery look]]></en>
@@ -57,7 +43,6 @@
             <de><![CDATA[Galerie Grid]]></de>
             <en><![CDATA[Gallery grid]]></en>
         </locale>
-
         <locale name="quiqqer.gallery.settings.type.component-forwardPulse">
             <de><![CDATA[Galerie mit Pulsier-Effekt]]></de>
             <en><![CDATA[Gallery with pulse effect]]></en>
@@ -82,13 +67,10 @@
             <de><![CDATA[Galerie mit Slide-Behind-Effekt]]></de>
             <en><![CDATA[Galerie width slide behind effect]]></en>
         </locale>
-
-        <!-- site types sort-->
         <locale name="quiqqer.gallery.settings.sort">
             <de><![CDATA[Bilder Sortierung]]></de>
             <en><![CDATA[Picture sorting]]></en>
         </locale>
-
         <locale name="quiqqer.gallery.settings.sort.titleDESC">
             <de><![CDATA[Title absteigend]]></de>
             <en><![CDATA[Title descending]]></en>
@@ -121,7 +103,13 @@
             <de><![CDATA[Änderungensdatum aufsteigend]]></de>
             <en><![CDATA[Edit date ascending]]></en>
         </locale>
-
+        <locale name="bricks.gallery.component.title">
+            <de><![CDATA[Baustein: Galerie Komponenten]]></de>
+            <en><![CDATA[]]></en>
+        </locale>
+        <locale name="bricks.gallery.slider.title">
+            <de><![CDATA[Baustein: Galerie Slider-Effekt]]></de>
+            <en><![CDATA[]]></en>
+        </locale>
     </groups>
-
 </locales>
