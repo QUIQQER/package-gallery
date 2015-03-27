@@ -14,14 +14,6 @@ try
 
 switch ( $galleryType )
 {
-    case 'component-forwardPulse':
-        $Gallery = new QUI\Gallery\Controls\Component(array(
-            'folderId' => $Folder->getId(),
-            'effect'   => 'forwardPulse',
-            'order'    => $Site->getAttribute( 'quiqqer.settings.gallery.sort' )
-        ));
-    break;
-
     case 'component-coverflow':
         $Gallery = new QUI\Gallery\Controls\Component(array(
             'folderId' => $Folder->getId(),
@@ -58,6 +50,15 @@ switch ( $galleryType )
         $Gallery = new QUI\Gallery\Controls\Component(array(
             'folderId' => $Folder->getId(),
             'effect'   => 'slideBehind',
+            'order'    => $Site->getAttribute( 'quiqqer.settings.gallery.sort' )
+        ));
+    break;
+
+    default:
+    case 'component-forwardPulse':
+        $Gallery = new QUI\Gallery\Controls\Component(array(
+            'folderId' => $Folder->getId(),
+            'effect'   => 'forwardPulse',
             'order'    => $Site->getAttribute( 'quiqqer.settings.gallery.sort' )
         ));
     break;
