@@ -18,9 +18,10 @@ class Component extends QUI\Control
 {
     /**
      * constructor
+     *
      * @param Array $attributes
      */
-    public function __construct($attributes=array())
+    public function __construct($attributes = array())
     {
         // default options
         $this->setAttributes(array(
@@ -31,81 +32,76 @@ class Component extends QUI\Control
             'order'     => 'title ASC'
         ));
 
-        parent::setAttributes( $attributes );
+        parent::setAttributes($attributes);
 
         // css files
-        $dir = dirname( __FILE__ );
+        $dir = dirname(__FILE__);
 
-        $this->addCSSFile( $dir .'/Component.css' );
+        $this->addCSSFile($dir.'/Component.css');
 
-        switch ( $this->getAttribute( 'effect' ) )
-        {
+        switch ($this->getAttribute('effect')) {
             case 'forwardPulse':
-                $this->addCSSFile( $dir .'/Component.fx.forwardPulse.css' );
-                $this->setAttribute( 'data-effect', 'forwardPulse' );
-            break;
+                $this->addCSSFile($dir.'/Component.fx.forwardPulse.css');
+                $this->setAttribute('data-effect', 'forwardPulse');
+                break;
 
             case 'coverflow':
-                $this->addCSSFile( $dir .'/Component.fx.coverflow.css' );
-                $this->setAttribute( 'data-effect', 'coverflow' );
-            break;
+                $this->addCSSFile($dir.'/Component.fx.coverflow.css');
+                $this->setAttribute('data-effect', 'coverflow');
+                break;
 
             case 'photoBrowse':
-                $this->addCSSFile( $dir .'/Component.fx.photoBrowse.css' );
-                $this->setAttribute( 'data-effect', 'photoBrowse' );
-            break;
+                $this->addCSSFile($dir.'/Component.fx.photoBrowse.css');
+                $this->setAttribute('data-effect', 'photoBrowse');
+                break;
 
             case 'ferrisWheel':
-                $this->addCSSFile( $dir .'/Component.fx.ferrisWheel.css' );
-                $this->setAttribute( 'data-effect', 'ferrisWheel' );
-            break;
+                $this->addCSSFile($dir.'/Component.fx.ferrisWheel.css');
+                $this->setAttribute('data-effect', 'ferrisWheel');
+                break;
 
             case 'snake':
-                $this->addCSSFile( $dir .'/Component.fx.snake.css' );
-                $this->setAttribute( 'data-effect', 'snake' );
-            break;
+                $this->addCSSFile($dir.'/Component.fx.snake.css');
+                $this->setAttribute('data-effect', 'snake');
+                break;
 
             case 'slideBehind':
-                $this->addCSSFile( $dir .'/Component.fx.slideBehind.css' );
-                $this->setAttribute( 'data-effect', 'slideBehind' );
-            break;
+                $this->addCSSFile($dir.'/Component.fx.slideBehind.css');
+                $this->setAttribute('data-effect', 'slideBehind');
+                break;
         }
     }
 
     /**
      * (non-PHPdoc)
+     *
      * @see \QUI\Control::create()
      */
     public function getBody()
     {
-        $Engine  = QUI::getTemplateManager()->getEngine();
+        $Engine = QUI::getTemplateManager()->getEngine();
         $Project = $this->_getProject();
-        $Media   = $Project->getMedia();
+        $Media = $Project->getMedia();
 
         /* @var $Folder \QUI\Projects\Media\Folder */
-        try
-        {
+        try {
             $folderId = $this->getAttribute('folderId');
 
-            if ( Utils::isMediaUrl( $folderId ) )
-            {
-                $Folder = Utils::getMediaItemByUrl( $folderId );
-            } else
-            {
-                $Folder = $Media->get( $this->getAttribute('folderId') );
+            if (Utils::isMediaUrl($folderId)) {
+                $Folder = Utils::getMediaItemByUrl($folderId);
+            } else {
+                $Folder = $Media->get($this->getAttribute('folderId'));
             }
 
-            if ( !Utils::isFolder( $Folder ) ) {
+            if (!Utils::isFolder($Folder)) {
                 return '';
             }
 
-        } catch ( QUI\Exception $Exception )
-        {
+        } catch (QUI\Exception $Exception) {
 
         }
 
-        switch ( $this->getAttribute( 'order' ) )
-        {
+        switch ($this->getAttribute('order')) {
             case 'title DESC':
             case 'title ASC':
 
@@ -117,12 +113,12 @@ class Component extends QUI\Control
 
             case 'e_date DESC':
             case 'e_date ASC':
-                $order = $this->getAttribute( 'order' );
-            break;
+                $order = $this->getAttribute('order');
+                break;
 
             default:
                 $order = 'name DESC';
-            break;
+                break;
         }
 
         $Engine->assign(array(
@@ -135,7 +131,7 @@ class Component extends QUI\Control
             ))
         ));
 
-        return $Engine->fetch( dirname( __FILE__ ) .'/Component.html' );
+        return $Engine->fetch(dirname(__FILE__).'/Component.html');
     }
 
     /**
@@ -143,13 +139,13 @@ class Component extends QUI\Control
      */
     protected function _getSite()
     {
-        if ( $this->getAttribute( 'Site' ) ) {
-            return $this->getAttribute( 'Site' );
+        if ($this->getAttribute('Site')) {
+            return $this->getAttribute('Site');
         }
 
         $Site = \QUI::getRewrite()->getSite();
 
-        $this->setAttribute( 'Site', $Site );
+        $this->setAttribute('Site', $Site);
 
         return $Site;
     }

@@ -17,6 +17,7 @@ class Grid extends QUI\Control
 {
     /**
      * constructor
+     *
      * @param Array $attributes
      */
     public function __construct($attributes = array())
@@ -31,30 +32,30 @@ class Grid extends QUI\Control
             'order'    => 'title ASC'
         ));
 
-        parent::setAttributes( $attributes );
+        parent::setAttributes($attributes);
 
         $this->addCSSFile(
-            dirname(__FILE__) . '/Grid.css'
+            dirname(__FILE__).'/Grid.css'
         );
     }
 
     /**
      * (non-PHPdoc)
+     *
      * @see \QUI\Control::create()
      */
     public function getBody()
     {
-        $Engine  = QUI::getTemplateManager()->getEngine();
+        $Engine = QUI::getTemplateManager()->getEngine();
         $Project = $this->_getProject();
-        $Media   = $Project->getMedia();
+        $Media = $Project->getMedia();
 
         /* @var $Folder \QUI\Projects\Media\Folder */
-        $Folder = $Media->get( $this->getAttribute( 'folderId' ) );
-        $start  = $this->getAttribute( 'start' );
-        $max    = $this->getAttribute( 'max' );
+        $Folder = $Media->get($this->getAttribute('folderId'));
+        $start = $this->getAttribute('start');
+        $max = $this->getAttribute('max');
 
-        switch ( $this->getAttribute( 'order' ) )
-        {
+        switch ($this->getAttribute('order')) {
             case 'title DESC':
             case 'title ASC':
 
@@ -66,19 +67,19 @@ class Grid extends QUI\Control
 
             case 'e_date DESC':
             case 'e_date ASC':
-                $order = $this->getAttribute( 'order' );
-            break;
+                $order = $this->getAttribute('order');
+                break;
 
             default:
                 $order = 'name DESC';
-            break;
+                break;
         }
 
-        if ( !is_numeric( $start ) ) {
+        if (!is_numeric($start)) {
             $start = 0;
         }
 
-        if ( !is_numeric( $max ) ) {
+        if (!is_numeric($max)) {
             $max = 9;
         }
 
@@ -87,7 +88,7 @@ class Grid extends QUI\Control
         ));
 
         $images = $Folder->getImages(array(
-            'limit' => $start .','. $max,
+            'limit' => $start.','.$max,
             'order' => $order
         ));
 
@@ -95,19 +96,19 @@ class Grid extends QUI\Control
             'count' => true
         ));
 
-        $sheets = ceil( $count / $max );
+        $sheets = ceil($count / $max);
 
         $Engine->assign(array(
-            'Rewrite' => QUI::getRewrite(),
-            'this'    => $this,
-            'Folder'  => $Folder,
-            'images'  => $images,
-            'Site'    => $this->_getSite(),
-            'sheets'  => $sheets,
+            'Rewrite'      => QUI::getRewrite(),
+            'this'         => $this,
+            'Folder'       => $Folder,
+            'images'       => $images,
+            'Site'         => $this->_getSite(),
+            'sheets'       => $sheets,
             'completeList' => $completeList
         ));
 
-        return $Engine->fetch( dirname( __FILE__ ) .'/Grid.html' );
+        return $Engine->fetch(dirname(__FILE__).'/Grid.html');
     }
 
     /**
@@ -115,13 +116,13 @@ class Grid extends QUI\Control
      */
     protected function _getSite()
     {
-        if ( $this->getAttribute( 'Site' ) ) {
-            return $this->getAttribute( 'Site' );
+        if ($this->getAttribute('Site')) {
+            return $this->getAttribute('Site');
         }
 
         $Site = \QUI::getRewrite()->getSite();
 
-        $this->setAttribute( 'Site', $Site );
+        $this->setAttribute('Site', $Site);
 
         return $Site;
     }

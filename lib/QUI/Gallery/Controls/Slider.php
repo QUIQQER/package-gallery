@@ -16,67 +16,63 @@ class Slider extends QUI\Control
 {
     /**
      * constructor
+     *
      * @param Array $attributes
      */
     public function __construct($attributes = array())
     {
         // default options
         $this->setAttributes(array(
-            'Project'  => false,
+            'Project' => false,
             'folderId' => false,
-            'class'    => 'quiqqer-gallery-slider',
+            'class' => 'quiqqer-gallery-slider',
             'data-qui' => 'package/quiqqer/gallery/bin/controls/Slider',
-            'order'    => 'title ASC'
+            'order' => 'title ASC'
         ));
 
-        parent::setAttributes( $attributes );
+        parent::setAttributes($attributes);
 
         $this->addCSSFile(
-            dirname(__FILE__) . '/Slider.css'
+            dirname(__FILE__).'/Slider.css'
         );
     }
 
     /**
      * (non-PHPdoc)
+     *
      * @see \QUI\Control::create()
      */
     public function getBody()
     {
-        $Engine   = QUI::getTemplateManager()->getEngine();
-        $Project  = $this->_getProject();
-        $Media    = $Project->getMedia();
-        $folderId = $this->getAttribute( 'folderId' );
+        $Engine = QUI::getTemplateManager()->getEngine();
+        $Project = $this->_getProject();
+        $Media = $Project->getMedia();
+        $folderId = $this->getAttribute('folderId');
 
         /* @var $Folder \QUI\Projects\Media\Folder */
-        if ( strpos( $folderId, 'image.php' ) !== false )
-        {
-            try
-            {
-                $Folder = QUI\Projects\Media\Utils::getMediaItemByUrl( $folderId );
+        if (strpos($folderId, 'image.php') !== false) {
+            try {
+                $Folder
+                    = QUI\Projects\Media\Utils::getMediaItemByUrl($folderId);
 
-            } catch ( QUI\Exception $Exception )
-            {
+            } catch (QUI\Exception $Exception) {
                 $Folder = false;
             }
 
-        } else
-        {
-            try
-            {
-                $Folder = $Media->get( (int)$folderId );
+        } else {
+            try {
+                $Folder = $Media->get((int)$folderId);
 
-            } catch ( QUI\Exception $Exception )
-            {
+            } catch (QUI\Exception $Exception) {
                 $Folder = false;
             }
         }
 
-        if ( $Folder === false ) {
+        if ($Folder === false) {
             $Folder = $Media->firstChild();
         }
 
-        switch ( $this->getAttribute( 'order' ) )
-        {
+        switch ($this->getAttribute('order')) {
             case 'title DESC':
             case 'title ASC':
 
@@ -88,7 +84,7 @@ class Slider extends QUI\Control
 
             case 'e_date DESC':
             case 'e_date ASC':
-                $order = $this->getAttribute( 'order' );
+                $order = $this->getAttribute('order');
                 break;
 
             default:
@@ -108,7 +104,7 @@ class Slider extends QUI\Control
             'Site'    => $this->_getSite()
         ));
 
-        return $Engine->fetch( dirname( __FILE__ ) .'/Slider.html' );
+        return $Engine->fetch(dirname(__FILE__).'/Slider.html');
     }
 
     /**
@@ -116,13 +112,13 @@ class Slider extends QUI\Control
      */
     protected function _getSite()
     {
-        if ( $this->getAttribute( 'Site' ) ) {
-            return $this->getAttribute( 'Site' );
+        if ($this->getAttribute('Site')) {
+            return $this->getAttribute('Site');
         }
 
         $Site = QUI::getRewrite()->getSite();
 
-        $this->setAttribute( 'Site', $Site );
+        $this->setAttribute('Site', $Site);
 
         return $Site;
     }
