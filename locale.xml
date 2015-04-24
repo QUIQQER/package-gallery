@@ -17,6 +17,10 @@
             <de><![CDATA[QUIQQER - Galerie "Grid"]]></de>
             <en><![CDATA[QUIQQER - Gallery grid]]></en>
         </locale>
+        <locale name="quiqqer.gallery.settings.folderId">
+            <de><![CDATA[Media-Ordner auswählen]]></de>
+            <en><![CDATA[Media folder]]></en>
+        </locale>
         <locale name="bricks.gallery.component.title">
             <de><![CDATA[Baustein: Galerie Komponenten]]></de>
             <en><![CDATA[]]></en>
@@ -60,10 +64,6 @@ In diesem Modus lassen sich die Bilder per Klick auf die Pfeile rechts und links
         <locale name="quiqqer.gallery.settings.max">
             <de><![CDATA[Maximale Bilderanzahl]]></de>
             <en><![CDATA[Max images]]></en>
-        </locale>
-        <locale name="quiqqer.gallery.settings.folderId">
-            <de><![CDATA[Media-Ordner]]></de>
-            <en><![CDATA[Media folder]]></en>
         </locale>
         <locale name="quiqqer.gallery.settings.type">
             <de><![CDATA[Galerie-Design]]></de>
