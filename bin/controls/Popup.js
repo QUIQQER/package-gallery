@@ -42,7 +42,8 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
         ],
 
         options : {
-            images : []
+            images : [],
+            zIndex : 1000
         },
 
         initialize : function(options)
@@ -121,6 +122,12 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                 boxShadow : '0 0 0 10px #fff, 0 10px 60px 10px rgba(8, 11, 19, 0.55)',
                 outline   : 'none'
             });
+
+            this.Background.setAttribute('styles', {
+                zIndex : this.getAttribute('zIndex')
+            });
+
+            this.Background.show();
 
             // events
             this.$ButtonPrev.addEvents({
@@ -336,7 +343,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             }
 
 
-            var currentSrc = this.$Image.get( 'src'),
+            var currentSrc = this.$Image.get( 'src' ),
                 images     = this.getAttribute( 'images' );
 
             for ( var i = 0, len = images.length; i < len; i++ )
