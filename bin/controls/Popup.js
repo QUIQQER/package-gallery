@@ -129,6 +129,10 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
 
             this.Background.show();
 
+            this.getElm().setStyles({
+                zIndex : this.getAttribute('zIndex') + 1
+            });
+
             // events
             this.$ButtonPrev.addEvents({
                 click : this.showPrevImage
@@ -277,7 +281,8 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                         self.getContent().set({
                             html   : '',
                             styles : {
-                                height : '100%'
+                                height : '100%',
+                                overflow : 'hidden'
                             }
                         });
 

@@ -117,6 +117,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 });
             }
 
+
             this.create();
             this.showFirst();
         },
