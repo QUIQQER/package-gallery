@@ -110,6 +110,15 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                 '.qui-gallery-popup-stats'
             );
 
+            new Element('div', {
+                'class' : 'icon-remove fa fa-close qui-gallery-popup-close',
+                events : {
+                    click : function() {
+                        this.close();
+                    }.bind(this)
+                }
+            }).inject(Elm);
+
             Content.setStyles({
                 height    : null,
                 overflow  : 'hidden',
