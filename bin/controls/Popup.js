@@ -48,6 +48,8 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
 
         initialize : function(options)
         {
+            this.parent(options);
+
             // defaults
             this.setAttributes({
                 closeButton : false
