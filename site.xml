@@ -94,6 +94,12 @@
                             <option value="e_date ASC">
                                 <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.e_dateASC" />
                             </option>
+                            <option value="priority DESC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.priorityDESC" />
+                            </option>
+                            <option value="priority ASC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.priorityASC" />
+                            </option>
                         </select>
                     </settings>
                 </category>
@@ -163,6 +169,12 @@
                             <option value="e_date ASC">
                                 <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.e_dateASC" />
                             </option>
+                            <option value="priority DESC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.priorityDESC" />
+                            </option>
+                            <option value="priority ASC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.priorityASC" />
+                            </option>
                         </select>
                     </settings>
                 </category>
@@ -225,6 +237,12 @@
                             </option>
                             <option value="e_date ASC">
                                 <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.e_dateASC" />
+                            </option>
+                            <option value="priority DESC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.priorityDESC" />
+                            </option>
+                            <option value="priority ASC">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.priorityASC" />
                             </option>
                         </select>
                     </settings>

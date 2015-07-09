@@ -113,6 +113,9 @@ class Component extends QUI\Control
 
             case 'e_date DESC':
             case 'e_date ASC':
+
+            case 'priority DESC':
+            case 'priority ASC':
                 $order = $this->getAttribute('order');
                 break;
 

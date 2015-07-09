@@ -133,6 +133,14 @@ In diesem Modus lassen sich die Bilder per Klick auf die Pfeile rechts und links
             <de><![CDATA[Änderungensdatum aufsteigend]]></de>
             <en><![CDATA[Edit date ascending]]></en>
         </locale>
+        <locale name="quiqqer.gallery.settings.sort.priorityDESC">
+            <de><![CDATA[Priorität absteigend]]></de>
+            <en><![CDATA[Priority descending]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.sort.priorityASC">
+            <de><![CDATA[Priorität aufsteigend]]></de>
+            <en><![CDATA[Priority ascending]]></en>
+        </locale>
     </groups>
     <groups name="quiqqer/gallery" datatype="php,js ">
         <locale name="quiqqer/gallery:types/gallery-component.title">
