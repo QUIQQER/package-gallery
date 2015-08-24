@@ -15,6 +15,13 @@ use QUI;
 class Slider extends QUI\Control
 {
     /**
+     * list of images
+     *
+     * @var bool
+     */
+    protected $_ownImages = array();
+
+    /**
      * constructor
      *
      * @param Array $attributes
@@ -23,17 +30,17 @@ class Slider extends QUI\Control
     {
         // default options
         $this->setAttributes(array(
-            'Project' => false,
+            'Project'  => false,
             'folderId' => false,
-            'class' => 'quiqqer-gallery-slider',
+            'class'    => 'quiqqer-gallery-slider',
             'data-qui' => 'package/quiqqer/gallery/bin/controls/Slider',
-            'order' => 'title ASC'
+            'order'    => 'title ASC'
         ));
 
-        parent::setAttributes($attributes);
+        parent::__construct($attributes);
 
         $this->addCSSFile(
-            dirname(__FILE__).'/Slider.css'
+            dirname(__FILE__) . '/Slider.css'
         );
     }
 
@@ -44,22 +51,26 @@ class Slider extends QUI\Control
      */
     public function getBody()
     {
-        $Engine = QUI::getTemplateManager()->getEngine();
-        $Project = $this->_getProject();
-        $Media = $Project->getMedia();
+        $Engine   = QUI::getTemplateManager()->getEngine();
+        $Project  = $this->_getProject();
+        $Media    = $Project->getMedia();
         $folderId = $this->getAttribute('folderId');
+        $Folder   = false;
+        $images   = array();
 
         /* @var $Folder \QUI\Projects\Media\Folder */
         if (strpos($folderId, 'image.php') !== false) {
             try {
-                $Folder
-                    = QUI\Projects\Media\Utils::getMediaItemByUrl($folderId);
+                $Folder = QUI\Projects\Media\Utils::getMediaItemByUrl(
+                    $folderId
+                );
 
             } catch (QUI\Exception $Exception) {
                 $Folder = false;
             }
 
-        } else {
+        } elseif ($folderId) {
+
             try {
                 $Folder = $Media->get((int)$folderId);
 
@@ -68,7 +79,7 @@ class Slider extends QUI\Control
             }
         }
 
-        if ($Folder === false) {
+        if ($Folder === false && empty($this->_ownImages)) {
             $Folder = $Media->firstChild();
         }
 
@@ -95,9 +106,16 @@ class Slider extends QUI\Control
                 break;
         }
 
-        $images = $Folder->getImages(array(
-            'order' => $order
-        ));
+        if ($Folder) {
+
+            $images = $Folder->getImages(array(
+                'order' => $order
+            ));
+
+        } elseif (!empty($this->_ownImages)) {
+            $images = $this->_ownImages;
+        }
+
 
         $Engine->assign(array(
             'Rewrite' => QUI::getRewrite(),
@@ -107,7 +125,17 @@ class Slider extends QUI\Control
             'Site'    => $this->_getSite()
         ));
 
-        return $Engine->fetch(dirname(__FILE__).'/Slider.html');
+        return $Engine->fetch(dirname(__FILE__) . '/Slider.html');
+    }
+
+    /**
+     * Add an own image, no folder id needed
+     *
+     * @param QUI\Projects\Media\Image $Image
+     */
+    public function addImage(QUI\Projects\Media\Image $Image)
+    {
+        $this->_ownImages[] = $Image;
     }
 
     /**

@@ -4,6 +4,11 @@
  *
  * @module package/quiqqer/gallery/bin/controls/Component
  * @author www.pcsg.de (Henning Leutz)
+ *
+ * @require qui/QUI
+ * @require qui/controls/Control
+ * @require qui/controls/loader/Loader
+ * @require qui/utils/Math
  */
 
 define('package/quiqqer/gallery/bin/controls/Component', [
