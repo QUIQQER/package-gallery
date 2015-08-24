@@ -148,3 +148,59 @@
 .quiqqer-gallery-slider-controls .fa.control-background-active {
     background: #0069B4;
 }
+
+
+/** Preview
+ * ========================================== */
+
+.quiqqer-gallery-slider-previews {
+    background: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    float: left;
+    height: 80px;
+    left: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.quiqqer-gallery-slider-previews-entry {
+    float: left;
+}
+
+.quiqqer-gallery-slider-previews-prev,
+.quiqqer-gallery-slider-previews-next {
+    cursor: pointer;
+    float: left;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    width: 20px;
+}
+
+.quiqqer-gallery-slider-previews-container {
+    float: left;
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+    width: calc( 100% - 40px );
+}
+
+.quiqqer-gallery-slider-previews-containerInner {
+    left: 0;
+    position: relative;
+}
+
+.quiqqer-gallery-slider-previews-container img {
+    cursor: pointer;
+    padding-right: 5px;
+}
+
+.quiqqer-gallery-slider-previews-container img:hover{
+    opacity: 0.5;
+}
+
+.quiqqer-gallery-slider-active-preview {
+    opacity: 0.2;
+}

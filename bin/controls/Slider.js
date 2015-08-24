@@ -41,15 +41,20 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             'toggleRandomize',
             '$onImport',
             '$keyup',
-            '$onWinResize'
+            '$onWinResize',
+            '$previewLeft',
+            '$previewRight',
+            '$showPreviewImage'
         ],
 
         options: {
-            controls          : true,
-            period            : 5000,
-            shadow            : false,
-            showControlsAlways: true,
-            showTitleAlways   : true
+            controls              : true,
+            period                : 5000,
+            shadow                : false,
+            'show-controls-always': true,
+            'show-title-always'   : true,
+            'show-title'          : true,
+            'previews'            : true
         },
 
         initialize: function (options) {
@@ -65,6 +70,10 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             this.$Prev      = null;
             this.$Title     = null;
             this.$List      = null;
+
+            this.$Previews       = null;
+            this.$PreviewsSlider = null;
+            this.$PreviewsFX     = null;
 
             this.$images  = [];
             this.$current = 0;
@@ -133,18 +142,18 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
             this.$Elm.set({
                 html: '<div class="quiqqer-gallery-slider-content">' +
-                      '<div class="quiqqer-gallery-slider-prev">' +
-                      '<span class="fa fa-chevron-left"></span>' +
-                      '</div>' +
-                      '<div class="quiqqer-gallery-slider-title"></div>' +
-                      '<div class="quiqqer-gallery-slider-next">' +
-                      '<span class="fa fa-chevron-right"></span>' +
-                      '</div>' +
-                      '<div class="quiqqer-gallery-slider-controls">' +
-                      '<span class="fa fa-play"></span>' +
-                      '<span class="fa fa-random"></span>' +
-                      '</div>' +
-                      '<div class="quiqqer-gallery-slider-previews"></div>' +
+                          '<div class="quiqqer-gallery-slider-prev">' +
+                              '<span class="fa fa-chevron-left"></span>' +
+                          '</div>' +
+                          '<div class="quiqqer-gallery-slider-title"></div>' +
+                          '<div class="quiqqer-gallery-slider-next">' +
+                              '<span class="fa fa-chevron-right"></span>' +
+                          '</div>' +
+                          '<div class="quiqqer-gallery-slider-controls">' +
+                              '<span class="fa fa-play"></span>' +
+                              '<span class="fa fa-random"></span>' +
+                          '</div>' +
+                          '<div class="quiqqer-gallery-slider-previews"></div>' +
                       '</div>'
             });
 
@@ -156,6 +165,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             this.$Prev      = this.$Elm.getElement('.quiqqer-gallery-slider-prev');
             this.$Title     = this.$Elm.getElement('.quiqqer-gallery-slider-title');
             this.$Controls  = this.$Elm.getElement('.quiqqer-gallery-slider-controls');
+            this.$Previews  = this.$Elm.getElement('.quiqqer-gallery-slider-previews');
 
             this.$Play   = this.$Elm.getElement('.fa-play');
             this.$Random = this.$Elm.getElement('.fa-random');
@@ -168,6 +178,10 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
             if (this.getAttribute('styles')) {
                 this.$Elm.setStyles(this.getAttribute('styles'));
+            }
+
+            if (!this.getAttribute('show-title')) {
+                this.$Title.setStyle('display', 'none');
             }
 
             this.$Play.addEvent('click', this.toggleAutoplay);
@@ -187,16 +201,21 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 this.$Elm.setStyle('boxShadow', '0 0 2px 2px #888');
             }
 
-            if (this.getAttribute('showControlsAlways')) {
+            if (this.getAttribute('show-controls-always')) {
                 this.$Next.setStyle('opacity', 1);
                 this.$Prev.setStyle('opacity', 1);
                 this.$Controls.setStyle('opacity', 1);
             }
 
-            if (this.getAttribute('showTitleAlways')) {
+            if (this.getAttribute('show-title-always')) {
                 this.$Title.setStyle('opacity', 1);
             }
 
+            if (!this.getAttribute('preview')) {
+                this.$Previews.setStyle('display', 'none');
+            } else {
+                this.$createPreviews();
+            }
 
             this.Loader.show();
 
@@ -262,8 +281,12 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 this.loadImage(data.image).then(function (Image) {
                     self.Loader.hide();
 
-                    var OldImage = self.$Container.getElements('img'),
+                    var OldImage = self.$Container.getElements(
+                            '.quiqqer-gallery-slider-image'
+                        ),
+
                         NewImage = self.$createNewImage(Image);
+
 
                     NewImage.set('data-no', self.$current);
 
@@ -279,6 +302,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     self.$current   = next;
                     self.$__animate = false;
 
+                    self.$showPreviewImage();
                     self.Loader.hide();
 
                     resolve();
@@ -319,8 +343,12 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 this.loadImage(data.image).then(function (Image) {
                     self.Loader.hide();
 
-                    var OldImage = self.$Container.getElements('img'),
+                    var OldImage = self.$Container.getElements(
+                            '.quiqqer-gallery-slider-image'
+                        ),
+
                         NewImage = self.$createNewImage(Image);
+
 
                     NewImage.set('data-no', self.$current);
 
@@ -336,6 +364,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     self.$current   = next;
                     self.$__animate = false;
 
+                    self.$showPreviewImage();
                     self.Loader.hide();
 
                     resolve();
@@ -548,7 +577,9 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * @returns {HTMLImageElement} New image DOM-Node
          */
         $createNewImage: function (Image) {
+
             var pc;
+
             var listSize  = this.$Container.getSize(),
                 imageSize = this.$getRealImageSize(Image),
                 height    = imageSize.y,
@@ -698,6 +729,186 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             }
 
             this.randomize();
+        },
+
+        /**
+         * Create the preview
+         */
+        $createPreviews : function()
+        {
+            if (!this.$Previews) {
+                return;
+            }
+
+
+            this.$Previews.setStyle('bottom', -100);
+            this.$Previews.setStyle('zIndex', 10);
+
+            this.$Previews.set(
+                'html',
+
+                '<div class="quiqqer-gallery-slider-previews-prev">' +
+                    '<span class="fa fa-chevron-left"></span>' +
+                '</div>'+
+                '<div class="quiqqer-gallery-slider-previews-container">' +
+                    '<div class="quiqqer-gallery-slider-previews-containerInner"></div>' +
+                '</div>'+
+                '<div class="quiqqer-gallery-slider-previews-next">' +
+                    '<span class="fa fa-chevron-right"></span>' +
+                '</div>'
+            );
+
+
+            var i, len, image, ending;
+
+            var self      = this,
+                imageList = [];
+
+            this.$PreviewsSlider = this.$Previews.getElement(
+                '.quiqqer-gallery-slider-previews-containerInner'
+            );
+
+            this.$PreviewsFX = moofx(this.$PreviewsSlider);
+
+            this.$Previews.getElement(
+                '.quiqqer-gallery-slider-previews-prev'
+            ).addEvent('click', this.$previewLeft);
+
+            this.$Previews.getElement(
+                '.quiqqer-gallery-slider-previews-next'
+            ).addEvent('click', this.$previewRight);
+
+
+            // image click action
+            var __click = function(event) {
+
+                var Target = event.target;
+
+                if (!Target.hasClass('quiqqer-gallery-slider-previews-entry')) {
+                    Target = Target.getParent('.quiqqer-gallery-slider-previews-entry');
+                }
+
+                self.$current = Target.get('data-image').toInt() - 1;
+                self.next();
+            };
+
+
+            // get image paths
+            for (i = 0, len = this.$images.length; i < len; i++) {
+
+                image  = this.$images[i].image;
+                ending = image.slice(image.lastIndexOf('.'));
+                image  = image.slice(0, image.indexOf('__')) +'__x80'+ ending;
+
+                imageList.push('image!'+ image);
+            }
+
+
+            // load images
+            require(imageList, function() {
+
+                var width = 0;
+
+                for (i = 0, len = arguments.length; i < len; i++) {
+
+                    width = width + arguments[i].width + 10;
+
+                    new Element('div', {
+                        'class' : 'quiqqer-gallery-slider-previews-entry',
+                        html    : '<img src="'+ arguments[i].src +'" />',
+                        events : {
+                            click : __click
+                        },
+                        'data-image' : i
+                    }).inject(self.$PreviewsSlider);
+
+                }
+
+                self.$PreviewsSlider.setStyle('width', width);
+
+                moofx(self.$Previews).animate({
+                    bottom : 0
+                }, {
+                    duration : 250
+                });
+
+            });
+        },
+
+        /**
+         * Scrolls to the preview image
+         */
+        $showPreviewImage : function()
+        {
+            if (!this.$Previews) {
+                return;
+            }
+
+            this.$PreviewsSlider.getElements(
+                '.quiqqer-gallery-slider-previews-entry'
+            ).removeClass(
+                'quiqqer-gallery-slider-active-preview'
+            );
+
+            var Img = this.$PreviewsSlider.getElement(
+                '[data-image="'+ this.$current +'"]'
+            );
+
+            Img.addClass('quiqqer-gallery-slider-active-preview');
+
+            this.$PreviewsFX.animate({
+                left : Img.getPosition(Img.getParent()).x * -1
+            }, {
+                duration : 700
+            });
+        },
+
+        /**
+         * preview scroll to the left
+         */
+        $previewLeft : function()
+        {
+            var left = this.$PreviewsSlider.getStyle('left').toInt();
+
+            left = left + 300;
+
+            if (!left) {
+                left = 300;
+            }
+
+            if (left > 0) {
+                left = 0;
+            }
+
+            this.$PreviewsFX.animate({
+                left : left
+            }, {
+                duration : 700
+            });
+        },
+
+        /**
+         * preview scroll to the right
+         */
+        $previewRight : function()
+        {
+
+            var left = this.$PreviewsSlider.getStyle('left').toInt();
+
+            left = left - 300;
+
+            if (!left) {
+                left = -300;
+            }
+
+
+            console.log(left);
+
+            this.$PreviewsFX.animate({
+                left : left
+            }, {
+                duration : 700
+            });
         }
     });
 });
