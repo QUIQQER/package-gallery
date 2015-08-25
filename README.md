@@ -74,6 +74,8 @@ $Gallery->setAttribute('data-qui-options-show-title', 0);
 $Gallery->setAttribute('data-qui-options-controls', 1);
 $Gallery->setAttribute('data-qui-options-period', 5000);
 $Gallery->setAttribute('data-qui-options-shadow', 0);
+$Gallery->setAttribute('data-qui-options-preview', 1);
+$Gallery->setAttribute('data-qui-options-preview-outside', 1);
 
 ```
 
