@@ -14,12 +14,19 @@
 }
 
 .quiqqer-gallery-slider-content {
-    bottom: 0;
     left: 0;
+    height: 100%;
+    overflow: hidden;
     position: absolute;
-    right: 0;
     top: 0;
+    width: 100%;
 }
+
+
+.quiqqer-gallery-slider-previewOutside .quiqqer-gallery-slider-content {
+    height: calc(100% - 80px);
+}
+
 
 .quiqqer-gallery-slider-prev,
 .quiqqer-gallery-slider-next {
@@ -154,7 +161,7 @@
  * ========================================== */
 
 .quiqqer-gallery-slider-previews {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.8);
     bottom: 0;
     float: left;
     height: 80px;

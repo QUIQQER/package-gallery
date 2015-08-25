@@ -44,7 +44,8 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             '$onWinResize',
             '$previewLeft',
             '$previewRight',
-            '$showPreviewImage'
+            '$showPreviewImage',
+            '$calcSizes'
         ],
 
         options: {
@@ -54,7 +55,8 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             'show-controls-always': true,
             'show-title-always'   : true,
             'show-title'          : true,
-            'previews'            : true
+            previews              : true,
+            'preview-outside'     : false // false
         },
 
         initialize: function (options) {
@@ -71,21 +73,33 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             this.$Title     = null;
             this.$List      = null;
 
-            this.$Previews       = null;
-            this.$PreviewsSlider = null;
-            this.$PreviewsFX     = null;
+            this.$Previews          = null;
+            this.$PreviewsContainer = null;
+            this.$PreviewsSlider    = null;
+            this.$PreviewsFX        = null;
 
             this.$images  = [];
             this.$current = 0;
 
+            // sizes
+            this.$pcSize   = {};
+            this.$mainSize = {};
+
             this.$autoplayInterval = false;
 
+            // events
+            var __winResize = QUIFunctionUtils.debounce(this.$onWinResize);
+
             this.addEvents({
-                onImport: this.$onImport
+                onImport: this.$onImport,
+                onDestroy : function() {
+                    window.removeEvent('keyup', this.$keyup);
+                    window.removeEvent('resize', __winResize);
+                }.bind(this)
             });
 
             window.addEvent('keyup', this.$keyup);
-            window.addEvent('resize', QUIFunctionUtils.debounce(this.$onWinResize));
+            window.addEvent('resize', __winResize);
         },
 
         /**
@@ -129,6 +143,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * @return {HTMLElement}
          */
         create: function () {
+
             var self = this;
 
             if (!this.$Elm) {
@@ -166,6 +181,12 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             this.$Title     = this.$Elm.getElement('.quiqqer-gallery-slider-title');
             this.$Controls  = this.$Elm.getElement('.quiqqer-gallery-slider-controls');
             this.$Previews  = this.$Elm.getElement('.quiqqer-gallery-slider-previews');
+
+            if (this.getAttribute('preview-outside')) {
+                this.$Previews.inject(this.$Elm);
+                this.$Elm.addClass('quiqqer-gallery-slider-previewOutside');
+            }
+
 
             this.$Play   = this.$Elm.getElement('.fa-play');
             this.$Random = this.$Elm.getElement('.fa-random');
@@ -220,6 +241,18 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             this.Loader.show();
 
             return this.$Elm;
+        },
+
+        /**
+         * calc internal sizes
+         */
+        $calcSizes : function() {
+
+            this.$mainSize = this.$Container.getSize();
+
+            if (this.$PreviewsContainer) {
+                this.$pcSize = this.$PreviewsContainer.getSize();
+            }
         },
 
         /**
@@ -450,7 +483,9 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * @return Promise
          */
         animateIn: function (Elm, direction, callback) {
+
             return new Promise(function (resolve) {
+
                 if (!Elm || (typeOf(Elm) === 'elements' && !Elm.length)) {
                     if (typeof callback === 'function') {
                         callback();
@@ -462,9 +497,13 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
                 this.fireEvent('animateInBegin', [this, Elm]);
 
+                if (!("x" in this.$mainSize)) {
+                    this.$calcSizes();
+                }
+
                 var self    = this,
                     elmSize = Elm.getSize(),
-                    size    = this.getElm().getSize();
+                    size    = this.$mainSize;
 
                 var top = ((size.y - elmSize.y) / 2).round();
 
@@ -632,6 +671,9 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * event : on window resize
          */
         $onWinResize: function () {
+
+            this.$calcSizes();
+
             var Img = this.getElm().getElement('img');
 
             if (!Img) {
@@ -740,7 +782,6 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 return;
             }
 
-
             this.$Previews.setStyle('bottom', -100);
             this.$Previews.setStyle('zIndex', 10);
 
@@ -764,6 +805,10 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             var self      = this,
                 imageList = [];
 
+            this.$PreviewsContainer = this.$Previews.getElement(
+                '.quiqqer-gallery-slider-previews-container'
+            );
+
             this.$PreviewsSlider = this.$Previews.getElement(
                 '.quiqqer-gallery-slider-previews-containerInner'
             );
@@ -777,6 +822,8 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             this.$Previews.getElement(
                 '.quiqqer-gallery-slider-previews-next'
             ).addEvent('click', this.$previewRight);
+
+            this.$pcSize = this.$PreviewsContainer.getSize();
 
 
             // image click action
@@ -811,7 +858,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
                 for (i = 0, len = arguments.length; i < len; i++) {
 
-                    width = width + arguments[i].width + 10;
+                    width = width + arguments[i].width + 5;
 
                     new Element('div', {
                         'class' : 'quiqqer-gallery-slider-previews-entry',
@@ -856,8 +903,25 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
             Img.addClass('quiqqer-gallery-slider-active-preview');
 
+            var imagePosX  = Img.getPosition(Img.getParent()).x,
+                imageSizeX = Img.getSize().x,
+                leftPoint  = this.$PreviewsSlider.getStyle('left').toInt() * -1,
+                rightPoint = leftPoint + this.$pcSize.x,
+                maxRight   = this.$PreviewsSlider.getSize().x - this.$pcSize.x;
+
+            if (leftPoint <= imagePosX &&
+                rightPoint >= (imagePosX+imageSizeX)) {
+                return;
+            }
+
+            var left = imagePosX * -1;
+
+            if (imagePosX + imageSizeX > maxRight) {
+                left = maxRight * -1;
+            }
+
             this.$PreviewsFX.animate({
-                left : Img.getPosition(Img.getParent()).x * -1
+                left : left
             }, {
                 duration : 700
             });
@@ -892,8 +956,12 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          */
         $previewRight : function()
         {
-
-            var left = this.$PreviewsSlider.getStyle('left').toInt();
+            var left     = this.$PreviewsSlider.getStyle('left').toInt(),
+                Last     = this.$PreviewsSlider.getLast(
+                    '.quiqqer-gallery-slider-previews-entry'
+                ),
+                lastPos  = Last.getPosition(this.$PreviewsSlider),
+                lastSize = Last.getSize();
 
             left = left - 300;
 
@@ -901,8 +969,9 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 left = -300;
             }
 
-
-            console.log(left);
+            if ((lastPos.x + lastSize.x) <= (left * -1) + this.$pcSize.x) {
+                left = (lastPos.x + lastSize.x - this.$pcSize.x) * -1;
+            }
 
             this.$PreviewsFX.animate({
                 left : left
