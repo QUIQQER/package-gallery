@@ -1,4 +1,3 @@
-
 /**
  * Image Popup
  * Shows a image popup and the user can navigate through a list of images
@@ -12,27 +11,25 @@
  * @require URL_BIN_DIR +'QUI/lib/Assets.js
  * @require css!package/quiqqer/gallery/bin/controls/Popup.css
  */
-
 define('package/quiqqer/gallery/bin/controls/Popup', [
 
     'qui/QUI',
     'qui/controls/windows/Popup',
     'qui/utils/Math',
 
-    URL_BIN_DIR +'QUI/lib/Assets.js',
+    URL_BIN_DIR + 'QUI/lib/Assets.js',
 
     'css!package/quiqqer/gallery/bin/controls/Popup.css'
 
-], function(QUI, QUIWin, QUIMath)
-{
+], function (QUI, QUIWin, QUIMath) {
     "use strict";
 
     return new Class({
 
-        Extends : QUIWin,
-        Type    : 'package/quiqqer/gallery/bin/controls/Grid',
+        Extends: QUIWin,
+        Type   : 'package/quiqqer/gallery/bin/controls/Grid',
 
-        Binds : [
+        Binds: [
             '$onOpen',
             '$onClose',
             '$keyup',
@@ -41,22 +38,22 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             'showPrevImage'
         ],
 
-        options : {
+        options: {
             images : [],
-            zIndex : 1000
+            zIndex : 1000,
+            current: false
         },
 
-        initialize : function(options)
-        {
+        initialize: function (options) {
             this.parent(options);
 
             // defaults
             this.setAttributes({
-                closeButton : false
+                closeButton: false
             });
 
             this.$isOpen    = false;
-            this.__$current = false;
+            this.__$current = this.getAttribute('current');
 
             this.$Stats = null;
             this.$Image = null;
@@ -66,35 +63,34 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             this.$ButtonPrev = null;
             this.$ButtonNext = null;
 
-            this.parent( options );
+            this.parent(options);
 
             this.addEvents({
-                onOpen  : this.$onOpen,
-                onClose : this.$onClose
+                onOpen : this.$onOpen,
+                onClose: this.$onClose
             });
         },
 
         /**
          * event : on open
          */
-        $onOpen : function()
-        {
+        $onOpen: function () {
             var Content = this.getContent(),
                 Elm     = this.getElm();
 
-            Elm.getElements( '.qui-window-popup-buttons' ).destroy();
+            Elm.getElements('.qui-window-popup-buttons').destroy();
 
             this.$ButtonCnr = new Element('div', {
-                'class' : 'qui-gallery-popup-image-buttons',
+                'class': 'qui-gallery-popup-image-buttons',
                 html   : '<div class="qui-gallery-popup-buttons-prev">' +
-                             '<span class="fa fa-chevron-left icon-chevron-left"></span>' +
+                         '<span class="fa fa-chevron-left icon-chevron-left"></span>' +
                          '</div>' +
                          '<div class="qui-gallery-popup-buttons-text"></div>' +
                          '<div class="qui-gallery-popup-buttons-next">' +
-                             '<span class="fa fa-chevron-right icon-chevron-right"></span>' +
+                         '<span class="fa fa-chevron-right icon-chevron-right"></span>' +
                          '</div>' +
                          '<div class="qui-gallery-popup-stats"></div>'
-            }).inject( this.getElm() );
+            }).inject(this.getElm());
 
             this.$ButtonText = this.$ButtonCnr.getElement(
                 '.qui-gallery-popup-buttons-text'
@@ -113,71 +109,68 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             );
 
             new Element('div', {
-                'class' : 'icon-remove fa fa-close qui-gallery-popup-close',
+                'class': 'icon-remove fa fa-close qui-gallery-popup-close',
                 events : {
-                    click : function() {
+                    click: function () {
                         this.close();
                     }.bind(this)
                 }
             }).inject(Elm);
 
             Content.setStyles({
-                height    : null,
-                overflow  : 'hidden',
-                outline   : 'none',
-                padding   : 0,
-                textAlign : 'center'
+                height   : null,
+                overflow : 'hidden',
+                outline  : 'none',
+                padding  : 0,
+                textAlign: 'center'
             });
 
             Elm.setStyles({
-                boxShadow : '0 0 0 10px #fff, 0 10px 60px 10px rgba(8, 11, 19, 0.55)',
-                outline   : 'none'
+                boxShadow: '0 0 0 10px #fff, 0 10px 60px 10px rgba(8, 11, 19, 0.55)',
+                outline  : 'none'
             });
 
             this.Background.setAttribute('styles', {
-                zIndex : this.getAttribute('zIndex')
+                zIndex: this.getAttribute('zIndex')
             });
 
             this.Background.show();
 
             this.getElm().setStyles({
-                zIndex : this.getAttribute('zIndex') + 1
+                zIndex: this.getAttribute('zIndex') + 1
             });
 
             // events
             this.$ButtonPrev.addEvents({
-                click : this.showPrevImage
+                click: this.showPrevImage
             });
 
             this.$ButtonNext.addEvents({
-                click : this.showNextImage
+                click: this.showNextImage
             });
 
             this.$isOpen = true;
 
 
             // bind keys
-            window.addEvent( 'keyup', this.$keyup );
+            window.addEvent('keyup', this.$keyup);
 
-            if ( !this.__$current )
-            {
+            if (!this.__$current) {
                 this.showFirstImage();
-            } else
-            {
-                this.showImage( this.__$current );
+            } else {
+                this.showImage(this.__$current);
             }
         },
 
         /**
          * event : on close
          */
-        $onClose : function()
-        {
+        $onClose: function () {
             this.$isOpen = false;
 
             this.$ButtonCnr.destroy();
 
-            window.removeEvent( 'keyup', this.$keyup );
+            window.removeEvent('keyup', this.$keyup);
         },
 
         /**
@@ -185,79 +178,73 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
          *
          * @param {String} src - Source of the image
          */
-        showImage : function(src)
-        {
+        showImage: function (src) {
             var self = this;
 
             this.__$current = src;
 
             this.Loader.show();
 
-            if ( this.$isOpen === false )
-            {
+            if (this.$isOpen === false) {
                 this.open();
                 return;
             }
 
-            if ( this.$Image )
-            {
-                moofx( this.$Image ).animate({
-                    opacity : 0
+            if (this.$Image) {
+                moofx(this.$Image).animate({
+                    opacity: 0
                 });
             }
 
 
-            var imageData = this.$getImageData( src );
+            var imageData = this.$getImageData(src);
 
             var title       = imageData.title,
                 short       = imageData.short,
                 childIndex  = imageData.index + 1,
-                childLength = this.getAttribute( 'images' ).length;
+                childLength = this.getAttribute('images').length;
 
 
             Asset.image(src, {
-                onLoad: function (Image)
-                {
+                onLoad: function (Image) {
                     var pc;
 
-                    var height  = Image.get( 'height' ),
-                        width   = Image.get( 'width' ),
+                    var height  = Image.get('height'),
+                        width   = Image.get('width'),
                         docSize = document.getSize();
 
                     var docWidth  = docSize.x - 100,
                         docHeight = docSize.y - 100;
 
                     // set width ?
-                    if ( width > docWidth )
-                    {
-                        pc = QUIMath.percent( docWidth, width );
+                    if (width > docWidth) {
+                        pc = QUIMath.percent(docWidth, width);
 
                         width  = docWidth;
                         height = ( height * (pc / 100) ).round();
                     }
 
                     // set height ?
-                    if ( height > docHeight )
-                    {
-                        pc = QUIMath.percent( docHeight, height );
+                    if (height > docHeight) {
+                        pc = QUIMath.percent(docHeight, height);
 
                         height = docHeight;
                         width  = ( width * (pc / 100) ).round();
                     }
 
                     // resize win
-                    self.setAttribute( 'maxWidth', width );
-                    self.setAttribute( 'maxHeight', height );
+                    self.setAttribute('maxWidth', width);
+                    self.setAttribute('maxHeight', height);
 
                     // button resize
                     self.$ButtonText.set(
                         'html',
 
-                        '<div class="qui-gallery-popup-image-preview-header">'+
-                            title +
+                        '<div class="qui-gallery-popup-image-preview-header">' +
+                        title +
                         '</div>' +
-                        '<div class="qui-gallery-popup-image-preview-text">'+
-                            short +
+                        '<div class="qui-gallery-popup-image-preview-text">' +
+                        short +
                         '</div>'
                     );
 
@@ -267,8 +254,8 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                     );
 
                     Temp.setStyles({
-                        height     : 0,
-                        visibility : 'hidden'
+                        height    : 0,
+                        visibility: 'hidden'
                     });
 
                     var dimensions = Temp.getScrollSize(),
@@ -276,37 +263,36 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
 
                     Temp.destroy();
 
-                    if ( newHeight < 50 ) {
+                    if (newHeight < 50) {
                         newHeight = 50;
                     }
 
-                    moofx( self.$ButtonCnr ).animate({
+                    moofx(self.$ButtonCnr).animate({
                         height: newHeight
                     });
 
 
-                    self.$Stats.set( 'html', childIndex + ' von ' + childLength ); // #locale
+                    self.$Stats.set('html', childIndex + ' von ' + childLength); // #locale
 
-                    self.resize(true, function ()
-                    {
+                    self.resize(true, function () {
                         self.getContent().set({
-                            html   : '',
-                            styles : {
-                                height : '100%',
-                                overflow : 'hidden'
+                            html  : '',
+                            styles: {
+                                height  : '100%',
+                                overflow: 'hidden'
                             }
                         });
 
 
                         self.$Image = new Element('img', {
-                            'class' : 'qui-gallery-popup-image-preview',
-                            src     : src,
-                            styles  : {
+                            'class': 'qui-gallery-popup-image-preview',
+                            src    : src,
+                            styles : {
                                 opacity: 0
                             }
-                        }).inject( self.getContent() );
+                        }).inject(self.getContent());
 
-                        moofx( self.$Image ).animate({
+                        moofx(self.$Image).animate({
                             opacity: 1
                         });
 
@@ -320,27 +306,27 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
         /**
          * Shows the next image
          */
-        showNextImage : function()
-        {
-            if ( !this.$Image )
-            {
+        showNextImage: function () {
+            if (!this.$Image) {
                 this.showFirstImage();
                 return;
             }
 
-            var currentSrc = this.$Image.get( 'src'),
-                images     = this.getAttribute( 'images' );
+            var currentSrc = this.$Image.get('src'),
+                images     = this.getAttribute('images');
 
-            for ( var i = 0, len = images.length; i < len; i++ )
-            {
-                if ( images[ i ].src === currentSrc ) {
+            if (currentSrc.match(window.location.host)) {
+                currentSrc = currentSrc.split(window.location.host)[1];
+            }
+
+            for (var i = 0, len = images.length; i < len; i++) {
+                if (images[i].src === currentSrc) {
                     break;
                 }
             }
 
-            if ( typeof images[ i + 1 ] !== 'undefined' )
-            {
-                this.showImage( images[ i + 1 ].src );
+            if (typeof images[i + 1] !== 'undefined') {
+                this.showImage(images[i + 1].src);
                 return;
             }
 
@@ -350,28 +336,24 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
         /**
          * Shows the previous image
          */
-        showPrevImage : function()
-        {
-            if ( !this.$Image )
-            {
+        showPrevImage: function () {
+            if (!this.$Image) {
                 this.showLastImage();
                 return;
             }
 
 
-            var currentSrc = this.$Image.get( 'src' ),
-                images     = this.getAttribute( 'images' );
+            var currentSrc = this.$Image.get('src'),
+                images     = this.getAttribute('images');
 
-            for ( var i = 0, len = images.length; i < len; i++ )
-            {
-                if ( images[ i ].src === currentSrc ) {
+            for (var i = 0, len = images.length; i < len; i++) {
+                if (images[i].src === currentSrc) {
                     break;
                 }
             }
 
-            if ( i > 0 )
-            {
-                this.showImage( images[ i - 1 ].src );
+            if (i > 0) {
+                this.showImage(images[i - 1].src);
                 return;
             }
 
@@ -381,24 +363,22 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
         /**
          * Show the first image
          */
-        showFirstImage : function()
-        {
-            var images = this.getAttribute( 'images' );
+        showFirstImage: function () {
+            var images = this.getAttribute('images');
 
-            if ( typeOf( images ) === 'array' ) {
-                this.showImage( images[ 0 ].src );
+            if (typeOf(images) === 'array') {
+                this.showImage(images[0].src);
             }
         },
 
         /**
          * Show the last image
          */
-        showLastImage : function()
-        {
-            var images = this.getAttribute( 'images' );
+        showLastImage: function () {
+            var images = this.getAttribute('images');
 
-            if ( typeOf( images ) === 'array' ) {
-                this.showImage( images[ images.length-1 ].src );
+            if (typeOf(images) === 'array') {
+                this.showImage(images[images.length - 1].src);
             }
         },
 
@@ -408,24 +388,21 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
          * @param {String} src - Source of the image
          * @return {Object}
          */
-        $getImageData : function(src)
-        {
-            var images = this.getAttribute( 'images' );
+        $getImageData: function (src) {
+            var images = this.getAttribute('images');
 
-            for ( var i = 0, len = images.length; i < len; i++ )
-            {
-                if ( images[ i ].src === src )
-                {
-                    images[ i ].index = i;
-                    return images[ i ];
+            for (var i = 0, len = images.length; i < len; i++) {
+                if (images[i].src === src) {
+                    images[i].index = i;
+                    return images[i];
                 }
             }
 
             return {
-                src   : src,
-                title : '',
-                short : '',
-                index : 0
+                src  : src,
+                title: '',
+                short: '',
+                index: 0
             };
         },
 
@@ -434,19 +411,17 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
          *
          * @param {DOMEvent} event
          */
-        $keyup : function(event)
-        {
-            if ( event.key == 'left' )
-            {
+        $keyup: function (event) {
+            if (event.key == 'left') {
                 this.showPrevImage();
                 return;
             }
 
-            if ( event.key == 'right' ) {
+            if (event.key == 'right') {
                 this.showNextImage();
             }
 
-            if ( event.key == 'esc' ) {
+            if (event.key == 'esc') {
                 this.close();
             }
         }

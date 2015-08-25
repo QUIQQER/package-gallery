@@ -22,11 +22,9 @@
     width: 100%;
 }
 
-
-.quiqqer-gallery-slider-previewOutside .quiqqer-gallery-slider-content {
-    height: calc(100% - 80px);
+.quiqqer-gallery-slider-content:hover .quiqqer-gallery-slider-zoom {
+    display: inline;
 }
-
 
 .quiqqer-gallery-slider-prev,
 .quiqqer-gallery-slider-next {
