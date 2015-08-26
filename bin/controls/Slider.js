@@ -918,6 +918,11 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 return;
             }
 
+            if (!this.$PreviewsSlider) {
+                return;
+            }
+
+
             this.$PreviewsSlider.getElements(
                 '.quiqqer-gallery-slider-previews-entry'
             ).removeClass(
