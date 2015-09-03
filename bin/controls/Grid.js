@@ -1,4 +1,3 @@
-
 /**
  * Grid Gallery
  * Functionality for the PHP Grid Control
@@ -15,23 +14,21 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
 
     'css!package/quiqqer/gallery/bin/controls/Grid.css'
 
-], function(QUI, QUIControl, ImagePopup)
-{
+], function (QUI, QUIControl, ImagePopup) {
     "use strict";
 
     return new Class({
 
-        Extends : QUIControl,
-        Type    : 'package/quiqqer/gallery/bin/controls/Grid',
+        Extends: QUIControl,
+        Type   : 'package/quiqqer/gallery/bin/controls/Grid',
 
-        Binds : [
+        Binds: [
             '$onImport',
             '$imageClick'
         ],
 
-        initialize : function(options)
-        {
-            this.parent( options );
+        initialize: function (options) {
+            this.parent(options);
 
             this.$ImageWindow  = false;
             this.$CompleteList = false;
@@ -39,21 +36,20 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
             this.$__resized = false;
 
             this.addEvents({
-                onImport : this.$onImport
+                onImport: this.$onImport
             });
         },
 
         /**
          * event on inject
          */
-        $onImport : function()
-        {
+        $onImport: function () {
             var images = this.$Elm.getElements(
                 '.quiqqer-gallery-grid-entry-image'
             );
 
-            for ( var i = 0, len = images.length; i < len; i++ ) {
-                images[ i ].addEvent( 'click', this.$imageClick );
+            for (var i = 0, len = images.length; i < len; i++) {
+                images[i].addEvent('click', this.$imageClick);
             }
 
             // get the complete list
@@ -62,25 +58,24 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
             );
 
             this.$CompleteList = new Element('div', {
-                html : completeList.innerHTML.replace('<!--', '').replace('-->', ''),
-                styles : {
-                    display : "none"
+                html  : completeList.innerHTML.replace('<template>', '').replace('</template>', ''),
+                styles: {
+                    display: "none"
                 }
-            }).inject( this.$Elm );
+            }).inject(this.$Elm);
 
             var imageData = this.$CompleteList.getElements(
                 '.quiqqer-gallery-grid-list-complete-entry'
-            ).map(function(Elm)
-            {
-                return {
-                    src   : Elm.get( 'data-src' ),
-                    title : Elm.getElement( '.title' ).get( 'html' ),
-                    short : Elm.getElement( '.short' ).get( 'html' )
-                };
-            });
+            ).map(function (Elm) {
+                      return {
+                          src  : Elm.get('data-src'),
+                          title: Elm.getElement('.title').get('html'),
+                          short: Elm.getElement('.short').get('html')
+                      };
+                  });
 
             this.$ImageWindow = new ImagePopup({
-                images : imageData
+                images: imageData
             });
         },
 
@@ -89,19 +84,18 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
          *
          * @param {DOMEvent} event
          */
-        $imageClick : function(event)
-        {
+        $imageClick: function (event) {
             var Target = event.target;
 
-            if ( typeOf( event ) === 'domevent' ) {
+            if (typeOf(event) === 'domevent') {
                 event.stop();
             }
 
-            if ( Target.nodeName != 'a' ) {
-                Target = Target.getParent( 'a' );
+            if (Target.nodeName != 'a') {
+                Target = Target.getParent('a');
             }
 
-            this.$ImageWindow.showImage( Target.get( 'href' ) );
+            this.$ImageWindow.showImage(Target.get('href'));
         }
     });
 });

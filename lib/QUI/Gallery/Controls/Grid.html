@@ -21,7 +21,7 @@
 {/foreach}
 
     <section class="quiqqer-gallery-grid-list-complete">
-        <!--
+        <template>
         {foreach from=$completeList item=Image}
             <div class="quiqqer-gallery-grid-list-complete-entry"
                  data-src="{image image=$Image onlysrc=true rewrited=true}"
@@ -30,7 +30,7 @@
                 <div class="short">{$Image->getAttribute('short')}</div>
             </div>
         {/foreach}
-        -->
+        </template>
     </section>
 
 </section>
