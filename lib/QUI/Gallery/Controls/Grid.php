@@ -32,7 +32,7 @@ class Grid extends QUI\Control
             'order'    => 'title ASC'
         ));
 
-        parent::setAttributes($attributes);
+        parent::__construct($attributes);
 
         $this->addCSSFile(
             dirname(__FILE__) . '/Grid.css'
@@ -55,7 +55,10 @@ class Grid extends QUI\Control
         $start  = $this->getAttribute('start');
         $max    = $this->getAttribute('max');
 
-        $Pagination = new QUI\Bricks\Controls\Pagination();
+        $Pagination = new QUI\Bricks\Controls\Pagination(array(
+            'limit' => false
+        ));
+
         $Pagination->loadFromRequest();
 
         switch ($this->getAttribute('order')) {
@@ -104,7 +107,7 @@ class Grid extends QUI\Control
 
         $sheets = ceil($count / $max);
 
-        
+
         $Pagination->setAttribute('Site', $this->_getSite());
         $Pagination->setAttribute('sheets', $sheets);
 
