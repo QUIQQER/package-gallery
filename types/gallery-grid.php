@@ -1,7 +1,7 @@
 <?php
 
-$start = 0;
-$max = $Site->getAttribute('quiqqer.settings.gallery.max');
+$start  = 0;
+$max    = $Site->getAttribute('quiqqer.settings.gallery.max');
 $folder = $Site->getAttribute('quiqqer.settings.gallery.folderId');
 
 try {

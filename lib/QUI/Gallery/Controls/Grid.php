@@ -35,7 +35,7 @@ class Grid extends QUI\Control
         parent::setAttributes($attributes);
 
         $this->addCSSFile(
-            dirname(__FILE__).'/Grid.css'
+            dirname(__FILE__) . '/Grid.css'
         );
     }
 
@@ -46,14 +46,17 @@ class Grid extends QUI\Control
      */
     public function getBody()
     {
-        $Engine = QUI::getTemplateManager()->getEngine();
+        $Engine  = QUI::getTemplateManager()->getEngine();
         $Project = $this->_getProject();
-        $Media = $Project->getMedia();
+        $Media   = $Project->getMedia();
 
         /* @var $Folder \QUI\Projects\Media\Folder */
         $Folder = $Media->get($this->getAttribute('folderId'));
-        $start = $this->getAttribute('start');
-        $max = $this->getAttribute('max');
+        $start  = $this->getAttribute('start');
+        $max    = $this->getAttribute('max');
+
+        $Pagination = new QUI\Bricks\Controls\Pagination();
+        $Pagination->loadFromRequest();
 
         switch ($this->getAttribute('order')) {
             case 'title DESC':
@@ -91,7 +94,7 @@ class Grid extends QUI\Control
         ));
 
         $images = $Folder->getImages(array(
-            'limit' => $start.','.$max,
+            'limit' => $start . ',' . $max,
             'order' => $order
         ));
 
@@ -101,6 +104,10 @@ class Grid extends QUI\Control
 
         $sheets = ceil($count / $max);
 
+        
+        $Pagination->setAttribute('Site', $this->_getSite());
+        $Pagination->setAttribute('sheets', $sheets);
+
         $Engine->assign(array(
             'Rewrite'      => QUI::getRewrite(),
             'this'         => $this,
@@ -108,10 +115,11 @@ class Grid extends QUI\Control
             'images'       => $images,
             'Site'         => $this->_getSite(),
             'sheets'       => $sheets,
-            'completeList' => $completeList
+            'completeList' => $completeList,
+            'Pagination'   => $Pagination
         ));
 
-        return $Engine->fetch(dirname(__FILE__).'/Grid.html');
+        return $Engine->fetch(dirname(__FILE__) . '/Grid.html');
     }
 
     /**

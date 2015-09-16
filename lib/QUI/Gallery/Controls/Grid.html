@@ -1,6 +1,6 @@
 
 {if $Site}
-    {control control="\QUI\Controls\Sheets" Site=$Site sheets=$sheets}
+    {$Pagination->create()}
 {/if}
 
 <section class="quiqqer-gallery-grid-list"
@@ -36,5 +36,5 @@
 </section>
 
 {if $Site}
-    {control control="\QUI\Controls\Sheets" Site=$Site sheets=$sheets}
+    {$Pagination->create()}
 {/if}
