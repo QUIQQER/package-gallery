@@ -165,7 +165,9 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
         $onClose: function () {
             this.$isOpen = false;
 
-            this.$ButtonCnr.destroy();
+            if (this.$ButtonCnr) {
+                this.$ButtonCnr.destroy();
+            }
 
             window.removeEvent('keyup', this.$keyup);
         },
@@ -202,7 +204,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                 childLength = this.getAttribute('images').length;
 
 
-            require(['image!'+ src], function(Image) {
+            require(['image!' + src], function (Image) {
 
                 var pc;
 
@@ -238,10 +240,10 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                     'html',
 
                     '<div class="qui-gallery-popup-image-preview-header">' +
-                        title +
+                    title +
                     '</div>' +
                     '<div class="qui-gallery-popup-image-preview-text">' +
-                        short +
+                    short +
                     '</div>'
                 );
 
