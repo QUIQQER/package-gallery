@@ -55,6 +55,9 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             this.$Stats = null;
             this.$Image = null;
 
+            this.$Prev = null;
+            this.$Next = null;
+
             this.$ButtonCnr  = null;
             this.$ButtonText = null;
             this.$ButtonPrev = null;
@@ -104,6 +107,21 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             this.$Stats = this.$ButtonCnr.getElement(
                 '.qui-gallery-popup-stats'
             );
+
+            this.$Prev = new Element('div', {
+                'class': 'qui-gallery-popup-imagePrev',
+                events : {
+                    click: this.showPrevImage
+                }
+            }).inject(Elm);
+
+            this.$Next = new Element('div', {
+                'class': 'qui-gallery-popup-imageNext',
+                events : {
+                    click: this.showNextImage
+                }
+            }).inject(Elm);
+
 
             new Element('div', {
                 'class': 'icon-remove fa fa-close qui-gallery-popup-close',

@@ -52,6 +52,31 @@
     text-align: left;
 }
 
+.qui-gallery-popup-imagePrev {
+    background: rgba(0,0,0,0);
+    cursor: pointer;
+    height: calc(100% - 50px);
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 15%;
+}
+
+.qui-gallery-popup-imageNext {
+    background: rgba(0,0,0,0);
+    cursor: pointer;
+    height: calc(100% - 50px);
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 15%;
+}
+
+.qui-gallery-popup-imageNext:hover,
+.qui-gallery-popup-imagePrev:hover {
+    background: rgba(0,0,0,0.1);
+}
+
 .qui-gallery-popup-close {
     background: #fff;
     border-bottom-left-radius: 40px;

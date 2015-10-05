@@ -10,7 +10,7 @@
  * @require qui/controls/loader/Progress
  * @require qui/utils/Math
  * @require qui/utils/Functions
- * @require URL_BIN_DIR +'QUI/lib/Assets.js'
+ * @require package/quiqqer/gallery/bin/controls/Popup
  *
  * @event animateOutBegin [self, Element]
  * @event animateOutEnd [self, Element]
@@ -112,6 +112,8 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
         $onImport: function () {
             var i, len, Entry;
 
+            var self = this;
+
             // read images
             this.$List = new Element('div', {
                 html  : this.$Elm.innerHTML.replace('<template>', '').replace('</template>', ''),
@@ -140,7 +142,9 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
 
             this.create();
-            this.showFirst();
+            this.showFirst().catch(function() {
+                self.Loader.hide();
+            });
         },
 
         /**
@@ -163,19 +167,19 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
             this.$Elm.set({
                 html: '<div class="quiqqer-gallery-slider-content">' +
-                      '<div class="quiqqer-gallery-slider-prev">' +
-                      '<span class="fa fa-chevron-left"></span>' +
-                      '</div>' +
-                      '<div class="quiqqer-gallery-slider-title"></div>' +
-                      '<div class="quiqqer-gallery-slider-next">' +
-                      '<span class="fa fa-chevron-right"></span>' +
-                      '</div>' +
-                      '<div class="quiqqer-gallery-slider-controls">' +
-                      '<span class="fa fa-play"></span>' +
-                      '<span class="fa fa-random"></span>' +
-                      '<span class="fa fa-search"></span>' +
-                      '</div>' +
-                      '<div class="quiqqer-gallery-slider-previews"></div>' +
+                          '<div class="quiqqer-gallery-slider-prev">' +
+                              '<span class="fa fa-chevron-left"></span>' +
+                          '</div>' +
+                          '<div class="quiqqer-gallery-slider-title"></div>' +
+                          '<div class="quiqqer-gallery-slider-next">' +
+                              '<span class="fa fa-chevron-right"></span>' +
+                          '</div>' +
+                          '<div class="quiqqer-gallery-slider-controls">' +
+                              '<span class="fa fa-play"></span>' +
+                              '<span class="fa fa-random"></span>' +
+                              '<span class="fa fa-search"></span>' +
+                          '</div>' +
+                          '<div class="quiqqer-gallery-slider-previews"></div>' +
                       '</div>'
             });
 
@@ -200,7 +204,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
             this.$Controls.setStyle('display', 'none');
 
-            if (this.getAttribute('controls')) {
+            if (this.getAttribute('controls') && this.$images.length) {
                 this.$Controls.setStyle('display', null);
             }
 
@@ -230,6 +234,28 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 self.prev();
             });
 
+            if (!this.$images.length) {
+                this.$Next.setStyle('display', 'none');
+                this.$Prev.setStyle('display', 'none');
+
+                new Element('div', {
+                    html   : '<span class="fa fa-file-image-o"></span>',
+                    styles : {
+                        color      : '#fff',
+                        background : '#000',
+                        fontSize   : 40,
+                        height     : '100%',
+                        paddingTop : '20%',
+                        opacity    : 0.6,
+                        position   : 'absolute',
+                        textAlign  : 'center',
+                        top        : 0,
+                        width      : '100%'
+
+                    }
+                }).inject(this.$Elm);
+            }
+
             if (this.getAttribute('shadow')) {
                 this.$Elm.setStyle('boxShadow', '0 0 2px 2px #888');
             }
@@ -244,7 +270,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 this.$Title.setStyle('opacity', 1);
             }
 
-            if (!this.getAttribute('preview')) {
+            if (!this.getAttribute('preview') || !this.$images.length) {
                 this.$Previews.setStyle('display', 'none');
             } else {
                 this.$createPreviews();
@@ -808,6 +834,13 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 return;
             }
 
+            if (!this.$images.length) {
+                if (this.$Previews) {
+                    this.$Previews.setStyle('display', 'none');
+                }
+                return;
+            }
+
             this.$Previews.setStyle('bottom', -100);
             this.$Previews.setStyle('zIndex', 10);
 
@@ -815,13 +848,13 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 'html',
 
                 '<div class="quiqqer-gallery-slider-previews-prev">' +
-                '<span class="fa fa-chevron-left"></span>' +
+                    '<span class="fa fa-chevron-left"></span>' +
                 '</div>' +
                 '<div class="quiqqer-gallery-slider-previews-container">' +
-                '<div class="quiqqer-gallery-slider-previews-containerInner"></div>' +
+                    '<div class="quiqqer-gallery-slider-previews-containerInner"></div>' +
                 '</div>' +
                 '<div class="quiqqer-gallery-slider-previews-next">' +
-                '<span class="fa fa-chevron-right"></span>' +
+                    '<span class="fa fa-chevron-right"></span>' +
                 '</div>'
             );
 
