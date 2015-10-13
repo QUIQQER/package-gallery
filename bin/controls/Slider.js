@@ -964,6 +964,10 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 '[data-image="' + this.$current + '"]'
             );
 
+            if (!Img) {
+                return;
+            }
+
             Img.addClass('quiqqer-gallery-slider-active-preview');
 
             var imagePosX  = Img.getPosition(Img.getParent()).x,
