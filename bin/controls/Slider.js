@@ -315,7 +315,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * @return Promise
          */
         showFirst: function () {
-            this.$current = 0;
+            this.$current = -1;
             return this.next();
         },
 
