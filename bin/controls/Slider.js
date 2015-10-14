@@ -61,7 +61,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             'preview-outside'     : false,  // preview to the outside?
             'zoom'                : true,   // enable zoom function via click
             'keyevents'           : true,
-            'imageFit'            : false   // if images are center, the effect is a smooth effect, no slide effect
+            'imagefit'            : false   // if images are center, the effect is a smooth effect, no slide effect
         },
 
         initialize: function (options) {
@@ -271,9 +271,9 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 this.$Title.setStyle('opacity', 1);
             }
 
-            if (this.getAttribute('centerImages')) {
+            if (this.getAttribute('imagefit')) {
                 this.$Container.addClass(
-                    'quiqqer-gallery-slider-content-imageFit'
+                    'quiqqer-gallery-slider-content-imagefit'
                 );
             }
 
