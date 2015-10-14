@@ -112,6 +112,10 @@
     z-index: 1;
 }
 
+.quiqqer-gallery-slider-content-centered .quiqqer-gallery-slider-image {
+    max-height: 100%;
+}
+
 /** controls
  * ========================================== */
 
