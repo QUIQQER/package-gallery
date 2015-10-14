@@ -112,7 +112,7 @@
     z-index: 1;
 }
 
-.quiqqer-gallery-slider-content-centered .quiqqer-gallery-slider-image {
+.quiqqer-gallery-slider-content-imageFit .quiqqer-gallery-slider-image {
     max-height: 100%;
 }
 
