@@ -32,7 +32,8 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             '$keyup',
 
             'showNextImage',
-            'showPrevImage'
+            'showPrevImage',
+            '$__resize'
         ],
 
         options: {
@@ -51,6 +52,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
 
             this.$isOpen    = false;
             this.__$current = this.getAttribute('current');
+            this.$__mobile  = (QUI.getWindowSize().x < 767);
 
             this.$Stats = null;
             this.$Image = null;
@@ -66,19 +68,60 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             this.parent(options);
 
             this.addEvents({
-                onOpen : this.$onOpen,
-                onClose: this.$onClose
+                onOpen  : this.$onOpen,
+                onClose : this.$onClose,
+                onResize: this.$__resize
             });
+        },
+
+        /**
+         * Resize event
+         */
+        $__resize: function () {
+            if (!this.$ButtonCnr) {
+                return;
+            }
+
+            if (!this.getElm()) {
+                return;
+            }
+
+            var oldMobileStatus = this.$__mobile;
+            this.$__mobile = (QUI.getWindowSize().x < 767);
+
+            if (!this.$opened) {
+                return;
+            }
+
+            var size     = this.getElm().getSize(),
+                textSize = this.$ButtonCnr.getSize();
+
+            var height = size.y - textSize.y;
+
+            this.$Next.setStyle('height', height);
+            this.$Prev.setStyle('height', height);
+
+            if (oldMobileStatus === this.$__mobile) {
+                return;
+            }
+
+            // redraw so we close and open new
+            this.close().then(function() {
+                this.open();
+            }.bind(this));
         },
 
         /**
          * event : on open
          */
         $onOpen: function () {
+
             var Content = this.getContent(),
                 Elm     = this.getElm();
 
             Elm.getElements('.qui-window-popup-buttons').destroy();
+
+            this.$__mobile = (QUI.getWindowSize().x < 767);
 
             this.$ButtonCnr = new Element('div', {
                 'class': 'qui-gallery-popup-image-buttons',
@@ -166,6 +209,24 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
 
             this.$isOpen = true;
 
+            if (this.$__mobile) {
+                this.$Content.setStyle('background', '#000');
+                this.Loader.getElm().setStyle('background', '#000');
+
+                this.$ButtonText.inject(this.getElm());
+
+                this.$ButtonText.setStyles({
+                    position: 'absolute',
+                    top     : 0,
+                    width   : 'calc(100% - 40px)'
+                });
+
+                this.$Stats.inject(this.$ButtonPrev, 'after');
+
+                this.$Stats.setStyles({
+                    width: 'calc(100% - 200px)'
+                });
+            }
 
             // bind keys
             window.addEvent('keyup', this.$keyup);
@@ -181,10 +242,47 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
          * event : on close
          */
         $onClose: function () {
-            this.$isOpen = false;
+            this.$isOpen    = false;
+            this.__$current = false;
 
             if (this.$ButtonCnr) {
                 this.$ButtonCnr.destroy();
+            }
+
+            if (this.$Image) {
+                this.$Image.destroy();
+            }
+
+            if (this.$Stats) {
+                this.$Stats.destroy();
+            }
+
+            if (this.$Image) {
+                this.$Image.destroy();
+            }
+
+            if (this.$Prev) {
+                this.$Prev.destroy();
+            }
+
+            if (this.$Next) {
+                this.$Next.destroy();
+            }
+
+            if (this.$ButtonCnr) {
+                this.$ButtonCnr.destroy();
+            }
+
+            if (this.$ButtonText) {
+                this.$ButtonText.destroy();
+            }
+
+            if (this.$ButtonPrev) {
+                this.$ButtonPrev.destroy();
+            }
+
+            if (this.$ButtonNext) {
+                this.$ButtonNext.destroy();
             }
 
             window.removeEvent('keyup', this.$keyup);
@@ -200,19 +298,28 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
 
             this.__$current = src;
 
-            this.Loader.show();
-
             if (this.$isOpen === false) {
                 this.open();
                 return;
             }
 
             if (this.$Image) {
+
                 moofx(this.$Image).animate({
                     opacity: 0
+                }, {
+                    duration: 200,
+                    callback: function () {
+                        self.$Image.destroy();
+                        self.$Image = null;
+                        self.showImage(src);
+                    }
                 });
+
+                return;
             }
 
+            this.Loader.show();
 
             var imageData = this.$getImageData(src);
 
@@ -221,17 +328,21 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                 childIndex  = imageData.index + 1,
                 childLength = this.getAttribute('images').length;
 
-
             require(['image!' + src], function (Image) {
-
                 var pc;
 
                 var height  = Image.height,
                     width   = Image.width,
-                    docSize = document.getSize();
+                    docSize = QUI.getWindowSize();
 
                 var docWidth  = docSize.x - 100,
                     docHeight = docSize.y - 100;
+
+                // mobile
+                if (self.$__mobile) {
+                    docWidth  = docSize.x;
+                    docHeight = docSize.y;
+                }
 
                 // set width ?
                 if (width > docWidth) {
@@ -249,9 +360,15 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                     width  = ( width * (pc / 100) ).round();
                 }
 
-                // resize win
-                self.setAttribute('maxWidth', width);
-                self.setAttribute('maxHeight', height);
+
+                if (self.$__mobile) {
+                    self.setAttribute('maxWidth', docWidth);
+                    self.setAttribute('maxHeight', docHeight);
+                } else {
+                    // resize win
+                    self.setAttribute('maxWidth', width);
+                    self.setAttribute('maxHeight', height);
+                }
 
                 // button resize
                 self.$ButtonText.set(
@@ -284,14 +401,20 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                     newHeight = 50;
                 }
 
-                moofx(self.$ButtonCnr).animate({
-                    height: newHeight
-                });
 
+                if (self.$__mobile === false) {
+                    moofx(self.$ButtonCnr).animate({
+                        height: newHeight
+                    });
+                }
 
-                self.$Stats.set('html', childIndex + ' von ' + childLength); // #locale
+                self.$Stats.set(
+                    'html',
+                    childIndex + ' von ' + childLength
+                ); // #locale
 
-                self.resize(true, function () {
+                self.resize(false, function () {
+
                     self.getContent().set({
                         html  : '',
                         styles: {
@@ -308,6 +431,22 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                             opacity: 0
                         }
                     }).inject(self.getContent());
+
+                    if (self.$__mobile) {
+
+                        var imageTop = (docHeight - height) / 2;
+
+                        if (imageTop < 0) {
+                            imageTop = 0;
+                        }
+
+                        self.$Image.setStyles({
+                            height  : height,
+                            position: 'relative',
+                            top     : imageTop,
+                            width   : width
+                        });
+                    }
 
                     moofx(self.$Image).animate({
                         opacity: 1
