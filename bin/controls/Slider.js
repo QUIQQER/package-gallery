@@ -133,11 +133,12 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 }
 
                 this.$images.push({
-                    src  : Entry.get('data-src'),
-                    image: Entry.get('data-src'),
-                    title: Entry.getElement('.title').get('html'),
-                    text : Entry.getElement('.text').get('html'),
-                    short: Entry.getElement('.text').get('html')
+                    src    : Entry.get('data-src'),
+                    image  : Entry.get('data-src'),
+                    preview: Entry.get('data-preview'),
+                    title  : Entry.getElement('.title').get('html'),
+                    text   : Entry.getElement('.text').get('html'),
+                    short  : Entry.getElement('.text').get('html')
                 });
             }
 
@@ -908,12 +909,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
             // get image paths
             for (i = 0, len = this.$images.length; i < len; i++) {
-
-                image  = this.$images[i].image;
-                ending = image.slice(image.lastIndexOf('.'));
-                image  = image.slice(0, image.indexOf('__')) + '__x80' + ending;
-
-                imageList.push('image!' + image);
+                imageList.push('image!' + this.$images[i].preview);
             }
 
 
