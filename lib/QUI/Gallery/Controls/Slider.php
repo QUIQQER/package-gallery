@@ -34,7 +34,7 @@ class Slider extends QUI\Control
             'folderId' => false,
             'class'    => 'quiqqer-gallery-slider',
             'data-qui' => 'package/quiqqer/gallery/bin/controls/Slider',
-            'order'    => 'title ASC'
+            'order'    => false
         ));
 
         parent::__construct($attributes);
