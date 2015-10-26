@@ -102,7 +102,12 @@ class Slider extends QUI\Control
                 break;
 
             default:
-                $order = 'name DESC';
+                $order = $Folder->getAttribute('order');
+
+                if (empty($order)) {
+                    $order = 'name DESC';
+                }
+
                 break;
         }
 
