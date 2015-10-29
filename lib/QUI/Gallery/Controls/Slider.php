@@ -40,7 +40,7 @@ class Slider extends QUI\Control
         parent::__construct($attributes);
 
         $this->addCSSFile(
-            dirname(__FILE__) . '/Slider.css'
+            OPT_DIR . 'quiqqer/gallery/bin/controls/Slider.css'
         );
     }
 

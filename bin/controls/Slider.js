@@ -11,6 +11,7 @@
  * @require qui/utils/Math
  * @require qui/utils/Functions
  * @require package/quiqqer/gallery/bin/controls/Popup
+ * @require css!package/quiqqer/gallery/bin/controls/Slider.css
  *
  * @event animateOutBegin [self, Element]
  * @event animateOutEnd [self, Element]
@@ -18,16 +19,16 @@
  * @event animateinEnd [self, Element]
  */
 define('package/quiqqer/gallery/bin/controls/Slider', [
-
     'qui/QUI',
     'qui/controls/Control',
     'qui/controls/loader/Loader',
     'qui/controls/loader/Progress',
     'qui/utils/Math',
     'qui/utils/Functions',
-    'package/quiqqer/gallery/bin/controls/Popup'
-
+    'package/quiqqer/gallery/bin/controls/Popup',
+    'css!package/quiqqer/gallery/bin/controls/Slider.css'
 ], function (QUI, QUIControl, QUILoader, QUIProgress, QUIMath, QUIFunctionUtils, GalleryPopup) {
+
     "use strict";
 
     return new Class({
@@ -93,18 +94,19 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             this.$autoplayInterval = false;
 
             // events
-            var __winResize = QUIFunctionUtils.debounce(this.$onWinResize);
+            //var __winResize = QUIFunctionUtils.debounce(this.$onWinResize);
 
             this.addEvents({
                 onImport : this.$onImport,
                 onDestroy: function () {
                     window.removeEvent('keyup', this.$keyup);
-                    window.removeEvent('resize', __winResize);
+                    //window.removeEvent('resize', __winResize);
+                    QUI.removeEvent('resize', this.$onWinResize);
                 }.bind(this)
             });
 
             window.addEvent('keyup', this.$keyup);
-            window.addEvent('resize', __winResize);
+            QUI.addEvent('resize', this.$onWinResize);
         },
 
         /**
@@ -287,6 +289,14 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             this.Loader.show();
 
             return this.$Elm;
+        },
+
+        /**
+         * resize slider
+         */
+        resize: function () {
+            this.$onWinResize();
+            this.parent();
         },
 
         /**
@@ -751,8 +761,16 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 left = 0;
             }
 
+            var top = ((size.y - elmSize.y) / 2).round();
+
+            if (top < 0) {
+                top = 0;
+            }
+
+
             moofx(Img).animate({
-                left: left
+                left: left,
+                top : top
             });
         },
 
@@ -867,7 +885,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             );
 
 
-            var i, len, image, ending;
+            var i, len;
 
             var self      = this,
                 imageList = [];
