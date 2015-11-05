@@ -72,9 +72,27 @@
     width: 15%;
 }
 
+.qui-gallery-popup-imagePrev span,
+.qui-gallery-popup-imageNext span {
+    color: #fff;
+    display: none;
+    font-size: 26px;
+    line-height: 30px;
+    margin-top: -15px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+}
+
 .qui-gallery-popup-imageNext:hover,
 .qui-gallery-popup-imagePrev:hover {
     background: rgba(0,0,0,0.1);
+}
+
+.qui-gallery-popup-imagePrev:hover span,
+.qui-gallery-popup-imageNext:hover span {
+    display: inline;
 }
 
 .qui-gallery-popup-close {

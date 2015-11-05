@@ -152,6 +152,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             );
 
             this.$Prev = new Element('div', {
+                html : '<span class="fa fa-chevron-left icon-chevron-left"></span>',
                 'class': 'qui-gallery-popup-imagePrev',
                 events : {
                     click: this.showPrevImage
@@ -159,6 +160,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             }).inject(Elm);
 
             this.$Next = new Element('div', {
+                html : '<span class="fa fa-chevron-right icon-chevron-right"></span>',
                 'class': 'qui-gallery-popup-imageNext',
                 events : {
                     click: this.showNextImage
