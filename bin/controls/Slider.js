@@ -63,7 +63,8 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             'zoom'                : true,   // enable zoom function via click
             'keyevents'           : true,
             'imagefit'            : false,  // if images are center, the effect is a smooth effect, no slide effect
-            'placeholderimage'    : false
+            'placeholderimage'    : false,
+            'placeholdercolor'    : false
         },
 
         initialize: function (options) {
@@ -266,6 +267,12 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     }
                 }).inject(this.$Elm);
 
+                if (this.getAttribute('placeholdercolor')) {
+                    Placeholder.setStyles(
+                        'backgroundColor',
+                        this.getAttribute('placeholdercolor')
+                    );
+                }
 
                 if (this.getAttribute('placeholderimage')) {
                     Placeholder.setStyles({

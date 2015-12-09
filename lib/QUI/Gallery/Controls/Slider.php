@@ -35,7 +35,8 @@ class Slider extends QUI\Control
             'class' => 'quiqqer-gallery-slider',
             'data-qui' => 'package/quiqqer/gallery/bin/controls/Slider',
             'order' => false,
-            'placeholderimage' => false
+            'placeholderimage' => false,
+            'placeholdercolor' => false
         ));
 
         parent::__construct($attributes);
@@ -58,6 +59,12 @@ class Slider extends QUI\Control
         $folderId = $this->getAttribute('folderId');
         $Folder   = false;
         $images   = array();
+
+        $this->setAttribute(
+            'data-qui-options-placeholdercolor',
+            $this->getAttribute('placeholdercolor')
+        );
+
 
         if ($this->getAttribute('placeholderimage')) {
             $this->setAttribute(
