@@ -65,7 +65,6 @@ class Slider extends QUI\Control
             $this->getAttribute('placeholdercolor')
         );
 
-
         if ($this->getAttribute('placeholderimage')) {
             $this->setAttribute(
                 'data-qui-options-placeholderimage',

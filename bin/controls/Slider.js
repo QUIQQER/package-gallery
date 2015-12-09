@@ -267,6 +267,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     }
                 }).inject(this.$Elm);
 
+
                 if (this.getAttribute('placeholdercolor')) {
                     Placeholder.setStyles(
                         'backgroundColor',
