@@ -62,7 +62,8 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             'preview-outside'     : false,  // preview to the outside?
             'zoom'                : true,   // enable zoom function via click
             'keyevents'           : true,
-            'imagefit'            : false   // if images are center, the effect is a smooth effect, no slide effect
+            'imagefit'            : false,  // if images are center, the effect is a smooth effect, no slide effect
+            'placeholderimage'    : false
         },
 
         initialize: function (options) {
@@ -242,8 +243,14 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 this.$Next.setStyle('display', 'none');
                 this.$Prev.setStyle('display', 'none');
 
-                new Element('div', {
-                    html  : '<span class="fa fa-file-image-o"></span>',
+                var image = '<span class="fa fa-file-image-o"></span>';
+
+                if (this.getAttribute('placeholderimage')) {
+                    image = '';
+                }
+
+                var Placeholder = new Element('div', {
+                    html  : image,
                     styles: {
                         color     : '#fff',
                         background: '#000',
@@ -258,6 +265,13 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
                     }
                 }).inject(this.$Elm);
+
+
+                if (this.getAttribute('placeholderimage')) {
+                    Placeholder.setStyles({
+                        backgroundImage: 'url("' + this.getAttribute('placeholderimage') + '")'
+                    });
+                }
             }
 
             if (this.getAttribute('shadow')) {
@@ -374,7 +388,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     self.Loader.hide();
 
                     var OldImage = self.$Container.getElements(
-                            '.quiqqer-gallery-slider-image'
+                        '.quiqqer-gallery-slider-image'
                         ),
 
                         NewImage = self.$createNewImage(Image);
@@ -438,7 +452,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     self.Loader.hide();
 
                     var OldImage = self.$Container.getElements(
-                            '.quiqqer-gallery-slider-image'
+                        '.quiqqer-gallery-slider-image'
                         ),
 
                         NewImage = self.$createNewImage(Image);
@@ -691,14 +705,14 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             pc = QUIMath.percent(listSize.x, width);
 
             width  = listSize.x;
-            height = ( height * (pc / 100) ).round();
+            height = (height * (pc / 100)).round();
 
             // set height?
             if (height > listSize.y) {
                 pc = QUIMath.percent(listSize.y, height);
 
                 height = listSize.y;
-                width  = ( width * (pc / 100) ).round();
+                width  = (width * (pc / 100)).round();
             }
 
             return new Element('img', {
@@ -912,7 +926,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
 
             // image click action
-            var __click = function (event) {
+            var imageClick = function (event) {
 
                 var Target = event.target;
 
@@ -944,11 +958,10 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                         'class'     : 'quiqqer-gallery-slider-previews-entry',
                         html        : '<img src="' + arguments[i].src + '" />',
                         events      : {
-                            click: __click
+                            click: imageClick
                         },
                         'data-image': i
                     }).inject(self.$PreviewsSlider);
-
                 }
 
                 self.$PreviewsSlider.setStyle('width', width);

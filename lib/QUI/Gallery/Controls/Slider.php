@@ -19,12 +19,12 @@ class Slider extends QUI\Control
      *
      * @var bool
      */
-    protected $_ownImages = array();
+    protected $ownImages = array();
 
     /**
      * constructor
      *
-     * @param Array $attributes
+     * @param array $attributes
      */
     public function __construct($attributes = array())
     {
@@ -52,11 +52,20 @@ class Slider extends QUI\Control
     public function getBody()
     {
         $Engine   = QUI::getTemplateManager()->getEngine();
-        $Project  = $this->_getProject();
+        $Project  = $this->getProject();
         $Media    = $Project->getMedia();
         $folderId = $this->getAttribute('folderId');
         $Folder   = false;
         $images   = array();
+
+        $Placeholder = $Media->getPlaceholderImage();
+
+        if ($Placeholder) {
+            $this->setAttribute(
+                'data-qui-options-placeholderimage',
+                $Placeholder->getSizeCacheUrl()
+            );
+        }
 
         /* @var $Folder \QUI\Projects\Media\Folder */
         if (strpos($folderId, 'image.php') !== false) {
@@ -70,7 +79,6 @@ class Slider extends QUI\Control
             }
 
         } elseif ($folderId) {
-
             try {
                 $Folder = $Media->get((int)$folderId);
 
@@ -86,16 +94,12 @@ class Slider extends QUI\Control
         switch ($this->getAttribute('order')) {
             case 'title DESC':
             case 'title ASC':
-
             case 'name DESC':
             case 'name ASC':
-
             case 'c_date DESC':
             case 'c_date ASC':
-
             case 'e_date DESC':
             case 'e_date ASC':
-
             case 'priority DESC':
             case 'priority ASC':
                 $order = $this->getAttribute('order');
@@ -112,7 +116,6 @@ class Slider extends QUI\Control
         }
 
         if ($Folder) {
-
             $images = $Folder->getImages(array(
                 'order' => $order
             ));
@@ -127,7 +130,7 @@ class Slider extends QUI\Control
             'this'    => $this,
             'Folder'  => $Folder,
             'images'  => $images,
-            'Site'    => $this->_getSite()
+            'Site'    => $this->getSite()
         ));
 
         return $Engine->fetch(dirname(__FILE__) . '/Slider.html');
@@ -140,13 +143,13 @@ class Slider extends QUI\Control
      */
     public function addImage(QUI\Projects\Media\Image $Image)
     {
-        $this->_ownImages[] = $Image;
+        $this->ownImages[] = $Image;
     }
 
     /**
      * @return mixed|QUI\Projects\Site
      */
-    protected function _getSite()
+    protected function getSite()
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');
