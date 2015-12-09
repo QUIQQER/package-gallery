@@ -30,11 +30,12 @@ class Slider extends QUI\Control
     {
         // default options
         $this->setAttributes(array(
-            'Project'  => false,
+            'Project' => false,
             'folderId' => false,
-            'class'    => 'quiqqer-gallery-slider',
+            'class' => 'quiqqer-gallery-slider',
             'data-qui' => 'package/quiqqer/gallery/bin/controls/Slider',
-            'order'    => false
+            'order' => false,
+            'placeholderimage' => false
         ));
 
         parent::__construct($attributes);
@@ -58,13 +59,21 @@ class Slider extends QUI\Control
         $Folder   = false;
         $images   = array();
 
-        $Placeholder = $Media->getPlaceholderImage();
-
-        if ($Placeholder) {
+        if ($this->getAttribute('placeholderimage')) {
             $this->setAttribute(
                 'data-qui-options-placeholderimage',
-                $Placeholder->getSizeCacheUrl()
+                $this->getAttribute('placeholderimage')
             );
+
+        } else {
+            $Placeholder = $Media->getPlaceholderImage();
+
+            if ($Placeholder) {
+                $this->setAttribute(
+                    'data-qui-options-placeholderimage',
+                    $Placeholder->getSizeCacheUrl()
+                );
+            }
         }
 
         /* @var $Folder \QUI\Projects\Media\Folder */
@@ -127,10 +136,10 @@ class Slider extends QUI\Control
 
         $Engine->assign(array(
             'Rewrite' => QUI::getRewrite(),
-            'this'    => $this,
-            'Folder'  => $Folder,
-            'images'  => $images,
-            'Site'    => $this->getSite()
+            'this' => $this,
+            'Folder' => $Folder,
+            'images' => $images,
+            'Site' => $this->getSite()
         ));
 
         return $Engine->fetch(dirname(__FILE__) . '/Slider.html');
