@@ -269,7 +269,9 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
                 if (this.getAttribute('placeholderimage')) {
                     Placeholder.setStyles({
-                        backgroundImage: 'url("' + this.getAttribute('placeholderimage') + '")'
+                        backgroundImage   : 'url("' + this.getAttribute('placeholderimage') + '")',
+                        backgroundRepeat  : 'no-repeat',
+                        backgroundPosition: 'center center'
                     });
                 }
             }
