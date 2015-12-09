@@ -269,7 +269,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
 
                 if (this.getAttribute('placeholdercolor')) {
-                    Placeholder.setStyles(
+                    Placeholder.setStyle(
                         'backgroundColor',
                         this.getAttribute('placeholdercolor')
                     );
