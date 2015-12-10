@@ -19,7 +19,7 @@ class Component extends QUI\Control
     /**
      * constructor
      *
-     * @param Array $attributes
+     * @param array $attributes
      */
     public function __construct($attributes = array())
     {
@@ -32,7 +32,7 @@ class Component extends QUI\Control
             'order'     => 'title ASC'
         ));
 
-        parent::setAttributes($attributes);
+        parent::__construct($attributes);
 
         // css files
         $dir = dirname(__FILE__);
@@ -80,7 +80,7 @@ class Component extends QUI\Control
     public function getBody()
     {
         $Engine = QUI::getTemplateManager()->getEngine();
-        $Project = $this->_getProject();
+        $Project = $this->getProject();
         $Media = $Project->getMedia();
 
         /* @var $Folder \QUI\Projects\Media\Folder */
@@ -98,22 +98,17 @@ class Component extends QUI\Control
             }
 
         } catch (QUI\Exception $Exception) {
-
         }
 
         switch ($this->getAttribute('order')) {
             case 'title DESC':
             case 'title ASC':
-
             case 'name DESC':
             case 'name ASC':
-
             case 'c_date DESC':
             case 'c_date ASC':
-
             case 'e_date DESC':
             case 'e_date ASC':
-
             case 'priority DESC':
             case 'priority ASC':
                 $order = $this->getAttribute('order');
@@ -128,7 +123,7 @@ class Component extends QUI\Control
             'Rewrite' => QUI::getRewrite(),
             'this'    => $this,
             'Folder'  => $Folder,
-            'Site'    => $this->_getSite(),
+            'Site'    => $this->getSite(),
             'images'  => $Folder->getImages(array(
                 'order' => $order
             ))
@@ -140,7 +135,7 @@ class Component extends QUI\Control
     /**
      * @return mixed|QUI\Projects\Site
      */
-    protected function _getSite()
+    protected function getSite()
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');

@@ -18,7 +18,7 @@ class Grid extends QUI\Control
     /**
      * constructor
      *
-     * @param Array $attributes
+     * @param array $attributes
      */
     public function __construct($attributes = array())
     {
@@ -47,7 +47,7 @@ class Grid extends QUI\Control
     public function getBody()
     {
         $Engine  = QUI::getTemplateManager()->getEngine();
-        $Project = $this->_getProject();
+        $Project = $this->getProject();
         $Media   = $Project->getMedia();
 
         /* @var $Folder \QUI\Projects\Media\Folder */
@@ -64,16 +64,12 @@ class Grid extends QUI\Control
         switch ($this->getAttribute('order')) {
             case 'title DESC':
             case 'title ASC':
-
             case 'name DESC':
             case 'name ASC':
-
             case 'c_date DESC':
             case 'c_date ASC':
-
             case 'e_date DESC':
             case 'e_date ASC':
-
             case 'priority DESC':
             case 'priority ASC':
                 $order = $this->getAttribute('order');
@@ -108,7 +104,7 @@ class Grid extends QUI\Control
         $sheets = ceil($count / $max);
 
 
-        $Pagination->setAttribute('Site', $this->_getSite());
+        $Pagination->setAttribute('Site', $this->getSite());
         $Pagination->setAttribute('sheets', $sheets);
 
         $Engine->assign(array(
@@ -116,7 +112,7 @@ class Grid extends QUI\Control
             'this'         => $this,
             'Folder'       => $Folder,
             'images'       => $images,
-            'Site'         => $this->_getSite(),
+            'Site'         => $this->getSite(),
             'sheets'       => $sheets,
             'completeList' => $completeList,
             'Pagination'   => $Pagination
@@ -128,7 +124,7 @@ class Grid extends QUI\Control
     /**
      * @return mixed|QUI\Projects\Site
      */
-    protected function _getSite()
+    protected function getSite()
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');
