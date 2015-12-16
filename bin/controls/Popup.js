@@ -39,7 +39,8 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
         options: {
             images : [],
             zIndex : 1000,
-            current: false
+            current: false,
+            buttons: false
         },
 
         initialize: function (options) {
@@ -115,7 +116,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
          * event : on open
          */
         $onOpen: function () {
-
+            
             var Content = this.getContent(),
                 Elm     = this.getElm();
 
