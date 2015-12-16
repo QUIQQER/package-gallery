@@ -1,4 +1,3 @@
-
 /**
  * Component gallery
  *
@@ -10,7 +9,6 @@
  * @require qui/controls/loader/Loader
  * @require qui/utils/Math
  */
-
 define('package/quiqqer/gallery/bin/controls/Component', [
 
     'qui/QUI',
@@ -18,14 +16,13 @@ define('package/quiqqer/gallery/bin/controls/Component', [
     'qui/controls/loader/Loader',
     'qui/utils/Math'
 
-], function(QUI, QUIControl, QUILoader, QUIMath)
-{
+], function (QUI, QUIControl, QUILoader, QUIMath) {
     "use strict";
 
     return new Class({
 
-        Extends : QUIControl,
-        Type    : 'package/quiqqer/gallery/bin/controls/Component',
+        Extends: QUIControl,
+        Type   : 'package/quiqqer/gallery/bin/controls/Component',
 
         Binds: [
             'next',
@@ -35,9 +32,8 @@ define('package/quiqqer/gallery/bin/controls/Component', [
             '$keyup'
         ],
 
-        initialize: function (options)
-        {
-            this.parent( options );
+        initialize: function (options) {
+            this.parent(options);
 
             this.$effect    = '';
             this.$__resized = false;
@@ -56,201 +52,191 @@ define('package/quiqqer/gallery/bin/controls/Component', [
                 onImport: this.$onImport
             });
 
-            window.addEvent( 'resize', this.resize );
-            window.addEvent( 'keyup', this.$keyup );
+            window.addEvent('resize', this.resize);
+            window.addEvent('keyup', this.$keyup);
         },
 
         /**
          * Resize the control
          */
-        resize : function()
-        {
+        resize: function () {
             var self = this;
 
-            if ( this.$__resized ) {
-                clearTimeout( this.$__resized );
+            if (this.$__resized) {
+                clearTimeout(this.$__resized);
             }
 
             // clear resize flags
-            self.$__resized = (function()
-            {
-                self.getElm().getElements( 'img' ).set( 'data-resized', null );
+            self.$__resized = (function () {
+                self.getElm().getElements('img').set('data-resized', null);
 
                 var Current = self.getElm().getElement(
                     '.quiqqer-gallery-component-list-current'
                 );
 
-                if ( Current ) {
-                    self.animateIn( Current );
+                if (Current) {
+                    self.animateIn(Current);
                 }
 
-            }).delay( 200 );
+            }).delay(200);
         },
 
         /**
          * event on inject
          */
-        $onImport: function ()
-        {
+        $onImport: function () {
             var Elm  = this.getElm(),
-                Prev = Elm.getElement( '.quiqqer-gallery-component-prev'),
-                Next = Elm.getElement( '.quiqqer-gallery-component-next' );
+                Prev = Elm.getElement('.quiqqer-gallery-component-prev'),
+                Next = Elm.getElement('.quiqqer-gallery-component-next');
 
-            this.$List   = Elm.getElement( 'ul' );
-            this.$effect = Elm.get( 'data-effect' );
+            this.$List   = Elm.getElement('ul');
+            this.$effect = Elm.get('data-effect');
 
-            this.Loader.inject( Elm );
+            this.Loader.inject(Elm);
             this.Loader.show();
 
-            Elm.setStyle( 'overflow', 'hidden' );
+            Elm.setStyle('overflow', 'hidden');
 
-            Prev.addEvent( 'click', this.prev );
-            Next.addEvent( 'click', this.next );
+            Prev.addEvent('click', this.prev);
+            Next.addEvent('click', this.next);
 
             // text display
             this.$Display = new Element('div', {
-                'class' : 'quiqqer-gallery-component-textdisplay',
-                styles  : {
-                    opacity : 0
+                'class': 'quiqqer-gallery-component-textdisplay',
+                styles : {
+                    opacity: 0
                 }
-            }).inject( this.$List );
+            }).inject(this.$List);
 
-            this.$FXDisplay = moofx( this.$Display );
+            this.$FXDisplay = moofx(this.$Display);
 
 
             var parents = this.getElm().getParents();
 
-            for ( var i = 0, len = parents.length; i < len; i++ )
-            {
-                if ( parents[ i ].nodeName === 'BODY' ) {
+            for (var i = 0, len = parents.length; i < len; i++) {
+                if (parents[i].nodeName === 'BODY') {
                     break;
                 }
 
-                if ( parents[ i ].getStyle( 'overflow-x' ) === 'auto' ) {
-                    this.$parentsOverflowAuto.push( parents[ i ] );
+                if (parents[i].getStyle('overflow-x') === 'auto') {
+                    this.$parentsOverflowAuto.push(parents[i]);
                 }
 
-                if ( parents[ i ].getStyle( 'overflow-x' ) === 'hidden' ) {
-                    this.$parentsOverflowHidden.push( parents[ i ] );
+                if (parents[i].getStyle('overflow-x') === 'hidden') {
+                    this.$parentsOverflowHidden.push(parents[i]);
                 }
             }
 
             this.showFirst();
 
-            (function()
-            {
+            (function () {
                 this.Loader.hide();
-                Elm.setStyle( 'overflow', null );
-            }).delay( 500, this );
+                Elm.setStyle('overflow', null);
+            }).delay(500, this);
         },
 
         /**
          * show the first image
          */
-        showFirst : function()
-        {
+        showFirst: function () {
             var Current = this.getElm().getElement(
                 '.quiqqer-gallery-component-list-current'
             );
 
-            if ( Current ) {
-                this.animateOut( Current );
+            if (Current) {
+                this.animateOut(Current);
             }
 
-            this.animateIn( this.$List.getFirst() );
+            this.animateIn(this.$List.getFirst());
         },
 
         /**
          * show the next image
          */
-        next : function()
-        {
-            if ( this.$__animate ) {
+        next: function () {
+            if (this.$__animate) {
                 return;
             }
 
             this.$__animate = true;
 
-            this.$parentsOverflowAuto.setStyle( 'overflowX', 'visible' );
-            this.$parentsOverflowHidden.setStyle( 'overflowX', 'visible' );
-            document.body.addClass( '__quiqqer-gallery-component--body' );
+            this.$parentsOverflowAuto.setStyle('overflowX', 'visible');
+            this.$parentsOverflowHidden.setStyle('overflowX', 'visible');
+            document.body.addClass('__quiqqer-gallery-component--body');
 
 
             var Current = this.getElm().getElement(
                 '.quiqqer-gallery-component-list-current'
             );
 
-            if ( !Current ) {
-                Current = this.$List.getFirst( 'li' );
+            if (!Current) {
+                Current = this.$List.getFirst('li');
             }
 
-            var Next = Current.getNext( 'li' );
+            var Next = Current.getNext('li');
 
-            if ( !Next ) {
-                Next = this.$List.getFirst( 'li' );
+            if (!Next) {
+                Next = this.$List.getFirst('li');
             }
 
-            if ( Current ) {
-                this.animateOut( Current, 'left' );
+            if (Current) {
+                this.animateOut(Current, 'left');
             }
 
-            this.animateIn( Next, 'right' );
+            this.animateIn(Next, 'right');
 
-            (function()
-            {
+            (function () {
                 this.$__animate = false;
-                this.$parentsOverflowAuto.setStyle( 'overflowX', 'auto' );
-                this.$parentsOverflowHidden.setStyle( 'overflowX', 'hidden' );
-                document.body.removeClass( '__quiqqer-gallery-component--body' );
+                this.$parentsOverflowAuto.setStyle('overflowX', 'auto');
+                this.$parentsOverflowHidden.setStyle('overflowX', 'hidden');
+                document.body.removeClass('__quiqqer-gallery-component--body');
 
-            }).delay( 500, this );
+            }).delay(500, this);
         },
 
         /**
          * show the prev image
          */
-        prev : function()
-        {
-            if ( this.$__animate ) {
+        prev: function () {
+            if (this.$__animate) {
                 return;
             }
 
             this.$__animate = true;
 
-            this.$parentsOverflowAuto.setStyle( 'overflowX', 'visible' );
-            this.$parentsOverflowHidden.setStyle( 'overflowX', 'visible' );
-            document.body.addClass( '__quiqqer-gallery-component--body' );
+            this.$parentsOverflowAuto.setStyle('overflowX', 'visible');
+            this.$parentsOverflowHidden.setStyle('overflowX', 'visible');
+            document.body.addClass('__quiqqer-gallery-component--body');
 
             var Current = this.getElm().getElement(
                 '.quiqqer-gallery-component-list-current'
             );
 
-            if ( !Current ) {
-                Current = this.$List.getLast( 'li' );
+            if (!Current) {
+                Current = this.$List.getLast('li');
             }
 
 
-            var Prev = Current.getPrevious( 'li' );
+            var Prev = Current.getPrevious('li');
 
-            if ( !Prev ) {
-                Prev = this.$List.getLast( 'li' );
+            if (!Prev) {
+                Prev = this.$List.getLast('li');
             }
 
 
-            if ( Current ) {
-                this.animateOut( Current, 'right' );
+            if (Current) {
+                this.animateOut(Current, 'right');
             }
 
-            this.animateIn( Prev, 'left' );
+            this.animateIn(Prev, 'left');
 
-            (function()
-            {
+            (function () {
                 this.$__animate = false;
-                this.$parentsOverflowAuto.setStyle( 'overflowX', 'auto' );
-                this.$parentsOverflowHidden.setStyle( 'overflowX', 'hidden' );
-                document.body.removeClass( '__quiqqer-gallery-component--body' );
+                this.$parentsOverflowAuto.setStyle('overflowX', 'auto');
+                this.$parentsOverflowHidden.setStyle('overflowX', 'hidden');
+                document.body.removeClass('__quiqqer-gallery-component--body');
 
-            }).delay( 500, this );
+            }).delay(500, this);
         },
 
         /**
@@ -258,35 +244,32 @@ define('package/quiqqer/gallery/bin/controls/Component', [
          * @param {HTMLElement} Elm
          * @param {String} [direction] - left|right
          */
-        animateOut : function(Elm, direction)
-        {
+        animateOut: function (Elm, direction) {
             var fx = this.$effect;
 
             direction = direction || 'left';
 
-            Elm.removeClass( 'quiqqer-gallery-component-list-current' );
-            Elm.removeClass( fx +'-in-left' );
-            Elm.removeClass( fx +'-in-right' );
+            Elm.removeClass('quiqqer-gallery-component-list-current');
+            Elm.removeClass(fx + '-in-left');
+            Elm.removeClass(fx + '-in-right');
 
-            switch ( direction )
-            {
+            switch (direction) {
                 case 'left':
-                    Elm.addClass( fx +'-out-left' );
-                break;
+                    Elm.addClass(fx + '-out-left');
+                    break;
 
                 case 'right':
-                    Elm.addClass( fx +'-out-right' );
-                break;
+                    Elm.addClass(fx + '-out-right');
+                    break;
             }
 
 
             this.hideTextDisplay();
 
-            (function()
-            {
-                Elm.removeClass( fx +'-out-left' );
-                Elm.removeClass( fx +'-out-right' );
-            }).delay( 500 );
+            (function () {
+                Elm.removeClass(fx + '-out-left');
+                Elm.removeClass(fx + '-out-right');
+            }).delay(500);
         },
 
         /**
@@ -294,87 +277,82 @@ define('package/quiqqer/gallery/bin/controls/Component', [
          * @param {HTMLElement} Elm
          * @param {String} [direction] - left|right
          */
-        animateIn : function(Elm, direction)
-        {
+        animateIn: function (Elm, direction) {
             var pc;
-            var Image = Elm.getElement( 'img' ),
-                text  = Image.get( 'alt' ),
+            var Image = Elm.getElement('img'),
+                text  = Image.get('alt'),
                 fx    = this.$effect;
 
             direction = direction || 'right';
 
-            if ( !Image.get( 'data-resized' ) )
-            {
+            if (!Image.get('data-resized')) {
                 var listSize  = this.$List.getSize(),
-                    imageSize = this.$getRealImageSize( Image ),
+                    imageSize = this.$getRealImageSize(Image),
                     height    = imageSize.y,
                     width     = imageSize.x;
 
                 // set width
-                pc = QUIMath.percent( listSize.x, width );
+                pc = QUIMath.percent(listSize.x, width);
 
                 width  = listSize.x;
-                height = ( height * (pc / 100) ).round();
+                height = (height * (pc / 100)).round();
 
                 // set height?
-                if ( height > listSize.y )
-                {
-                    pc = QUIMath.percent( listSize.y, height );
+                if (height > listSize.y) {
+                    pc = QUIMath.percent(listSize.y, height);
 
                     height = listSize.y;
-                    width  = ( width * (pc / 100) ).round();
+                    width  = (width * (pc / 100)).round();
                 }
 
                 var left = 0,
                     top  = 0;
 
-                if ( width < listSize.x ) {
-                    left = (( listSize.x - width ) / 2).round();
+                if (width < listSize.x) {
+                    left = ((listSize.x - width) / 2).round();
                 }
 
-                if ( height < listSize.y ) {
-                    top = (( listSize.y - height ) / 2).round();
+                if (height < listSize.y) {
+                    top = ((listSize.y - height) / 2).round();
                 }
 
                 // set image proportions
                 Image.setStyles({
-                    height    : height,
-                    maxHeight : height,
-                    width     : width,
-                    maxWidth  : width,
-                    left      : left,
-                    top       : top
+                    height   : height,
+                    maxHeight: height,
+                    width    : width,
+                    maxWidth : width,
+                    left     : left,
+                    top      : top
                 });
 
-                Image.set( 'data-resized', 1 );
+                Image.set('data-resized', 1);
             }
 
 
             // slide in
-            switch ( direction )
-            {
+            switch (direction) {
                 case 'left':
-                    Elm.addClass( fx +'-in-left' );
+                    Elm.addClass(fx + '-in-left');
                     break;
 
                 case 'right':
-                    Elm.addClass( fx +'-in-right' );
+                    Elm.addClass(fx + '-in-right');
                     break;
             }
 
-            if ( !text || text === '' ) {
-                text = Image.get( 'title' );
+            if (!text || text === '') {
+                text = Image.get('title');
             }
 
-            this.showTextDisplay( text );
+            this.showTextDisplay(text);
 
-            (function()
-            {
-                Elm.addClass( 'quiqqer-gallery-component-list-current' );
-                Elm.removeClass( fx +'-in-left' );
-                Elm.removeClass( fx +'-in-right' );
+            (function () {
+                Elm.addClass('quiqqer-gallery-component-list-current');
+                Elm.removeClass(fx + '-in-left');
+                Elm.removeClass(fx + '-in-right');
 
-            }).delay( 500 );
+            }).delay(500);
         },
 
         /**
@@ -382,27 +360,25 @@ define('package/quiqqer/gallery/bin/controls/Component', [
          *
          * @param {String} text
          */
-        showTextDisplay : function(text)
-        {
-            this.$Display.set( 'html', text );
+        showTextDisplay: function (text) {
+            this.$Display.set('html', text);
 
             this.$FXDisplay.animate({
-                opacity : 1
+                opacity: 1
             });
         },
 
         /**
          * hide the text display
          */
-        hideTextDisplay : function()
-        {
+        hideTextDisplay: function () {
             var self = this;
 
             this.$FXDisplay.animate({
-                opacity : 0
+                opacity: 0
             }, {
-                callback : function() {
-                    self.$Display.set( 'html', '' );
+                callback: function () {
+                    self.$Display.set('html', '');
                 }
             });
         },
@@ -413,27 +389,26 @@ define('package/quiqqer/gallery/bin/controls/Component', [
          * @param {HTMLElement} Image
          * @returns {Object} - { x, y }
          */
-        $getRealImageSize : function(Image)
-        {
-            var src = Image.get( 'src' );
+        $getRealImageSize: function (Image) {
+            var src = Image.get('src');
 
-            if ( !src.match( '__' ) ) {
+            if (!src.match('__')) {
                 return Image.getSize();
             }
 
-            var srcParts = src.split( '__' );
+            var srcParts = src.split('__');
 
-            srcParts = srcParts[ 1 ].split( '.' );
-            srcParts = srcParts[ 0 ];
+            srcParts = srcParts[1].split('.');
+            srcParts = srcParts[0];
 
-            var sizes = srcParts.split( 'x' );
+            var sizes = srcParts.split('x');
 
-            sizes[ 0 ] = parseInt( sizes[ 0 ] );
-            sizes[ 1 ] = parseInt( sizes[ 1 ] );
+            sizes[0] = parseInt(sizes[0]);
+            sizes[1] = parseInt(sizes[1]);
 
             return {
-                x : sizes[ 0 ],
-                y : sizes[ 1 ]
+                x: sizes[0],
+                y: sizes[1]
             };
         },
 
@@ -442,15 +417,13 @@ define('package/quiqqer/gallery/bin/controls/Component', [
          *
          * @param {DOMEvent} event
          */
-        $keyup : function(event)
-        {
-            if ( event.key == 'left' )
-            {
+        $keyup: function (event) {
+            if (event.key == 'left') {
                 this.prev();
                 return;
             }
 
-            if ( event.key == 'right' ) {
+            if (event.key == 'right') {
                 this.next();
             }
         }

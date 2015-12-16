@@ -55,6 +55,10 @@ In diesem Modus lassen sich die Bilder per Klick auf die Pfeile rechts und links
             <de><![CDATA[Eine Galerie mit einem einfach Slide-Effekt, bei welchen sich die Bilder aneinandergereiht von rechts nach links in den Rahmen schieben.]]></de>
             <en><![CDATA[]]></en>
         </locale>
+        <locale name="image.zoom">
+            <de><![CDATA[Bild ist zoombar]]></de>
+            <en><![CDATA[Image is zoomable]]></en>
+        </locale>
     </groups>
     <groups name="quiqqer/gallery" datatype="php">
         <locale name="quiqqer.gallery.settings.title">

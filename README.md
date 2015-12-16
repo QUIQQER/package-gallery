@@ -14,6 +14,7 @@ Features
 
 - Verschiedene Gallerie Seiten Typen
 - Verschiedene Gallery PHP / JS Controls
+- Zoom Funktionalität auf Bilder im Inhalt
 
 Installation
 ------------

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiqqer>
+    <project>
+
+        <wysiwyg>
+            <styles>
+                <!-- messages -->
+                <style element="img">
+                    <locale group="quiqqer/gallery" var="image.zoom"/>
+                    <attributes>
+                        <attribute name="data-zoom">1</attribute>
+                    </attributes>
+                </style>
+            </styles>
+        </wysiwyg>
+
+    </project>
+</quiqqer>

@@ -87,7 +87,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             }
 
             var oldMobileStatus = this.$__mobile;
-            this.$__mobile = (QUI.getWindowSize().x < 767);
+            this.$__mobile      = (QUI.getWindowSize().x < 767);
 
             if (!this.$opened) {
                 return;
@@ -106,7 +106,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             }
 
             // redraw so we close and open new
-            this.close().then(function() {
+            this.close().then(function () {
                 this.open();
             }.bind(this));
         },
@@ -152,7 +152,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             );
 
             this.$Prev = new Element('div', {
-                html : '<span class="fa fa-chevron-left icon-chevron-left"></span>',
+                html   : '<span class="fa fa-chevron-left icon-chevron-left"></span>',
                 'class': 'qui-gallery-popup-imagePrev',
                 events : {
                     click: this.showPrevImage
@@ -160,7 +160,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             }).inject(Elm);
 
             this.$Next = new Element('div', {
-                html : '<span class="fa fa-chevron-right icon-chevron-right"></span>',
+                html   : '<span class="fa fa-chevron-right icon-chevron-right"></span>',
                 'class': 'qui-gallery-popup-imageNext',
                 events : {
                     click: this.showNextImage
@@ -351,7 +351,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                     pc = QUIMath.percent(docWidth, width);
 
                     width  = docWidth;
-                    height = ( height * (pc / 100) ).round();
+                    height = (height * (pc / 100)).round();
                 }
 
                 // set height ?
@@ -359,7 +359,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                     pc = QUIMath.percent(docHeight, height);
 
                     height = docHeight;
-                    width  = ( width * (pc / 100) ).round();
+                    width  = (width * (pc / 100)).round();
                 }
 
 
