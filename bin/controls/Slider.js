@@ -251,6 +251,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 }
 
                 var Placeholder = new Element('div', {
+                    'class' : 'quiqqer-gallery-slider-placeholder',
                     html  : image,
                     styles: {
                         color     : '#fff',
