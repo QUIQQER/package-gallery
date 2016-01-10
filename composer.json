@@ -2,7 +2,7 @@
     "name" : "quiqqer/gallery",
     "type" : "quiqqer-module",
     "description" : "Gallery for QUIQQER.",
-    "version" : "dev-dev",
+    "version" : "dev-master",
     "license" : "GPL-2.0+",
 
     "authors" : [{
