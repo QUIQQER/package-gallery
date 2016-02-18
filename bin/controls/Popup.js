@@ -127,11 +127,11 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             this.$ButtonCnr = new Element('div', {
                 'class': 'qui-gallery-popup-image-buttons',
                 html   : '<div class="qui-gallery-popup-buttons-prev">' +
-                         '<span class="fa fa-chevron-left icon-chevron-left"></span>' +
+                         '<span class="fa fa-chevron-left"></span>' +
                          '</div>' +
                          '<div class="qui-gallery-popup-buttons-text"></div>' +
                          '<div class="qui-gallery-popup-buttons-next">' +
-                         '<span class="fa fa-chevron-right icon-chevron-right"></span>' +
+                         '<span class="fa fa-chevron-right"></span>' +
                          '</div>' +
                          '<div class="qui-gallery-popup-stats"></div>'
             }).inject(this.getElm());
@@ -153,7 +153,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             );
 
             this.$Prev = new Element('div', {
-                html   : '<span class="fa fa-chevron-left icon-chevron-left"></span>',
+                html   : '<span class="fa fa-chevron-left"></span>',
                 'class': 'qui-gallery-popup-imagePrev',
                 events : {
                     click: this.showPrevImage
@@ -161,7 +161,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             }).inject(Elm);
 
             this.$Next = new Element('div', {
-                html   : '<span class="fa fa-chevron-right icon-chevron-right"></span>',
+                html   : '<span class="fa fa-chevron-right"></span>',
                 'class': 'qui-gallery-popup-imageNext',
                 events : {
                     click: this.showNextImage
@@ -170,7 +170,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
 
 
             new Element('div', {
-                'class': 'icon-remove fa fa-close qui-gallery-popup-close',
+                'class': 'fa fa-close qui-gallery-popup-close',
                 events : {
                     click: function () {
                         this.close();
