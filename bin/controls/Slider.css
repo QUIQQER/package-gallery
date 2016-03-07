@@ -50,6 +50,7 @@
 
 .quiqqer-gallery-slider:hover .quiqqer-gallery-slider-prev,
 .quiqqer-gallery-slider:hover .quiqqer-gallery-slider-next {
+    color: #fff;
     opacity: 1;
 }
 
@@ -72,7 +73,6 @@
 
 .quiqqer-gallery-slider .fa,
 .quiqqer-gallery-slider .fa {
-    color: #fff;
     line-height: 60px;
 }
 
@@ -161,7 +161,6 @@
  * ========================================== */
 
 .quiqqer-gallery-slider-previews {
-    background: rgba(0, 0, 0, 0.8);
     bottom: 0;
     float: left;
     height: 80px;
