@@ -203,7 +203,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             this.$Previews  = this.$Elm.getElement('.quiqqer-gallery-slider-previews');
 
             this.$Previews.setStyles({
-                background: this.getAttribute('previews-background-color'),
+                background: this.getAttribute('preview-background-color'),
                 color     : this.getAttribute('preview-color')
             });
 
