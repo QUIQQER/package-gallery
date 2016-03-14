@@ -58,13 +58,16 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             'show-controls-always': true,   // display the controls at mouseleave, dont hide it
             'show-title-always'   : true,   // display the titles at mouseleave, dont hide it
             'show-title'          : true,   // show titles of the images
-            'previews'            : true,   // show preview images
-            'preview-outside'     : false,  // preview to the outside?
             'zoom'                : true,   // enable zoom function via click
             'keyevents'           : true,
             'imagefit'            : false,  // if images are center, the effect is a smooth effect, no slide effect
             'placeholderimage'    : false,
-            'placeholdercolor'    : false
+            'placeholdercolor'    : false,
+
+            'previews'                : true,   // show preview images
+            'preview-outside'         : false,  // preview to the outside?
+            'preview-background-color': 'rgba(0, 0, 0, 0.8)',
+            'preview-color'           : '#fff'
         },
 
         initialize: function (options) {
@@ -199,6 +202,11 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             this.$Controls  = this.$Elm.getElement('.quiqqer-gallery-slider-controls');
             this.$Previews  = this.$Elm.getElement('.quiqqer-gallery-slider-previews');
 
+            this.$Previews.setStyles({
+                background: this.getAttribute('previews-background-color'),
+                color     : this.getAttribute('preview-color')
+            });
+
             if (this.getAttribute('preview-outside')) {
                 this.$Previews.inject(this.$Elm);
                 this.$Elm.addClass('quiqqer-gallery-slider-previewOutside');
@@ -251,9 +259,9 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 }
 
                 var Placeholder = new Element('div', {
-                    'class' : 'quiqqer-gallery-slider-placeholder',
-                    html  : image,
-                    styles: {
+                    'class': 'quiqqer-gallery-slider-placeholder',
+                    html   : image,
+                    styles : {
                         color     : '#fff',
                         background: '#000',
                         fontSize  : 40,
@@ -959,13 +967,12 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             // load images
             require(imageList, function () {
 
-                var width = 0;
+                var Container = null,
+                    width     = 0;
 
                 for (i = 0, len = arguments.length; i < len; i++) {
 
-                    width = width + arguments[i].width + 5;
-
-                    new Element('div', {
+                    Container = new Element('div', {
                         'class'     : 'quiqqer-gallery-slider-previews-entry',
                         html        : '<img src="' + arguments[i].src + '" />',
                         events      : {
@@ -973,6 +980,11 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                         },
                         'data-image': i
                     }).inject(self.$PreviewsSlider);
+
+                    //console.log(Container.getComputedSize());
+                    width = width + Container.getComputedSize().totalWidth + 2;
+                    width = width + Container.getStyle('marginLeft').toInt();
+                    width = width + Container.getStyle('marginRight').toInt();
                 }
 
                 self.$PreviewsSlider.setStyle('width', width);
