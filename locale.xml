@@ -56,7 +56,7 @@ In diesem Modus lassen sich die Bilder per Klick auf die Pfeile rechts und links
             <en><![CDATA[]]></en>
         </locale>
         <locale name="image.zoom">
-            <de><![CDATA[Bild ist zoombar]]></de>
+            <de><![CDATA[Lightbox - Bild kann vergrößert werden.]]></de>
             <en><![CDATA[Image is zoomable]]></en>
         </locale>
     </groups>
