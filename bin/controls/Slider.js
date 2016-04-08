@@ -967,7 +967,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             // load images
             require(imageList, function () {
 
-                var size;
+                var size, imgSize;
                 var Container = null,
                     width     = 0;
 
@@ -983,13 +983,17 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     }).inject(self.$PreviewsSlider);
 
                     //console.log(Container.getComputedSize());
-                    size = Container.getComputedSize();
+                    size    = Container.getComputedSize();
+                    imgSize = Container.getElement('img').getComputedSize();
 
                     if (!size.totalWidth) {
                         size.totalWidth = arguments[i].width;
                     }
 
-                    width = width + size.totalWidth + 2;
+                    width = width +
+                            size.totalWidth +
+                            imgSize['padding-left'] +
+                            imgSize['padding-right'];
 
                     width = width + Container.getStyle('marginLeft').toInt();
                     width = width + Container.getStyle('marginRight').toInt();
