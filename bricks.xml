@@ -13,14 +13,32 @@
             </description>
             <settings>
                 <setting name="folderId" class="media-folder">
-                    <locale group="quiqqer/template-qui"
-                            var="bricks.gallery.component.setting.folderId"
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gallery.settings.folderId"
                     />
                 </setting>
-                <setting name="effect">
-                    <locale group="quiqqer/template-qui"
-                            var="bricks.gallery.component.setting.effect"
+                <setting name="effect" type="select">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gallery.component.setting.effect"
                     />
+                    <option value="forwardPulse">
+                        <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.type.component-forwardPulse"/>
+                    </option>
+                    <option value="coverflow">
+                        <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.type.component-coverflow"/>
+                    </option>
+                    <option value="photoBrowse">
+                        <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.type.component-photoBrowse"/>
+                    </option>
+                    <option value="ferrisWheel">
+                        <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.type.component-ferrisWheel"/>
+                    </option>
+                    <option value="snake">
+                        <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.type.component-snake"/>
+                    </option>
+                    <option value="slideBehind">
+                        <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.type.component-slideBehind"/>
+                    </option>
                 </setting>
             </settings>
         </brick>

@@ -35,41 +35,7 @@ class Component extends QUI\Control
         parent::__construct($attributes);
 
         // css files
-        $dir = dirname(__FILE__);
-
-        $this->addCSSFile($dir.'/Component.css');
-
-        switch ($this->getAttribute('effect')) {
-            case 'forwardPulse':
-                $this->addCSSFile($dir.'/Component.fx.forwardPulse.css');
-                $this->setAttribute('data-effect', 'forwardPulse');
-                break;
-
-            case 'coverflow':
-                $this->addCSSFile($dir.'/Component.fx.coverflow.css');
-                $this->setAttribute('data-effect', 'coverflow');
-                break;
-
-            case 'photoBrowse':
-                $this->addCSSFile($dir.'/Component.fx.photoBrowse.css');
-                $this->setAttribute('data-effect', 'photoBrowse');
-                break;
-
-            case 'ferrisWheel':
-                $this->addCSSFile($dir.'/Component.fx.ferrisWheel.css');
-                $this->setAttribute('data-effect', 'ferrisWheel');
-                break;
-
-            case 'snake':
-                $this->addCSSFile($dir.'/Component.fx.snake.css');
-                $this->setAttribute('data-effect', 'snake');
-                break;
-
-            case 'slideBehind':
-                $this->addCSSFile($dir.'/Component.fx.slideBehind.css');
-                $this->setAttribute('data-effect', 'slideBehind');
-                break;
-        }
+        $this->addCSSFile(dirname(__FILE__).'/Component.css');
     }
 
     /**
@@ -128,6 +94,40 @@ class Component extends QUI\Control
                 'order' => $order
             ))
         ));
+
+        // css files
+        $dir = dirname(__FILE__);
+        switch ($this->getAttribute('effect')) {
+            case 'forwardPulse':
+                $this->addCSSFile($dir.'/Component.fx.forwardPulse.css');
+                $this->setAttribute('data-effect', 'forwardPulse');
+                break;
+
+            case 'coverflow':
+                $this->addCSSFile($dir.'/Component.fx.coverflow.css');
+                $this->setAttribute('data-effect', 'coverflow');
+                break;
+
+            case 'photoBrowse':
+                $this->addCSSFile($dir.'/Component.fx.photoBrowse.css');
+                $this->setAttribute('data-effect', 'photoBrowse');
+                break;
+
+            case 'ferrisWheel':
+                $this->addCSSFile($dir.'/Component.fx.ferrisWheel.css');
+                $this->setAttribute('data-effect', 'ferrisWheel');
+                break;
+
+            case 'snake':
+                $this->addCSSFile($dir.'/Component.fx.snake.css');
+                $this->setAttribute('data-effect', 'snake');
+                break;
+
+            case 'slideBehind':
+                $this->addCSSFile($dir.'/Component.fx.slideBehind.css');
+                $this->setAttribute('data-effect', 'slideBehind');
+                break;
+        }
 
         return $Engine->fetch(dirname(__FILE__).'/Component.html');
     }
