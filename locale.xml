@@ -4,62 +4,132 @@
         <locale name="package.title">
             <de><![CDATA[QUIQQER - Galerie]]></de>
             <en><![CDATA[QUIQQER - Gallery]]></en>
+            <pl><![CDATA[QUIQQER - Galeria]]></pl>
         </locale>
         <locale name="package.description" html="true">
             <de><![CDATA[<p>F&uuml;gen Sie Ihrem Projekt eine Seite mit dem Seitentyp &quot;Galerie&quot; hinzu, um Bilder in verschiedenen Ablauftypen anzeigen zu lassen.</p>]]></de>
             <en><![CDATA[]]></en>
+            <pl><![CDATA[Zmiana typu strony na "galerie" da możliwość wyświetlenia obrazków z różnznmi efektami przejścia.]]></pl>
         </locale>
         <locale name="admin.types.gallery.component">
             <de><![CDATA[QUIQQER - Galerie "Komponenten"]]></de>
             <en><![CDATA[QUIQQER - Gallery component]]></en>
+            <pl><![CDATA[QUIQQER - Komponenty galerii]]></pl>
         </locale>
         <locale name="admin.types.gallery.grid">
             <de><![CDATA[QUIQQER - Galerie "Grid"]]></de>
             <en><![CDATA[QUIQQER - Gallery grid]]></en>
+            <pl><![CDATA[QUIQQER - "Siatka" galerii (grid)]]></pl>
         </locale>
         <locale name="quiqqer.gallery.settings.folderId">
             <de><![CDATA[Media-Ordner auswählen]]></de>
             <en><![CDATA[Media folder]]></en>
+            <pl><![CDATA[Wskaż folder z obrazkami]]></pl>
+        </locale>
+        <locale name="quiqqer.gallery.component.setting.effect">
+            <de><![CDATA[Galerie Effekt]]></de>
+            <en><![CDATA[Gallery effect]]></en>
+            <pl><![CDATA[]]>Wybierz efekt</pl>
         </locale>
         <locale name="bricks.gallery.component.title">
-            <de><![CDATA[Baustein: Galerie Komponenten]]></de>
+            <de><![CDATA[Bausteine: Galerie Komponenten]]></de>
             <en><![CDATA[]]></en>
+            <pl><![CDATA[]]></pl>
         </locale>
         <locale name="admin.types.gallery.slider">
             <de><![CDATA[QUIQQER - Galerie "Slider"]]></de>
             <en><![CDATA[QUIQQER - Gallery Slider]]></en>
+            <pl><![CDATA[QUIQQER - Galeria w formie slajdów]]></pl>
         </locale>
         <locale name="bricks.gallery.slider.title">
-            <de><![CDATA[Baustein: Galerie Slider-Effekt]]></de>
+            <de><![CDATA[Bausteine: Galerie Slider-Effekt]]></de>
             <en><![CDATA[]]></en>
+            <pl><![CDATA[Moduł - Galeria w formie slajdów]]></pl>
         </locale>
         <locale name="quiqqer/gallery:types/gallery-component.description" html="true">
-            <de><![CDATA[<p>Galerie-Typ mit vielen unterschiedlichen Effekten. W&auml;hlen Sie in den Einstellungen der Galerie-Seite die Gallerie-Einstellungen aus um einen der folgenden Effekte anzeigen zu lassen:<br />
-Pulsierend, Coverflow, Photo, Ferris Wheel, Snake und Slide Behind</p>]]></de>
+            <de><![CDATA[<p>Galerie-Typ mit vielen unterschiedlichen Effekten.
+            W&auml;hlen Sie in den Einstellungen der Galerie-Seite die Gallerie-Einstellungen
+            aus um einen der folgenden Effekte anzeigen zu lassen:<br />
+            Pulsierend, Coverflow, Photo, Ferris Wheel, Snake und Slide Behind</p>]]></de>
             <en><![CDATA[]]></en>
+            <pl><![CDATA[Typ galerii z różnzmi efektami przejścia. Wybierz w ustawieniach jeden z następujących efektów:><br />
+            pulsowanie, przykrycie, przeglądanie zdjęć, diabelski młyn, przesunięcie, schowanie do tyłu.]]></pl>
         </locale>
         <locale name="quiqqer/gallery:types/gallery-grid.title">
             <de><![CDATA[QUIQQER - Gallerie-Typ: "Grid"]]></de>
             <en><![CDATA[]]></en>
+            <pl><![CDATA[QUIQQER - "Siatka" galerii (grid)]]></pl>
         </locale>
         <locale name="quiqqer/gallery:types/gallery-grid.description">
-            <de><![CDATA[Der Galerie-Typ "Grid" Zeigt Ihre Bilder in einer Art Tabelle mit Blätterfunktion an. Per Klick au ein Bild, wird dieses vergrößert.
-In diesem Modus lassen sich die Bilder per Klick auf die Pfeile rechts und links oder per Pfeiltasten auf der Tastatur durchblättern.]]></de>
+            <de><![CDATA[Der Galerie-Typ "Grid" Zeigt Ihre Bilder in einer Art Tabelle mit Blätterfunktion an.
+                         Per Klick an ein Bild wird dieses vergrößert.
+                         In diesem Modus lassen sich die Bilder per Klick auf die Pfeile rechts
+                         und links oder per Pfeiltasten auf der Tastatur durchblättern.]]>
+            </de>
             <en><![CDATA[]]></en>
+            <pl><![CDATA[Typ "siatka" galerii pokazuje zdjęcia w formie tabeli z możliwością przewijania stron.
+                         Klikając na obrazek można go powiększyć.
+                         Przejść na następne strony można za pomocą kliknięć w strzałki nawigacyjne lub
+                         używając klawiszy strzałek na klawiaturze.]]>
+            </pl>
         </locale>
         <locale name="quiqqer/gallery:types/gallery-slider.title">
             <de><![CDATA[QUIQQER - Gallerie-Typ: "Slide"]]></de>
             <en><![CDATA[]]></en>
+            <pl><![CDATA[QUIQQER - Typ galerii: slider]]></pl>
         </locale>
         <locale name="quiqqer/gallery:types/gallery-slider.description">
             <de><![CDATA[Eine Galerie mit einem einfach Slide-Effekt, bei welchen sich die Bilder aneinandergereiht von rechts nach links in den Rahmen schieben.]]></de>
             <en><![CDATA[]]></en>
+            <pl><![CDATA[Galeria z efektem przejscia, gdzie zdjęcia przesuwane są po kolei z prawej na lewą.]]></pl>
         </locale>
         <locale name="image.zoom">
             <de><![CDATA[Lightbox - Bild kann vergrößert werden.]]></de>
             <en><![CDATA[Image is zoomable]]></en>
+            <pl><![CDATA[Obrazek może być powiększony]]></pl>
+        </locale>
+        <locale name="quiqqer/gallery:types/gallery-component.title">
+            <de><![CDATA[QUIQQER - Gallerie-Typ: "Effekte"]]></de>
+            <en><![CDATA[]]></en>
+            <pl><![CDATA[QUIQQER - Galeria: "efekty"]]></pl>
+        </locale>
+        <locale name="quiqqer/gallery:types/gallery-component.title">
+            <de><![CDATA[QUIQQER - Gallerie-Typ: "Effekte"]]></de>
+            <en><![CDATA[]]></en>
+            <pl><![CDATA[QUIQQER - Galeria: "efekty"]]></pl>
+        </locale>
+        <locale name="quiqqer.gallery.settings.type.component-forwardPulse">
+            <de><![CDATA[Galerie mit Pulsier-Effekt]]></de>
+            <en><![CDATA[Gallery with pulse effect]]></en>
+            <pl><![CDATA[Efekt pulsowania]]></pl>
+        </locale>
+        <locale name="quiqqer.gallery.settings.type.component-photoBrowse">
+            <de><![CDATA[Galerie mit Photo-Effekt]]></de>
+            <en><![CDATA[Gallery with photo effect]]></en>
+            <pl><![CDATA[Efekt przeglądania zdjęć]]></pl>
+        </locale>
+        <locale name="quiqqer.gallery.settings.type.component-coverflow">
+            <de><![CDATA[Galerie mit Coverflow-Effekt]]></de>
+            <en><![CDATA[Galerie width coverflow effect]]></en>
+            <pl><![CDATA[Efekt przykrycia]]></pl>
+        </locale>
+        <locale name="quiqqer.gallery.settings.type.component-ferrisWheel">
+            <de><![CDATA[Galerie mit Ferris-Wheel-Effekt]]></de>
+            <en><![CDATA[Galerie width ferris wheel effect]]></en>
+            <pl><![CDATA[Efekt diabelskiego młynu]]></pl>
+        </locale>
+        <locale name="quiqqer.gallery.settings.type.component-snake">
+            <de><![CDATA[Galerie mit Snake-Effekt]]></de>
+            <en><![CDATA[Galerie width snake effect]]></en>
+            <pl><![CDATA[Efekt pzesuwania]]></pl>
+        </locale>
+        <locale name="quiqqer.gallery.settings.type.component-slideBehind">
+            <de><![CDATA[Galerie mit Slide-Behind-Effekt]]></de>
+            <en><![CDATA[Galerie width slide behind effect]]></en>
+            <pl><![CDATA[Efekt schowania do tyłu]]></pl>
         </locale>
     </groups>
+
     <groups name="quiqqer/gallery" datatype="php">
         <locale name="quiqqer.gallery.settings.title">
             <de><![CDATA[Galerie-Einstellungen]]></de>
@@ -76,30 +146,6 @@ In diesem Modus lassen sich die Bilder per Klick auf die Pfeile rechts und links
         <locale name="quiqqer.gallery.settings.type.grid">
             <de><![CDATA[Galerie "Grid"]]></de>
             <en><![CDATA[Gallery grid]]></en>
-        </locale>
-        <locale name="quiqqer.gallery.settings.type.component-forwardPulse">
-            <de><![CDATA[Galerie mit Pulsier-Effekt]]></de>
-            <en><![CDATA[Gallery with pulse effect]]></en>
-        </locale>
-        <locale name="quiqqer.gallery.settings.type.component-photoBrowse">
-            <de><![CDATA[Galerie mit Photo-Effekt]]></de>
-            <en><![CDATA[Gallery with photo effect]]></en>
-        </locale>
-        <locale name="quiqqer.gallery.settings.type.component-coverflow">
-            <de><![CDATA[Galerie mit Coverflow-Effekt]]></de>
-            <en><![CDATA[Galerie width coverflow effect]]></en>
-        </locale>
-        <locale name="quiqqer.gallery.settings.type.component-ferrisWheel">
-            <de><![CDATA[Galerie mit Ferris-Wheel-Effekt]]></de>
-            <en><![CDATA[Galerie width ferris wheel effect]]></en>
-        </locale>
-        <locale name="quiqqer.gallery.settings.type.component-snake">
-            <de><![CDATA[Galerie mit Snake-Effekt]]></de>
-            <en><![CDATA[Galerie width snake effect]]></en>
-        </locale>
-        <locale name="quiqqer.gallery.settings.type.component-slideBehind">
-            <de><![CDATA[Galerie mit Slide-Behind-Effekt]]></de>
-            <en><![CDATA[Galerie width slide behind effect]]></en>
         </locale>
         <locale name="quiqqer.gallery.settings.sort">
             <de><![CDATA[Bildersortierung]]></de>
@@ -145,11 +191,8 @@ In diesem Modus lassen sich die Bilder per Klick auf die Pfeile rechts und links
             <de><![CDATA[Priorität aufsteigend]]></de>
             <en><![CDATA[Priority ascending]]></en>
         </locale>
-    </groups>
+    </groups><!--
     <groups name="quiqqer/gallery" datatype="php,js ">
-        <locale name="quiqqer/gallery:types/gallery-component.title">
-            <de><![CDATA[QUIQQER - Gallerie-Typ: "Effekte"]]></de>
-            <en><![CDATA[]]></en>
-        </locale>
-    </groups>
+
+    </groups>-->
 </locales>

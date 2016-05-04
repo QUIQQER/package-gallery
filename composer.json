@@ -1,29 +1,28 @@
 {
-    "name" : "quiqqer/gallery",
-    "type" : "quiqqer-module",
-    "description" : "Gallery for QUIQQER.",
-    "version" : "dev-master",
-    "license" : "GPL-2.0+",
-
-    "authors" : [{
-        "name": "Henning Leutz",
-        "email": "leutz@pcsg.de",
-        "homepage": "http://www.pcsg.de",
-        "role": "Developer"
-    }],
-
-    "support" : {
-        "email" : "support@pcsg.de"
-    },
-
-    "require": {
-        "quiqqer/quiqqer" : "*@dev"
-    },
-
-    "autoload": {
-        "psr-0" : {
-            "QUI" : "lib/"
-        }
+  "name": "quiqqer/gallery",
+  "type": "quiqqer-module",
+  "description": "Gallery for QUIQQER.",
+  "version": "dev-master",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Henning Leutz",
+      "email": "leutz@pcsg.de",
+      "homepage": "http://www.pcsg.de",
+      "role": "Developer"
     }
+  ],
+  "support": {
+    "email": "support@pcsg.de"
+  },
+  "require": {
+    "quiqqer/quiqqer": "*@dev",
+    "npm-asset/hammerjs": "2.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "QUI//Gallery//": "src/QUI/Gallery"
+    }
+  }
 }
 

@@ -26,8 +26,10 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
     'qui/utils/Math',
     'qui/utils/Functions',
     'package/quiqqer/gallery/bin/controls/Popup',
+    URL_OPT_DIR + 'bin/hammerjs/hammer.min.js',
+
     'css!package/quiqqer/gallery/bin/controls/Slider.css'
-], function (QUI, QUIControl, QUILoader, QUIProgress, QUIMath, QUIFunctionUtils, GalleryPopup) {
+], function (QUI, QUIControl, QUILoader, QUIProgress, QUIMath, QUIFunctionUtils, GalleryPopup, Hammer) {
 
     "use strict";
 
@@ -63,6 +65,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             'imagefit'            : false,  // if images are center, the effect is a smooth effect, no slide effect
             'placeholderimage'    : false,
             'placeholdercolor'    : false,
+            'touch'               : true,   // touch events?
 
             'previews'                : true,   // show preview images
             'preview-outside'         : false,  // preview to the outside?
@@ -228,6 +231,21 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
             if (!this.getAttribute('show-title')) {
                 this.$Title.setStyle('display', 'none');
+            }
+
+            if (this.getAttribute('touch')) {
+                this.$Touch = new Hammer(this.$Container);
+
+                this.$Touch.on('swipe', function (ev) {
+                    if (ev.offsetDirection == 4) {
+                        self.prev();
+                        return;
+                    }
+
+                    if (ev.offsetDirection == 2) {
+                        self.next();
+                    }
+                });
             }
 
             this.$Play.addEvent('click', this.toggleAutoplay);
@@ -967,7 +985,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             // load images
             require(imageList, function () {
 
-                var size;
+                var size, imgSize;
                 var Container = null,
                     width     = 0;
 
@@ -983,13 +1001,17 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     }).inject(self.$PreviewsSlider);
 
                     //console.log(Container.getComputedSize());
-                    size = Container.getComputedSize();
+                    size    = Container.getComputedSize();
+                    imgSize = Container.getElement('img').getComputedSize();
 
                     if (!size.totalWidth) {
                         size.totalWidth = arguments[i].width;
                     }
 
-                    width = width + size.totalWidth + 2;
+                    width = width +
+                            size.totalWidth +
+                            imgSize['padding-left'] +
+                            imgSize['padding-right'];
 
                     width = width + Container.getStyle('marginLeft').toInt();
                     width = width + Container.getStyle('marginRight').toInt();

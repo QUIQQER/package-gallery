@@ -15,10 +15,11 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
     'qui/QUI',
     'qui/controls/windows/Popup',
     'qui/utils/Math',
+    URL_OPT_DIR + 'bin/hammerjs/hammer.min.js',
 
     'css!package/quiqqer/gallery/bin/controls/Popup.css'
 
-], function (QUI, QUIWin, QUIMath) {
+], function (QUI, QUIWin, QUIMath, Hammer) {
     "use strict";
 
     return new Class({
@@ -40,7 +41,8 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             images : [],
             zIndex : 1000,
             current: false,
-            buttons: false
+            buttons: false,
+            touch  : true
         },
 
         initialize: function (options) {
@@ -116,7 +118,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
          * event : on open
          */
         $onOpen: function () {
-            
+
             var Content = this.getContent(),
                 Elm     = this.getElm();
 
@@ -211,6 +213,23 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             });
 
             this.$isOpen = true;
+
+
+            // touch events
+            if (this.getAttribute('touch')) {
+                this.$Touch = new Hammer(this.$Content);
+
+                this.$Touch.on('swipe', function (ev) {
+                    if (ev.offsetDirection == 4) {
+                        this.showPrevImage();
+                        return;
+                    }
+
+                    if (ev.offsetDirection == 2) {
+                        this.showNextImage();
+                    }
+                }.bind(this));
+            }
 
             if (this.$__mobile) {
                 this.$Content.setStyle('background', '#000');
