@@ -21,7 +21,7 @@
   },
   "autoload": {
     "psr-4": {
-      "QUI//Gallery//": "src/QUI/Gallery"
+      "QUI\\Gallery\\": "src/QUI/Gallery"
     }
   }
 }
