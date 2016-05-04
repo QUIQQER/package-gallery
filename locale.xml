@@ -32,7 +32,7 @@
             <pl><![CDATA[]]>Wybierz efekt</pl>
         </locale>
         <locale name="bricks.gallery.component.title">
-            <de><![CDATA[Baustein: Galerie Komponenten]]></de>
+            <de><![CDATA[Bausteine: Galerie Komponenten]]></de>
             <en><![CDATA[]]></en>
             <pl><![CDATA[]]></pl>
         </locale>
@@ -42,7 +42,7 @@
             <pl><![CDATA[QUIQQER - Galeria w formie slajdów]]></pl>
         </locale>
         <locale name="bricks.gallery.slider.title">
-            <de><![CDATA[Baustein: Galerie Slider-Effekt]]></de>
+            <de><![CDATA[Bausteine: Galerie Slider-Effekt]]></de>
             <en><![CDATA[]]></en>
             <pl><![CDATA[Moduł - Galeria w formie slajdów]]></pl>
         </locale>
