@@ -96,8 +96,9 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             this.$current = 0;
 
             // sizes
-            this.$pcSize   = {};
-            this.$mainSize = {};
+            this.$pcSize    = {};
+            this.$mainSize  = {};
+            this.$oldResize = {};
 
             this.$autoplayInterval = false;
 
@@ -354,7 +355,6 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * calc internal sizes
          */
         $calcSizes: function () {
-
             this.$mainSize = this.$Container.getSize();
 
             if (this.$PreviewsContainer) {
@@ -774,7 +774,6 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * @param {DOMEvent} event
          */
         $keyup: function (event) {
-
             if (this.getAttribute('keyevents') === false) {
                 return;
             }
@@ -793,7 +792,6 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * event : on window resize
          */
         $onWinResize: function () {
-
             this.$calcSizes();
 
             var Img = this.getElm().getElement('img');
@@ -804,8 +802,8 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
             // center
             var elmSize = Img.getSize(),
-                size    = this.getElm().getSize();
-
+                size    = this.$Container.getSize();
+            
             var left = ((size.x - elmSize.x) / 2).round();
 
             if (left < 0) {
