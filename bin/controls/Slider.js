@@ -109,7 +109,6 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 onImport : this.$onImport,
                 onDestroy: function () {
                     window.removeEvent('keyup', this.$keyup);
-                    //window.removeEvent('resize', __winResize);
                     QUI.removeEvent('resize', this.$onWinResize);
                 }.bind(this)
             });
@@ -166,7 +165,6 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * @return {HTMLElement}
          */
         create: function () {
-
             var self = this;
 
             if (!this.$Elm) {
@@ -267,48 +265,55 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 self.prev();
             });
 
-            if (!this.$images.length) {
+            if (this.$images.length == 1) {
+                this.$Play.setStyle('display', 'none');
+                this.$Random.setStyle('display', 'none');
+            }
+
+            if (this.$images.length <= 1) {
                 this.$Next.setStyle('display', 'none');
                 this.$Prev.setStyle('display', 'none');
 
-                var image = '<span class="fa fa-file-image-o"></span>';
+                if (!this.$images.length) {
+                    var image = '<span class="fa fa-file-image-o"></span>';
 
-                if (this.getAttribute('placeholderimage')) {
-                    image = '';
-                }
-
-                var Placeholder = new Element('div', {
-                    'class': 'quiqqer-gallery-slider-placeholder',
-                    html   : image,
-                    styles : {
-                        color     : '#fff',
-                        background: '#000',
-                        fontSize  : 40,
-                        height    : '100%',
-                        paddingTop: '20%',
-                        opacity   : 0.6,
-                        position  : 'absolute',
-                        textAlign : 'center',
-                        top       : 0,
-                        width     : '100%'
-
+                    if (this.getAttribute('placeholderimage')) {
+                        image = '';
                     }
-                }).inject(this.$Elm);
+
+                    var Placeholder = new Element('div', {
+                        'class': 'quiqqer-gallery-slider-placeholder',
+                        html   : image,
+                        styles : {
+                            color     : '#fff',
+                            background: '#000',
+                            fontSize  : 40,
+                            height    : '100%',
+                            paddingTop: '20%',
+                            opacity   : 0.6,
+                            position  : 'absolute',
+                            textAlign : 'center',
+                            top       : 0,
+                            width     : '100%'
+
+                        }
+                    }).inject(this.$Elm);
 
 
-                if (this.getAttribute('placeholdercolor')) {
-                    Placeholder.setStyle(
-                        'backgroundColor',
-                        this.getAttribute('placeholdercolor')
-                    );
-                }
+                    if (this.getAttribute('placeholdercolor')) {
+                        Placeholder.setStyle(
+                            'backgroundColor',
+                            this.getAttribute('placeholdercolor')
+                        );
+                    }
 
-                if (this.getAttribute('placeholderimage')) {
-                    Placeholder.setStyles({
-                        backgroundImage   : 'url("' + this.getAttribute('placeholderimage') + '")',
-                        backgroundRepeat  : 'no-repeat',
-                        backgroundPosition: 'center center'
-                    });
+                    if (this.getAttribute('placeholderimage')) {
+                        Placeholder.setStyles({
+                            backgroundImage   : 'url("' + this.getAttribute('placeholderimage') + '")',
+                            backgroundRepeat  : 'no-repeat',
+                            backgroundPosition: 'center center'
+                        });
+                    }
                 }
             }
 
@@ -332,7 +337,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 );
             }
 
-            if (!this.getAttribute('preview') || !this.$images.length) {
+            if (!this.getAttribute('preview') || this.$images.length <= 1) {
                 this.$Previews.setStyle('display', 'none');
             } else {
                 this.$createPreviews();
@@ -394,7 +399,6 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * @return Promise
          */
         next: function () {
-
             return new Promise(function (resolve, reject) {
 
                 if (this.$__animate) {
@@ -403,7 +407,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 }
 
                 if (!this.$images.length) {
-                    reject();
+                    resolve();
                     return;
                 }
 
@@ -466,7 +470,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     return;
                 }
 
-                if (!this.$images.length) {
+                if (this.$images.length <= 1) {
                     reject();
                     return;
                 }
@@ -803,7 +807,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             // center
             var elmSize = Img.getSize(),
                 size    = this.$Container.getSize();
-            
+
             var left = ((size.x - elmSize.x) / 2).round();
 
             if (left < 0) {
@@ -909,7 +913,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 return;
             }
 
-            if (!this.$images.length) {
+            if (this.$images.length <= 1) {
                 if (this.$Previews) {
                     this.$Previews.setStyle('display', 'none');
                 }
