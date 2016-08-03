@@ -52,6 +52,7 @@ class Grid extends QUI\Control
 
         /* @var $Folder \QUI\Projects\Media\Folder */
         $Folder = $Media->get($this->getAttribute('folderId'));
+
         $start  = $this->getAttribute('start');
         $max    = $this->getAttribute('max');
 
