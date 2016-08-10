@@ -8,6 +8,8 @@
  * @require qui/QUI
  * @require qui/controls/windows/Popup
  * @require qui/utils/Math
+ * @require URL_OPT_DIR + bin/hammerjs/hammer.min.js
+ * @require text!package/quiqqer/gallery/bin/controls/Popup.html
  * @require css!package/quiqqer/gallery/bin/controls/Popup.css
  */
 define('package/quiqqer/gallery/bin/controls/Popup', [
@@ -17,9 +19,10 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
     'qui/utils/Math',
     URL_OPT_DIR + 'bin/hammerjs/hammer.min.js',
 
+    'text!package/quiqqer/gallery/bin/controls/Popup.html',
     'css!package/quiqqer/gallery/bin/controls/Popup.css'
 
-], function (QUI, QUIWin, QUIMath, Hammer) {
+], function (QUI, QUIWin, QUIMath, Hammer, template) {
     "use strict";
 
     return new Class({
@@ -101,8 +104,10 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
 
             var height = size.y - textSize.y;
 
-            this.$Next.setStyle('height', height);
-            this.$Prev.setStyle('height', height);
+            if (this.$Next && this.$Prev) {
+                this.$Next.setStyle('height', height);
+                this.$Prev.setStyle('height', height);
+            }
 
             if (oldMobileStatus === this.$__mobile) {
                 return;
@@ -118,9 +123,9 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
          * event : on open
          */
         $onOpen: function () {
-
             var Content = this.getContent(),
-                Elm     = this.getElm();
+                Elm     = this.getElm(),
+                images  = this.getAttribute('images');
 
             Elm.getElements('.qui-window-popup-buttons').destroy();
 
@@ -128,14 +133,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
 
             this.$ButtonCnr = new Element('div', {
                 'class': 'qui-gallery-popup-image-buttons',
-                html   : '<div class="qui-gallery-popup-buttons-prev">' +
-                         '<span class="fa fa-chevron-left"></span>' +
-                         '</div>' +
-                         '<div class="qui-gallery-popup-buttons-text"></div>' +
-                         '<div class="qui-gallery-popup-buttons-next">' +
-                         '<span class="fa fa-chevron-right"></span>' +
-                         '</div>' +
-                         '<div class="qui-gallery-popup-stats"></div>'
+                html   : template
             }).inject(this.getElm());
 
             this.$ButtonText = this.$ButtonCnr.getElement(
@@ -169,6 +167,16 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                     click: this.showNextImage
                 }
             }).inject(Elm);
+
+
+            if (typeOf(images) === 'array' && images.length <= 1) {
+                this.$Prev.setStyle('display', 'none');
+                this.$Next.setStyle('display', 'none');
+                this.$ButtonPrev.setStyle('display', 'none');
+                this.$ButtonNext.setStyle('display', 'none');
+
+                this.$ButtonText.setStyle('width', 'calc(100% - 100px)');
+            }
 
 
             new Element('div', {
@@ -436,7 +444,6 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                 ); // #locale
 
                 self.resize(false, function () {
-
                     self.getContent().set({
                         html  : '',
                         styles: {

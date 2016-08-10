@@ -11,6 +11,7 @@
  * @require qui/utils/Math
  * @require qui/utils/Functions
  * @require package/quiqqer/gallery/bin/controls/Popup
+ * @require URL_OPT_DIR + bin/hammerjs/hammer.min.js
  * @require css!package/quiqqer/gallery/bin/controls/Slider.css
  *
  * @event animateOutBegin [self, Element]
@@ -28,9 +29,9 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
     'package/quiqqer/gallery/bin/controls/Popup',
     URL_OPT_DIR + 'bin/hammerjs/hammer.min.js',
 
+    'text!package/quiqqer/gallery/bin/controls/Slider.html',
     'css!package/quiqqer/gallery/bin/controls/Slider.css'
-], function (QUI, QUIControl, QUILoader, QUIProgress, QUIMath, QUIFunctionUtils, GalleryPopup, Hammer) {
-
+], function (QUI, QUIControl, QUILoader, QUIProgress, QUIMath, QUIFunctionUtils, GalleryPopup, Hammer, template) {
     "use strict";
 
     return new Class({
@@ -177,21 +178,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             }
 
             this.$Elm.set({
-                html: '<div class="quiqqer-gallery-slider-content">' +
-                      '<div class="quiqqer-gallery-slider-prev">' +
-                      '<span class="fa fa-chevron-left"></span>' +
-                      '</div>' +
-                      '<div class="quiqqer-gallery-slider-title"></div>' +
-                      '<div class="quiqqer-gallery-slider-next">' +
-                      '<span class="fa fa-chevron-right"></span>' +
-                      '</div>' +
-                      '<div class="quiqqer-gallery-slider-controls">' +
-                      '<span class="fa fa-play"></span>' +
-                      '<span class="fa fa-random"></span>' +
-                      '<span class="fa fa-search"></span>' +
-                      '</div>' +
-                      '<div class="quiqqer-gallery-slider-previews"></div>' +
-                      '</div>'
+                html: template
             });
 
             this.Loader.inject(this.$Elm);
@@ -232,7 +219,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 this.$Title.setStyle('display', 'none');
             }
 
-            if (this.getAttribute('touch')) {
+            if (this.getAttribute('touch') && this.$images.length > 1) {
                 this.$Touch = new Hammer(this.$Container);
 
                 this.$Touch.on('swipe', function (ev) {
@@ -386,7 +373,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
         /**
          * show the first image
          *
-         * @return Promise
+         * @return {Promise}
          */
         showFirst: function () {
             this.$current = -1;
@@ -396,13 +383,12 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
         /**
          * show the next image
          *
-         * @return Promise
+         * @return {Promise}
          */
         next: function () {
-            return new Promise(function (resolve, reject) {
-
+            return new Promise(function (resolve) {
                 if (this.$__animate) {
-                    reject();
+                    resolve();
                     return;
                 }
 
@@ -462,16 +448,14 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * show the prev image
          */
         prev: function () {
-
-            return new Promise(function (resolve, reject) {
-
+            return new Promise(function (resolve) {
                 if (this.$__animate) {
-                    reject();
+                    resolve();
                     return;
                 }
 
                 if (this.$images.length <= 1) {
-                    reject();
+                    resolve();
                     return;
                 }
 
@@ -527,19 +511,16 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * @param {String} src - Image source
          * @param {Function} [callback] - optional
          *
-         * @return Promise
+         * @return {Promise}
          */
         loadImage: function (src, callback) {
-
             return new Promise(function (resolve, reject) {
-
                 require(['image!' + src], function (Image) {
                     resolve(Image);
 
                     if (typeof callback === 'function') {
                         callback(Image);
                     }
-
                 }, reject);
             });
         },
@@ -551,12 +532,10 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * @param {String} [direction]  - left|right
          * @param {Function} [callback] - callback function
          *
-         * @return Promise
+         * @return {Promise}
          */
         animateOut: function (Elm, direction, callback) {
-
             return new Promise(function (resolve) {
-
                 if (!Elm || (typeOf(Elm) === 'elements' && !Elm.length)) {
                     if (typeof callback === 'function') {
                         callback();
@@ -598,12 +577,10 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * @param {String} [direction]  - left|right
          * @param {Function} [callback] - callback function
          *
-         * @return Promise
+         * @return {Promise}
          */
         animateIn: function (Elm, direction, callback) {
-
             return new Promise(function (resolve) {
-
                 if (!Elm || (typeOf(Elm) === 'elements' && !Elm.length)) {
                     if (typeof callback === 'function') {
                         callback();
@@ -734,7 +711,6 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * @returns {HTMLImageElement} New image DOM-Node
          */
         $createNewImage: function (Image) {
-
             var pc;
 
             var listSize  = this.$Container.getSize(),
@@ -779,6 +755,10 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          */
         $keyup: function (event) {
             if (this.getAttribute('keyevents') === false) {
+                return;
+            }
+
+            if (this.$images.length <= 1) {
                 return;
             }
 
@@ -831,6 +811,10 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * Start the autoplay
          */
         autoplay: function () {
+            if (this.$images.length <= 1) {
+                return;
+            }
+
             this.$Play.addClass('control-background-active');
 
             if (this.$autoplayInterval) {
@@ -966,7 +950,6 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
             // image click action
             var imageClick = function (event) {
-
                 var Target = event.target;
 
                 if (!Target.hasClass('quiqqer-gallery-slider-previews-entry')) {
@@ -986,13 +969,11 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
             // load images
             require(imageList, function () {
-
                 var size, imgSize;
                 var Container = null,
                     width     = 0;
 
                 for (i = 0, len = arguments.length; i < len; i++) {
-
                     Container = new Element('div', {
                         'class'     : 'quiqqer-gallery-slider-previews-entry',
                         html        : '<img src="' + arguments[i].src + '" />',
@@ -1026,7 +1007,6 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 }, {
                     duration: 250
                 });
-
             });
         },
 
