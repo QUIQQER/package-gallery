@@ -30,11 +30,11 @@ class Slider extends QUI\Control
     {
         // default options
         $this->setAttributes(array(
-            'Project' => false,
-            'folderId' => false,
-            'class' => 'quiqqer-gallery-slider',
-            'data-qui' => 'package/quiqqer/gallery/bin/controls/Slider',
-            'order' => false,
+            'Project'          => false,
+            'folderId'         => false,
+            'class'            => 'quiqqer-gallery-slider',
+            'data-qui'         => 'package/quiqqer/gallery/bin/controls/Slider',
+            'order'            => false,
             'placeholderimage' => false,
             'placeholdercolor' => false
         ));
@@ -70,7 +70,6 @@ class Slider extends QUI\Control
                 'data-qui-options-placeholderimage',
                 $this->getAttribute('placeholderimage')
             );
-
         } else {
             $Placeholder = $Media->getPlaceholderImage();
 
@@ -88,15 +87,12 @@ class Slider extends QUI\Control
                 $Folder = QUI\Projects\Media\Utils::getMediaItemByUrl(
                     $folderId
                 );
-
             } catch (QUI\Exception $Exception) {
                 $Folder = false;
             }
-
         } elseif ($folderId) {
             try {
                 $Folder = $Media->get((int)$folderId);
-
             } catch (QUI\Exception $Exception) {
                 $Folder = false;
             }
@@ -134,7 +130,6 @@ class Slider extends QUI\Control
             $images = $Folder->getImages(array(
                 'order' => $order
             ));
-
         } elseif (!empty($this->_ownImages)) {
             $images = $this->_ownImages;
         }
@@ -142,10 +137,10 @@ class Slider extends QUI\Control
 
         $Engine->assign(array(
             'Rewrite' => QUI::getRewrite(),
-            'this' => $this,
-            'Folder' => $Folder,
-            'images' => $images,
-            'Site' => $this->getSite()
+            'this'    => $this,
+            'Folder'  => $Folder,
+            'images'  => $images,
+            'Site'    => $this->getSite()
         ));
 
         return $Engine->fetch(dirname(__FILE__) . '/Slider.html');
