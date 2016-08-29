@@ -52,8 +52,9 @@ class Grid extends QUI\Control
 
         /* @var $Folder \QUI\Projects\Media\Folder */
         $Folder = $Media->get($this->getAttribute('folderId'));
-        $start  = $this->getAttribute('start');
-        $max    = $this->getAttribute('max');
+
+        $start = $this->getAttribute('start');
+        $max   = $this->getAttribute('max');
 
         $Pagination = new QUI\Bricks\Controls\Pagination(array(
             'limit' => false

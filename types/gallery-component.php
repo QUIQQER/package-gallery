@@ -1,11 +1,10 @@
 <?php
 
-$folder = $Site->getAttribute('quiqqer.settings.gallery.folderId');
+$folder      = $Site->getAttribute('quiqqer.settings.gallery.folderId');
 $galleryType = $Site->getAttribute('quiqqer.settings.gallery.type');
 
 try {
     $Folder = QUI\Projects\Media\Utils::getMediaItemByUrl($folder);
-
 } catch (QUI\Exception $Exception) {
     $Folder = $Site->getProject()->getMedia()->firstChild();
 }

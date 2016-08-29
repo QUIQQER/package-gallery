@@ -17,7 +17,7 @@ class EventHandler
     public static function onTemplateGetHeader($Template)
     {
         $Template->extendHeaderWithJavaScriptFile(
-            URL_OPT_DIR .'quiqqer/gallery/bin/zoom.js',
+            URL_OPT_DIR . 'quiqqer/gallery/bin/zoom.js',
             true
         );
     }

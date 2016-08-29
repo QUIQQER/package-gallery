@@ -34,6 +34,7 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
             this.$CompleteList = false;
 
             this.$__resized = false;
+            this.$images    = [];
 
             this.addEvents({
                 onImport: this.$onImport
@@ -64,18 +65,14 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                 }
             }).inject(this.$Elm);
 
-            var imageData = this.$CompleteList.getElements(
+            this.$images = this.$CompleteList.getElements(
                 '.quiqqer-gallery-grid-list-complete-entry'
             ).map(function (Elm) {
-                      return {
-                          src  : Elm.get('data-src'),
-                          title: Elm.getElement('.title').get('html'),
-                          short: Elm.getElement('.short').get('html')
-                      };
-                  });
-
-            this.$ImageWindow = new ImagePopup({
-                images: imageData
+                return {
+                    src  : Elm.get('data-src'),
+                    title: Elm.getElement('.title').get('html'),
+                    short: Elm.getElement('.short').get('html')
+                };
             });
         },
 
@@ -94,6 +91,10 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
             if (Target.nodeName != 'a') {
                 Target = Target.getParent('a');
             }
+
+            this.$ImageWindow = new ImagePopup({
+                images: this.$images
+            });
 
             this.$ImageWindow.showImage(Target.get('href'));
         }

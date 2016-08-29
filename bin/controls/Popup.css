@@ -33,7 +33,7 @@
     float: left;
     overflow: hidden;
     padding: 10px;
-    width: calc( 100% - 300px );
+    width: calc(100% - 300px);
 }
 
 .qui-gallery-popup-image-preview {
@@ -54,7 +54,7 @@
 }
 
 .qui-gallery-popup-imagePrev {
-    background: rgba(0,0,0,0);
+    background: rgba(0, 0, 0, 0);
     cursor: pointer;
     height: calc(100% - 50px);
     left: 0;
@@ -64,7 +64,7 @@
 }
 
 .qui-gallery-popup-imageNext {
-    background: rgba(0,0,0,0);
+    background: rgba(0, 0, 0, 0);
     cursor: pointer;
     height: calc(100% - 50px);
     position: absolute;
@@ -88,7 +88,7 @@
 
 .qui-gallery-popup-imageNext:hover,
 .qui-gallery-popup-imagePrev:hover {
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .qui-gallery-popup-imagePrev:hover span,
@@ -99,15 +99,15 @@
 .qui-gallery-popup-close {
     background: #fff;
     border-bottom-left-radius: 40px;
-        -webkit-border-bottom-left-radius: 40px;
-        -moz-border-radius-bottomleft: 40px;
+    -webkit-border-bottom-left-radius: 40px;
+    -moz-border-radius-bottomleft: 40px;
     cursor: pointer;
-    height : 40px;
-    line-height : 25px !important;
+    height: 40px;
+    line-height: 25px !important;
     padding-right: 5px;
-    position : absolute;
-    right : 0;
-    text-align : right;
-    top : 0;
-    width : 40px;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+    width: 40px;
 }
