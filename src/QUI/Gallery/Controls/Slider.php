@@ -98,8 +98,12 @@ class Slider extends QUI\Control
             }
         }
 
-        if ($Folder === false && empty($this->_ownImages)) {
-            $Folder = $Media->firstChild();
+        if ($Folder === false && empty($this->ownImages)) {
+            $Placeholder = $Project->getMedia()->getPlaceholderImage();
+
+            if ($Placeholder) {
+                $this->ownImages[] = $Placeholder;
+            }
         }
 
         switch ($this->getAttribute('order')) {
@@ -117,7 +121,9 @@ class Slider extends QUI\Control
                 break;
 
             default:
-                $order = $Folder->getAttribute('order');
+                if ($Folder) {
+                    $order = $Folder->getAttribute('order');
+                }
 
                 if (empty($order)) {
                     $order = 'name DESC';
@@ -130,8 +136,8 @@ class Slider extends QUI\Control
             $images = $Folder->getImages(array(
                 'order' => $order
             ));
-        } elseif (!empty($this->_ownImages)) {
-            $images = $this->_ownImages;
+        } elseif (!empty($this->ownImages)) {
+            $images = $this->ownImages;
         }
 
 
