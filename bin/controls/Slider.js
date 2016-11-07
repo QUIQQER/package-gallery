@@ -155,7 +155,9 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
 
             this.create();
-            this.showFirst().catch(function () {
+            this.showFirst().then(function () {
+                self.Loader.hide();
+            }).catch(function () {
                 self.Loader.hide();
             });
         },
