@@ -6,7 +6,8 @@
     left: 0;
     height: 50px;
     position: absolute;
-    width: 100%
+    width: 100%;
+    z-index: 1;
 }
 
 .qui-gallery-popup-buttons-prev,
@@ -110,4 +111,5 @@
     text-align: right;
     top: 0;
     width: 40px;
+    z-index: 1;
 }
