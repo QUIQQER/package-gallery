@@ -62,7 +62,6 @@ define('package/quiqqer/gallery/bin/utils/ZoomImages', function () {
          * @param {Object} Image
          */
         imageClick: function (Image) {
-
             var galleryId = Image.get('data-gallery-id');
 
             if (!galleryId) {
@@ -77,7 +76,8 @@ define('package/quiqqer/gallery/bin/utils/ZoomImages', function () {
                 'package/quiqqer/gallery/bin/controls/Popup'
             ], function (ImagePopup) {
                 new ImagePopup({
-                    images: imageList[galleryId]
+                    images : imageList[galleryId],
+                    current: Image.get('data-src')
                 }).open();
             });
         }
