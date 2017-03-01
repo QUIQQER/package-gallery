@@ -53,7 +53,9 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
 
             // defaults
             this.setAttributes({
-                closeButton: false
+                closeButton: false,
+                maxHeight  : 100,
+                maxWidth   : 100
             });
 
             this.$isOpen    = false;
@@ -189,11 +191,13 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             }).inject(Elm);
 
             Content.setStyles({
-                height   : null,
-                overflow : 'hidden',
-                outline  : 'none',
-                padding  : 0,
-                textAlign: 'center'
+                'align-items'    : 'center',
+                display          : 'flex',
+                height           : null,
+                'justify-content': 'center',
+                overflow         : 'hidden',
+                outline          : 'none',
+                padding          : 0
             });
 
             Elm.setStyles({
@@ -334,7 +338,6 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             }
 
             if (this.$Image) {
-
                 moofx(this.$Image).animate({
                     opacity: 0
                 }, {
@@ -390,7 +393,6 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                     width  = (width * (pc / 100)).round();
                 }
 
-
                 if (self.$__mobile) {
                     self.setAttribute('maxWidth', docWidth);
                     self.setAttribute('maxHeight', docHeight);
@@ -398,6 +400,14 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                     // resize win
                     self.setAttribute('maxWidth', width);
                     self.setAttribute('maxHeight', height);
+
+                    if (width < 400) {
+                        self.setAttribute('maxWidth', 400);
+                    }
+
+                    if (height < 400) {
+                        self.setAttribute('maxHeight', 400);
+                    }
                 }
 
                 // button resize
@@ -419,7 +429,8 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
 
                 Temp.setStyles({
                     height    : 0,
-                    visibility: 'hidden'
+                    visibility: 'hidden',
+                    width     : width
                 });
 
                 var dimensions = Temp.getScrollSize(),
@@ -452,7 +463,6 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                         }
                     });
 
-
                     self.$Image = new Element('img', {
                         'class': 'qui-gallery-popup-image-preview',
                         src    : src,
@@ -462,7 +472,6 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                     }).inject(self.getContent());
 
                     if (self.$__mobile) {
-
                         var imageTop = (docHeight - height) / 2;
 
                         if (imageTop < 0) {

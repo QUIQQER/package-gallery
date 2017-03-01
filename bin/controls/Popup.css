@@ -38,9 +38,9 @@
 }
 
 .qui-gallery-popup-image-preview {
-    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
     outline: none;
-    width: 100%;
 }
 
 .qui-gallery-popup-image-preview-header {
