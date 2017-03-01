@@ -191,14 +191,20 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             }).inject(Elm);
 
             Content.setStyles({
-                'align-items'    : 'center',
-                display          : 'flex',
-                height           : null,
-                'justify-content': 'center',
-                overflow         : 'hidden',
-                outline          : 'none',
-                padding          : 0
+                height   : null,
+                overflow : 'hidden',
+                outline  : 'none',
+                padding  : 0,
+                textAlign: 'center'
             });
+
+            if (!this.$__mobile) {
+                Content.setStyles({
+                    'align-items'    : 'center',
+                    display          : 'flex',
+                    'justify-content': 'center'
+                });
+            }
 
             Elm.setStyles({
                 boxShadow: '0 0 0 10px #fff, 0 10px 60px 10px rgba(8, 11, 19, 0.55)',
