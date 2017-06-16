@@ -24,6 +24,8 @@ define('package/quiqqer/gallery/bin/utils/ZoomImages', function () {
             }
 
             var imageClick = function (event) {
+                event.stop();
+
                 require([
                     'package/quiqqer/gallery/bin/utils/ZoomImages'
                 ], function (ZoomImages) {
