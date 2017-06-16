@@ -238,12 +238,12 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                 this.$Touch = new Hammer(this.$Content);
 
                 this.$Touch.on('swipe', function (ev) {
-                    if (ev.offsetDirection == 4) {
+                    if (ev.offsetDirection === 4) {
                         this.showPrevImage();
                         return;
                     }
 
-                    if (ev.offsetDirection == 2) {
+                    if (ev.offsetDirection === 2) {
                         this.showNextImage();
                     }
                 }.bind(this));
@@ -618,16 +618,16 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
          * @param {DOMEvent} event
          */
         $keyup: function (event) {
-            if (event.key == 'left') {
+            if (event.key === 'left') {
                 this.showPrevImage();
                 return;
             }
 
-            if (event.key == 'right') {
+            if (event.key === 'right') {
                 this.showNextImage();
             }
 
-            if (event.key == 'esc') {
+            if (event.key === 'esc') {
                 this.close();
             }
         }
