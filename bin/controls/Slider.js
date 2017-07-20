@@ -225,12 +225,12 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 this.$Touch = new Hammer(this.$Container);
 
                 this.$Touch.on('swipe', function (ev) {
-                    if (ev.offsetDirection == 4) {
+                    if (ev.offsetDirection === 4) {
                         self.prev();
                         return;
                     }
 
-                    if (ev.offsetDirection == 2) {
+                    if (ev.offsetDirection === 2) {
                         self.next();
                     }
                 });
@@ -254,7 +254,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 self.prev();
             });
 
-            if (this.$images.length == 1) {
+            if (this.$images.length === 1) {
                 this.$Play.setStyle('display', 'none');
                 this.$Random.setStyle('display', 'none');
             }
@@ -552,7 +552,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 var self = this,
                     left = '-100%';
 
-                if (typeof direction !== 'undefined' && direction == 'right') {
+                if (typeof direction !== 'undefined' && direction === 'right') {
                     left = '100%';
                 }
 
@@ -610,7 +610,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
                 var leftStart = '-100%';
 
-                if (typeof direction !== 'undefined' && direction == 'right') {
+                if (typeof direction !== 'undefined' && direction === 'right') {
                     leftStart = '100%';
                 }
 
@@ -764,12 +764,12 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 return;
             }
 
-            if (event.key == 'left') {
+            if (event.key === 'left') {
                 this.prev();
                 return;
             }
 
-            if (event.key == 'right') {
+            if (event.key === 'right') {
                 this.next();
             }
         },
@@ -994,9 +994,9 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     }
 
                     width = width +
-                            size.totalWidth +
-                            imgSize['padding-left'] +
-                            imgSize['padding-right'];
+                        size.totalWidth +
+                        imgSize['padding-left'] +
+                        imgSize['padding-right'];
 
                     width = width + Container.getStyle('marginLeft').toInt();
                     width = width + Container.getStyle('marginRight').toInt();
