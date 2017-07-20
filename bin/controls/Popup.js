@@ -251,6 +251,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
 
             if (this.$__mobile) {
                 this.$Content.setStyle('background', '#000');
+                this.$Content.setStyle('padding', '60px 0');
                 this.Loader.getElm().setStyle('background', '#000');
 
                 this.$ButtonText.inject(this.getElm());
