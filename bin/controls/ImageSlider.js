@@ -20,7 +20,7 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider', [
     return new Class({
 
         Extends: QUIControl,
-        Type   : 'package/quiqqer/gallery/bin/controls/Slider/ImageSlider',
+        Type   : 'package/quiqqer/gallery/bin/controls/ImageSlider',
 
         Binds: [
             '$onImport',

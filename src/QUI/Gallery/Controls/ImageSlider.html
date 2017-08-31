@@ -10,29 +10,22 @@
 </div>
 {/if*}
 
+
 <!--<div class="wrapper" style="height: {$this->getAttribute('height')}px;">-->
+
 <div class="quiqqer-bricks-children-slider-container">
     <div class="quiqqer-bricks-children-slider-container-inner">
         <ul class="quiqqer-bricks-children-slider-container-slide"
             style="height: {$this->getAttribute('height')}px;"
         >
         {strip}
-            {foreach from=$children item=Child}
-                {assign var=hasImage value=0}
-                {if $Child->getAttribute('image_site')}
-                    {assign var=hasImage value=1}
-                {/if}
+            {foreach from=$images item=$Image}
             <li class="quiqqer-bricks-children-slider-child">
                 <article class="quiqqer-bricks-children-slider-child-display">
-                    <a href="{url site=$Child}" title="{$Child->getAttribute('title')|escape:" html"}">
-                    {if !$hasImage}
-                        <header>
-                            {$Child->getAttribute('title')}
-                        </header>
-                        {$Child->getAttribute('short')}
-                    {else}
-                        {image src=$Child->getAttribute('image_site') height=$this->getAttribute('height')}
-                    {/if}
+
+                    <a href="{image image=$Image onlysrc=true}" title="{$Image->getAttribute('title')}|escape:" html"}">
+                    {image image=$Image height=600 data-zoom="1" data-src="{image image=$Image onlysrc=true}"}
+
                     </a>
                 </article>
             </li>
@@ -52,4 +45,5 @@
         </ul>
     </div>
 </div>
+
 <!--</div>-->

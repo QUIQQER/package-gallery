@@ -1,5 +1,4 @@
 .quiqqer-bricks-children-slider {
-    float: left;
     position: relative;
     width: 100%;
 }
@@ -76,15 +75,17 @@
     transition: all 1s ease;
     -webkit-transition: all 1s ease;
     max-height: calc(100% - 2px);
-    width: auto;
+    max-width: 400px;
 }
 
+/*
 .quiqqer-bricks-children-slider-child-display img:hover {
     transform: scale(1.1);
     -webkit-transform: scale(1.1);
     transition: all 2s ease;
     -webkit-transition: all 2s ease;
 }
+*/
 
 .quiqqer-bricks-children-slider-prev,
 .quiqqer-bricks-children-slider-next {

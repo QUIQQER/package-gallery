@@ -31,8 +31,8 @@ class ImageSlider extends QUI\Control
             'moreLink' => false,
             'Project'  => false,
             'folderId' => false,
-//            'data-qui' => 'package/quiqqer/gallery/bin/controls/Slider/ImageSlider',
-            'height'   => 200
+            'data-qui' => 'package/quiqqer/gallery/bin/controls/ImageSlider',
+            'height'   => 300
         ));
 
         $this->addCSSFile(
@@ -101,11 +101,6 @@ class ImageSlider extends QUI\Control
             'MoreLink' => $MoreLink
         ));
 
-        echo "<pre>";
-        print_r($images);
-        echo "</pre>";
-
-        return;
 
         return $Engine->fetch(dirname(__FILE__) . '/ImageSlider.html');
     }

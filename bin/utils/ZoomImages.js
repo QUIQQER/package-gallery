@@ -19,6 +19,8 @@ define('package/quiqqer/gallery/bin/utils/ZoomImages', function () {
                 imageData = [],
                 galleryId = String.uniqueID();
 
+            console.log(images);
+
             if (!images.length) {
                 return;
             }
@@ -66,6 +68,8 @@ define('package/quiqqer/gallery/bin/utils/ZoomImages', function () {
         imageClick: function (Image) {
             var galleryId = Image.get('data-gallery-id');
 
+            console.log(galleryId)
+
             if (!galleryId) {
                 return;
             }
@@ -73,6 +77,8 @@ define('package/quiqqer/gallery/bin/utils/ZoomImages', function () {
             if (typeof imageList[galleryId] === 'undefined') {
                 return;
             }
+
+            console.log(Image);
 
             require([
                 'package/quiqqer/gallery/bin/controls/Popup'
