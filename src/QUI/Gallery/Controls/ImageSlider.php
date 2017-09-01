@@ -23,7 +23,7 @@ class ImageSlider extends QUI\Control
     {
         // default options
         $this->setAttributes(array(
-            'class'    => 'quiqqer-bricks-children-slider',
+            'class'    => 'quiqqer-gallery-imageSlider',
             'nodeName' => 'section',
             'site'     => '',
             'order'    => false,
@@ -32,7 +32,7 @@ class ImageSlider extends QUI\Control
             'Project'  => false,
             'folderId' => false,
             'data-qui' => 'package/quiqqer/gallery/bin/controls/ImageSlider',
-            'height'   => 300
+            'height'   => 200
         ));
 
         $this->addCSSFile(

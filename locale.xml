@@ -128,6 +128,18 @@
             <en><![CDATA[Galerie width slide behind effect]]></en>
             <pl><![CDATA[Efekt schowania do tyłu]]></pl>
         </locale>
+
+
+        <locale name="quiqqer.gallery.setting.moreLink">
+            <de><![CDATA[Mehr Link]]></de>
+            <en><![CDATA[More link]]></en>
+            <pl><![CDATA[Link do strony]]></pl>
+        </locale>
+        <locale name="quiqqer.gallery.moreLink">
+            <de><![CDATA[Mehr]]></de>
+            <en><![CDATA[More]]></en>
+            <pl><![CDATA[Więcej]]></pl>
+        </locale>
     </groups>
 
     <groups name="quiqqer/gallery" datatype="php">

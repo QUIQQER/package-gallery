@@ -1,4 +1,4 @@
-{*if $this->getAttribute('showTitle') && $this->getAttribute('frontendTitle')}
+{if $this->getAttribute('showTitle') && $this->getAttribute('frontendTitle')}
 <header class="control-header">
     <h1>{$this->getAttribute('frontendTitle')}</h1>
 </header>
@@ -8,24 +8,20 @@
 <div class="control-content">
     {$this->getAttribute('content')}
 </div>
-{/if*}
+{/if}
 
-
-<!--<div class="wrapper" style="height: {$this->getAttribute('height')}px;">-->
-
-<div class="quiqqer-bricks-children-slider-container">
-    <div class="quiqqer-bricks-children-slider-container-inner">
-        <ul class="quiqqer-bricks-children-slider-container-slide"
+<div class="quiqqer-gallery-imageSlider-container">
+    <div class="quiqqer-gallery-imageSlider-container-inner">
+        <ul class="quiqqer-gallery-imageSlider-container-slide"
             style="height: {$this->getAttribute('height')}px;"
         >
         {strip}
             {foreach from=$images item=$Image}
-            <li class="quiqqer-bricks-children-slider-child">
-                <article class="quiqqer-bricks-children-slider-child-display">
-
-                    <a href="{image image=$Image onlysrc=true}" title="{$Image->getAttribute('title')}|escape:" html"}">
-                    {image image=$Image height=600 data-zoom="1" data-src="{image image=$Image onlysrc=true}"}
-
+            {assign var=src value={image image=$Image onlysrc=true}}
+            <li class="quiqqer-gallery-imageSlider-child">
+                <article class="quiqqer-gallery-imageSlider-child-display">
+                    <a href="{$src}" title="{$Image->getAttribute('title')}|escape:" html"}">
+                        {image image=$Image height=600 data-zoom="1" data-src="$src"}
                     </a>
                 </article>
             </li>
@@ -33,11 +29,13 @@
         {/strip}
 
         {if $MoreLink}
-            <li class="quiqqer-bricks-children-slider-child">
-                <article class="quiqqer-bricks-children-slider-child-display">
+            <li class="quiqqer-gallery-imageSlider-child">
+                <article class="quiqqer-gallery-imageSlider-child-display">
                     <a href="{url site=$MoreLink}" title="{$MoreLink->getAttribute('title')|escape:" html"}">
                         <span class="quiqqer-icon fa fa-angle-right"></span>
-                        <span class="quiqqer-bricks-children-slider-moreLink-text">Mehr</span>
+                        <span class="quiqqer-gallery-imageSlider-moreLink-text">
+                            {locale group="quiqqer/gallery" var="quiqqer.gallery.moreLink"}
+                        </span>
                     </a>
                 </article>
             </li>
@@ -45,5 +43,3 @@
         </ul>
     </div>
 </div>
-
-<!--</div>-->

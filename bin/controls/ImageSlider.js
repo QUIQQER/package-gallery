@@ -2,6 +2,7 @@
  * Children listing
  *
  * @module package/quiqqer/gallery/bin/controls/Slider/ImageSlider
+ * @author www.pcsg.de (Henning Leutz)
  * @author www.pcsg.de (Michael Danielczok)
  *
  * @require qui/QUI
@@ -60,10 +61,10 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider', [
             // display the buttons? if mobile, dont display it
             if (winSize.x < size.x + 100) {
                 this.$mobile = true;
-                this.getElm().addClass('quiqqer-bricks-children-slider-mobile');
+                this.getElm().addClass('quiqqer-gallery-imageSlider-mobile');
             } else {
                 this.$mobile = false;
-                this.getElm().removeClass('quiqqer-bricks-children-slider-mobile');
+                this.getElm().removeClass('quiqqer-gallery-imageSlider-mobile');
             }
 
             this.$scrollLength = (size.x / 1.2).round();
@@ -81,13 +82,11 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider', [
                 size = Elm.getSize();
 
             this.$Next = new Element('div', {
-                'class': 'quiqqer-bricks-children-slider-next hide-on-mobile',
+                'class': 'quiqqer-gallery-imageSlider-next hide-on-mobile',
                 html   : '<span class="fa fa-angle-right"></span>',
                 styles : {
-                    display   : 'none',
-                    lineHeight: size.y,
-                    opacity   : 0,
-                    right     : 0
+                    display   : 'none', // direkt display: none, damit der Button beim ersten Laden
+                    lineHeight: size.y  // der Seite kein keinen Slide-Effekt hat
                 },
                 events : {
                     click: this.next
@@ -95,13 +94,10 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider', [
             }).inject(Elm);
 
             this.$Prev = new Element('div', {
-                'class': 'quiqqer-bricks-children-slider-prev hide-on-mobile',
+                'class': 'quiqqer-gallery-imageSlider-prev hide-on-mobile',
                 html   : '<span class="fa fa-angle-left"></span>',
                 styles : {
-                    display   : 'none',
-                    left      : 0,
-                    lineHeight: size.y,
-                    opacity   : 0
+                    lineHeight: size.y
                 },
                 events : {
                     click: this.prev
@@ -109,7 +105,7 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider', [
             }).inject(Elm);
 
             this.$Inner = Elm.getElement(
-                '.quiqqer-bricks-children-slider-container-inner'
+                '.quiqqer-gallery-imageSlider-container-inner'
             );
 
             this.$SlideFX = new Fx.Scroll(this.$Inner);
@@ -176,21 +172,9 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider', [
             return new Promise(function (resolve) {
                 this.$Next.setStyle('display', null);
 
-                var right   = -50,
-                    opacity = 1;
+                this.$Next.addClass('show-next');
+                resolve();
 
-                if (this.$mobile) {
-                    right   = 0;
-                    opacity = 0.8;
-                }
-
-                this.$NextFX.animate({
-                    right  : right,
-                    opacity: opacity
-                }, {
-                    duration: 200,
-                    callback: resolve
-                });
             }.bind(this));
         },
 
@@ -200,23 +184,8 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider', [
          */
         showPrevButton: function () {
             return new Promise(function (resolve) {
-                this.$Prev.setStyle('display', null);
-
-                var left    = -50,
-                    opacity = 1;
-
-                if (this.$mobile) {
-                    left    = 0;
-                    opacity = 0.8;
-                }
-
-                this.$PrevFX.animate({
-                    left   : left,
-                    opacity: opacity
-                }, {
-                    duration: 200,
-                    callback: resolve
-                });
+                this.$Prev.addClass('show-prev');
+                resolve();
             }.bind(this));
         },
 
@@ -226,16 +195,8 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider', [
          */
         hideNextButton: function () {
             return new Promise(function (resolve) {
-                this.$NextFX.animate({
-                    right  : 0,
-                    opacity: 0
-                }, {
-                    duration: 200,
-                    callback: function () {
-                        this.$Next.setStyle('display', 'none');
-                        resolve();
-                    }.bind(this)
-                });
+                this.$Next.removeClass('show-next');
+                resolve();
             }.bind(this));
         },
 
@@ -245,16 +206,8 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider', [
          */
         hidePrevButton: function () {
             return new Promise(function (resolve) {
-                this.$PrevFX.animate({
-                    left   : 0,
-                    opacity: 0
-                }, {
-                    duration: 200,
-                    callback: function () {
-                        this.$Prev.setStyle('display', 'none');
-                        resolve();
-                    }.bind(this)
-                });
+                this.$Prev.removeClass('show-prev');
+                resolve();
             }.bind(this));
         },
 
