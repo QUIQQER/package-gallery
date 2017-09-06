@@ -7,8 +7,8 @@
             <pl><![CDATA[QUIQQER - Galeria]]></pl>
         </locale>
         <locale name="package.description" html="true">
-            <de><![CDATA[<p>F&uuml;gen Sie Ihrem Projekt eine Seite mit dem Seitentyp &quot;Galerie&quot; hinzu, um Bilder in verschiedenen Ablauftypen anzeigen zu lassen.</p>]]></de>
-            <en><![CDATA[]]></en>
+            <de><![CDATA[Präsentieren Sie Ihre Fotos, Produkte und Bilder in aufwändigen und schöne Galerien.]]></de>
+            <en><![CDATA[Present your photos, products and pictures in elaborate and beautiful galleries.]]></en>
             <pl><![CDATA[Zmiana typu strony na "galerie" da możliwość wyświetlenia obrazków z różnznmi efektami przejścia.]]></pl>
         </locale>
         <locale name="admin.types.gallery.component">
