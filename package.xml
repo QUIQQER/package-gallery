@@ -8,7 +8,14 @@
             <locale group="quiqqer/gallery" var="package.description"/>
         </description>
 
-        <image src="URL_OPT_DIR/quiqqer/package-gallery/bin/images/Logo.jpg"/>
+        <image src="URL_OPT_DIR/quiqqer/gallery/bin/images/Logo.jpg"/>
+
+        <preview>
+            <image src="URL_OPT_DIR/quiqqer/gallery/bin/images/preview/Gallery_1.jpg"/>
+            <image src="URL_OPT_DIR/quiqqer/gallery/bin/images/preview/Gallery_2.jpg"/>
+            <image src="URL_OPT_DIR/quiqqer/gallery/bin/images/preview/Gallery_3.jpg"/>
+            <image src="URL_OPT_DIR/quiqqer/gallery/bin/images/preview/Gallery_4.jpg"/>
+        </preview>
 
         <support>
             <email><![CDATA[support@pcsg.de]]></email>
