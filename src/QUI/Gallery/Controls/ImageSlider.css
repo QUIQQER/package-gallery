@@ -1,0 +1,180 @@
+.quiqqer-gallery-imageSlider {
+    position: relative;
+    width: 100%;
+}
+
+.quiqqer-gallery-imageSlider-container {
+    float: left;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.quiqqer-gallery-imageSlider-container-inner {
+    float: left;
+    /*height: calc(100% + 22px);*/
+    left: 0;
+    overflow-y: hidden;
+    overflow-x: auto;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+.quiqqer-gallery-imageSlider-container-slide {
+    display: inline-block;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    white-space: nowrap;
+}
+
+.quiqqer-gallery-imageSlider-child {
+    display: inline-block;
+    float: none;
+    /*height: calc(100% - 2px);*/
+    height: 100%;
+    padding: 0;
+}
+
+.quiqqer-gallery-imageSlider-child-display {
+    border: 1px solid #dfe4e4;
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    margin: 0 10px;
+    padding: 0;
+    text-align: center;
+}
+
+.quiqqer-gallery-imageSlider-moreLink-text {
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    position: absolute;
+    width: 100%;
+}
+
+.quiqqer-gallery-imageSlider-child-display:first-child {
+    margin: 0 10px 0 0;
+}
+
+.quiqqer-gallery-imageSlider-child:last-child .quiqqer-gallery-imageSlider-child-display {
+    margin-right: 0;
+}
+
+.quiqqer-gallery-imageSlider-child a {
+    display: block;
+    position: relative;
+}
+
+.quiqqer-gallery-imageSlider-child .quiqqer-icon {
+    font-size: 80px;
+    height: 100%;
+    opacity: 0;
+    padding: 0 1em;
+}
+
+.quiqqer-gallery-imageSlider-child-display img {
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    max-height: calc(100% - 2px);
+    max-width: 300px;
+}
+
+/*
+.quiqqer-gallery-imageSlider-child-display img:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transition: all 2s ease;
+    -webkit-transition: all 2s ease;
+}
+*/
+
+
+
+.quiqqer-gallery-imageSlider-prev,
+.quiqqer-gallery-imageSlider-next {
+    color: #f1f1f1;
+    cursor: pointer;
+    font-size: 50px;
+    height: 100%;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    visibility: visible;
+    width: 50px;
+
+    /*display: none;*/
+    opacity: 0;
+    z-index: 2;
+    transition: 0.2s all ease-in-out;
+    background: rgba(0,0,0,0.2);
+}
+
+.quiqqer-gallery-imageSlider-next {
+    right: -50px;
+}
+
+.quiqqer-gallery-imageSlider-next.show-next {
+    right: 0;
+    opacity: 1;
+    display: block;
+}
+
+.quiqqer-gallery-imageSlider-prev {
+    left: -50px;
+}
+
+.quiqqer-gallery-imageSlider-prev.show-prev {
+    left: 0;
+    opacity: 1;
+    display: block;
+}
+
+/* effect on hover the entire slider */
+.quiqqer-gallery-imageSlider:hover .quiqqer-gallery-imageSlider-prev.show-prev,
+.quiqqer-gallery-imageSlider:hover .quiqqer-gallery-imageSlider-next.show-next {
+    background: rgba(0,0,0,0.3);
+
+}
+
+/* effect on hover the slider-button self */
+.quiqqer-gallery-imageSlider-prev:hover,
+.quiqqer-gallery-imageSlider-next:hover {
+    width: 60px;
+}
+
+.quiqqer-gallery-imageSlider-mobile .quiqqer-gallery-imageSlider-next {
+    background: #fff;
+    border: 1px solid #f1f1f1;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    right: 20px;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+.quiqqer-gallery-imageSlider-mobile .quiqqer-gallery-imageSlider-prev {
+    background: #fff;
+    border: 1px solid #f1f1f1;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    left: 20px;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+.quiqqer-gallery-imageSlider-mobile .quiqqer-gallery-imageSlider-prev:hover,
+.quiqqer-gallery-imageSlider-mobile .quiqqer-gallery-imageSlider-next:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+/*
+.quiqqer-gallery-imageSlider {
+    height: auto !important;
+}*/

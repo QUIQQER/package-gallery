@@ -7,18 +7,18 @@
             <pl><![CDATA[QUIQQER - Galeria]]></pl>
         </locale>
         <locale name="package.description" html="true">
-            <de><![CDATA[<p>F&uuml;gen Sie Ihrem Projekt eine Seite mit dem Seitentyp &quot;Galerie&quot; hinzu, um Bilder in verschiedenen Ablauftypen anzeigen zu lassen.</p>]]></de>
-            <en><![CDATA[]]></en>
+            <de><![CDATA[Präsentieren Sie Ihre Fotos, Produkte und Bilder in aufwändigen und schöne Galerien.]]></de>
+            <en><![CDATA[Present your photos, products and pictures in elaborate and beautiful galleries.]]></en>
             <pl><![CDATA[Zmiana typu strony na "galerie" da możliwość wyświetlenia obrazków z różnznmi efektami przejścia.]]></pl>
         </locale>
         <locale name="admin.types.gallery.component">
-            <de><![CDATA[QUIQQER - Galerie "Komponenten"]]></de>
-            <en><![CDATA[QUIQQER - Gallery component]]></en>
+            <de><![CDATA[QUIQQER - Galerie "Effekte"]]></de>
+            <en><![CDATA[QUIQQER - Gallery "Effects"]]></en>
             <pl><![CDATA[QUIQQER - Komponenty galerii]]></pl>
         </locale>
         <locale name="admin.types.gallery.grid">
             <de><![CDATA[QUIQQER - Galerie "Grid"]]></de>
-            <en><![CDATA[QUIQQER - Gallery grid]]></en>
+            <en><![CDATA[QUIQQER - Gallery "Grid"]]></en>
             <pl><![CDATA[QUIQQER - "Siatka" galerii (grid)]]></pl>
         </locale>
         <locale name="quiqqer.gallery.settings.folderId">
@@ -33,40 +33,45 @@
         </locale>
         <locale name="bricks.gallery.component.title">
             <de><![CDATA[Bausteine: Galerie Komponenten]]></de>
-            <en><![CDATA[]]></en>
+            <en><![CDATA[Bricks: Gallery Components]]></en>
             <pl><![CDATA[]]></pl>
         </locale>
         <locale name="admin.types.gallery.slider">
             <de><![CDATA[QUIQQER - Galerie "Slider"]]></de>
-            <en><![CDATA[QUIQQER - Gallery Slider]]></en>
+            <en><![CDATA[QUIQQER - Gallery "Slider"]]></en>
             <pl><![CDATA[QUIQQER - Galeria w formie slajdów]]></pl>
         </locale>
         <locale name="bricks.gallery.slider.title">
             <de><![CDATA[Bausteine: Galerie Slider-Effekt]]></de>
-            <en><![CDATA[]]></en>
+            <en><![CDATA[Bricks: Gallery Slider-Effect]]></en>
             <pl><![CDATA[Moduł - Galeria w formie slajdów]]></pl>
         </locale>
         <locale name="quiqqer/gallery:types/gallery-component.description" html="true">
             <de><![CDATA[<p>Galerie-Typ mit vielen unterschiedlichen Effekten.
-            W&auml;hlen Sie in den Einstellungen der Galerie-Seite die Gallerie-Einstellungen
+            W&auml;hlen Sie in den Einstellungen der Galerie-Seite die Galerie-Einstellungen
             aus um einen der folgenden Effekte anzeigen zu lassen:<br />
             Pulsierend, Coverflow, Photo, Ferris Wheel, Snake und Slide Behind</p>]]></de>
-            <en><![CDATA[]]></en>
+            <en><![CDATA[<p>Gallery-Type with many different effects. In the gallery-settings of the page-settings
+            you can choose one of the following effects:<br />
+            Pulsing, Coverflow, Photo, Ferris Wheel, Snake and Slide Behind</p>]]></en>
             <pl><![CDATA[Typ galerii z różnzmi efektami przejścia. Wybierz w ustawieniach jeden z następujących efektów:><br />
             pulsowanie, przykrycie, przeglądanie zdjęć, diabelski młyn, przesunięcie, schowanie do tyłu.]]></pl>
         </locale>
         <locale name="quiqqer/gallery:types/gallery-grid.title">
-            <de><![CDATA[QUIQQER - Gallerie-Typ: "Grid"]]></de>
-            <en><![CDATA[]]></en>
+            <de><![CDATA[QUIQQER - Galerie-Typ: "Tabelle"]]></de>
+            <en><![CDATA[QUIQQER - Gallery-Type: "Grid"]]></en>
             <pl><![CDATA[QUIQQER - "Siatka" galerii (grid)]]></pl>
         </locale>
         <locale name="quiqqer/gallery:types/gallery-grid.description">
-            <de><![CDATA[Der Galerie-Typ "Grid" Zeigt Ihre Bilder in einer Art Tabelle mit Blätterfunktion an.
+            <de><![CDATA[Der Galerie-Typ "Tabelle" zeigt Ihre Bilder in einer Art Tabelle mit Blätterfunktion an.
                          Per Klick an ein Bild wird dieses vergrößert.
                          In diesem Modus lassen sich die Bilder per Klick auf die Pfeile rechts
                          und links oder per Pfeiltasten auf der Tastatur durchblättern.]]>
             </de>
-            <en><![CDATA[]]></en>
+            <en><![CDATA[The gallery-type "Grid" displays your images as a table with pagination.
+                         Clicking on an image enhances it.
+                         In this mode you can navigate between the pictures using the arrow-keys on your keyboard or by
+                         using the arrows on the left and right of the picture.]]></en>
             <pl><![CDATA[Typ "siatka" galerii pokazuje zdjęcia w formie tabeli z możliwością przewijania stron.
                          Klikając na obrazek można go powiększyć.
                          Przejść na następne strony można za pomocą kliknięć w strzałki nawigacyjne lub
@@ -74,13 +79,13 @@
             </pl>
         </locale>
         <locale name="quiqqer/gallery:types/gallery-slider.title">
-            <de><![CDATA[QUIQQER - Gallerie-Typ: "Slide"]]></de>
-            <en><![CDATA[]]></en>
+            <de><![CDATA[QUIQQER - Gallerie-Typ: "Slider"]]></de>
+            <en><![CDATA[QUIQQER - Gallery-Type: "Slider"]]></en>
             <pl><![CDATA[QUIQQER - Typ galerii: slider]]></pl>
         </locale>
         <locale name="quiqqer/gallery:types/gallery-slider.description">
             <de><![CDATA[Eine Galerie mit einem einfach Slide-Effekt, bei welchen sich die Bilder aneinandergereiht von rechts nach links in den Rahmen schieben.]]></de>
-            <en><![CDATA[]]></en>
+            <en><![CDATA[A gallery with a simple slide-effect where the pictures move from right to left into the frame]]></en>
             <pl><![CDATA[Galeria z efektem przejscia, gdzie zdjęcia przesuwane są po kolei z prawej na lewą.]]></pl>
         </locale>
         <locale name="image.zoom">
@@ -90,7 +95,7 @@
         </locale>
         <locale name="quiqqer/gallery:types/gallery-component.title">
             <de><![CDATA[QUIQQER - Gallerie-Typ: "Effekte"]]></de>
-            <en><![CDATA[]]></en>
+            <en><![CDATA[QUIQQER - Gallery-Type: "Effects"]]></en>
             <pl><![CDATA[QUIQQER - Galeria: "efekty"]]></pl>
         </locale>
         <locale name="quiqqer/gallery:types/gallery-component.title">
@@ -127,6 +132,18 @@
             <de><![CDATA[Galerie mit Slide-Behind-Effekt]]></de>
             <en><![CDATA[Galerie width slide behind effect]]></en>
             <pl><![CDATA[Efekt schowania do tyłu]]></pl>
+        </locale>
+
+
+        <locale name="quiqqer.gallery.setting.moreLink">
+            <de><![CDATA[Mehr Link]]></de>
+            <en><![CDATA[More link]]></en>
+            <pl><![CDATA[Link do strony]]></pl>
+        </locale>
+        <locale name="quiqqer.gallery.moreLink">
+            <de><![CDATA[Mehr]]></de>
+            <en><![CDATA[More]]></en>
+            <pl><![CDATA[Więcej]]></pl>
         </locale>
     </groups>
 

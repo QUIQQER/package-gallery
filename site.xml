@@ -11,9 +11,9 @@
 
             <!-- extra attributes -->
             <attributes>
-                <attribute>quiqqer.settings.gallery.folderId</attribute>
-                <attribute>quiqqer.settings.gallery.type</attribute>
-                <attribute>quiqqer.settings.gallery.sort</attribute>
+                <attribute default="/">quiqqer.settings.gallery.folderId</attribute>
+                <attribute default="component-forwardPulse">quiqqer.settings.gallery.type</attribute>
+                <attribute default="e_date DESC">quiqqer.settings.gallery.sort</attribute>
             </attributes>
 
             <!-- list settings -->
@@ -117,8 +117,8 @@
             <!-- extra attributes -->
             <attributes>
                 <attribute>quiqqer.settings.gallery.folderId</attribute>
-                <attribute>quiqqer.settings.gallery.max</attribute>
-                <attribute>quiqqer.settings.gallery.sort</attribute>
+                <attribute default="20">quiqqer.settings.gallery.max</attribute>
+                <attribute default="e_date DESC">quiqqer.settings.gallery.sort</attribute>
             </attributes>
 
             <!-- list settings -->
@@ -192,7 +192,7 @@
             <!-- extra attributes -->
             <attributes>
                 <attribute>quiqqer.settings.gallery.folderId</attribute>
-                <attribute>quiqqer.settings.gallery.sort</attribute>
+                <attribute default="e_date DESC">quiqqer.settings.gallery.sort</attribute>
             </attributes>
 
             <!-- list settings -->
