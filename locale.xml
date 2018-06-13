@@ -208,8 +208,11 @@
             <de><![CDATA[Priorität aufsteigend]]></de>
             <en><![CDATA[Priority ascending]]></en>
         </locale>
-    </groups><!--
-    <groups name="quiqqer/gallery" datatype="php,js ">
-
-    </groups>-->
+    </groups>
+    <groups name="quiqqer/gallery" datatype="js">
+        <locale name="quiqqer.gallery.slider.noImages">
+            <de><![CDATA[Diesem Slider sind keine Bilder zugeordnet.]]></de>
+            <en><![CDATA[This slider has no images assigned.]]></en>
+        </locale>
+    </groups>
 </locales>

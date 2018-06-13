@@ -26,12 +26,13 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
     'qui/controls/loader/Progress',
     'qui/utils/Math',
     'qui/utils/Functions',
+    'Locale',
     'package/quiqqer/gallery/bin/controls/Popup',
     URL_OPT_DIR + 'bin/hammerjs/hammer.min.js',
 
     'text!package/quiqqer/gallery/bin/controls/Slider.html',
     'css!package/quiqqer/gallery/bin/controls/Slider.css'
-], function (QUI, QUIControl, QUILoader, QUIProgress, QUIMath, QUIFunctionUtils, GalleryPopup, Hammer, template) {
+], function (QUI, QUIControl, QUILoader, QUIProgress, QUIMath, QUIFunctionUtils, QUILocale, GalleryPopup, Hammer, template) {
     "use strict";
 
     return new Class({
@@ -264,7 +265,9 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 this.$Prev.setStyle('display', 'none');
 
                 if (!this.$images.length) {
-                    var image = '<span class="fa fa-file-image-o"></span>';
+                    var icon = '<span class="fa fa-file-image-o"></span>',
+                        text = '<p style="font-size: 20px">'+QUILocale.get('quiqqer/gallery', "quiqqer.gallery.slider.noImages")+'</p>',
+                        image = icon + text;
 
                     if (this.getAttribute('placeholderimage')) {
                         image = '';
@@ -394,7 +397,10 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     return;
                 }
 
+                console.log(this.$images.length);
+
                 if (!this.$images.length) {
+                    this.Loader.hide();
                     resolve();
                     return;
                 }
