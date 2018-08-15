@@ -397,8 +397,6 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     return;
                 }
 
-                console.log(this.$images.length);
-
                 if (!this.$images.length) {
                     this.Loader.hide();
                     resolve();
