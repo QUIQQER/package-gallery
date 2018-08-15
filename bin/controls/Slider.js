@@ -368,6 +368,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          */
         addImage: function (imageSrc, title, text) {
             this.$images.push({
+                src  : imageSrc,
                 image: imageSrc,
                 title: title,
                 text : text,
