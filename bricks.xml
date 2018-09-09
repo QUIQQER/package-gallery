@@ -74,6 +74,12 @@
                     <option value="release_from DESC">
                         <locale group="quiqqer/system" var="release_from_desc"/>
                     </option>
+                    <option value="priority ASC">
+                        <locale group="quiqqer/system" var="priority_asc"/>
+                    </option>
+                    <option value="priority DESC">
+                        <locale group="quiqqer/system" var="priority_desc"/>
+                    </option>
                 </setting>
             </settings>
         </brick>
@@ -125,6 +131,12 @@
                     </option>
                     <option value="release_from DESC">
                         <locale group="quiqqer/system" var="release_from_desc"/>
+                    </option>
+                    <option value="priority ASC">
+                        <locale group="quiqqer/system" var="priority_asc"/>
+                    </option>
+                    <option value="priority DESC">
+                        <locale group="quiqqer/system" var="priority_desc"/>
                     </option>
                 </setting>
             </settings>
