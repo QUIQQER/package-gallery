@@ -1,17 +1,24 @@
-<div class="quiqqer-gallery-component-content quiqqer-gallery-component-{$this->getAttribute('effect')}">
-    <div class="quiqqer-gallery-component-prev">
-        <span class="fa fa-chevron-left"></span>
-    </div>
+{if $this->getAttribute('content') != ""}
+<div class="control-content">
+    {$this->getAttribute('content')}
+</div>
+{/if}
+<div class="quiqqer-gallery-component control-background">
+    <div class="quiqqer-gallery-component-content quiqqer-gallery-component-{$this->getAttribute('effect')}">
+        <div class="quiqqer-gallery-component-prev">
+            <span class="fa fa-chevron-left"></span>
+        </div>
 
-    <ul class="quiqqer-gallery-component-list">
-        {foreach from=$images item=Image}
-        <li class="quiqqer-gallery-component-list-entry">
-            {image image=$Image}
-        </li>
-        {/foreach}
-    </ul>
+        <ul class="quiqqer-gallery-component-list">
+            {foreach from=$images item=Image}
+            <li class="quiqqer-gallery-component-list-entry">
+                {image image=$Image}
+            </li>
+            {/foreach}
+        </ul>
 
-    <div class="quiqqer-gallery-component-next">
-        <span class="fa fa-chevron-right"></span>
+        <div class="quiqqer-gallery-component-next">
+            <span class="fa fa-chevron-right"></span>
+        </div>
     </div>
 </div>
