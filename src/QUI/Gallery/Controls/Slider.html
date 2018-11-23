@@ -1,15 +1,27 @@
-<template>
-{foreach from=$images item=Image}
-<div class="entry"
-     data-src="{image image=$Image onlysrc=true rewrited=true}"
-     data-preview="{image image=$Image onlysrc=true rewrited=true height=80}"
-        >
-    <div class="title">
-        {$Image->getAttribute('title')}
-    </div>
-    <div class="text">
-        {$Image->getAttribute('short')}
-    </div>
+{if $this->getAttribute('showTitle') && $this->getAttribute('frontendTitle')}
+<header class="control-header">
+    <h1>{$this->getAttribute('frontendTitle')}</h1>
+</header>
+{/if}
+
+{if $this->getAttribute('content') != ""}
+<div class="control-content">
+    {$this->getAttribute('content')}
 </div>
-{/foreach}
+{/if}
+
+<template>
+    {foreach from=$images item=Image}
+    <div class="entry"
+         data-src="{image image=$Image onlysrc=true rewrited=true}"
+         data-preview="{image image=$Image onlysrc=true rewrited=true height=80}"
+    >
+        <div class="title">
+            {$Image->getAttribute('title')}
+        </div>
+        <div class="text">
+            {$Image->getAttribute('short')}
+        </div>
+    </div>
+    {/foreach}
 </template>

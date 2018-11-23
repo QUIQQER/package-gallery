@@ -6,7 +6,7 @@
     width: 100%;
 }
 
-.quiqqer-gallery-slider::before {
+.quiqqer-gallery-slider-control::before {
     content: "";
     display: block;
     /* initial ratio of 3:2, the real ratio should be 66.666% */
