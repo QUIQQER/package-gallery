@@ -2,7 +2,7 @@
   "name": "quiqqer\/gallery",
   "type": "quiqqer-module",
   "description": "Present your photos, products and pictures in elaborate and beautiful galleries.",
-  "version": "dev-master",
+  "version": "1.0.2",
   "license": "GPL-3.0+",
   "authors": [
     {
