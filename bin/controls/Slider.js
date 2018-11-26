@@ -82,24 +82,24 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
             this.Loader = new QUILoader();
 
-            this.$Progress  = new QUIProgress();
+            this.$Progress = new QUIProgress();
             this.$Container = null;
-            this.$Next      = null;
-            this.$Prev      = null;
-            this.$Title     = null;
-            this.$List      = null;
+            this.$Next = null;
+            this.$Prev = null;
+            this.$Title = null;
+            this.$List = null;
 
-            this.$Previews          = null;
+            this.$Previews = null;
             this.$PreviewsContainer = null;
-            this.$PreviewsSlider    = null;
-            this.$PreviewsFX        = null;
+            this.$PreviewsSlider = null;
+            this.$PreviewsFX = null;
 
-            this.$images  = [];
+            this.$images = [];
             this.$current = 0;
 
             // sizes
-            this.$pcSize    = {};
-            this.$mainSize  = {};
+            this.$pcSize = {};
+            this.$mainSize = {};
             this.$oldResize = {};
 
             this.$autoplayInterval = false;
@@ -126,16 +126,22 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             var i, len, Entry;
 
             var self = this;
+            var Template = this.$Elm.getElement('template');
+
+            Template = new Element('div', {
+                html: Template.get('html')
+            });
 
             // read images
             this.$List = new Element('div', {
-                html  : this.$Elm.innerHTML.replace('<template>', '').replace('</template>', ''),
                 styles: {
                     display: "none"
                 }
             }).inject(this.$Elm);
 
-            var entries = this.$List.getElements('.entry');
+            Template.inject(this.$List);
+
+            var entries = this.$List.getElementsByClassName('entry');
 
             for (i = 0, len = entries.length; i < len; i++) {
                 Entry = entries[i];
@@ -153,7 +159,6 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     short  : Entry.getElement('.text').get('html')
                 });
             }
-
 
             this.create();
             this.showFirst().then(function () {
@@ -180,19 +185,39 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 this.$Elm.addClass('quiqqer-gallery-slider');
             }
 
+            var Header = this.$Elm.getElement('.control-header');
+            var Content = this.$Elm.getElement('.control-content');
+
             this.$Elm.set({
-                html: template
+                html: ''
             });
 
-            this.Loader.inject(this.$Elm);
-            this.$Progress.inject(this.$Elm);
+            if (Header) {
+                Header.inject(this.$Elm);
+            }
+
+            if (Content) {
+                Content.inject(this.$Elm);
+            }
+
+            var Container = new Element('div', {
+                'class': 'quiqqer-gallery-slider-control',
+                html   : template,
+                styles : {
+                    position: 'relative',
+                    width   : '100%'
+                }
+            }).inject(this.$Elm);
+
+            this.Loader.inject(Container);
+            this.$Progress.inject(Container);
 
             this.$Container = this.$Elm.getElement('.quiqqer-gallery-slider-content');
-            this.$Next      = this.$Elm.getElement('.quiqqer-gallery-slider-next');
-            this.$Prev      = this.$Elm.getElement('.quiqqer-gallery-slider-prev');
-            this.$Title     = this.$Elm.getElement('.quiqqer-gallery-slider-title');
-            this.$Controls  = this.$Elm.getElement('.quiqqer-gallery-slider-controls');
-            this.$Previews  = this.$Elm.getElement('.quiqqer-gallery-slider-previews');
+            this.$Next = this.$Elm.getElement('.quiqqer-gallery-slider-next');
+            this.$Prev = this.$Elm.getElement('.quiqqer-gallery-slider-prev');
+            this.$Title = this.$Elm.getElement('.quiqqer-gallery-slider-title');
+            this.$Controls = this.$Elm.getElement('.quiqqer-gallery-slider-controls');
+            this.$Previews = this.$Elm.getElement('.quiqqer-gallery-slider-previews');
 
             this.$Previews.setStyles({
                 background: this.getAttribute('preview-background-color'),
@@ -200,13 +225,13 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             });
 
             if (this.getAttribute('preview-outside')) {
-                this.$Previews.inject(this.$Elm);
+                this.$Previews.inject(Container);
                 this.$Elm.addClass('quiqqer-gallery-slider-previewOutside');
             }
 
-            this.$Play   = this.$Elm.getElement('.fa-play');
+            this.$Play = this.$Elm.getElement('.fa-play');
             this.$Random = this.$Elm.getElement('.fa-random');
-            this.$Zoom   = this.$Elm.getElement('.fa-search');
+            this.$Zoom = this.$Elm.getElement('.fa-search');
 
             this.$Controls.setStyle('display', 'none');
 
@@ -265,8 +290,8 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 this.$Prev.setStyle('display', 'none');
 
                 if (!this.$images.length) {
-                    var icon = '<span class="fa fa-file-image-o"></span>',
-                        text = '<p style="font-size: 20px">'+QUILocale.get('quiqqer/gallery', "quiqqer.gallery.slider.noImages")+'</p>',
+                    var icon  = '<span class="fa fa-file-image-o"></span>',
+                        text  = '<p style="font-size: 20px">' + QUILocale.get('quiqqer/gallery', "quiqqer.gallery.slider.noImages") + '</p>',
                         image = icon + text;
 
                     if (this.getAttribute('placeholderimage')) {
@@ -289,7 +314,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                             width     : '100%'
 
                         }
-                    }).inject(this.$Elm);
+                    }).inject(Container);
 
 
                     if (this.getAttribute('placeholdercolor')) {
@@ -439,7 +464,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 }).then(function () {
                     self.setText(data.title, data.text);
 
-                    self.$current   = next;
+                    self.$current = next;
                     self.$__animate = false;
 
                     self.$showPreviewImage();
@@ -501,7 +526,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 }).then(function () {
                     self.setText(data.title, data.text);
 
-                    self.$current   = next;
+                    self.$current = next;
                     self.$__animate = false;
 
                     self.$showPreviewImage();
@@ -656,7 +681,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          */
         setText: function (title, text) {
             title = title || '';
-            text  = text || '';
+            text = text || '';
 
             this.$Title.set(
                 'html',
@@ -728,7 +753,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             // set width
             pc = QUIMath.percent(listSize.x, width);
 
-            width  = listSize.x;
+            width = listSize.x;
             height = (height * (pc / 100)).round();
 
             // set height?
@@ -736,7 +761,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                 pc = QUIMath.percent(listSize.y, height);
 
                 height = listSize.y;
-                width  = (width * (pc / 100)).round();
+                width = (width * (pc / 100)).round();
             }
 
             return new Element('img', {
@@ -991,7 +1016,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     }).inject(self.$PreviewsSlider);
 
                     //console.log(Container.getComputedSize());
-                    size    = Container.getComputedSize();
+                    size = Container.getComputedSize();
                     imgSize = Container.getElement('img').getComputedSize();
 
                     if (!size.totalWidth) {
@@ -999,9 +1024,9 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     }
 
                     width = width +
-                        size.totalWidth +
-                        imgSize['padding-left'] +
-                        imgSize['padding-right'];
+                            size.totalWidth +
+                            imgSize['padding-left'] +
+                            imgSize['padding-right'];
 
                     width = width + Container.getStyle('marginLeft').toInt();
                     width = width + Container.getStyle('marginRight').toInt();

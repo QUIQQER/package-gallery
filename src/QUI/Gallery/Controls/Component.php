@@ -27,7 +27,6 @@ class Component extends QUI\Control
         $this->setAttributes(array(
             'Project'   => false,
             'folderId'  => false,
-            'class'     => 'quiqqer-gallery-component control-background',
             'qui-class' => 'package/quiqqer/gallery/bin/controls/Component',
             'order'     => 'title ASC'
         ));

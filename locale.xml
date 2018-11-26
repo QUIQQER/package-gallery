@@ -32,19 +32,19 @@
             <pl><![CDATA[]]>Wybierz efekt</pl>
         </locale>
         <locale name="bricks.gallery.component.title">
-            <de><![CDATA[Bausteine: Galerie Komponenten]]></de>
-            <en><![CDATA[Bricks: Gallery Components]]></en>
+            <de><![CDATA[Galerie: Komponenten]]></de>
+            <en><![CDATA[Gallery: Components]]></en>
             <pl><![CDATA[]]></pl>
         </locale>
         <locale name="admin.types.gallery.slider">
             <de><![CDATA[QUIQQER - Galerie "Slider"]]></de>
             <en><![CDATA[QUIQQER - Gallery "Slider"]]></en>
-            <pl><![CDATA[QUIQQER - Galeria w formie slajdów]]></pl>
+            <pl><![CDATA[QUIQQER - Galeria "Slajdy"]]></pl>
         </locale>
         <locale name="bricks.gallery.slider.title">
-            <de><![CDATA[Bausteine: Galerie Slider-Effekt]]></de>
-            <en><![CDATA[Bricks: Gallery Slider-Effect]]></en>
-            <pl><![CDATA[Moduł - Galeria w formie slajdów]]></pl>
+            <de><![CDATA[Galerie: Slider-Effekt]]></de>
+            <en><![CDATA[Gallery: Slider-Effect]]></en>
+            <pl><![CDATA[Galeria: Slajdy]]></pl>
         </locale>
         <locale name="quiqqer/gallery:types/gallery-component.description" html="true">
             <de><![CDATA[<p>Galerie-Typ mit vielen unterschiedlichen Effekten.
