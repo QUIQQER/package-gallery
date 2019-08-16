@@ -4,13 +4,6 @@
  *
  * @module package/quiqqer/gallery/bin/controls/Popup
  * @author www.pcsg.de (Henning Leutz)
- *
- * @require qui/QUI
- * @require qui/controls/windows/Popup
- * @require qui/utils/Math
- * @require URL_OPT_DIR + bin/hammerjs/hammer.min.js
- * @require text!package/quiqqer/gallery/bin/controls/Popup.html
- * @require css!package/quiqqer/gallery/bin/controls/Popup.css
  */
 define('package/quiqqer/gallery/bin/controls/Popup', [
 
@@ -34,6 +27,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             '$onOpen',
             '$onClose',
             '$keyup',
+            '$onPopState',
 
             'showNextImage',
             'showPrevImage',
@@ -271,6 +265,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
 
             // bind keys
             window.addEvent('keyup', this.$keyup);
+            window.addEvent('popstate', this.$onPopState);
 
             if (!this.__$current) {
                 this.showFirstImage();
@@ -327,6 +322,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             }
 
             window.removeEvent('keyup', this.$keyup);
+            window.removeEvent('popstate', this.$onPopState);
         },
 
         /**
@@ -631,6 +627,13 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             if (event.key === 'esc') {
                 this.close();
             }
+        },
+
+        /**
+         * on popup state
+         */
+        $onPopState: function () {
+            this.close();
         }
     });
 });
