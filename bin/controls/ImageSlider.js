@@ -2,12 +2,9 @@
  * Children listing
  *
  * @module package/quiqqer/gallery/bin/controls/Slider/ImageSlider
+ *
  * @author www.pcsg.de (Henning Leutz)
  * @author www.pcsg.de (Michael Danielczok)
- *
- * @require qui/QUI
- * @require qui/controls/Control
- * @require qui/utils/Functions
  */
 define('package/quiqqer/gallery/bin/controls/ImageSlider', [
 

@@ -5,7 +5,6 @@
  * @module package/quiqqer/gallery/bin/controls/Grid
  * @author www.pcsg.de (Henning Leutz)
  */
-
 define('package/quiqqer/gallery/bin/controls/Grid', [
 
     'qui/QUI',

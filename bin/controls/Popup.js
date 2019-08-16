@@ -4,13 +4,6 @@
  *
  * @module package/quiqqer/gallery/bin/controls/Popup
  * @author www.pcsg.de (Henning Leutz)
- *
- * @require qui/QUI
- * @require qui/controls/windows/Popup
- * @require qui/utils/Math
- * @require URL_OPT_DIR + bin/hammerjs/hammer.min.js
- * @require text!package/quiqqer/gallery/bin/controls/Popup.html
- * @require css!package/quiqqer/gallery/bin/controls/Popup.css
  */
 define('package/quiqqer/gallery/bin/controls/Popup', [
 
