@@ -19,10 +19,10 @@ class ImageSlider extends QUI\Control
      *
      * @param array $attributes
      */
-    public function __construct($attributes = array())
+    public function __construct($attributes = [])
     {
         // default options
-        $this->setAttributes(array(
+        $this->setAttributes([
             'class'    => 'quiqqer-gallery-imageSlider',
             'nodeName' => 'section',
             'site'     => '',
@@ -33,10 +33,10 @@ class ImageSlider extends QUI\Control
             'folderId' => false,
             'data-qui' => 'package/quiqqer/gallery/bin/controls/ImageSlider',
             'height'   => 200
-        ));
+        ]);
 
         $this->addCSSFile(
-            dirname(__FILE__) . '/ImageSlider.css'
+            \dirname(__FILE__).'/ImageSlider.css'
         );
 
         parent::__construct($attributes);
@@ -78,10 +78,10 @@ class ImageSlider extends QUI\Control
                 break;
         }
 
-        $images = $Folder->getImages(array(
+        $images = $Folder->getImages([
 //            'limit' => $start . ',' . $max,
             'order' => $order
-        ));
+        ]);
 
 
         if (!$this->getAttribute('height')) {
@@ -95,14 +95,14 @@ class ImageSlider extends QUI\Control
             }
         }
 
-        $Engine->assign(array(
+        $Engine->assign([
             'this'     => $this,
             'images'   => $images,
             'MoreLink' => $MoreLink
-        ));
+        ]);
 
 
-        return $Engine->fetch(dirname(__FILE__) . '/ImageSlider.html');
+        return $Engine->fetch(\dirname(__FILE__).'/ImageSlider.html');
     }
 
     /**
@@ -112,6 +112,6 @@ class ImageSlider extends QUI\Control
      */
     protected function getTemplate()
     {
-        return dirname(__FILE__) . '/ImageSlider.html';
+        return \dirname(__FILE__).'/ImageSlider.html';
     }
 }
