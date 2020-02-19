@@ -3,6 +3,7 @@
 /**
  * This file contains QUI\Gallery\Controls\Slider
  */
+
 namespace QUI\Gallery\Controls;
 
 use QUI;
@@ -19,17 +20,17 @@ class Slider extends QUI\Control
      *
      * @var bool
      */
-    protected $ownImages = array();
+    protected $ownImages = [];
 
     /**
      * constructor
      *
      * @param array $attributes
      */
-    public function __construct($attributes = array())
+    public function __construct($attributes = [])
     {
         // default options
-        $this->setAttributes(array(
+        $this->setAttributes([
             'Project'          => false,
             'folderId'         => false,
             'class'            => 'quiqqer-gallery-slider',
@@ -37,12 +38,12 @@ class Slider extends QUI\Control
             'order'            => false,
             'placeholderimage' => false,
             'placeholdercolor' => false
-        ));
+        ]);
 
         parent::__construct($attributes);
 
         $this->addCSSFile(
-            OPT_DIR . 'quiqqer/gallery/bin/controls/Slider.css'
+            OPT_DIR.'quiqqer/gallery/bin/controls/Slider.css'
         );
     }
 
@@ -58,7 +59,7 @@ class Slider extends QUI\Control
         $Media    = $Project->getMedia();
         $folderId = $this->getAttribute('folderId');
         $Folder   = false;
-        $images   = array();
+        $images   = [];
 
         $this->setAttribute(
             'data-qui-options-placeholdercolor',
@@ -82,7 +83,7 @@ class Slider extends QUI\Control
         }
 
         /* @var $Folder \QUI\Projects\Media\Folder */
-        if (strpos($folderId, 'image.php') !== false) {
+        if (\strpos($folderId, 'image.php') !== false) {
             try {
                 $Folder = QUI\Projects\Media\Utils::getMediaItemByUrl(
                     $folderId
@@ -133,23 +134,23 @@ class Slider extends QUI\Control
         }
 
         if ($Folder) {
-            $images = $Folder->getImages(array(
+            $images = $Folder->getImages([
                 'order' => $order
-            ));
+            ]);
         } elseif (!empty($this->ownImages)) {
             $images = $this->ownImages;
         }
 
 
-        $Engine->assign(array(
+        $Engine->assign([
             'Rewrite' => QUI::getRewrite(),
             'this'    => $this,
             'Folder'  => $Folder,
             'images'  => $images,
             'Site'    => $this->getSite()
-        ));
+        ]);
 
-        return $Engine->fetch(dirname(__FILE__) . '/Slider.html');
+        return $Engine->fetch(\dirname(__FILE__).'/Slider.html');
     }
 
     /**

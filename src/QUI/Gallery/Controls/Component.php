@@ -21,20 +21,20 @@ class Component extends QUI\Control
      *
      * @param array $attributes
      */
-    public function __construct($attributes = array())
+    public function __construct($attributes = [])
     {
         // default options
-        $this->setAttributes(array(
+        $this->setAttributes([
             'Project'   => false,
             'folderId'  => false,
             'qui-class' => 'package/quiqqer/gallery/bin/controls/Component',
             'order'     => 'title ASC'
-        ));
+        ]);
 
         parent::__construct($attributes);
 
         // css files
-        $this->addCSSFile(dirname(__FILE__) . '/Component.css');
+        $this->addCSSFile(\dirname(__FILE__).'/Component.css');
     }
 
     /**
@@ -83,51 +83,52 @@ class Component extends QUI\Control
                 break;
         }
 
-        $Engine->assign(array(
+        $Engine->assign([
             'Rewrite' => QUI::getRewrite(),
             'this'    => $this,
             'Folder'  => $Folder,
             'Site'    => $this->getSite(),
-            'images'  => $Folder->getImages(array(
+            'images'  => $Folder->getImages([
                 'order' => $order
-            ))
-        ));
+            ])
+        ]);
 
         // css files
-        $dir = dirname(__FILE__);
+        $dir = \dirname(__FILE__);
+
         switch ($this->getAttribute('effect')) {
             case 'forwardPulse':
-                $this->addCSSFile($dir . '/Component.fx.forwardPulse.css');
+                $this->addCSSFile($dir.'/Component.fx.forwardPulse.css');
                 $this->setAttribute('data-effect', 'forwardPulse');
                 break;
 
             case 'coverflow':
-                $this->addCSSFile($dir . '/Component.fx.coverflow.css');
+                $this->addCSSFile($dir.'/Component.fx.coverflow.css');
                 $this->setAttribute('data-effect', 'coverflow');
                 break;
 
             case 'photoBrowse':
-                $this->addCSSFile($dir . '/Component.fx.photoBrowse.css');
+                $this->addCSSFile($dir.'/Component.fx.photoBrowse.css');
                 $this->setAttribute('data-effect', 'photoBrowse');
                 break;
 
             case 'ferrisWheel':
-                $this->addCSSFile($dir . '/Component.fx.ferrisWheel.css');
+                $this->addCSSFile($dir.'/Component.fx.ferrisWheel.css');
                 $this->setAttribute('data-effect', 'ferrisWheel');
                 break;
 
             case 'snake':
-                $this->addCSSFile($dir . '/Component.fx.snake.css');
+                $this->addCSSFile($dir.'/Component.fx.snake.css');
                 $this->setAttribute('data-effect', 'snake');
                 break;
 
             case 'slideBehind':
-                $this->addCSSFile($dir . '/Component.fx.slideBehind.css');
+                $this->addCSSFile($dir.'/Component.fx.slideBehind.css');
                 $this->setAttribute('data-effect', 'slideBehind');
                 break;
         }
 
-        return $Engine->fetch(dirname(__FILE__) . '/Component.html');
+        return $Engine->fetch(\dirname(__FILE__).'/Component.html');
     }
 
     /**
