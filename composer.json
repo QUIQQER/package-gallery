@@ -3,6 +3,7 @@
   "type": "quiqqer-module",
   "description": "Present your photos, products and pictures in elaborate and beautiful galleries.",
   "license": "GPL-3.0+",
+  "version": "1.1.0",
   "authors": [
     {
       "name": "Henning Leutz",
