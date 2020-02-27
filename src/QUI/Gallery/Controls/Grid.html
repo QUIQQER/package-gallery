@@ -14,9 +14,11 @@
         >
             {image image=$Image height=250}
         </a>
+        {if $Image->getTitle()}
         <div class="quiqqer-gallery-grid-entry-text control-color">
             {$Image->getTitle()}
         </div>
+        {/if}
     </div>
 {/foreach}
 
