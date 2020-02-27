@@ -4,6 +4,7 @@
 /**
  * This file contains QUI\Gallery\Controls\Grid
  */
+
 namespace QUI\Gallery\Controls;
 
 use QUI;
@@ -20,17 +21,18 @@ class Grid extends QUI\Control
      *
      * @param array $attributes
      */
-    public function __construct($attributes = array())
+    public function __construct($attributes = [])
     {
         // default options
-        $this->setAttributes(array(
-            'max'      => 9,
-            'start'    => 0,
-            'Project'  => false,
-            'folderId' => false,
-            'class'    => 'quiqqer-gallery-grid',
-            'order'    => 'title ASC'
-        ));
+        $this->setAttributes([
+            'max'            => 9,
+            'start'          => 0,
+            'Project'        => false,
+            'folderId'       => false,
+            'class'          => 'quiqqer-gallery-grid',
+            'order'          => 'title ASC',
+            'titleClickable' => 0 // 1 = open image
+        ]);
 
         parent::__construct($attributes);
 
@@ -56,9 +58,9 @@ class Grid extends QUI\Control
         $start = $this->getAttribute('start');
         $max   = $this->getAttribute('max');
 
-        $Pagination = new QUI\Bricks\Controls\Pagination(array(
+        $Pagination = new QUI\Bricks\Controls\Pagination([
             'limit' => false
-        ));
+        ]);
 
         $Pagination->loadFromRequest();
 
@@ -89,35 +91,35 @@ class Grid extends QUI\Control
             $max = 9;
         }
 
-        $completeList = $Folder->getImages(array(
+        $completeList = $Folder->getImages([
             'order' => $order
-        ));
+        ]);
 
-        $images = $Folder->getImages(array(
+        $images = $Folder->getImages([
             'limit' => $start . ',' . $max,
             'order' => $order
-        ));
+        ]);
 
-        $count = $Folder->getImages(array(
+        $count = $Folder->getImages([
             'count' => true
-        ));
+        ]);
 
         $sheets = ceil($count / $max);
-
 
         $Pagination->setAttribute('Site', $this->getSite());
         $Pagination->setAttribute('sheets', $sheets);
 
-        $Engine->assign(array(
-            'Rewrite'      => QUI::getRewrite(),
-            'this'         => $this,
-            'Folder'       => $Folder,
-            'images'       => $images,
-            'Site'         => $this->getSite(),
-            'sheets'       => $sheets,
-            'completeList' => $completeList,
-            'Pagination'   => $Pagination
-        ));
+        $Engine->assign([
+            'Rewrite'        => QUI::getRewrite(),
+            'this'           => $this,
+            'Folder'         => $Folder,
+            'images'         => $images,
+            'Site'           => $this->getSite(),
+            'sheets'         => $sheets,
+            'completeList'   => $completeList,
+            'Pagination'     => $Pagination,
+            'titleClickable' => $this->getAttribute('titleClickable') ? 1 : 0
+        ]);
 
         return $Engine->fetch(dirname(__FILE__) . '/Grid.html');
     }

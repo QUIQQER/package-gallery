@@ -4,9 +4,9 @@
 }
 
 .quiqqer-gallery-grid-entry {
-    padding: 10px;
     margin: 0 10px 20px 0;
-    width: calc( 32.5% - 10px );
+    padding: 10px;
+    width: calc(32.5% - 10px);
 }
 
 .quiqqer-gallery-grid-entry:nth-child(3n) {
@@ -39,8 +39,8 @@
 .quiqqer-gallery-grid-entry-text {
     clear: both;
     float: left;
-    padding: 0 10px;
     overflow: hidden;
+    padding: 0 10px;
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 100%;
@@ -52,7 +52,12 @@
 
 @media screen and (max-width: 767px) {
     .quiqqer-gallery-grid-entry {
-        margin: 10px 0 !important;
         width: 100%;
+    }
+
+    .quiqqer-gallery-grid-entry,
+    .quiqqer-gallery-grid-entry:nth-child(3n+1),
+    .quiqqer-gallery-grid-entry:nth-child(3n) {
+        margin: 10px 0;
     }
 }
