@@ -26,6 +26,10 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
             '$imageClick'
         ],
 
+        options: {
+            'titleclickable': 0 // 1 = open image
+        },
+
         initialize: function (options) {
             this.parent(options);
 
@@ -47,6 +51,18 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
             var images = this.$Elm.getElements(
                 '.quiqqer-gallery-grid-entry-image'
             );
+
+            if (this.$Elm.get('data-qui-titleclickable') == "1") {
+                this.setAttribute('titleclickable', this.$Elm.get('data-qui-titleclickable'));
+            }
+
+            if (this.getAttribute('titleclickable')) {
+                var titles = this.$Elm.getElements(
+                    '.quiqqer-gallery-grid-entry-text a'
+                );
+
+                images = images.concat(titles)
+            }
 
             for (var i = 0, len = images.length; i < len; i++) {
                 images[i].addEvent('click', this.$imageClick);

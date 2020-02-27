@@ -117,6 +117,7 @@
             <!-- extra attributes -->
             <attributes>
                 <attribute>quiqqer.settings.gallery.folderId</attribute>
+                <attribute default="0">quiqqer.settings.gallery.titleClickable</attribute>
                 <attribute default="20">quiqqer.settings.gallery.max</attribute>
                 <attribute default="e_date DESC">quiqqer.settings.gallery.sort</attribute>
             </attributes>
@@ -133,6 +134,11 @@
                         <input conf="quiqqer.settings.gallery.folderId" type="text" class="media-folder">
                             <text>
                                 <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.folderId"/>
+                            </text>
+                        </input>
+                        <input conf="quiqqer.settings.gallery.titleClickable" type="checkbox">
+                            <text>
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.titleClickable"/>
                             </text>
                         </input>
                         <input conf="quiqqer.settings.gallery.max" type="number">

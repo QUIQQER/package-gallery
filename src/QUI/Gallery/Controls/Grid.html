@@ -5,6 +5,7 @@
 
 <section class="quiqqer-gallery-grid-list"
          data-qui="package/quiqqer/gallery/bin/controls/Grid"
+         data-qui-titleclickable="{$titleClickable}"
 >
 {foreach from=$images item=Image}
     <div class="grid-33 mobile-grid-100 quiqqer-gallery-grid-entry control-background">
@@ -16,7 +17,15 @@
         </a>
         {if $Image->getTitle()}
         <div class="quiqqer-gallery-grid-entry-text control-color">
-            {$Image->getTitle()}
+            {if $titleClickable}
+            <a href="{image image=$Image onlysrc=true}" target="_blank">
+            {/if}
+                <span>
+                    {$Image->getTitle()}
+                </span>
+            {if $titleClickable}
+            </a>
+            {/if}
         </div>
         {/if}
     </div>
