@@ -14,9 +14,11 @@
         >
             {image image=$Image height=250}
         </a>
+        {if $Image->getTitle()}
         <div class="quiqqer-gallery-grid-entry-text control-color">
-            {$Image->getAttribute('title')}
+            {$Image->getTitle()}
         </div>
+        {/if}
     </div>
 {/foreach}
 
@@ -26,8 +28,8 @@
             <div class="quiqqer-gallery-grid-list-complete-entry"
                  data-src="{image image=$Image onlysrc=true rewrited=true}"
             >
-                <div class="title">{$Image->getAttribute('title')}</div>
-                <div class="short">{$Image->getAttribute('short')}</div>
+                <div class="title">{$Image->getTitle()}</div>
+                <div class="short">{$Image->getShort()}</div>
             </div>
         {/foreach}
         </template>
