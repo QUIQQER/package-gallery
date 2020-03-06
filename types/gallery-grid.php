@@ -18,13 +18,14 @@ if (isset($_REQUEST['sheet'])) {
     $start = ((int)$_REQUEST['sheet'] - 1) * $max;
 }
 
-$Gallery = new QUI\Gallery\Controls\Grid(array(
-    'max'      => $max,
-    'start'    => $start,
-    'folderId' => $Folder->getId(),
-    'order'    => $Site->getAttribute('quiqqer.settings.gallery.sort')
-));
+$Gallery = new QUI\Gallery\Controls\Grid([
+    'max'            => $max,
+    'start'          => $start,
+    'folderId'       => $Folder->getId(),
+    'order'          => $Site->getAttribute('quiqqer.settings.gallery.sort'),
+    'titleClickable' => $Site->getAttribute('quiqqer.settings.gallery.titleClickable')
+]);
 
-$Engine->assign(array(
+$Engine->assign([
     'Gallery' => $Gallery
-));
+]);
