@@ -466,6 +466,8 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                         }
                     });
 
+                    var cs = self.getContent().getComputedSize();
+
                     self.$Image = new Element('img', {
                         'class': 'qui-gallery-popup-image-preview',
                         src    : src,
@@ -475,7 +477,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                     }).inject(self.getContent());
 
                     if (self.$__mobile) {
-                        var imageTop = (docHeight - height) / 2;
+                        var imageTop = (docHeight - height - cs['padding-top'] - cs['padding-bottom']) / 2;
 
                         if (imageTop < 0) {
                             imageTop = 0;
