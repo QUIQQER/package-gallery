@@ -162,10 +162,48 @@
                     />
                 </setting>
 
-                <setting name="perLine" type="select">
+                <setting name="scaleImage" type="checkbox">
                     <locale group="quiqqer/gallery"
-                            var="quiqqer.grid.settings.perLine"
+                            var="quiqqer.grid.settings.scaleImage"
                     />
+
+                    <description>
+                        <locale group="quiqqer/gallery"
+                                var="quiqqer.grid.settings.scaleImage.desc"
+                        />
+                    </description>
+                </setting>
+
+                <setting name="addGap" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.grid.settings.addGap"
+                    />
+                </setting>
+
+                <setting name="showImageTitle" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.grid.settings.showImageTitle"
+                    />
+                </setting>
+
+                <setting name="centerImage" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.grid.settings.centerImage"
+                    />
+                </setting>
+
+                <setting name="entriesPerLine" type="select">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.grid.settings.entriesPerLine"
+                    />
+
+                    <option value=""></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3" default="1">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
                 </setting>
 
                 <setting name="order" type="select">

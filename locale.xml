@@ -102,11 +102,6 @@
             <en><![CDATA[QUIQQER - Gallery-Type: "Effects"]]></en>
             <pl><![CDATA[QUIQQER - Galeria: "efekty"]]></pl>
         </locale>
-        <locale name="quiqqer/gallery:types/gallery-component.title">
-            <de><![CDATA[QUIQQER - Gallerie-Typ: "Effekte"]]></de>
-            <en><![CDATA[]]></en>
-            <pl><![CDATA[QUIQQER - Galeria: "efekty"]]></pl>
-        </locale>
         <locale name="quiqqer.gallery.settings.type.component-forwardPulse">
             <de><![CDATA[Galerie mit Pulsier-Effekt]]></de>
             <en><![CDATA[Gallery with pulse effect]]></en>
@@ -119,23 +114,64 @@
         </locale>
         <locale name="quiqqer.gallery.settings.type.component-coverflow">
             <de><![CDATA[Galerie mit Coverflow-Effekt]]></de>
-            <en><![CDATA[Galerie width coverflow effect]]></en>
+            <en><![CDATA[Gallery width coverflow effect]]></en>
             <pl><![CDATA[Efekt przykrycia]]></pl>
         </locale>
         <locale name="quiqqer.gallery.settings.type.component-ferrisWheel">
             <de><![CDATA[Galerie mit Ferris-Wheel-Effekt]]></de>
-            <en><![CDATA[Galerie width ferris wheel effect]]></en>
+            <en><![CDATA[Gallery width ferris wheel effect]]></en>
             <pl><![CDATA[Efekt diabelskiego młynu]]></pl>
         </locale>
         <locale name="quiqqer.gallery.settings.type.component-snake">
             <de><![CDATA[Galerie mit Snake-Effekt]]></de>
-            <en><![CDATA[Galerie width snake effect]]></en>
+            <en><![CDATA[Gallery width snake effect]]></en>
             <pl><![CDATA[Efekt pzesuwania]]></pl>
         </locale>
         <locale name="quiqqer.gallery.settings.type.component-slideBehind">
             <de><![CDATA[Galerie mit Slide-Behind-Effekt]]></de>
-            <en><![CDATA[Galerie width slide behind effect]]></en>
+            <en><![CDATA[Gallery width slide behind effect]]></en>
             <pl><![CDATA[Efekt schowania do tyłu]]></pl>
+        </locale>
+
+        <locale name="bricks.gallery.grid.title">
+            <de><![CDATA[Galerie: Raster (Grid)]]></de>
+            <en><![CDATA[Gallery: Grid]]></en>
+        </locale>
+        <locale name="bricks.gallery.grid.description">
+            <de><![CDATA[Mit diesem Baustein können Sie eine Galerie in Form von Raster bauen.]]></de>
+            <en><![CDATA[Brick allow you to create a grid gallery ]]></en>
+        </locale>
+        <locale name="quiqqer.grid.settings.folderId">
+            <de><![CDATA[Media-Ordner auswählen]]></de>
+            <en><![CDATA[Media folder]]></en>
+        </locale>
+        <locale name="quiqqer.grid.settings.max">
+            <de><![CDATA[Maximale Bilderanzahl]]></de>
+            <en><![CDATA[Max images]]></en>
+        </locale>
+        <locale name="quiqqer.grid.settings.scaleImage">
+            <de><![CDATA[Die ganze Fläche mit Bild füllen]]></de>
+            <en><![CDATA[Fill the whole area with image]]></en>
+        </locale>
+        <locale name="quiqqer.grid.settings.scaleImage.desc">
+            <de><![CDATA[Wenn die Option aktiviert ist, werden so angepasst, dass die ganze verfügbar Fläche mit deb Bild gefüllt wird. Das Bild kann dabei abgeschnitten und verpixelt werden (je nachdem wie groß das Bild ist).]]></de>
+            <en><![CDATA[If this option is enabled, the whole available area will be filled with the image. The image can be cropped and pixelated (depending on how large the image is).]]></en>
+        </locale>
+        <locale name="quiqqer.grid.settings.addGap">
+            <de><![CDATA[Abstand zwischen Bildern aktivieren]]></de>
+            <en><![CDATA[Enable spacing (gap) between images]]></en>
+        </locale>
+        <locale name="quiqqer.grid.settings.showImageTitle">
+            <de><![CDATA[Bildtitel anzeigen]]></de>
+            <en><![CDATA[Show image title]]></en>
+        </locale>
+        <locale name="quiqqer.grid.settings.centerImage">
+            <de><![CDATA[Bild in der Box zentrieren]]></de>
+            <en><![CDATA[Center image in the box]]></en>
+        </locale>
+        <locale name="quiqqer.grid.settings.entriesPerLine">
+            <de><![CDATA[Anzahl der Bilder pro Reihe]]></de>
+            <en><![CDATA[Anzahl der Bilder pro Reihe]]></en>
         </locale>
 
 

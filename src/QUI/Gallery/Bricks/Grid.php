@@ -28,15 +28,18 @@ class Grid extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'max'            => 9,
-            'start'          => 0,
-            'perLine '       => 3,
-            'Project'        => false,
-            'folderId'       => false,
-            'class'          => 'quiqqer-gallery-brick-grid',
-            'order'          => 'title ASC',
-            'usePagination'  => false,
-            'titleClickable' => 0 // 1 = open image
+            'max'             => 9,
+            'start'           => 0,
+            'entriesPerLine ' => 3,
+            'folder'          => false,
+            'scaleImage'      => true,
+            'addGap'          => true,
+            'showImageTitle'  => true,
+            'centerImage'     => true,
+            'class'           => 'quiqqer-gallery-brick-grid',
+            'order'           => 'title ASC',
+            'usePagination'   => false,
+            'titleClickable'  => 0 // 1 = open image
         ]);
 
         parent::__construct($attributes);
@@ -54,6 +57,14 @@ class Grid extends QUI\Control
     public function getBody()
     {
         $Engine = QUI::getTemplateManager()->getEngine();
+
+        try {
+            $Folder = QUI\Projects\Media\Utils::getMediaItemByUrl($this->getAttribute('folderId'));
+        } catch (QUI\Exception $Exception) {
+            QUI\System\Log::writeException($Exception);
+
+            return '';
+        }
 
         switch ($this->getAttribute('order')) {
             case 'title DESC':
@@ -74,21 +85,29 @@ class Grid extends QUI\Control
                 break;
         }
 
-        $GridGallery = new QUI\Gallery\Controls\GridAdvanced([
+        if (!$this->getAttribute('entriesPerLine')) {
+            $this->setAttribute('entriesPerLine', 3);
+        }
+
+        $GridGallery = new QUI\Gallery\Controls\Grid([
             'max'            => $this->getAttribute('max'),
             'start'          => $this->getAttribute('start'),
-            'perLine'        => $this->getAttribute('perLine'),
-            'Project'        => false,
-            'folderId'       => $this->getAttribute('folderId'),
+            'entriesPerLine' => $this->getAttribute('entriesPerLine'),
+            'scaleImage'     => $this->getAttribute('scaleImage'),
+            'addGap'         => $this->getAttribute('addGap'),
+            'showImageTitle' => $this->getAttribute('showImageTitle'),
+            'centerImage'    => $this->getAttribute('centerImage'),
+            'folderId'       => $Folder->getId(),
             'class'          => 'quiqqer-gallery-grid',
             'order'          => $order,
             'usePagination'  => false,
-            'titleClickable' => $this->getAttribute('titleClickable') ? 1 : 0
+            'titleClickable' => $this->getAttribute('titleClickable') ? 1 : 0,
+            'template'       => 'flexbox'
         ]);
 
         $Engine->assign([
-            'this'         => $this,
-            '$GridGallery' => $GridGallery
+            'this'        => $this,
+            'GridGallery' => $GridGallery
         ]);
 
         return $Engine->fetch(dirname(__FILE__) . '/Grid.html');
