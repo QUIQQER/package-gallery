@@ -27,18 +27,21 @@ class Grid extends QUI\Control
         $this->setAttributes([
             'max'            => 9,
             'start'          => 0,
+            'entriesPerLine' => 3,
+            'scaleImage'     => true,
+            'addGap'         => true,
+            'showImageTitle' => true,
+            'centerImage'    => true,
             'Project'        => false,
             'folderId'       => false,
-            'class'          => 'quiqqer-gallery-grid',
+            'class'          => 'quiqqer-control-gallery-grid',
             'order'          => 'title ASC',
-            'titleClickable' => 0 // 1 = open image
+            'usePagination'  => true,
+            'titleClickable' => 0, // 1 = open image
+            'template'       => 'unsemantic'
         ]);
 
         parent::__construct($attributes);
-
-        $this->addCSSFile(
-            dirname(__FILE__) . '/Grid.css'
-        );
     }
 
     /**
@@ -48,21 +51,16 @@ class Grid extends QUI\Control
      */
     public function getBody()
     {
-        $Engine  = QUI::getTemplateManager()->getEngine();
-        $Project = $this->getProject();
-        $Media   = $Project->getMedia();
+        $Engine     = QUI::getTemplateManager()->getEngine();
+        $Project    = $this->getProject();
+        $Media      = $Project->getMedia();
+        $Pagination = null;
 
         /* @var $Folder \QUI\Projects\Media\Folder */
         $Folder = $Media->get($this->getAttribute('folderId'));
 
         $start = $this->getAttribute('start');
         $max   = $this->getAttribute('max');
-
-        $Pagination = new QUI\Bricks\Controls\Pagination([
-            'limit' => false
-        ]);
-
-        $Pagination->loadFromRequest();
 
         switch ($this->getAttribute('order')) {
             case 'title DESC':
@@ -91,37 +89,82 @@ class Grid extends QUI\Control
             $max = 9;
         }
 
-        $completeList = $Folder->getImages([
-            'order' => $order
-        ]);
-
         $images = $Folder->getImages([
             'limit' => $start . ',' . $max,
             'order' => $order
         ]);
 
-        $count = $Folder->getImages([
-            'count' => true
-        ]);
+        // completeList is used to navigate in popup per JavaScript (next / prev image)
+        $completeList = $images;
 
-        $sheets = ceil($count / $max);
+        if ($this->getAttribute('usePagination')) {
+            // with pagination enabled completeList includes all images from a folder
+            $completeList = $Folder->getImages([
+                'order' => $order
+            ]);
 
-        $Pagination->setAttribute('Site', $this->getSite());
-        $Pagination->setAttribute('sheets', $sheets);
+            $count = $Folder->getImages([
+                'count' => true
+            ]);
+
+            $sheets = ceil($count / $max);
+
+            $Pagination = new QUI\Bricks\Controls\Pagination([
+                'limit' => false
+            ]);
+
+            $Pagination->loadFromRequest();
+            $Pagination->setAttribute('Site', $this->getSite());
+            $Pagination->setAttribute('sheets', $sheets);
+        }
+
+        $scaleImage = '';
+        if ($this->getAttribute('scaleImage')) {
+            $scaleImage = 'quiqqer-control-gallery__scaleImage';
+        }
+
+        $gap = '';
+        if ($this->getAttribute('addGap')) {
+            $gap = 'quiqqer-control-gallery__gap';
+        }
+
+        $centerImage = '';
+        if ($this->getAttribute('centerImage')) {
+            $centerImage = 'quiqqer-control-gallery__centerImage';
+        }
 
         $Engine->assign([
             'Rewrite'        => QUI::getRewrite(),
             'this'           => $this,
-            'Folder'         => $Folder,
+            'perLine'        => $this->getAttribute('entriesPerLine'),
             'images'         => $images,
             'Site'           => $this->getSite(),
-            'sheets'         => $sheets,
             'completeList'   => $completeList,
             'Pagination'     => $Pagination,
-            'titleClickable' => $this->getAttribute('titleClickable') ? 1 : 0
+            'titleClickable' => $this->getAttribute('titleClickable') ? 1 : 0,
+            'scaleImage'     => $scaleImage,
+            'gap'            => $gap,
+            'centerImage'    => $centerImage
         ]);
 
-        return $Engine->fetch(dirname(__FILE__) . '/Grid.html');
+        switch ($this->getAttribute('template')) {
+            case 'flexbox':
+                // new template based on css property flex box
+                $css      = dirname(__FILE__) . '/Grid.Flexbox.css';
+                $template = dirname(__FILE__) . '/Grid.Flexbox.html';
+                break;
+
+            case 'unesmantic':
+            default:
+                // old template based on unsemantic classes
+                $css      = dirname(__FILE__) . '/Grid.Unsemantic.css';
+                $template = dirname(__FILE__) . '/Grid.Unsemantic.html';
+                break;
+        }
+
+        $this->addCSSFile($css);
+
+        return $Engine->fetch($template);
     }
 
     /**

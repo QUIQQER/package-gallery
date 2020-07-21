@@ -142,6 +142,113 @@
             </settings>
         </brick>
 
+        <!-- brick grid -->
+        <brick control="\QUI\Gallery\Bricks\Grid">
+            <title>
+                <locale group="quiqqer/gallery" var="bricks.gallery.grid.title" />
+            </title>
+            <description>
+                <locale group="quiqqer/gallery" var="bricks.gallery.grid.description" />
+            </description>
+            <settings>
+                <setting name="folderId" class="media-folder">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.grid.settings.folderId"
+                    />
+                </setting>
+                <setting name="max" type="number">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.grid.settings.max"
+                    />
+                </setting>
+
+                <setting name="scaleImage" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.grid.settings.scaleImage"
+                    />
+
+                    <description>
+                        <locale group="quiqqer/gallery"
+                                var="quiqqer.grid.settings.scaleImage.desc"
+                        />
+                    </description>
+                </setting>
+
+                <setting name="addGap" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.grid.settings.addGap"
+                    />
+                </setting>
+
+                <setting name="showImageTitle" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.grid.settings.showImageTitle"
+                    />
+                </setting>
+
+                <setting name="centerImage" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.grid.settings.centerImage"
+                    />
+                </setting>
+
+                <setting name="entriesPerLine" type="select">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.grid.settings.entriesPerLine"
+                    />
+
+                    <option value=""></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3" default="1">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </setting>
+
+                <setting name="order" type="select">
+                    <locale group="quiqqer/bricks" var="brick.control.setting.order"/>
+
+                    <option value="name ASC">
+                        <locale group="quiqqer/system" var="name_asc"/>
+                    </option>
+                    <option value="name DESC">
+                        <locale group="quiqqer/system" var="name_desc"/>
+                    </option>
+                    <option value="title ASC">
+                        <locale group="quiqqer/system" var="title_asc"/>
+                    </option>
+                    <option value="title DESC">
+                        <locale group="quiqqer/system" var="title_desc"/>
+                    </option>
+                    <option value="c_date ASC">
+                        <locale group="quiqqer/system" var="c_date_asc"/>
+                    </option>
+                    <option value="c_date DESC">
+                        <locale group="quiqqer/system" var="c_date_desc"/>
+                    </option>
+                    <option value="e_date ASC">
+                        <locale group="quiqqer/system" var="e_date_asc"/>
+                    </option>
+                    <option value="e_date DESC">
+                        <locale group="quiqqer/system" var="e_date_desc"/>
+                    </option>
+                    <option value="release_from ASC">
+                        <locale group="quiqqer/system" var="release_from_asc"/>
+                    </option>
+                    <option value="release_from DESC">
+                        <locale group="quiqqer/system" var="release_from_desc"/>
+                    </option>
+                    <option value="priority ASC">
+                        <locale group="quiqqer/system" var="priority_asc"/>
+                    </option>
+                    <option value="priority DESC">
+                        <locale group="quiqqer/system" var="priority_desc"/>
+                    </option>
+                </setting>
+            </settings>
+        </brick>
+
     </bricks>
 
 </quiqqer>
