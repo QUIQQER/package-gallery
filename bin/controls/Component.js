@@ -387,6 +387,21 @@ define('package/quiqqer/gallery/bin/controls/Component', [
         $getRealImageSize: function (Image) {
             var src = Image.get('src');
 
+            if (Image.getParent('picture')) {
+                var Source  = null;
+                var sources = Image.getParent('picture').getElements('source');
+
+                if (sources.length > 1) {
+                    Source = sources[sources.length - 2]; // vorletztes element
+                } else if (sources.length) {
+                    Source = sources[0];
+                }
+
+                if (Source) {
+                    src = Source.get('srcset');
+                }
+            }
+
             if (!src.match('__')) {
                 return Image.getSize();
             }
@@ -413,12 +428,12 @@ define('package/quiqqer/gallery/bin/controls/Component', [
          * @param {DOMEvent} event
          */
         $keyup: function (event) {
-            if (event.key == 'left') {
+            if (event.key === 'left') {
                 this.prev();
                 return;
             }
 
-            if (event.key == 'right') {
+            if (event.key === 'right') {
                 this.next();
             }
         }
