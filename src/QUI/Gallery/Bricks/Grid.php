@@ -101,12 +101,12 @@ class Grid extends QUI\Control
             'template'       => 'flexbox'
         ]);
 
-        $this->addCSSFiles($GridGallery->getCSSFiles());
-
         $Engine->assign([
             'this'            => $this,
             'htmlGridGallery' => $GridGallery->create()
         ]);
+
+        $this->addCSSFiles($GridGallery->getCSSFiles());
 
         return $Engine->fetch(dirname(__FILE__) . '/Grid.html');
     }
