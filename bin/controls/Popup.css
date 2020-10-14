@@ -18,6 +18,10 @@
     line-height: 50px;
     text-align: center;
     width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .qui-gallery-popup-buttons-prev:hover,
@@ -28,6 +32,7 @@
 
 .qui-gallery-popup-stats {
     cursor: default;
+    font-size: 0.9rem;
 }
 
 .qui-gallery-popup-buttons-text {
@@ -52,6 +57,11 @@
 .qui-gallery-popup-image-preview-text {
     color: #fff;
     text-align: left;
+    font-size: 0.9rem;
+}
+
+.qui-gallery-popup-image-preview-text *:last-child {
+    margin-bottom: 0;
 }
 
 .qui-gallery-popup-imagePrev {
