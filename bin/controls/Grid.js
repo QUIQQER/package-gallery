@@ -103,7 +103,7 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
                 event.stop();
             }
 
-            if (Target.nodeName != 'a') {
+            if (Target.nodeName != 'A') {
                 Target = Target.getParent('a');
             }
 
