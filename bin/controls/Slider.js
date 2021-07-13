@@ -18,7 +18,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
     'qui/utils/Functions',
     'Locale',
     'package/quiqqer/gallery/bin/controls/Popup',
-    URL_OPT_DIR + 'bin/hammerjs/hammer.min.js',
+    URL_OPT_DIR + 'bin/quiqqer-asset/hammerjs/hammerjs/hammer.min.js',
 
     'text!package/quiqqer/gallery/bin/controls/Slider.html',
     'css!package/quiqqer/gallery/bin/controls/Slider.css'

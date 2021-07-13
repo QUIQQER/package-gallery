@@ -10,7 +10,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
     'qui/QUI',
     'qui/controls/windows/Popup',
     'qui/utils/Math',
-    URL_OPT_DIR + 'bin/hammerjs/hammer.min.js',
+    URL_OPT_DIR + 'bin/quiqqer-asset/hammerjs/hammerjs/hammer.min.js',
 
     'text!package/quiqqer/gallery/bin/controls/Popup.html',
     'css!package/quiqqer/gallery/bin/controls/Popup.css'
