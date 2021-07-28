@@ -10,7 +10,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
     'qui/QUI',
     'qui/controls/windows/Popup',
     'qui/utils/Math',
-    URL_OPT_DIR + 'bin/hammerjs/hammer.min.js',
+    URL_OPT_DIR + 'bin/quiqqer-asset/hammerjs/hammerjs/hammer.min.js',
 
     'text!package/quiqqer/gallery/bin/controls/Popup.html',
     'css!package/quiqqer/gallery/bin/controls/Popup.css'
@@ -364,6 +364,17 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                 childIndex  = imageData.index + 1,
                 childLength = this.getAttribute('images').length;
 
+            var originalSource = src;
+
+            if (src.indexOf('__') === -1) {
+                var srcParts = src.split('.');
+                var ending   = srcParts.pop();
+                var maxWidth = QUI.getWindowSize().x;
+
+                // prevent heavy image size loading
+                src = srcParts.join('.') + '__' + maxWidth + '.' + ending;
+            }
+
             require(['image!' + src], function (Image) {
                 var pc;
 
@@ -469,9 +480,10 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                     var cs = self.getContent().getComputedSize();
 
                     self.$Image = new Element('img', {
-                        'class': 'qui-gallery-popup-image-preview',
-                        src    : src,
-                        styles : {
+                        'class'   : 'qui-gallery-popup-image-preview',
+                        src       : src,
+                        'data-src': originalSource,
+                        styles    : {
                             opacity: 0
                         }
                     }).inject(self.getContent());
@@ -510,7 +522,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                 return;
             }
 
-            var currentSrc = this.$Image.get('src'),
+            var currentSrc = this.$Image.get('data-src'),
                 images     = this.getAttribute('images');
 
             if (currentSrc.match(window.location.host)) {
@@ -540,7 +552,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
                 return;
             }
 
-            var currentSrc = this.$Image.get('src'),
+            var currentSrc = this.$Image.get('data-src'),
                 images     = this.getAttribute('images');
 
             if (currentSrc.match(window.location.host)) {
