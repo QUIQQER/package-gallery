@@ -30,6 +30,7 @@ class Grid extends QUI\Control
             'entriesPerLine' => 3,
             'scaleImage'     => true,
             'addGap'         => true,
+            'border'         => false,
             'showImageTitle' => true,
             'centerImage'    => true,
             'Project'        => false,
@@ -120,17 +121,22 @@ class Grid extends QUI\Control
 
         $scaleImage = '';
         if ($this->getAttribute('scaleImage')) {
-            $scaleImage = 'quiqqer-control-gallery__scaleImage';
+            $scaleImage = 'quiqqer-control-gallery-grid__scaleImage';
         }
 
         $gap = '';
         if ($this->getAttribute('addGap')) {
-            $gap = 'quiqqer-control-gallery__gap';
+            $gap = 'quiqqer-control-gallery-grid__gap';
+        }
+
+        $border = '';
+        if ($this->getAttribute('border')) {
+            $border = 'quiqqer-control-gallery-grid__border';
         }
 
         $centerImage = '';
         if ($this->getAttribute('centerImage')) {
-            $centerImage = 'quiqqer-control-gallery__centerImage';
+            $centerImage = 'quiqqer-control-gallery-grid__centerImage';
         }
 
         $Engine->assign([
@@ -144,6 +150,7 @@ class Grid extends QUI\Control
             'titleClickable' => $this->getAttribute('titleClickable') ? 1 : 0,
             'scaleImage'     => $scaleImage,
             'gap'            => $gap,
+            'border'         => $border,
             'centerImage'    => $centerImage
         ]);
 

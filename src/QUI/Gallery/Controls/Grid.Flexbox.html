@@ -1,24 +1,14 @@
-{*assign var=scaleImage value=''}
-{if $this->getAttribute('scaleImage')}
-    {assign var=scaleImage value='quiqqer-control-gallery__scale-image'}
-{/if}
-
-{assign var=gap value=''}
-{if $this->getAttribute('addGap')}
-    {assign var=gap value='quiqqer-control-gallery__gap'}
-{/if*}
-
 {if $Pagination && $Site}
     {$Pagination->create()}
 {/if}
 
-<section class="quiqqer-control-gallery-grid-list-wrapper {$gap}">
+<section class="quiqqer-control-gallery-grid-list-wrapper {$gap} {$scaleImage} {$border}">
     <div class="quiqqer-control-gallery-grid-list"
              data-qui="package/quiqqer/gallery/bin/controls/Grid"
              data-qui-titleclickable="{$titleClickable}"
     >
         {foreach from=$images item=Image}
-            <div class="quiqqer-control-gallery-grid-entry-wrapper quiqqer-control-gallery-grid-entry-wrapper-{$perLine} {$scaleImage}">
+            <div class="quiqqer-control-gallery-grid-entry-wrapper quiqqer-control-gallery-grid-entry-wrapper-{$perLine}">
                 <div class="quiqqer-control-gallery-grid-entry">
                     <a href="{image image=$Image onlysrc=true}"
                        class="quiqqer-control-gallery-grid-image {$centerImage}"
