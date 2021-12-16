@@ -180,6 +180,12 @@
                     />
                 </setting>
 
+                <setting name="border" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.grid.settings.border"
+                    />
+                </setting>
+
                 <setting name="showImageTitle" type="checkbox">
                     <locale group="quiqqer/gallery"
                             var="quiqqer.grid.settings.showImageTitle"

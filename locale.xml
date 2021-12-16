@@ -161,6 +161,10 @@
             <de><![CDATA[Abstand zwischen Bildern aktivieren]]></de>
             <en><![CDATA[Enable spacing (gap) between images]]></en>
         </locale>
+        <locale name="quiqqer.grid.settings.border">
+            <de><![CDATA[Rahmen (border) aktivieren]]></de>
+            <en><![CDATA[Enable border]]></en>
+        </locale>
         <locale name="quiqqer.grid.settings.showImageTitle">
             <de><![CDATA[Bildtitel anzeigen]]></de>
             <en><![CDATA[Show image title]]></en>
