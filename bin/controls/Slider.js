@@ -367,6 +367,10 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          * calc internal sizes
          */
         $calcSizes: function () {
+            if (!this.$Container) {
+                return;
+            }
+            
             this.$mainSize = this.$Container.getSize();
 
             if (this.$PreviewsContainer) {
