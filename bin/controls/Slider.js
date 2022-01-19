@@ -8,6 +8,7 @@
  * @event animateOutEnd [self, Element]
  * @event animateInBegin [self, Element]
  * @event animateinEnd [self, Element]
+ * @event onImageClick [self, ImageData]
  */
 define('package/quiqqer/gallery/bin/controls/Slider', [
     'qui/QUI',
@@ -370,7 +371,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             if (!this.$Container) {
                 return;
             }
-            
+
             this.$mainSize = this.$Container.getSize();
 
             if (this.$PreviewsContainer) {
@@ -441,7 +442,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     self.Loader.hide();
 
                     var OldImage = self.$Container.getElements(
-                        '.quiqqer-gallery-slider-image'
+                            '.quiqqer-gallery-slider-image'
                         ),
 
                         NewImage = self.$createNewImage(Image);
@@ -503,7 +504,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     self.Loader.hide();
 
                     var OldImage = self.$Container.getElements(
-                        '.quiqqer-gallery-slider-image'
+                            '.quiqqer-gallery-slider-image'
                         ),
 
                         NewImage = self.$createNewImage(Image);
@@ -982,8 +983,12 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     Target = Target.getParent('.quiqqer-gallery-slider-previews-entry');
                 }
 
-                self.$current = Target.get('data-image').toInt() - 1;
+                var imageIndex = Target.get('data-image').toInt();
+
+                self.$current = imageIndex - 1;
                 self.next();
+
+                self.fireEvent('imageClick', [self, self.$images[imageIndex]]);
             };
 
 
