@@ -4,6 +4,7 @@
  * @module package/quiqqer/gallery/bin/controls/Slider
  * @author www.pcsg.de (Henning Leutz)
  *
+ * @event onLoaded [self]
  * @event animateOutBegin [self, Element]
  * @event animateOutEnd [self, Element]
  * @event animateInBegin [self, Element]
@@ -154,6 +155,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             this.create();
             this.showFirst().then(function () {
                 self.Loader.hide();
+                self.fireEvent('loaded', [self]);
             }).catch(function () {
                 self.Loader.hide();
             });
@@ -1143,6 +1145,30 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             }, {
                 duration: 700
             });
+        },
+
+        /**
+         * Select an image by image file name.
+         *
+         * @param {String} imgFilename - Full file name including ext; may contain size part (e.g. "__64x128")
+         * @return {void}
+         */
+        selectImageByFilename: function (imgFilename) {
+            const imgRegExpRemoveSize    = new RegExp('__\\d+x\\d+', 'ig');
+            const imgRegExpParseFilename = new RegExp('\\/([^\\/]*\\.\\w+)$', 'igm');
+
+            for (const [imageIndex, ImageData] of Object.entries(this.$images)) {
+                const sliderImgFilename = ImageData.src.replace(imgRegExpRemoveSize, '');
+                const filenameMatches   = sliderImgFilename.match(imgRegExpParseFilename);
+                const targetImgFilename = filenameMatches[0].replace('/', '');
+
+                if (targetImgFilename === imgFilename) {
+                    this.$current = imageIndex - 1;
+                    this.next();
+
+                    break;
+                }
+            }
         },
 
         /**
