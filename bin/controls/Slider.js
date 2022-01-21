@@ -1155,14 +1155,19 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
          */
         selectImageByFilename: function (imgFilename) {
             const imgRegExpRemoveSize    = new RegExp('__\\d+x\\d+', 'ig');
-            const imgRegExpParseFilename = new RegExp('\\/([^\\/]*\\.\\w+)$', 'igm');
+            const imgRegExpParseFilename = new RegExp('\\/([^\\/]*)\\.\\w+$', 'igm');
 
             for (const [imageIndex, ImageData] of Object.entries(this.$images)) {
                 const sliderImgFilename = ImageData.src.replace(imgRegExpRemoveSize, '');
-                const filenameMatches   = sliderImgFilename.match(imgRegExpParseFilename);
-                const targetImgFilename = filenameMatches[0].replace('/', '');
+                const filenameMatches   = [...sliderImgFilename.matchAll(imgRegExpParseFilename)];
 
-                if (targetImgFilename === imgFilename) {
+                if (!filenameMatches.length || typeof filenameMatches[0][1] === 'undefined') {
+                    continue;
+                }
+
+                const targetImgFilename = filenameMatches[0][1];
+
+                if (imgFilename.indexOf(targetImgFilename) !== -1) {
                     this.$current = imageIndex - 1;
                     this.next();
 
