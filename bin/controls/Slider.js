@@ -10,6 +10,7 @@
  * @event animateInBegin [self, Element]
  * @event animateinEnd [self, Element]
  * @event onImageClick [self, ImageData]
+ * @event onImageShow [self, ImageData]
  */
 define('package/quiqqer/gallery/bin/controls/Slider', [
     'qui/QUI',
@@ -467,6 +468,8 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     self.$showPreviewImage();
                     self.Loader.hide();
 
+                    self.fireEvent('imageShow', [self, self.$images[self.$current]]);
+
                     resolve();
                 });
 
@@ -528,6 +531,8 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
                     self.$showPreviewImage();
                     self.Loader.hide();
+
+                    self.fireEvent('imageShow', [self, self.$images[self.$current]]);
 
                     resolve();
                 });
