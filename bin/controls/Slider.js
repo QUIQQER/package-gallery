@@ -45,7 +45,8 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             '$previewRight',
             '$showPreviewImage',
             '$calcSizes',
-            'zoom'
+            'zoom',
+            'isLoaded'
         ],
 
         options: {
@@ -89,6 +90,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
 
             this.$images  = [];
             this.$current = 0;
+            this.$loaded  = false;
 
             // sizes
             this.$pcSize    = {};
@@ -157,6 +159,7 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
             this.showFirst().then(function () {
                 self.Loader.hide();
                 self.fireEvent('loaded', [self]);
+                self.$loaded = true;
             }).catch(function () {
                 self.Loader.hide();
             });
@@ -1179,6 +1182,13 @@ define('package/quiqqer/gallery/bin/controls/Slider', [
                     break;
                 }
             }
+        },
+
+        /**
+         * @return {Boolean}
+         */
+        isLoaded: function () {
+            return this.$loaded;
         },
 
         /**
