@@ -178,6 +178,40 @@
             <en><![CDATA[Anzahl der Bilder pro Reihe]]></en>
         </locale>
 
+        <!-- grid advanced -->
+        <locale name="bricks.gallery.gridAdvanced.title">
+            <de><![CDATA[Galerie: Erweitertes Raster (CSS Grid)]]></de>
+            <en><![CDATA[Gallery: Advanced Grid]]></en>
+        </locale>
+        <locale name="bricks.gallery.gridAdvanced.description">
+            <de><![CDATA[Galerie in beliebigen Raster-Formen darstellen.]]></de>
+            <en><![CDATA[Display gallery in any grid format.]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.folderId">
+            <de><![CDATA[Media-Ordner]]></de>
+            <en><![CDATA[Media folder]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.max">
+            <de><![CDATA[Maximale Bilderanzahl]]></de>
+            <en><![CDATA[Max images]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.addGap">
+            <de><![CDATA[Abstand zwischen Bildern aktivieren]]></de>
+            <en><![CDATA[Enable spacing (gap) between images]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.showImageTitle">
+            <de><![CDATA[Bildtitel anzeigen]]></de>
+            <en><![CDATA[Show image title]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.entriesPerLine">
+            <de><![CDATA[Anzahl der Bilder pro Reihe]]></de>
+            <en><![CDATA[Anzahl der Bilder pro Reihe]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.order.random">
+            <de><![CDATA[Zufällig]]></de>
+            <en><![CDATA[Random]]></en>
+        </locale>
+
 
         <locale name="quiqqer.gallery.setting.moreLink">
             <de><![CDATA[Mehr Link]]></de>
