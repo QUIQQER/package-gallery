@@ -178,6 +178,125 @@
             <en><![CDATA[Anzahl der Bilder pro Reihe]]></en>
         </locale>
 
+        <!-- grid advanced -->
+        <locale name="bricks.gallery.gridAdvanced.title">
+            <de><![CDATA[Galerie: Erweitertes Raster (CSS Grid)]]></de>
+            <en><![CDATA[Gallery: Advanced Grid]]></en>
+        </locale>
+        <locale name="bricks.gallery.gridAdvanced.description">
+            <de><![CDATA[Galerie in beliebigen Raster-Formen darstellen.]]></de>
+            <en><![CDATA[Display gallery in any grid format.]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.folderId">
+            <de><![CDATA[Media-Ordner]]></de>
+            <en><![CDATA[Media folder]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.max">
+            <de><![CDATA[Maximale Bilderanzahl]]></de>
+            <en><![CDATA[Max images]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.addGap">
+            <de><![CDATA[Abstand zwischen Bildern aktivieren]]></de>
+            <en><![CDATA[Enable spacing (gap) between images]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.showImageTitle">
+            <de><![CDATA[Bildtitel anzeigen]]></de>
+            <en><![CDATA[Show image title]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template">
+            <de><![CDATA[Vorlage (Template)]]></de>
+            <en><![CDATA[Template]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template.1">
+            <de><![CDATA[Template 1]]></de>
+            <en><![CDATA[Template 1]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template.2">
+            <de><![CDATA[Template 2]]></de>
+            <en><![CDATA[Template 2]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template.3">
+            <de><![CDATA[Template 3]]></de>
+            <en><![CDATA[Template 3]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template.4">
+            <de><![CDATA[Template 4]]></de>
+            <en><![CDATA[Template 4]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template.5">
+            <de><![CDATA[Template 5]]></de>
+            <en><![CDATA[Template 5]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template.6">
+            <de><![CDATA[Template 6]]></de>
+            <en><![CDATA[Template 6]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template.7">
+            <de><![CDATA[Template 7]]></de>
+            <en><![CDATA[Template 7]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template.8">
+            <de><![CDATA[Template 8]]></de>
+            <en><![CDATA[Template 8]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template.9">
+            <de><![CDATA[Template 91]]></de>
+            <en><![CDATA[Template 9]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template.10">
+            <de><![CDATA[Template 10]]></de>
+            <en><![CDATA[Template 10]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template.2perRow">
+            <de><![CDATA[2 Bilder pro Reihe]]></de>
+            <en><![CDATA[2 images per row]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template.3perRow">
+            <de><![CDATA[3 Bilder pro Reihe]]></de>
+            <en><![CDATA[3 images per row]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template.4perRow">
+            <de><![CDATA[4 Bilder pro Reihe]]></de>
+            <en><![CDATA[4 images per row]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template.5perRow">
+            <de><![CDATA[5 Bilder pro Reihe]]></de>
+            <en><![CDATA[5 images per row]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.template.6perRow">
+            <de><![CDATA[6 Bilder pro Reihe]]></de>
+            <en><![CDATA[6 images per row]]></en>
+        </locale>
+
+        <locale name="quiqqer.gridAdvanced.settings.order.random">
+            <de><![CDATA[Zufällig]]></de>
+            <en><![CDATA[Random]]></en>
+        </locale>
+
+        <locale name="quiqqer.gridAdvanced.settings.scaleImageOnHover">
+            <de><![CDATA[Bild vergrößern beim Mouseover]]></de>
+            <en><![CDATA[Scale image on mouse over]]></en>
+        </locale><locale name="quiqqer.gridAdvanced.settings.scaleImageOnHover.desc">
+            <de><![CDATA[Wenn man mit der maus drüber fährt, wird das Bild vergrößert.]]></de>
+            <en><![CDATA[Random]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.darkenImageOnHover">
+            <de><![CDATA[Bild verdunkeln beim Mouseover]]></de>
+            <en><![CDATA[Darken image on mouse over]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.darkenImageOnHover.desc">
+            <de><![CDATA[Wenn man mit der maus drüber fährt, wird das Bild verdunkelt.]]></de>
+            <en><![CDATA[Random]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.iconOnHover">
+            <de><![CDATA[Extra Symbol anzeigen beim Mouseover]]></de>
+            <en><![CDATA[Show extra symbol on mouse over]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.iconOnHover.desc">
+            <de><![CDATA[Wenn man mit der maus drüber fährt, wird eine Icon über dem Bild angezeigt.]]></de>
+            <en><![CDATA[Random]]></en>
+        </locale>
+
 
         <locale name="quiqqer.gallery.setting.moreLink">
             <de><![CDATA[Mehr Link]]></de>

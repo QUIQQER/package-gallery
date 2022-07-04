@@ -49,7 +49,7 @@ define('package/quiqqer/gallery/bin/controls/Grid', [
          */
         $onImport: function () {
             var images = this.$Elm.getElements(
-                '.quiqqer-gallery-grid-entry-image, .quiqqer-control-gallery-grid-image'
+                '.quiqqer-gallery-grid-entry-image, .quiqqer-control-gallery-grid-image, .quiqqer-control-gallery-gridAdvanced-image'
             );
 
             if (this.$Elm.get('data-qui-titleclickable') == "1") {

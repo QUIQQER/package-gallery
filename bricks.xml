@@ -255,6 +255,123 @@
             </settings>
         </brick>
 
+        <!-- brick: grid advanced -->
+        <brick control="\QUI\Gallery\Bricks\GridAdvanced">
+            <title>
+                <locale group="quiqqer/gallery" var="bricks.gallery.gridAdvanced.title" />
+            </title>
+            <description>
+                <locale group="quiqqer/gallery" var="bricks.gallery.gridAdvanced.description" />
+            </description>
+            <settings>
+                <setting name="folderId" class="media-folder">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.folderId"
+                    />
+                </setting>
+                <setting name="max" type="number">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.max"
+                    />
+                </setting>
+
+                <setting name="addGap" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.addGap"
+                    />
+                </setting>
+
+                <!--<setting name="showImageTitle" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.showImageTitle"
+                    />
+                </setting>-->
+
+                <setting name="template" type="select">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.template"
+                    />
+
+                    <option value=""></option>
+                    <option value="1"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.1"/></option>
+                    <option value="2"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.2"/></option>
+                    <option value="3"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.3"/></option>
+                    <option value="4"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.4"/></option>
+                    <option value="5"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.5"/></option>
+                    <option value="6"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.6"/></option>
+                    <option value="6"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.7"/></option>
+                    <option value="6"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.8"/></option>
+                    <option value="6"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.9"/></option>
+                    <option value="6"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.10"/></option>
+                    <option value="2perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.2perRow"/></option>
+                    <option value="3perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.3perRow"/></option>
+                    <option value="4perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.4perRow"/></option>
+                    <option value="5perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.5perRow"/></option>
+                    <option value="6perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.6perRow"/></option>
+                </setting>
+
+                <setting name="order" type="select">
+                    <locale group="quiqqer/bricks" var="brick.control.setting.order"/>
+
+                    <option value="random">
+                        <locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.order.random"/>
+                    </option>
+                    <option value="name ASC">
+                        <locale group="quiqqer/system" var="name_asc"/>
+                    </option>
+                    <option value="name DESC">
+                        <locale group="quiqqer/system" var="name_desc"/>
+                    </option>
+                    <option value="title ASC">
+                        <locale group="quiqqer/system" var="title_asc"/>
+                    </option>
+                    <option value="title DESC">
+                        <locale group="quiqqer/system" var="title_desc"/>
+                    </option>
+                    <option value="c_date ASC">
+                        <locale group="quiqqer/system" var="c_date_asc"/>
+                    </option>
+                    <option value="c_date DESC">
+                        <locale group="quiqqer/system" var="c_date_desc"/>
+                    </option>
+                    <option value="e_date ASC">
+                        <locale group="quiqqer/system" var="e_date_asc"/>
+                    </option>
+                    <option value="e_date DESC">
+                        <locale group="quiqqer/system" var="e_date_desc"/>
+                    </option>
+                    <option value="release_from ASC">
+                        <locale group="quiqqer/system" var="release_from_asc"/>
+                    </option>
+                    <option value="release_from DESC">
+                        <locale group="quiqqer/system" var="release_from_desc"/>
+                    </option>
+                    <option value="priority ASC">
+                        <locale group="quiqqer/system" var="priority_asc"/>
+                    </option>
+                    <option value="priority DESC">
+                        <locale group="quiqqer/system" var="priority_desc"/>
+                    </option>
+                </setting>
+
+                <setting name="scaleImageOnHover" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.scaleImageOnHover"
+                    />
+                </setting>
+                <setting name="darkenImageOnHover" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.darkenImageOnHover"
+                    />
+                </setting>
+                <setting name="iconOnHover" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.iconOnHover"
+                    />
+                </setting>
+            </settings>
+        </brick>
+
     </bricks>
 
 </quiqqer>
