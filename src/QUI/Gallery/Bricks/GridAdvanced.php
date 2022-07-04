@@ -82,19 +82,22 @@ class GridAdvanced extends QUI\Control
         }
 
         $GridAdvancedGallery = new QUI\Gallery\Controls\GridAdvanced([
-            'max'            => $this->getAttribute('max'),
-            'start'          => $this->getAttribute('start'),
-            'entriesPerLine' => $this->getAttribute('entriesPerLine'),
-            'scaleImage'     => $this->getAttribute('scaleImage'),
-            'addGap'         => $this->getAttribute('addGap'),
-            'showImageTitle' => $this->getAttribute('showImageTitle'),
-            'centerImage'    => $this->getAttribute('centerImage'),
-            'folderId'       => $Folder->getId(),
-            'class'          => 'quiqqer-gallery-grid',
-            'order'          => $order,
-            'usePagination'  => false,
-            'titleClickable' => $this->getAttribute('titleClickable') ? 1 : 0,
-            'template'       => '3'
+            'max'                => $this->getAttribute('max'),
+            'start'              => $this->getAttribute('start'),
+            'entriesPerLine'     => $this->getAttribute('entriesPerLine'),
+            'scaleImage'         => $this->getAttribute('scaleImage'),
+            'addGap'             => $this->getAttribute('addGap'),
+            'showImageTitle'     => $this->getAttribute('showImageTitle'),
+            'centerImage'        => $this->getAttribute('centerImage'),
+            'folderId'           => $Folder->getId(),
+            'class'              => 'quiqqer-gallery-grid',
+            'order'              => $order,
+            'scaleImageOnHover'  => $this->getAttribute('scaleImageOnHover'),
+            'darkenImageOnHover' => $this->getAttribute('darkenImageOnHover'),
+            'iconOnHover'        => $this->getAttribute('iconOnHover'),
+            'usePagination'      => false,
+            'titleClickable'     => $this->getAttribute('titleClickable'),
+            'template'           => $this->getAttribute('template')
         ]);
 
         $Engine->assign([

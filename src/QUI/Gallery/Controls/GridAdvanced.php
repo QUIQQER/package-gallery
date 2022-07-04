@@ -39,7 +39,7 @@ class GridAdvanced extends QUI\Control
             'iconOnHover'        => false,
             'usePagination'      => false,
             'titleClickable'     => 0, // 1 = open image
-            'template'           => 1 // template number
+            'template'           => '1' // template number or name
         ]);
 
         parent::__construct($attributes);
@@ -139,6 +139,29 @@ class GridAdvanced extends QUI\Control
             $iconOnHover = 'quiqqer-control-gallery-gridAdvanced__iconOnHover';
         }
 
+        /* template */
+        switch ($this->getAttribute('template')) {
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+            case '10':
+            case '2perRow':
+            case '3perRow':
+            case '4perRow':
+            case '5perRow':
+            case '6perRow':
+                $template = $this->getAttribute('template');
+                break;
+            default:
+                $template = 1;
+        }
+
         $Engine->assign([
             'Rewrite'            => QUI::getRewrite(),
             'this'               => $this,
@@ -149,7 +172,7 @@ class GridAdvanced extends QUI\Control
             'Pagination'         => $Pagination,
             'titleClickable'     => $this->getAttribute('titleClickable') ? 1 : 0,
             'gap'                => $gap,
-            'template'           => $this->getAttribute('template'),
+            'template'           => $template,
             'scaleImageOnHover'  => $scaleImageOnHover,
             'darkenImageOnHover' => $darkenImageOnHover,
             'iconOnHover'        => $iconOnHover

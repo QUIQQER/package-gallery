@@ -281,24 +281,33 @@
                     />
                 </setting>
 
-                <setting name="showImageTitle" type="checkbox">
+                <!--<setting name="showImageTitle" type="checkbox">
                     <locale group="quiqqer/gallery"
                             var="quiqqer.gridAdvanced.settings.showImageTitle"
                     />
-                </setting>
+                </setting>-->
 
-                <setting name="entriesPerLine" type="select">
+                <setting name="template" type="select">
                     <locale group="quiqqer/gallery"
-                            var="quiqqer.gridAdvanced.settings.entriesPerLine"
+                            var="quiqqer.gridAdvanced.settings.template"
                     />
 
                     <option value=""></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3" default="1">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <option value="1"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.1"/></option>
+                    <option value="2"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.2"/></option>
+                    <option value="3"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.3"/></option>
+                    <option value="4"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.4"/></option>
+                    <option value="5"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.5"/></option>
+                    <option value="6"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.6"/></option>
+                    <option value="6"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.7"/></option>
+                    <option value="6"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.8"/></option>
+                    <option value="6"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.9"/></option>
+                    <option value="6"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.10"/></option>
+                    <option value="2perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.2perRow"/></option>
+                    <option value="3perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.3perRow"/></option>
+                    <option value="4perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.4perRow"/></option>
+                    <option value="5perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.5perRow"/></option>
+                    <option value="6perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.6perRow"/></option>
                 </setting>
 
                 <setting name="order" type="select">
@@ -343,6 +352,22 @@
                     <option value="priority DESC">
                         <locale group="quiqqer/system" var="priority_desc"/>
                     </option>
+                </setting>
+
+                <setting name="scaleImageOnHover" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.scaleImageOnHover"
+                    />
+                </setting>
+                <setting name="darkenImageOnHover" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.darkenImageOnHover"
+                    />
+                </setting>
+                <setting name="iconOnHover" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.iconOnHover"
+                    />
                 </setting>
             </settings>
         </brick>
