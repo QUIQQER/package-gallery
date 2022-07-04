@@ -63,6 +63,7 @@ class GridAdvanced extends QUI\Control
         }
 
         switch ($this->getAttribute('order')) {
+            case 'random':
             case 'title DESC':
             case 'title ASC':
             case 'name DESC':

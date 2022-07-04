@@ -64,6 +64,7 @@ class GridAdvanced extends QUI\Control
         $max   = $this->getAttribute('max');
 
         switch ($this->getAttribute('order')) {
+            case 'random':
             case 'title DESC':
             case 'title ASC':
             case 'name DESC':
@@ -90,10 +91,21 @@ class GridAdvanced extends QUI\Control
             $max = 12;
         }
 
-        $images = $Folder->getImages([
+        $getImagesParams = [
             'limit' => $start.','.$max,
             'order' => $order
-        ]);
+        ];
+
+        if ($order === 'random') {
+            unset($getImagesParams['limit']);
+        }
+
+        $images = $Folder->getImages($getImagesParams);
+
+        if ($order === 'random') {
+            shuffle($images);
+            $images = array_slice($images, 0, $max);
+        }
 
         // completeList is used to navigate in popup per JavaScript (next / prev image)
         $completeList = $images;
