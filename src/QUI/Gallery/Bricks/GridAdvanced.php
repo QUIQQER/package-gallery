@@ -94,7 +94,7 @@ class GridAdvanced extends QUI\Control
             'order'          => $order,
             'usePagination'  => false,
             'titleClickable' => $this->getAttribute('titleClickable') ? 1 : 0,
-            'template'       => '2perRow'
+            'template'       => '3'
         ]);
 
         $Engine->assign([

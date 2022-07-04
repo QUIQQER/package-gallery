@@ -25,18 +25,21 @@ class GridAdvanced extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'class'          => 'quiqqer-control-gallery-gridAdvanced',
-            'max'            => 9,
-            'start'          => 0,
-            'entriesPerLine' => 3,
-            'addGap'         => true,
-            'showImageTitle' => false,
-            'Project'        => false,
-            'folderId'       => false,
-            'order'          => 'title ASC',
-            'usePagination'  => false,
-            'titleClickable' => 0, // 1 = open image
-            'template'       => 1 // template number
+            'class'              => 'quiqqer-control-gallery-gridAdvanced',
+            'max'                => 9,
+            'start'              => 0,
+            'entriesPerLine'     => 3,
+            'addGap'             => true,
+            'showImageTitle'     => false,
+            'Project'            => false,
+            'folderId'           => false,
+            'order'              => 'title ASC',
+            'scaleImageOnHover'  => true,
+            'darkenImageOnHover' => false,
+            'iconOnHover'        => false,
+            'usePagination'      => false,
+            'titleClickable'     => 0, // 1 = open image
+            'template'           => 1 // template number
         ]);
 
         parent::__construct($attributes);
@@ -121,17 +124,35 @@ class GridAdvanced extends QUI\Control
             $gap = 'quiqqer-control-gallery-gridAdvanced__gap';
         }
 
+        $scaleImageOnHover = '';
+        if ($this->getAttribute('scaleImageOnHover')) {
+            $scaleImageOnHover = 'quiqqer-control-gallery-gridAdvanced__scaleImageOnHover';
+        }
+
+        $darkenImageOnHover = '';
+        if ($this->getAttribute('darkenImageOnHover')) {
+            $darkenImageOnHover = 'quiqqer-control-gallery-gridAdvanced__darkenImageOnHover';
+        }
+
+        $iconOnHover = '';
+        if ($this->getAttribute('iconOnHover')) {
+            $iconOnHover = 'quiqqer-control-gallery-gridAdvanced__iconOnHover';
+        }
+
         $Engine->assign([
-            'Rewrite'        => QUI::getRewrite(),
-            'this'           => $this,
-            'perLine'        => $this->getAttribute('entriesPerLine'),
-            'images'         => $images,
-            'Site'           => $this->getSite(),
-            'completeList'   => $completeList,
-            'Pagination'     => $Pagination,
-            'titleClickable' => $this->getAttribute('titleClickable') ? 1 : 0,
-            'gap'            => $gap,
-            'template'       => $this->getAttribute('template')
+            'Rewrite'            => QUI::getRewrite(),
+            'this'               => $this,
+            'perLine'            => $this->getAttribute('entriesPerLine'),
+            'images'             => $images,
+            'Site'               => $this->getSite(),
+            'completeList'       => $completeList,
+            'Pagination'         => $Pagination,
+            'titleClickable'     => $this->getAttribute('titleClickable') ? 1 : 0,
+            'gap'                => $gap,
+            'template'           => $this->getAttribute('template'),
+            'scaleImageOnHover'  => $scaleImageOnHover,
+            'darkenImageOnHover' => $darkenImageOnHover,
+            'iconOnHover'        => $iconOnHover
         ]);
 
 

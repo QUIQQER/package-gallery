@@ -2,7 +2,7 @@
     {$Pagination->create()}
 {/if}
 
-<section class="quiqqer-control-gallery-gridAdvanced-list galleryGridTemplate-{$template} {$gap} debug"
+<section class="quiqqer-control-gallery-gridAdvanced-list galleryGridTemplate-{$template} {$gap} {$scaleImageOnHover} {$darkenImageOnHover} {$iconOnHover}"
          data-qui="package/quiqqer/gallery/bin/controls/Grid"
          data-qui-titleclickable="{$titleClickable}">
     {foreach from=$images item=Image}
@@ -12,7 +12,7 @@
                    class="quiqqer-control-gallery-gridAdvanced-image"
                    target="_blank"
                 >
-                    {image image=$Image height="1200" width="1200" class="quiqqer-control-gallery-grid-image" loading="lazy"}
+                    {image image=$Image height="1200" width="1200" class="quiqqer-control-gallery-gridAdvanced-image-img" loading="lazy"}
                 </a>
                 {if $this->getAttribute('showImageTitle') && $Image->getTitle()}
                     <div class="quiqqer-control-gallery-gridAdvanced-title" title="{$Image->getTitle()}">

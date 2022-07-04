@@ -1,88 +1,140 @@
 .quiqqer-control-gallery-gridAdvanced-list {
     display: grid;
-    gap: 1rem;
+}
+
+.quiqqer-control-gallery-gridAdvanced__gap {
+    gap: var(--spacing, 1rem);
+}
+
+.quiqqer-control-gallery-gridAdvanced-entry-wrapper {
+    overflow: hidden;
+    position: relative;
 }
 
 .quiqqer-control-gallery-grid-entry,
 .quiqqer-control-gallery-gridAdvanced-image,
 .quiqqer-control-gallery-gridAdvanced-list picture,
-.quiqqer-control-gallery-grid-image{
-    height: 100%;
+.quiqqer-control-gallery-gridAdvanced-image-img {
     display: block;
+    height: 100%;
     width: 100%;
 }
 
-.quiqqer-control-gallery-grid-image {
+.quiqqer-control-gallery-gridAdvanced-image {
+    position: relative;
+    transition: 0.3s all;
+}
+
+.quiqqer-control-gallery-gridAdvanced-image-img {
+    aspect-ratio: 16/9;
     object-fit: cover;
     object-position: center;
-    aspect-ratio: 1/2;
+    transition: 0.3s ease;
 }
 
 .quiqqer-gallery-grid-list-complete {
     display: none;
 }
 
+/* scale image on hover */
+.quiqqer-control-gallery-gridAdvanced__scaleImageOnHover .quiqqer-control-gallery-gridAdvanced-entry-wrapper:hover .quiqqer-control-gallery-gridAdvanced-image-img {
+    transform: scale(1.1);
+}
+
+/* END scale image on hover */
+
+/* darken image on hover */
+.quiqqer-control-gallery-gridAdvanced__darkenImageOnHover .quiqqer-control-gallery-gridAdvanced-entry-wrapper:hover .quiqqer-control-gallery-gridAdvanced-image-img {
+    filter: brightness(0.5);
+}
+
+/* END darken image on hover */
+
+/* icon on hover */
+.quiqqer-control-gallery-gridAdvanced__iconOnHover .quiqqer-control-gallery-gridAdvanced-image:before {
+    align-items: center;
+    color: #fff;
+    content: "\f002";
+    display: flex;
+    font-family: 'FontAwesome';
+    font-size: 2rem;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transform: translateY(30px);
+    transition: 0.3s all;
+    width: 100%;
+    z-index: 1;
+}
+
+.quiqqer-control-gallery-gridAdvanced__iconOnHover .quiqqer-control-gallery-gridAdvanced-entry-wrapper:hover .quiqqer-control-gallery-gridAdvanced-image:before {
+    opacity: 0.5;
+    transform: translateY(10px);
+}
+
+/* END icon on hover */
+
 /* debug */
 .debug.quiqqer-control-gallery-gridAdvanced-list {
     counter-reset: div;
 }
 
-.debug .quiqqer-control-gallery-gridAdvanced-entry-wrapper {
-    position: relative;
-}
-
 .debug .quiqqer-control-gallery-gridAdvanced-entry-wrapper:before {
-    counter-increment: div;
-    content: counter(div);
-    margin: auto;
-    font-size: 1rem;
-    line-height: 2rem;
-    width: 2rem;
-    text-align: center;
     background-color: #212325;
+    bottom: 0;
     color: #fff;
+    content: counter(div);
+    counter-increment: div;
+    font-size: 1rem;
     font-weight: bold;
+    line-height: 2rem;
+    margin: auto;
     position: absolute;
     right: 0;
-    bottom: 0;
+    text-align: center;
+    width: 2rem;
+    z-index: 1;
 }
 
-/* Template: grid 2 per row */
+/* Template 2 per row */
 .galleryGridTemplate-2perRow.quiqqer-control-gallery-gridAdvanced-list {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 7%;
+    /*grid-auto-rows: 7%;*/
 }
 
-/* Template: grid 3 per row */
+/* Template 3 per row */
 .galleryGridTemplate-3perRow.quiqqer-control-gallery-gridAdvanced-list {
+    grid-auto-rows: 12vw;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 12vw;
 }
 
-/* Template: grid 4 per row */
+/* Template 4 per row */
 .galleryGridTemplate-4perRow.quiqqer-control-gallery-gridAdvanced-list {
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 12vw;
     gap: 1rem;
+    grid-auto-rows: 12vw;
+    grid-template-columns: repeat(4, 1fr);
 }
 
-/* Template: grid 5 per row */
+/* Template 5 per row */
 .galleryGridTemplate-5perRow.quiqqer-control-gallery-gridAdvanced-list {
     display: grid;
+    grid-auto-rows: 12vw;
     grid-template-columns: repeat(5, 1fr);
-    grid-auto-rows: 12vw;
 }
 
-/* Template: grid 6 per row */
+/* Template 6 per row */
 .galleryGridTemplate-6perRow.quiqqer-control-gallery-gridAdvanced-list {
-    grid-template-columns: repeat(6, 1fr);
     grid-auto-rows: 12vw;
+    grid-template-columns: repeat(6, 1fr);
 }
 
-/* Template: grid 1 */
+/* Template 1 */
 .galleryGridTemplate-1.quiqqer-control-gallery-gridAdvanced-list {
-    grid-template-columns: repeat(8, 1fr);
     grid-auto-rows: 6vw;
+    grid-template-columns: repeat(8, 1fr);
 }
 
 .galleryGridTemplate-1 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(6n + 1) {
@@ -115,10 +167,10 @@
     grid-row: auto / span 3;
 }
 
-/* Template: grid 2 */
+/* Template 2 */
 .galleryGridTemplate-2.quiqqer-control-gallery-gridAdvanced-list {
-    grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 12vw;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .galleryGridTemplate-2 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(6n + 1) {
@@ -131,10 +183,10 @@
     grid-row: auto / span 2;
 }
 
-/* Template: grid 3 */
+/* Template 3 */
 .galleryGridTemplate-3.quiqqer-control-gallery-gridAdvanced-list {
+    grid-auto-rows: min(10vw, 9rem);
     grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: 10vw;
 }
 
 .galleryGridTemplate-3 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(10n + 1) {
@@ -158,15 +210,16 @@
 }
 
 .galleryGridTemplate-3 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(10n + 6),
-.galleryGridTemplate-3 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(10n + 7){
+.galleryGridTemplate-3 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(10n + 7) {
     grid-column: auto / span 3;
     grid-row: auto / span 3;
 }
 
-/* Template: grid 4 */
+
+/* Template 4 */
 .galleryGridTemplate-4.quiqqer-control-gallery-gridAdvanced-list {
-    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 20vw;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .galleryGridTemplate-4 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(12n + 2) {
@@ -180,10 +233,10 @@
 }
 
 
-/* Template: grid 5 */
+/* Template 5 */
 .galleryGridTemplate-5.quiqqer-control-gallery-gridAdvanced-list {
-    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 20vw;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .galleryGridTemplate-5 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(5n + 1) {
@@ -206,10 +259,10 @@
     grid-row: auto / span 1;
 }
 
-/* Template: grid 6 */
+/* Template 6 */
 .galleryGridTemplate-6.quiqqer-control-gallery-gridAdvanced-list {
-    grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 15vw;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .galleryGridTemplate-6 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(13n + 1) {
@@ -233,46 +286,46 @@
     grid-row: auto / span 1;
 }
 
-/* Template: grid 7 */
+/* Template 7 */
 .galleryGridTemplate-7.quiqqer-control-gallery-gridAdvanced-list {
-    grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 15vw;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .galleryGridTemplate-7 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(8n + 2),
-.galleryGridTemplate-7 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(8n + 5){
+.galleryGridTemplate-7 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(8n + 5) {
     grid-column: auto / span 3;
     grid-row: auto / span 3;
 }
 
-/* Template: grid 8 */
+/* Template 8 */
 .galleryGridTemplate-8.quiqqer-control-gallery-gridAdvanced-list {
-    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 20vw;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .galleryGridTemplate-8 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(6n + 2),
-.galleryGridTemplate-8 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(6n + 4){
+.galleryGridTemplate-8 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(6n + 4) {
     grid-column: auto / span 2;
     grid-row: auto / span 2;
 }
 
-/* Template: grid 9 */
+/* Template 9 */
 .galleryGridTemplate-9.quiqqer-control-gallery-gridAdvanced-list {
-    grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 15vw;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .galleryGridTemplate-9 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(14n + 5),
-.galleryGridTemplate-9 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(14n + 12){
+.galleryGridTemplate-9 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(14n + 12) {
     grid-column: auto / span 2;
     grid-row: auto / span 2;
 }
 
-/* Template: grid 10 */
+/* Template 10 */
 .galleryGridTemplate-10.quiqqer-control-gallery-gridAdvanced-list {
-    grid-template-columns: repeat(6, 1fr);
     grid-auto-rows: 20vw;
+    grid-template-columns: repeat(6, 1fr);
 }
 
 .galleryGridTemplate-10 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(6n + 1) {
