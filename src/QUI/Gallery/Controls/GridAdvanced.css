@@ -11,7 +11,7 @@
     position: relative;
 }
 
-.quiqqer-control-gallery-grid-entry,
+.quiqqer-control-gallery-gridAdvanced-entry,
 .quiqqer-control-gallery-gridAdvanced-image,
 .quiqqer-control-gallery-gridAdvanced-list picture,
 .quiqqer-control-gallery-gridAdvanced-image-img {
@@ -344,4 +344,40 @@
 .galleryGridTemplate-10 .quiqqer-control-gallery-gridAdvanced-entry-wrapper:nth-child(6n + 6) {
     grid-column: auto / span 2;
     grid-row: auto / span 1;
+}
+
+/**************************************************************/
+/* order random - use placeholder and skeleton loading effect */
+/**************************************************************/
+.quiqqer-control-gallery-gridAdvanced-entry.skeletonLoadingEffect {
+    position: relative;
+}
+
+.quiqqer-control-gallery-gridAdvanced-entry.skeletonLoadingEffect:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ececec;
+    background-image: linear-gradient(110deg, #ececec 180px, #f3f3f3 250px, #ececec 320px);
+    background-size: 2000px 100%;
+    animation: gridAdvanced-skeleton-shining 3s infinite linear;
+    background-position: -350px 0;
+    background-repeat: no-repeat;
+    transition: 500ms opacity ease;
+}
+
+.quiqqer-control-gallery-gridAdvanced-entry.skeletonLoadingEffect.hide:after {
+    opacity: 0;
+}
+
+@keyframes gridAdvanced-skeleton-shining {
+    0% {
+        background-position: -300px 0;
+    }
+    100% {
+        background-position: 1700px 0;
+    }
 }
