@@ -42,6 +42,7 @@
                 {foreach from=$completeList item=Image}
                     <div class="quiqqer-gallery-grid-list-complete-entry"
                          data-src="{image image=$Image onlysrc=true rewrited=true}"
+                         data-thumb-src="{image image=$Image onlysrc=true rewrited=true height="1200" width="1200"}"
                     >
                         <div class="title">{$Image->getTitle()}</div>
                         <div class="short">{$Image->getShort()}</div>
