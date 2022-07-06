@@ -87,9 +87,10 @@ define('package/quiqqer/gallery/bin/controls/GridAdvanced', [
                 '.quiqqer-gallery-grid-list-complete-entry'
             ).map(function (Elm) {
                 return {
-                    src  : Elm.get('data-src'),
-                    title: Elm.getElement('.title').get('html'),
-                    short: Elm.getElement('.short').get('html')
+                    src     : Elm.get('data-src'),
+                    thumbSrc: Elm.get('data-thumb-src'),
+                    title   : Elm.getElement('.title').get('html'),
+                    short   : Elm.getElement('.short').get('html')
                 };
             });
 
@@ -130,7 +131,7 @@ define('package/quiqqer/gallery/bin/controls/GridAdvanced', [
                 Img.setAttribute('width', 1200);
                 Img.setAttribute('loading', 'lazy');
                 Img.setAttribute('title', this.$images[index].title);
-                Img.setAttribute('src', this.$images[index].src)
+                Img.setAttribute('src', this.$images[index].thumbSrc)
 
                 Img.addEventListener('load', () => {
                     Container.classList.add('hide');
