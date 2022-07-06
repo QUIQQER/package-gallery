@@ -26,7 +26,7 @@ class GridAdvanced extends QUI\Control
         // default options
         $this->setAttributes([
             'class'              => 'quiqqer-control-gallery-gridAdvanced',
-            'max'                => 9,
+            'max'                => 12,
             'start'              => 0,
             'entriesPerLine'     => 3,
             'addGap'             => true,
@@ -42,6 +42,8 @@ class GridAdvanced extends QUI\Control
             'template'           => '1' // template number or name
         ]);
 
+        $this->setJavaScriptControl('package/quiqqer/gallery/bin/controls/GridAdvanced');
+
         parent::__construct($attributes);
     }
 
@@ -52,10 +54,14 @@ class GridAdvanced extends QUI\Control
      */
     public function getBody()
     {
-        $Engine     = QUI::getTemplateManager()->getEngine();
-        $Project    = $this->getProject();
-        $Media      = $Project->getMedia();
-        $Pagination = null;
+        $Engine         = QUI::getTemplateManager()->getEngine();
+        $Project        = $this->getProject();
+        $Media          = $Project->getMedia();
+        $Pagination     = null;
+        $titleClickable = $this->getAttribute('titleClickable') ? 1 : 0;
+
+        $this->setJavaScriptControlOption('titleclickable', $titleClickable);
+
 
         /* @var $Folder \QUI\Projects\Media\Folder */
         $Folder = $Media->get($this->getAttribute('folderId'));
@@ -96,16 +102,15 @@ class GridAdvanced extends QUI\Control
             'order' => $order
         ];
 
+        $shuffleImages = false;
         if ($order === 'random') {
+            $this->setJavaScriptControlOption('randomorder', 1);
+            $this->setJavaScriptControlOption('max', $max);
             unset($getImagesParams['limit']);
+            $shuffleImages = true;
         }
 
         $images = $Folder->getImages($getImagesParams);
-
-        if ($order === 'random') {
-            shuffle($images);
-            $images = array_slice($images, 0, $max);
-        }
 
         // completeList is used to navigate in popup per JavaScript (next / prev image)
         $completeList = $images;
@@ -182,12 +187,14 @@ class GridAdvanced extends QUI\Control
             'Site'               => $this->getSite(),
             'completeList'       => $completeList,
             'Pagination'         => $Pagination,
-            'titleClickable'     => $this->getAttribute('titleClickable') ? 1 : 0,
+            'titleClickable'     => $titleClickable,
             'gap'                => $gap,
             'template'           => $template,
             'scaleImageOnHover'  => $scaleImageOnHover,
             'darkenImageOnHover' => $darkenImageOnHover,
-            'iconOnHover'        => $iconOnHover
+            'iconOnHover'        => $iconOnHover,
+            'shuffleImages'      => $shuffleImages,
+            'max' => $max
         ]);
 
 

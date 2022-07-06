@@ -2,18 +2,23 @@
     {$Pagination->create()}
 {/if}
 
-<section class="quiqqer-control-gallery-gridAdvanced-list galleryGridTemplate-{$template} {$gap} {$scaleImageOnHover} {$darkenImageOnHover} {$iconOnHover}"
-         data-qui="package/quiqqer/gallery/bin/controls/Grid"
-         data-qui-titleclickable="{$titleClickable}">
+{assign var=counter value=1}
+<section class="quiqqer-control-gallery-gridAdvanced-list galleryGridTemplate-{$template} {$gap} {$scaleImageOnHover} {$darkenImageOnHover} {$iconOnHover}">
     {foreach from=$images item=Image}
+        {if $counter > $max}
+            {break}
+        {/if}
         <div class="quiqqer-control-gallery-gridAdvanced-entry-wrapper">
-            <div class="quiqqer-control-gallery-grid-entry">
+            <div class="quiqqer-control-gallery-gridAdvanced-entry {if $shuffleImages}skeletonLoadingEffect{/if}">
+                {if !$shuffleImages}
                 <a href="{image image=$Image onlysrc=true}"
                    class="quiqqer-control-gallery-gridAdvanced-image"
                    target="_blank"
                 >
                     {image image=$Image height="1200" width="1200" class="quiqqer-control-gallery-gridAdvanced-image-img" loading="lazy"}
                 </a>
+                {/if}
+
                 {if $this->getAttribute('showImageTitle') && $Image->getTitle()}
                     <div class="quiqqer-control-gallery-gridAdvanced-title" title="{$Image->getTitle()}">
                         {if $titleClickable}
@@ -27,6 +32,8 @@
                 {/if}
             </div>
         </div>
+
+        {assign var=counter value=$counter+1}
     {/foreach}
 
     {if $completeList}
