@@ -48,8 +48,8 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             // defaults
             this.setAttributes({
                 closeButton: false,
-                maxHeight  : 100,
-                maxWidth   : 100
+                maxHeight  : 480,
+                maxWidth   : 640
             });
 
             this.$isOpen    = false;
@@ -126,7 +126,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             Elm.getElements('.qui-window-popup-buttons').destroy();
 
             this.$__mobile = (QUI.getWindowSize().x < 767);
-
+            
             this.$ButtonCnr = new Element('div', {
                 'class': 'qui-gallery-popup-image-buttons',
                 html   : template
