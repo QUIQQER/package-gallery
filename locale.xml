@@ -268,6 +268,43 @@
             <en><![CDATA[6 images per row]]></en>
         </locale>
 
+        <locale name="bricks.gallery.logo.slider.title">
+            <de><![CDATA[Galerie: Logo Carousel]]></de>
+            <en><![CDATA[Gallery: Logo carousel]]></en>
+        </locale>
+        <locale name="bricks.gallery.logo.slider.description">
+            <de><![CDATA[Slider für Logos oder kleinere Bilder]]></de>
+            <en><![CDATA[Slider for logos or smaller images]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.slider.settings.folderId">
+            <de><![CDATA[Media-Ordner]]></de>
+            <en><![CDATA[Media folder]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.slider.settings.max">
+            <de><![CDATA[Maximale Bilderanzahl]]></de>
+            <en><![CDATA[Max images]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.slider.settings.moreLink">
+            <de><![CDATA[Link zur Seite mit allen Logos (optional)]]></de>
+            <en><![CDATA[Link to the page with all logos (optional)]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.slider.settings.template">
+            <de><![CDATA[Template (Vorlage)]]></de>
+            <en><![CDATA[Template]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.slider.settings.template.default">
+            <de><![CDATA[Standard]]></de>
+            <en><![CDATA[Default]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.slider.settings.desktopHeight">
+            <de><![CDATA[Slider-Höhe auf Desktop Geräte)]]></de>
+            <en><![CDATA[Slider height on desktop]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.slider.settings.desktopHeight">
+            <de><![CDATA[Slider-Höhe auf mobilen Geräten]]></de>
+            <en><![CDATA[Slider height on mobile)]]></en>
+        </locale>
+
         <locale name="quiqqer.gridAdvanced.settings.order.random">
             <de><![CDATA[Zufällig]]></de>
             <en><![CDATA[Random]]></en>

@@ -101,11 +101,8 @@ class Slider extends QUI\Control
             'order' => $order
         ]);
 
-        $showMoreLink = false;
-
         if ($this->getAttribute('max') && \count($images) > $this->getAttribute('max')) {
-            $showMoreLink = true;
-            $images       = \array_slice($images, 0, $this->getAttribute('max'));
+            $images = \array_slice($images, 0, $this->getAttribute('max'));
         }
 
         if ($this->getAttribute('desktopHeight')) {
@@ -123,7 +120,7 @@ class Slider extends QUI\Control
             'height'                          => 'var(--qui--logoSlider-height)'
         ]);
 
-        if ($showMoreLink && $this->getAttribute('moreLink')) {
+        if ($this->getAttribute('moreLink')) {
             try {
                 $MoreLink = QUI\Projects\Site\Utils::getSiteByLink($this->getAttribute('moreLink'));
             } catch (QUI\Exception $Exception) {
@@ -131,10 +128,9 @@ class Slider extends QUI\Control
         }
 
         $Engine->assign([
-            'this'         => $this,
-            'images'       => $images,
-            'MoreLink'     => $MoreLink,
-            'showMoreLink' => $showMoreLink
+            'this'     => $this,
+            'images'   => $images,
+            'MoreLink' => $MoreLink
         ]);
 
 

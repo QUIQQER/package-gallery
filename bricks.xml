@@ -373,7 +373,7 @@
         </brick>
 
 
-        <!-- brick: grid advanced -->
+        <!-- brick: logo slider -->
         <brick control="\QUI\Gallery\Controls\Logo\Slider">
             <title>
                 <locale group="quiqqer/gallery" var="bricks.gallery.logo.slider.title" />
