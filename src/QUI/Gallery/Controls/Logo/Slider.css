@@ -1,0 +1,210 @@
+.quiqqer-gallery-logoSlider {
+    padding-left: 50px;
+    padding-right: 50px;
+    position: relative;
+    width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+    .quiqqer-gallery-logoSlider {
+        --qui--logoSlider-height: var(--qui--logoSlider-mobileHeight) !important;
+    }
+}
+
+.quiqqer-gallery-logoSlider.quiqqer-gallery-logoSlider-mobile {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.quiqqer-gallery-logoSlider-container {
+    float: left;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.quiqqer-gallery-logoSlider-container-inner {
+    float: left;
+    /*height: calc(100% + 22px);*/
+    left: 0;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.quiqqer-gallery-logoSlider-container-slide {
+    display: inline-block;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+    white-space: nowrap;
+}
+
+.quiqqer-gallery-logoSlider-child {
+    display: inline-block;
+    float: none;
+    /*height: calc(100% - 2px);*/
+    height: 100%;
+    margin: 0;
+    min-width: 20%;
+    padding: 0;
+    transition: 0.3s ease;
+    width: 20%;
+}
+
+@media screen and (max-width: 767px) {
+    .quiqqer-gallery-logoSlider {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .quiqqer-gallery-logoSlider-child {
+        min-width: 25%;
+        width: 25%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .quiqqer-gallery-logoSlider-child {
+        min-width: 33.3333%;
+        width: 33.3333%;
+    }
+}
+
+.quiqqer-gallery-logoSlider-child:not(.quiqqer-gallery-logoSlider-child__moreLink):not(:hover) {
+    filter: grayscale(1);
+}
+
+.quiqqer-gallery-logoSlider-child-display {
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    padding: 1rem clamp(1rem, 10%, 2rem);
+    text-align: center;
+    width: 100%;
+}
+
+.quiqqer-gallery-logoSlider-moreLink-text {
+
+}
+
+.quiqqer-gallery-logoSlider-child a {
+    color: inherit;
+    display: block;
+    height: 100%;
+    position: relative;
+}
+
+.quiqqer-gallery-logoSlider-child .quiqqer-icon {
+    font-size: 80px;
+    height: 100%;
+    opacity: 0;
+    padding: 0 1em;
+}
+
+.quiqqer-gallery-logoSlider-child-display img {
+    height: 100%;
+    object-fit: contain;
+}
+
+/*************/
+/* more link */
+/*************/
+.quiqqer-gallery-logoSlider-child__moreLink a {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.quiqqer-gallery-logoSlider-child__moreLink a .fa {
+    margin-left: 0.5em;
+}
+
+.quiqqer-gallery-logoSlider-child__moreLink a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/***********************/
+/* next / prev buttons */
+/***********************/
+.quiqqer-gallery-logoSlider-prev,
+.quiqqer-gallery-logoSlider-next {
+    cursor: pointer;
+    font-size: 50px;
+    height: 100%;
+    line-height: var(--qui--logoSlider-height, 200px);
+    position: absolute;
+    text-align: center;
+    top: 0;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+
+    visibility: visible;
+    width: 50px;
+
+    /*display: none;*/
+    /*opacity: 0;*/
+    z-index: 2;
+    /*transition: 0.2s all ease-in-out;*/
+    /*background: rgba(0,0,0,0.2);*/
+}
+
+.quiqqer-gallery-logoSlider-next {
+    /*right: -50px;*/
+    opacity: 1;
+    right: 0;
+}
+
+.quiqqer-gallery-logoSlider-next.show-next {
+    opacity: 1;
+    right: 0;
+    /*display: block;*/
+}
+
+.quiqqer-gallery-logoSlider-prev {
+    /*left: -50px;*/
+    left: 0;
+}
+
+.quiqqer-gallery-logoSlider-prev.show-prev {
+    /*left: 0;*/
+    display: block;
+    opacity: 1;
+}
+
+/* effect on hover the entire slider */
+.quiqqer-gallery-logoSlider:hover .quiqqer-gallery-logoSlider-prev.show-prev,
+.quiqqer-gallery-logoSlider:hover .quiqqer-gallery-logoSlider-next.show-next {
+    /*background: rgba(0,0,0,0.3);*/
+}
+
+/* effect on hover the slider-button self */
+.quiqqer-gallery-logoSlider-prev:hover,
+.quiqqer-gallery-logoSlider-next:hover {
+    /*width: 60px;*/
+    opacity: 1;
+}
+
+.quiqqer-gallery-logoSlider-mobile .quiqqer-gallery-logoSlider-next,
+.quiqqer-gallery-logoSlider-mobile .quiqqer-gallery-logoSlider-prev {
+    background: #fff;
+    border: 1px solid #f1f1f1;
+    opacity: 0.5;
+}
+
+.quiqqer-gallery-logoSlider-mobile .quiqqer-gallery-logoSlider-next {
+    /*right: 50px;*/
+}
+
+.quiqqer-gallery-logoSlider-mobile .quiqqer-gallery-logoSlider-prev {
+    /*left: 50px;*/
+}
+
+.quiqqer-gallery-logoSlider-mobile .quiqqer-gallery-logoSlider-next:hover,
+.quiqqer-gallery-logoSlider-mobile .quiqqer-gallery-logoSlider-prev:hover {
+    opacity: 1;
+}

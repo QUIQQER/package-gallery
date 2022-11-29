@@ -1,0 +1,45 @@
+{if $this->getAttribute('showTitle') && $this->getAttribute('frontendTitle')}
+<header class="control-header">
+    <h1>{$this->getAttribute('frontendTitle')}</h1>
+</header>
+{/if}
+
+{if $this->getAttribute('content') != ""}
+<div class="control-content">
+    {$this->getAttribute('content')}
+</div>
+{/if}
+
+<div class="quiqqer-gallery-logoSlider-container">
+    <div class="quiqqer-gallery-logoSlider-container-inner">
+        <ul class="quiqqer-gallery-logoSlider-container-slide"
+            style="height: var(--qui--logoSlider-height, 200px)"
+        >
+            {strip}
+                {foreach from=$images item=$Image}
+                {assign var=src value={image image=$Image onlysrc=true}}
+                <li class="quiqqer-gallery-logoSlider-child">
+                    <article class="quiqqer-gallery-logoSlider-child-display">
+    {*                    <a href="{$src}" title="{$Image->getTitle()}|escape:'html'}">*}
+                            {*image image=$Image height=600 data-zoom="1" data-src="$src"*}
+                            {image image=$Image height=600 data-src="$src"}
+    {*                    </a>*}
+                    </article>
+                </li>
+                {/foreach}
+                {if $showMoreLink && $MoreLink}
+                    <li class="quiqqer-gallery-logoSlider-child quiqqer-gallery-logoSlider-child__moreLink">
+                        <article class="quiqqer-gallery-logoSlider-child-display">
+                            <a href="{url site=$MoreLink}" title="{$MoreLink->getAttribute('title')|escape:'html'}" class="fs-md">
+                        <span class="quiqqer-gallery-logoSlider-moreLink-text">
+                            {locale group="quiqqer/gallery" value="quiqqer.gallery.moreLink"}
+                        </span>
+                                <span class="fa fa-angle-right"></span>
+                            </a>
+                        </article>
+                    </li>
+                {/if}
+            {/strip}
+        </ul>
+    </div>
+</div>
