@@ -1,8 +1,15 @@
 .quiqqer-gallery-logoSlider {
-    padding-left: 50px;
-    padding-right: 50px;
     position: relative;
     width: 100%;
+}
+
+.quiqqer-gallery-logoSlider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 @media screen and (max-width: 767px) {
@@ -11,7 +18,7 @@
     }
 }
 
-.quiqqer-gallery-logoSlider.quiqqer-gallery-logoSlider-mobile {
+.quiqqer-gallery-logoSlider.quiqqer-gallery-logoSlider-mobile .quiqqer-gallery-logoSlider-wrapper{
     padding-left: 0;
     padding-right: 0;
 }
@@ -22,6 +29,8 @@
     overflow: hidden;
     position: relative;
     width: 100%;
+
+
 }
 
 .quiqqer-gallery-logoSlider-container-inner {
@@ -42,6 +51,7 @@
     padding: 0 !important;
     position: relative;
     white-space: nowrap;
+    width: 100%;
 }
 
 .quiqqer-gallery-logoSlider-child {
@@ -57,7 +67,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    .quiqqer-gallery-logoSlider {
+    .quiqqer-gallery-logoSlider-container {
         padding-left: 0;
         padding-right: 0;
     }
@@ -145,6 +155,7 @@
 
     visibility: visible;
     width: 50px;
+    opacity: 0.25;
 
     /*display: none;*/
     /*opacity: 0;*/
@@ -153,14 +164,18 @@
     /*background: rgba(0,0,0,0.2);*/
 }
 
+.quiqqer-gallery-logoSlider-wrapper:hover :where(.quiqqer-gallery-logoSlider-prev, .quiqqer-gallery-logoSlider-next) {
+    opacity: 0.5;
+}
+
 .quiqqer-gallery-logoSlider-next {
     /*right: -50px;*/
-    opacity: 1;
+    /*opacity: 1;*/
     right: 0;
 }
 
 .quiqqer-gallery-logoSlider-next.show-next {
-    opacity: 1;
+    /*opacity: 1;*/
     right: 0;
     /*display: block;*/
 }

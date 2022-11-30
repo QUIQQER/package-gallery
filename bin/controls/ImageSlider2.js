@@ -42,6 +42,7 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider2', [
             this.$scrollMax    = 0;
             this.$mobile       = true;
             this.$icons        = null;
+            this.SliderWrapper = null;
 
             this.addEvents({
                 onImport: this.$onImport
@@ -81,9 +82,12 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider2', [
          * event : on import
          */
         $onImport: function () {
-            var Elm  = this.getElm(),
-                // var Elm  = this.getElm().getElement('.wrapper').getElement('.quiqqer-bricks-children-slider-container'),
-                size = Elm.getSize();
+            var Elm  = this.getElm();
+            this.SliderWrapper = Elm.querySelector('.quiqqer-gallery-logoSlider-wrapper');
+
+            // var Elm  = this.getElm().getElement('.wrapper').getElement('.quiqqer-bricks-children-slider-container'),
+            var size = this.SliderWrapper.getSize();
+
 
             this.$Next = new Element('div', {
                 'class': 'quiqqer-gallery-logoSlider-next hide-on-mobile',
@@ -95,7 +99,7 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider2', [
                 events : {
                     click: this.next2
                 }
-            }).inject(Elm);
+            }).inject(this.SliderWrapper);
 
             this.$Prev = new Element('div', {
                 'class': 'quiqqer-gallery-logoSlider-prev hide-on-mobile',
@@ -106,7 +110,7 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider2', [
                 events : {
                     click: this.prev2
                 }
-            }).inject(Elm);
+            }).inject(this.SliderWrapper);
 
             this.$Inner = Elm.getElement(
                 '.quiqqer-gallery-logoSlider-container-inner'
@@ -129,6 +133,7 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider2', [
                 return;
             }
 
+            console.log("icons")
             moofx(this.$icons).animate({
                 opacity: 1
             }, {
