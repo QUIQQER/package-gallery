@@ -240,7 +240,7 @@
             <en><![CDATA[Template 8]]></en>
         </locale>
         <locale name="quiqqer.gridAdvanced.settings.template.9">
-            <de><![CDATA[Template 91]]></de>
+            <de><![CDATA[Template 9]]></de>
             <en><![CDATA[Template 9]]></en>
         </locale>
         <locale name="quiqqer.gridAdvanced.settings.template.10">
@@ -322,16 +322,16 @@
             <en><![CDATA[Darken image on mouse over]]></en>
         </locale>
         <locale name="quiqqer.gridAdvanced.settings.darkenImageOnHover.desc">
-            <de><![CDATA[Wenn man mit der maus drüber fährt, wird das Bild verdunkelt.]]></de>
-            <en><![CDATA[Random]]></en>
+            <de><![CDATA[Wenn man mit dem Mauszeiger drüber fährt, wird das Bild verdunkelt.]]></de>
+            <en><![CDATA[When you move the mouse pointer over it, the image is darkened.]]></en>
         </locale>
         <locale name="quiqqer.gridAdvanced.settings.iconOnHover">
             <de><![CDATA[Extra Symbol anzeigen beim Mouseover]]></de>
             <en><![CDATA[Show extra symbol on mouse over]]></en>
         </locale>
         <locale name="quiqqer.gridAdvanced.settings.iconOnHover.desc">
-            <de><![CDATA[Wenn man mit der maus drüber fährt, wird eine Icon über dem Bild angezeigt.]]></de>
-            <en><![CDATA[Random]]></en>
+            <de><![CDATA[Wenn man mit dem Mauszeiger drüber fährt, wird eine Icon über dem Bild angezeigt.]]></de>
+            <en><![CDATA[When you hover the mouse cursor over it, an icon appears over the image.]]></en>
         </locale>
 
 
