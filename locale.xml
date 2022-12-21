@@ -27,7 +27,7 @@
             <pl><![CDATA[Wskaż folder z obrazkami]]></pl>
         </locale>
         <locale name="quiqqer.gallery.settings.titleClickable">
-            <de><![CDATA[Klicken auf das Titel öffnet das Bild in der größeren Ansicht]]></de>
+            <de><![CDATA[Klick auf den Titel öffnet das Bild in einer größeren Ansicht]]></de>
             <en><![CDATA[Click on the title to open the picture in a larger view]]></en>
         </locale>
         <locale name="quiqqer.gallery.component.setting.effect">
