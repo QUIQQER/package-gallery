@@ -85,7 +85,7 @@
     }
 }
 
-.quiqqer-gallery-logoSlider-child:not(.quiqqer-gallery-logoSlider-child__moreLink):not(:hover) {
+.quiqqer-gallery-logoSlider-child:not(:hover) {
     filter: grayscale(1) opacity(0.5);
 }
 

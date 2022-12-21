@@ -71,7 +71,7 @@
 }
 
 .quiqqer-control-gallery-gridAdvanced__iconOnHover .quiqqer-control-gallery-gridAdvanced-entry-wrapper:hover .quiqqer-control-gallery-gridAdvanced-image:before {
-    opacity: 0.5;
+    opacity: 0.9;
     transform: translateY(10px);
 }
 
