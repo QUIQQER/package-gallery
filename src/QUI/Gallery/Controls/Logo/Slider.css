@@ -130,14 +130,6 @@
     justify-content: center;
 }
 
-.quiqqer-gallery-logoSlider-child__moreLink a .fa {
-    margin-left: 0.5em;
-}
-
-.quiqqer-gallery-logoSlider-child__moreLink a:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
 /***********************/
 /* next / prev buttons */
 /***********************/
@@ -157,50 +149,34 @@
     width: 50px;
     opacity: 0.25;
 
-    /*display: none;*/
-    /*opacity: 0;*/
+
     z-index: 2;
-    /*transition: 0.2s all ease-in-out;*/
-    /*background: rgba(0,0,0,0.2);*/
 }
 
-.quiqqer-gallery-logoSlider-wrapper:hover :where(.quiqqer-gallery-logoSlider-prev, .quiqqer-gallery-logoSlider-next) {
+.quiqqer-gallery-logoSlider-prev.disabled,
+.quiqqer-gallery-logoSlider-next.disabled {
+    cursor: default;
+}
+
+.quiqqer-gallery-logoSlider-wrapper:hover :where(.quiqqer-gallery-logoSlider-prev:not(.disabled), .quiqqer-gallery-logoSlider-next:not(.disabled)) {
     opacity: 0.5;
 }
 
 .quiqqer-gallery-logoSlider-next {
-    /*right: -50px;*/
-    /*opacity: 1;*/
     right: 0;
 }
 
 .quiqqer-gallery-logoSlider-next.show-next {
-    /*opacity: 1;*/
     right: 0;
-    /*display: block;*/
 }
 
 .quiqqer-gallery-logoSlider-prev {
-    /*left: -50px;*/
     left: 0;
 }
 
-.quiqqer-gallery-logoSlider-prev.show-prev {
-    /*left: 0;*/
-    display: block;
-    opacity: 1;
-}
-
-/* effect on hover the entire slider */
-.quiqqer-gallery-logoSlider:hover .quiqqer-gallery-logoSlider-prev.show-prev,
-.quiqqer-gallery-logoSlider:hover .quiqqer-gallery-logoSlider-next.show-next {
-    /*background: rgba(0,0,0,0.3);*/
-}
-
 /* effect on hover the slider-button self */
-.quiqqer-gallery-logoSlider-prev:hover,
-.quiqqer-gallery-logoSlider-next:hover {
-    /*width: 60px;*/
+.quiqqer-gallery-logoSlider-prev:not(.disabled):hover,
+.quiqqer-gallery-logoSlider-next:not(.disabled):hover {
     opacity: 1;
 }
 
@@ -211,15 +187,7 @@
     opacity: 0.5;
 }
 
-.quiqqer-gallery-logoSlider-mobile .quiqqer-gallery-logoSlider-next {
-    /*right: 50px;*/
-}
-
-.quiqqer-gallery-logoSlider-mobile .quiqqer-gallery-logoSlider-prev {
-    /*left: 50px;*/
-}
-
-.quiqqer-gallery-logoSlider-mobile .quiqqer-gallery-logoSlider-next:hover,
-.quiqqer-gallery-logoSlider-mobile .quiqqer-gallery-logoSlider-prev:hover {
+.quiqqer-gallery-logoSlider-mobile .quiqqer-gallery-logoSlider-next:not(.disabled):hover,
+.quiqqer-gallery-logoSlider-mobile .quiqqer-gallery-logoSlider-prev:not(.disabled):hover {
     opacity: 1;
 }

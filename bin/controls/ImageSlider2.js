@@ -93,7 +93,7 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider2', [
                 'class': 'quiqqer-gallery-logoSlider-next hide-on-mobile',
                 html   : '<span class="fa fa-angle-right"></span>',
                 styles : {
-                    display   : 'none', // direkt display: none, damit der Button beim ersten Laden
+                   // display   : 'none', // direkt display: none, damit der Button beim ersten Laden
                     //lineHeight: size.y  // der Seite kein keinen Slide-Effekt hat
                 },
                 events : {
@@ -121,7 +121,7 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider2', [
 
             var scrollSpy = QUIFunctionUtils.debounce(this.$onScroll, 200);
 
-//            this.$Inner.addEvent('scroll', scrollSpy);
+            this.$Inner.addEvent('scroll', scrollSpy);
 
             this.$NextFX = moofx(this.$Next);
             this.$PrevFX = moofx(this.$Prev);
@@ -133,7 +133,6 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider2', [
                 return;
             }
 
-            console.log("icons")
             moofx(this.$icons).animate({
                 opacity: 1
             }, {
@@ -249,25 +248,16 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider2', [
         $onScroll: function () {
             var left = this.$Inner.getScroll().x;
 
-            var scrollSize = this.$Inner.getScrollSize().x;
-            var domSize    = this.$Inner.getSize().x;
-
-            if (scrollSize <= domSize) {
-                this.hidePrevButton();
-                this.hideNextButton();
-                return;
-            }
-
             if (left === 0) {
-                this.hidePrevButton();
+                this.$Prev.classList.add('disabled');
             } else {
-                this.showPrevButton();
+                this.$Prev.classList.remove('disabled');
             }
 
-            if (left === this.$scrollMax) {
-                this.hideNextButton();
+            if (left === this.$scrollMax || left > this.$scrollMax) {
+                this.$Next.classList.add('disabled');
             } else {
-                this.showNextButton();
+                this.$Next.classList.remove('disabled');
             }
         }
     });
