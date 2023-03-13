@@ -116,8 +116,7 @@ class Slider extends QUI\Control
         $this->setStyles([
             '--qui--logoSlider-desktopHeight' => $desktopHeight,
             '--qui--logoSlider-mobileHeight'  => $mobileHeight,
-            '--qui--logoSlider-height'        => $desktopHeight,
-            'height'                          => 'var(--qui--logoSlider-height)'
+            '--qui--logoSlider-height'        => $desktopHeight
         ]);
 
         if ($this->getAttribute('moreLink')) {
