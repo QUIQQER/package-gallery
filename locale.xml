@@ -305,6 +305,30 @@
             <en><![CDATA[Slider height on mobile)]]></en>
         </locale>
 
+        <!-- Carousel slider -->
+        <locale name="quiqqer.gallery.logo.carousel.settings.perView">
+            <de><![CDATA[Anzahl der sichtbaren Einträge]]></de>
+            <en><![CDATA[Number of visible entries]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.carousel.settings.perView.desc">
+            <de><![CDATA[Diese Einstellung besagt, wie viele Kundenrezensionen sichtbar sind. Standardwert ist 2, d.h.
+            es werden immer gleichzeitig 2 Rezensionen angezeigt.]]></de>
+            <en><![CDATA[This setting says how many customer reviews are visible. Default value is 2.
+            That means 2 reviews are always displayed at the same time.]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.carousel.settings.maxImgHeight">
+            <de><![CDATA[Maximale Bildhöhe]]></de>
+            <en><![CDATA[Max image height]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.carousel.settings.delay">
+            <de><![CDATA[Zeit zum nächsten Slide (Verzögerung)]]></de>
+            <en><![CDATA[Time to start next slide (Delay)]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.carousel.settings.delay.desc">
+            <de><![CDATA[Zeit bis zum nächsten Slide in Millisekunden angegeben (1 Sekunde entspricht 1000 Millisekunden).]]></de>
+            <en><![CDATA[Time to the next slide provided in milliseconds (1 second is 1000 milliseconds).]]></en>
+        </locale>
+
         <locale name="quiqqer.gridAdvanced.settings.order.random">
             <de><![CDATA[Zufällig]]></de>
             <en><![CDATA[Random]]></en>
