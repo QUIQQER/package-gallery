@@ -28,17 +28,13 @@ define('package/quiqqer/gallery/bin/controls/Carousel', [
         ],
 
         options: {
-            'perView' : 3,
-            'delay'   : 2000
+            'perView'    : 3,
+            'delay'      : 2000,
+            'hoverpause' : false
         },
 
         initialize: function (options) {
             this.parent(options);
-
-            this.$Prev      = null;
-            this.$Next      = null;
-            this.$Inner     = null;
-            this.$scrollMax = 0;
 
             this.addEvents({
                 onImport: this.$onImport
@@ -52,11 +48,15 @@ define('package/quiqqer/gallery/bin/controls/Carousel', [
 
             var perView = this.getAttribute('perview');
             var delay = this.getAttribute('delay');
+            var hoverpause = this.getAttribute('hoverpause');
+
+            console.log(hoverpause);
 
             var options = {
                 type     : 'carousel',
                 perView  : perView,
                 autoplay : delay,
+                hoverpause : hoverpause
             };
 
             var glide = new Glide('.glide', options);

@@ -33,6 +33,8 @@ class Carousel extends QUI\Control
             'delay'        => 2000,
             'order'        => false,
             'data-qui'     => 'package/quiqqer/gallery/bin/controls/Carousel',
+            'grayscale'    => false,
+            'hoverpause'   => false
         ]);
 
         $this->addCSSFile(
@@ -71,8 +73,19 @@ class Carousel extends QUI\Control
             $delay = $this->getAttribute('delay');
         }
 
+        $grayscale = false;
+        if ($this->getAttribute('grayscale') != '') {
+            $grayscale = $this->getAttribute('grayscale');
+        }
+
+        $hoverpause = false;
+        if ($this->getAttribute('hoverpause') != '') {
+            $hoverpause = $this->getAttribute('hoverpause');
+        }
+
         $this->setJavaScriptControlOption('perview', intval($perView));
         $this->setJavaScriptControlOption('delay', intval($delay));
+        $this->setJavaScriptControlOption('hoverpause', boolval($hoverpause));
 
         /* @var $Folder \QUI\Projects\Media\Folder */
         if (\strpos($folderId, 'image.php') !== false) {
@@ -125,7 +138,8 @@ class Carousel extends QUI\Control
         $Engine->assign([
             'this'         => $this,
             'images'       => $images,
-            'maxImgHeight' => $maxImageHeight
+            'maxImgHeight' => $maxImageHeight,
+            'grayscale'    => $grayscale
         ]);
 
         return $Engine->fetch($this->getTemplate());

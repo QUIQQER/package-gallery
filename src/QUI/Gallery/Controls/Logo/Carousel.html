@@ -17,7 +17,7 @@
                 {strip}
                     {foreach from=$images item=$Image}
                     {assign var=src value={image image=$Image onlysrc=true}}
-                    <li class="glide__slide quiqqer-gallery-logoCarousel-child">
+                    <li class="glide__slide quiqqer-gallery-logoCarousel-child {if $grayscale}quiqqer-gallery-logoCarousel-child-grayscale{/if}">
                         <article class="quiqqer-gallery-logoCarousel-child-display">
                               <a href="{$src}" title="{$Image->getTitle()}|escape:'html'}">
                                 {image image=$Image data-src="$src" height="$maxImgHeight"}

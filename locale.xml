@@ -306,6 +306,14 @@
         </locale>
 
         <!-- Carousel slider -->
+        <locale name="bricks.gallery.logo.carousel.title">
+            <de><![CDATA[Gallery: Logo Karussell]]></de>
+            <en><![CDATA[Gallery: Logo Carousel]]></en>
+        </locale>
+        <locale name="bricks.gallery.logo.carousel.description">
+            <de><![CDATA[Zeigt ausgewählte Fotos an und wiederholt sie.]]></de>
+            <en><![CDATA[Displays and loops selected photos.]]></en>
+        </locale>
         <locale name="quiqqer.gallery.logo.carousel.settings.perView">
             <de><![CDATA[Anzahl der sichtbaren Einträge]]></de>
             <en><![CDATA[Number of visible entries]]></en>
@@ -327,6 +335,22 @@
         <locale name="quiqqer.gallery.logo.carousel.settings.delay.desc">
             <de><![CDATA[Zeit bis zum nächsten Slide in Millisekunden angegeben (1 Sekunde entspricht 1000 Millisekunden).]]></de>
             <en><![CDATA[Time to the next slide provided in milliseconds (1 second is 1000 milliseconds).]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.carousel.settings.grayscale">
+            <de><![CDATA[Graustufen für das Bild]]></de>
+            <en><![CDATA[Grayscale for image]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.carousel.settings.grayscale.desc">
+            <de><![CDATA[Alle Bilder werden in Graustufen angezeigt, aber die Farben kehren zurück, wenn man darüber fährt.]]></de>
+            <en><![CDATA[All images will be shown in grayscale, but colors will return on hover.]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.carousel.settings.hoverpause">
+            <de><![CDATA[Hover pause]]></de>
+            <en><![CDATA[Hover pause]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.carousel.settings.hoverpause.desc">
+            <de><![CDATA[Der Slider unterbricht die automatische Folienwechsel, wenn der Mauszeiger darüber schwebt.]]></de>
+            <en><![CDATA[The slider interrupts automatic slide change when hovered over with the cursor.]]></en>
         </locale>
 
         <locale name="quiqqer.gridAdvanced.settings.order.random">

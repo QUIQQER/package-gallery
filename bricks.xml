@@ -509,6 +509,28 @@
                         />
                     </description>
                 </setting>
+                <setting name="grayscale" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gallery.logo.carousel.settings.grayscale"
+                    />
+
+                    <description>
+                        <locale group="quiqqer/gallery"
+                                var="quiqqer.gallery.logo.carousel.settings.grayscale.desc"
+                        />
+                    </description>
+                </setting>
+                <setting name="hoverpause" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gallery.logo.carousel.settings.hoverpause"
+                    />
+
+                    <description>
+                        <locale group="quiqqer/gallery"
+                                var="quiqqer.gallery.logo.carousel.settings.hoverpause.desc"
+                        />
+                    </description>
+                </setting>
 
                 <setting name="order" type="select">
                     <locale group="quiqqer/bricks" var="brick.control.setting.order"/>
