@@ -269,8 +269,8 @@
         </locale>
 
         <locale name="bricks.gallery.logo.slider.title">
-            <de><![CDATA[Galerie: Logo Carousel]]></de>
-            <en><![CDATA[Gallery: Logo carousel]]></en>
+            <de><![CDATA[Galerie: Logo Slider]]></de>
+            <en><![CDATA[Gallery: Logo Slider]]></en>
         </locale>
         <locale name="bricks.gallery.logo.slider.description">
             <de><![CDATA[Slider für Logos oder kleinere Bilder]]></de>
