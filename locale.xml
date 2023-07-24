@@ -311,46 +311,70 @@
             <en><![CDATA[Gallery: Logo Carousel]]></en>
         </locale>
         <locale name="bricks.gallery.logo.carousel.description">
-            <de><![CDATA[Zeigt ausgewählte Fotos an und wiederholt sie.]]></de>
-            <en><![CDATA[Displays and loops selected photos.]]></en>
+            <de><![CDATA[Zeigt ausgewählte Logos in einem Karussell.]]></de>
+            <en><![CDATA[Displays logos in a carousel.]]></en>
         </locale>
         <locale name="quiqqer.gallery.logo.carousel.settings.perView">
-            <de><![CDATA[Anzahl der sichtbaren Einträge]]></de>
-            <en><![CDATA[Number of visible entries]]></en>
+            <de><![CDATA[Anzahl der sichtbaren Logos]]></de>
+            <en><![CDATA[Number of visible logos]]></en>
         </locale>
         <locale name="quiqqer.gallery.logo.carousel.settings.perView.desc">
-            <de><![CDATA[Diese Einstellung besagt, wie viele Kundenrezensionen sichtbar sind. Standardwert ist 2, d.h.
-            es werden immer gleichzeitig 2 Rezensionen angezeigt.]]></de>
-            <en><![CDATA[This setting says how many customer reviews are visible. Default value is 2.
-            That means 2 reviews are always displayed at the same time.]]></en>
+            <de><![CDATA[Diese Einstellung besagt, wie viele Slides mit Logo sichtbar sind. Standardwert ist 5, d.h.
+            es werden immer gleichzeitig 5 Logos angezeigt.]]></de>
+            <en><![CDATA[This setting says how many slides with logo are visible. Default value is 5.
+            That means 5 logos are always displayed at the same time.]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.carousel.settings.minSlideWidth">
+            <de><![CDATA[Minimale Slide Breite]]></de>
+            <en><![CDATA[Min slide width]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.carousel.settings.minSlideWidth.desc">
+            <de><![CDATA[Minimale Breite eines Slides in Pixel. Mit dieser Einstellung wird automatisch berechnet,
+wie viele Logos können gleichzeitig angezeigt werden. Wenn der Platz ausreicht, hat die Einstellung "Anzahl der sichtbaren Einträge"
+Vorrang. Bei weniger Platz (z.B. Tablett oder Mobile) wird anhand dieser Einstellung automatisch berechnet, wie viele
+Logos angezeigt werden können. Standardwert ist 150 Pixel. Wir empfehlen Werte zwischen 100 und 300 Pixel.]]></de>
+            <en><![CDATA[Minimum width of a slide in pixels. With this setting is calculated automatically,
+how many logos can be displayed at the same time. If the space is sufficient, the setting "Number of visible entries"
+has priority. If there is less space (e.g. tablet or mobile), this setting is used to automatically calculate how many
+logos can be displayed. Default value is 150 pixels. We recommend values between 100 and 300 pixels.]]></en>
         </locale>
         <locale name="quiqqer.gallery.logo.carousel.settings.maxImgHeight">
-            <de><![CDATA[Maximale Bildhöhe]]></de>
-            <en><![CDATA[Max image height]]></en>
+            <de><![CDATA[Maximale Bildhöhe (in Pixel)]]></de>
+            <en><![CDATA[Max image height (in pixels)]]></en>
         </locale>
         <locale name="quiqqer.gallery.logo.carousel.settings.delay">
             <de><![CDATA[Zeit zum nächsten Slide (Verzögerung)]]></de>
             <en><![CDATA[Time to start next slide (Delay)]]></en>
         </locale>
         <locale name="quiqqer.gallery.logo.carousel.settings.delay.desc">
-            <de><![CDATA[Zeit bis zum nächsten Slide in Millisekunden angegeben (1 Sekunde entspricht 1000 Millisekunden).]]></de>
-            <en><![CDATA[Time to the next slide provided in milliseconds (1 second is 1000 milliseconds).]]></en>
+            <de><![CDATA[Zeit bis zum nächsten Slide in Millisekunden angegeben (1 Sekunde entspricht 1000 Millisekunden).
+0 bedeutet, dass der Slider nicht automatisch startet. Standardwert ist 3000.]]></de>
+            <en><![CDATA[Time to the next slide provided in milliseconds (1 second is 1000 milliseconds).
+0 means that the slider will not start automatically. Default value is 3000.]]></en>
         </locale>
         <locale name="quiqqer.gallery.logo.carousel.settings.grayscale">
-            <de><![CDATA[Graustufen für das Bild]]></de>
-            <en><![CDATA[Grayscale for image]]></en>
+            <de><![CDATA[Graustufenbild]]></de>
+            <en><![CDATA[Grayscale image]]></en>
         </locale>
         <locale name="quiqqer.gallery.logo.carousel.settings.grayscale.desc">
-            <de><![CDATA[Alle Bilder werden in Graustufen angezeigt, aber die Farben kehren zurück, wenn man darüber fährt.]]></de>
-            <en><![CDATA[All images will be shown in grayscale, but colors will return on hover.]]></en>
+            <de><![CDATA[Die Logos werden in Graustufen angezeigt. Wenn man mit der Maus darüber fährt, bekommt das Logo ihre originale Farbe.]]></de>
+            <en><![CDATA[The logos are displayed in grayscale. When you move the mouse over them, the logo gets their original color.]]></en>
         </locale>
         <locale name="quiqqer.gallery.logo.carousel.settings.hoverpause">
-            <de><![CDATA[Hover pause]]></de>
-            <en><![CDATA[Hover pause]]></en>
+            <de><![CDATA[Mit Maus pausieren]]></de>
+            <en><![CDATA[Pause on mouse over]]></en>
         </locale>
         <locale name="quiqqer.gallery.logo.carousel.settings.hoverpause.desc">
-            <de><![CDATA[Der Slider unterbricht die automatische Folienwechsel, wenn der Mauszeiger darüber schwebt.]]></de>
-            <en><![CDATA[The slider interrupts automatic slide change when hovered over with the cursor.]]></en>
+            <de><![CDATA[Der Slider stoppt den automatischen Slidewechsel, wenn man mit dem Mauszeiger darüber führt.]]></de>
+            <en><![CDATA[The slider stops the automatic slide change when you move the mouse pointer over it.]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.carousel.settings.logoBackgroundColor">
+            <de><![CDATA[Logo Hintergrundfarbe]]></de>
+            <en><![CDATA[Logo background color]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.logo.carousel.settings.logoBackgroundColor.desc">
+            <de><![CDATA[Wenn gesetzt, wird diese Farbe hinter den Logos gesetzt.]]></de>
+            <en><![CDATA[If set, this color will be placed behind the logos.]]></en>
         </locale>
 
         <locale name="quiqqer.gridAdvanced.settings.order.random">

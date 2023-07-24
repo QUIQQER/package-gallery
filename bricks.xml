@@ -492,6 +492,17 @@
                     </description>
                 </setting>
 
+                <setting name="minSlideWidth" type="number">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gallery.logo.carousel.settings.minSlideWidth"
+                    />
+                    <description>
+                        <locale group="quiqqer/gallery"
+                                var="quiqqer.gallery.logo.carousel.settings.minSlideWidth.desc"
+                        />
+                    </description>
+                </setting>
+
                 <setting name="maxImgHeight" type="number">
                     <locale group="quiqqer/gallery"
                             var="quiqqer.gallery.logo.carousel.settings.maxImgHeight"
@@ -528,6 +539,18 @@
                     <description>
                         <locale group="quiqqer/gallery"
                                 var="quiqqer.gallery.logo.carousel.settings.hoverpause.desc"
+                        />
+                    </description>
+                </setting>
+
+                <setting name="logoBackgroundColor" type="color">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gallery.logo.carousel.settings.logoBackgroundColor"
+                    />
+
+                    <description>
+                        <locale group="quiqqer/gallery"
+                                var="quiqqer.gallery.logo.carousel.settings.logoBackgroundColor.desc"
                         />
                     </description>
                 </setting>

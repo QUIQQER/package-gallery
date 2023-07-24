@@ -23,22 +23,24 @@ class Carousel extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'class'        => 'quiqqer-gallery-logoCarousel',
-            'nodeName'     => 'section',
-            'site'         => '',
-            'Project'      => false,
-            'folderId'     => false,
-            'perView'      => 3,
-            'maxImgHeight' => 200,
-            'delay'        => 2000,
-            'order'        => false,
-            'data-qui'     => 'package/quiqqer/gallery/bin/controls/Carousel',
-            'grayscale'    => false,
-            'hoverpause'   => false
+            'class'               => 'quiqqer-gallery-logoCarousel',
+            'nodeName'            => 'section',
+            'site'                => '',
+            'Project'             => false,
+            'folderId'            => false,
+            'perView'             => 3,
+            'maxImgHeight'        => 100,
+            'delay'               => 3000,
+            'minSlideWidth'       => 150,
+            'logoBackgroundColor' => false,
+            'order'               => false,
+            'data-qui'            => 'package/quiqqer/gallery/bin/controls/Logo/Carousel',
+            'grayscale'           => false,
+            'hoverpause'          => false
         ]);
 
         $this->addCSSFile(
-            \dirname(__FILE__) . '/Carousel.css'
+            \dirname(__FILE__).'/Carousel.css'
         );
 
         parent::__construct($attributes);
@@ -51,7 +53,6 @@ class Carousel extends QUI\Control
      */
     public function getBody()
     {
-
         $Engine   = QUI::getTemplateManager()->getEngine();
         $Project  = $this->getProject();
         $Media    = $Project->getMedia();
@@ -83,9 +84,15 @@ class Carousel extends QUI\Control
             $hoverpause = $this->getAttribute('hoverpause');
         }
 
+        $minSlideWidth = 150;
+        if ($this->getAttribute('minSlideWidth') != '') {
+            $minSlideWidth = $this->getAttribute('minSlideWidth');
+        }
+
         $this->setJavaScriptControlOption('perview', intval($perView));
         $this->setJavaScriptControlOption('delay', intval($delay));
         $this->setJavaScriptControlOption('hoverpause', boolval($hoverpause));
+        $this->setJavaScriptControlOption('minslidewidth', boolval($minSlideWidth));
 
         /* @var $Folder \QUI\Projects\Media\Folder */
         if (\strpos($folderId, 'image.php') !== false) {
@@ -132,14 +139,15 @@ class Carousel extends QUI\Control
         }
 
         $this->setStyles([
-            '--qui--logoCarousel-height' => $maxImageHeight . "px"
+            '--qui--logoCarousel-height' => $maxImageHeight."px"
         ]);
 
         $Engine->assign([
-            'this'         => $this,
-            'images'       => $images,
-            'maxImgHeight' => $maxImageHeight,
-            'grayscale'    => $grayscale
+            'this'                => $this,
+            'images'              => $images,
+            'maxImgHeight'        => $maxImageHeight,
+            'grayscale'           => $grayscale,
+            'logoBackgroundColor' => $this->getAttribute('logoBackgroundColor')
         ]);
 
         return $Engine->fetch($this->getTemplate());
@@ -152,6 +160,6 @@ class Carousel extends QUI\Control
      */
     protected function getTemplate()
     {
-        return \dirname(__FILE__) . '/Carousel.html';
+        return \dirname(__FILE__).'/Carousel.html';
     }
 }
