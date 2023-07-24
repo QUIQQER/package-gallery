@@ -1,0 +1,32 @@
+.quiqqer-gallery-logoCarousel-wrapper {
+    width: 100%;
+    height: var(--qui--logoCarousel-height);
+    padding: 0 50px;
+}
+
+.quiqqer-gallery-logoCarousel-container {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+.quiqqer-gallery-logoCarousel-child {
+    display: inline-block;
+    transition: 0.3s ease;
+}
+
+.quiqqer-gallery-logoCarousel-child:not(:hover) {
+    filter: grayscale(1) opacity(0.5);
+}
+
+.quiqqer-gallery-logoCarousel-child-display {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+}
+
+.quiqqer-gallery-logoCarousel-child-display img{
+    height: var(--qui--logoCarousel-height);
+}
+
+/*.quiqqer-gallery-logoCarousel-child*/

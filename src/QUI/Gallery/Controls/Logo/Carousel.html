@@ -1,0 +1,32 @@
+{if $this->getAttribute('showTitle') && $this->getAttribute('frontendTitle')}
+<header class="control-header">
+    <h1>{$this->getAttribute('frontendTitle')}</h1>
+</header>
+{/if}
+
+{if $this->getAttribute('content') != ""}
+<div class="control-content">
+    {$this->getAttribute('content')}
+</div>
+{/if}
+
+<div class="quiqqer-gallery-logoCarousel-wrapper">
+    <div class="glide quiqqer-gallery-logoCarousel-container">
+        <div data-glide-el="track" class="glide__track quiqqer-gallery-logoCarousel-container-inner">
+            <ul class="glide__slides quiqqer-gallery-logoCarousel-container-slide">
+                {strip}
+                    {foreach from=$images item=$Image}
+                    {assign var=src value={image image=$Image onlysrc=true}}
+                    <li class="glide__slide quiqqer-gallery-logoCarousel-child">
+                        <article class="quiqqer-gallery-logoCarousel-child-display">
+                              <a href="{$src}" title="{$Image->getTitle()}|escape:'html'}">
+                                {image image=$Image data-src="$src" height="$maxImgHeight"}
+                              </a>
+                        </article>
+                    </li>
+                    {/foreach}
+                {/strip}
+            </ul>
+        </div>
+    </div>
+</div>
