@@ -92,7 +92,7 @@ class Carousel extends QUI\Control
         $this->setJavaScriptControlOption('perview', intval($perView));
         $this->setJavaScriptControlOption('delay', intval($delay));
         $this->setJavaScriptControlOption('hoverpause', boolval($hoverpause));
-        $this->setJavaScriptControlOption('minslidewidth', boolval($minSlideWidth));
+        $this->setJavaScriptControlOption('minslidewidth', intval($minSlideWidth));
 
         /* @var $Folder \QUI\Projects\Media\Folder */
         if (\strpos($folderId, 'image.php') !== false) {

@@ -62,10 +62,9 @@ define('package/quiqqer/gallery/bin/controls/Logo/Carousel', [
 
             this.Glide.on(['mount.after'], () => {
                 this.$recalcPerView();
-
                 moofx(this.GlideContainer).animate({
                     opacity: 1
-                })
+                });
             });
 
             // use this instead of QUI.addEvent('resize', ...)
@@ -85,7 +84,7 @@ define('package/quiqqer/gallery/bin/controls/Logo/Carousel', [
                 const newPerView = Math.floor(space / this.getAttribute('minslidewidth'));
                 this.Glide.update({
                     perView: newPerView
-                })
+                });
             }
         }
     });
