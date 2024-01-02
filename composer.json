@@ -16,7 +16,7 @@
   },
   "require": {
     "quiqqer\/quiqqer": ">=1.4|dev-master|dev-dev",
-    "quiqqer-asset\/hammerjs": "*"
+    "quiqqer-asset\/hammerjs": "2.*"
   },
   "autoload": {
     "psr-4": {
