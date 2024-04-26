@@ -8,7 +8,6 @@ namespace QUI\Gallery\Controls\Logo;
 
 use Exception;
 use QUI;
-
 use QUI\Projects\Media\Folder;
 
 use function array_slice;
