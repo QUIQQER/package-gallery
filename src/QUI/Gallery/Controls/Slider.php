@@ -27,7 +27,7 @@ class Slider extends QUI\Control
      *
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         // default options
         $this->setAttributes([
@@ -52,7 +52,7 @@ class Slider extends QUI\Control
      *
      * @see \QUI\Control::create()
      */
-    public function getBody()
+    public function getBody(): string
     {
         $Engine   = QUI::getTemplateManager()->getEngine();
         $Project  = $this->getProject();
