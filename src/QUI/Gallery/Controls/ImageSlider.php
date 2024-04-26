@@ -6,7 +6,11 @@
 
 namespace QUI\Gallery\Controls;
 
+use Exception;
 use QUI;
+use QUI\Projects\Media\Folder;
+
+use function dirname;
 
 /**
  * Class Slider
@@ -23,20 +27,20 @@ class ImageSlider extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'class'    => 'quiqqer-gallery-imageSlider',
+            'class' => 'quiqqer-gallery-imageSlider',
             'nodeName' => 'section',
-            'site'     => '',
-            'order'    => false,
-            'limit'    => false,
+            'site' => '',
+            'order' => false,
+            'limit' => false,
             'moreLink' => false,
-            'Project'  => false,
+            'Project' => false,
             'folderId' => false,
             'data-qui' => 'package/quiqqer/gallery/bin/controls/ImageSlider',
-            'height'   => 200
+            'height' => 200
         ]);
 
         $this->addCSSFile(
-            \dirname(__FILE__).'/ImageSlider.css'
+            dirname(__FILE__) . '/ImageSlider.css'
         );
 
         parent::__construct($attributes);
@@ -45,15 +49,16 @@ class ImageSlider extends QUI\Control
     /**
      * (non-PHPdoc)
      *
+     * @throws Exception
      * @see \QUI\Control::create()
      */
     public function getBody(): string
     {
-        $Engine  = QUI::getTemplateManager()->getEngine();
+        $Engine = QUI::getTemplateManager()->getEngine();
         $Project = $this->getProject();
-        $Media   = $Project->getMedia();
+        $Media = $Project->getMedia();
 
-        /* @var $Folder \QUI\Projects\Media\Folder */
+        /* @var $Folder Folder */
         $Folder = $Media->get($this->getAttribute('folderId'));
 
 
@@ -91,18 +96,18 @@ class ImageSlider extends QUI\Control
         if ($this->getAttribute('moreLink')) {
             try {
                 $MoreLink = QUI\Projects\Site\Utils::getSiteByLink($this->getAttribute('moreLink'));
-            } catch (QUI\Exception $Exception) {
+            } catch (QUI\Exception) {
             }
         }
 
         $Engine->assign([
-            'this'     => $this,
-            'images'   => $images,
+            'this' => $this,
+            'images' => $images,
             'MoreLink' => $MoreLink
         ]);
 
 
-        return $Engine->fetch(\dirname(__FILE__).'/ImageSlider.html');
+        return $Engine->fetch(dirname(__FILE__) . '/ImageSlider.html');
     }
 
     /**
@@ -110,8 +115,8 @@ class ImageSlider extends QUI\Control
      *
      * @return string
      */
-    protected function getTemplate()
+    protected function getTemplate(): string
     {
-        return \dirname(__FILE__).'/ImageSlider.html';
+        return dirname(__FILE__) . '/ImageSlider.html';
     }
 }

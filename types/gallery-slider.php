@@ -1,7 +1,7 @@
 <?php
 
-$start  = 0;
-$max    = $Site->getAttribute('quiqqer.settings.gallery.max');
+$start = 0;
+$max = $Site->getAttribute('quiqqer.settings.gallery.max');
 $folder = $Site->getAttribute('quiqqer.settings.gallery.folderId');
 
 try {
@@ -18,11 +18,11 @@ if (isset($_REQUEST['sheet'])) {
     $start = ((int)$_REQUEST['sheet'] - 1) * $max;
 }
 
-$Gallery = new QUI\Gallery\Controls\Slider(array(
+$Gallery = new QUI\Gallery\Controls\Slider([
     'folderId' => $Folder->getId(),
-    'order'    => $Site->getAttribute('quiqqer.settings.gallery.sort')
-));
+    'order' => $Site->getAttribute('quiqqer.settings.gallery.sort')
+]);
 
-$Engine->assign(array(
+$Engine->assign([
     'Gallery' => $Gallery
-));
+]);

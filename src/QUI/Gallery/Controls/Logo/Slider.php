@@ -6,7 +6,14 @@
 
 namespace QUI\Gallery\Controls\Logo;
 
+use Exception;
 use QUI;
+
+use QUI\Projects\Media\Folder;
+
+use function array_slice;
+use function count;
+use function dirname;
 
 /**
  * Class Slider
@@ -23,21 +30,21 @@ class Slider extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'class'         => 'quiqqer-gallery-logoSlider',
-            'nodeName'      => 'section',
-            'site'          => '',
-            'order'         => false,
-            'max'           => false,
-            'moreLink'      => false,
-            'Project'       => false,
-            'folderId'      => false,
-            'data-qui'      => 'package/quiqqer/gallery/bin/controls/ImageSlider2',
+            'class' => 'quiqqer-gallery-logoSlider',
+            'nodeName' => 'section',
+            'site' => '',
+            'order' => false,
+            'max' => false,
+            'moreLink' => false,
+            'Project' => false,
+            'folderId' => false,
+            'data-qui' => 'package/quiqqer/gallery/bin/controls/ImageSlider2',
             'desktopHeight' => 200,
-            'mobileHeight'  => 100
+            'mobileHeight' => 100
         ]);
 
         $this->addCSSFile(
-            \dirname(__FILE__).'/Slider.css'
+            dirname(__FILE__) . '/Slider.css'
         );
 
         parent::__construct($attributes);
@@ -46,32 +53,31 @@ class Slider extends QUI\Control
     /**
      * (non-PHPdoc)
      *
+     * @throws Exception
      * @see \QUI\Control::create()
      */
     public function getBody(): string
     {
-        $Engine        = QUI::getTemplateManager()->getEngine();
-        $Project       = $this->getProject();
-        $Media         = $Project->getMedia();
-        $folderId      = $this->getAttribute('folderId');
-        $Folder        = false;
+        $Engine = QUI::getTemplateManager()->getEngine();
+        $Project = $this->getProject();
+        $Media = $Project->getMedia();
+        $folderId = $this->getAttribute('folderId');
+        $Folder = false;
         $desktopHeight = '200px';
-        $mobileHeight  = '100px';
+        $mobileHeight = '100px';
 
-        /* @var $Folder \QUI\Projects\Media\Folder */
-        if (\strpos($folderId, 'image.php') !== false) {
+        /* @var $Folder Folder */
+        if (str_contains($folderId, 'image.php')) {
             try {
                 $Folder = QUI\Projects\Media\Utils::getMediaItemByUrl(
                     $folderId
                 );
-            } catch (QUI\Exception $Exception) {
-                $Folder = false;
+            } catch (QUI\Exception) {
             }
         } elseif ($folderId) {
             try {
                 $Folder = $Media->get((int)$folderId);
-            } catch (QUI\Exception $Exception) {
-                $Folder = false;
+            } catch (QUI\Exception) {
             }
         }
 
@@ -101,34 +107,34 @@ class Slider extends QUI\Control
             'order' => $order
         ]);
 
-        if ($this->getAttribute('max') && \count($images) > $this->getAttribute('max')) {
-            $images = \array_slice($images, 0, $this->getAttribute('max'));
+        if ($this->getAttribute('max') && count($images) > $this->getAttribute('max')) {
+            $images = array_slice($images, 0, $this->getAttribute('max'));
         }
 
         if ($this->getAttribute('desktopHeight')) {
-            $desktopHeight = $this->getAttribute('desktopHeight').'px';
+            $desktopHeight = $this->getAttribute('desktopHeight') . 'px';
         }
 
         if ($this->getAttribute('mobileHeight')) {
-            $mobileHeight = $this->getAttribute('mobileHeight').'px';
+            $mobileHeight = $this->getAttribute('mobileHeight') . 'px';
         }
 
         $this->setStyles([
             '--qui--logoSlider-desktopHeight' => $desktopHeight,
-            '--qui--logoSlider-mobileHeight'  => $mobileHeight,
-            '--qui--logoSlider-height'        => $desktopHeight
+            '--qui--logoSlider-mobileHeight' => $mobileHeight,
+            '--qui--logoSlider-height' => $desktopHeight
         ]);
 
         if ($this->getAttribute('moreLink')) {
             try {
                 $MoreLink = QUI\Projects\Site\Utils::getSiteByLink($this->getAttribute('moreLink'));
-            } catch (QUI\Exception $Exception) {
+            } catch (QUI\Exception) {
             }
         }
 
         $Engine->assign([
-            'this'     => $this,
-            'images'   => $images,
+            'this' => $this,
+            'images' => $images,
             'MoreLink' => $MoreLink
         ]);
 
@@ -141,8 +147,8 @@ class Slider extends QUI\Control
      *
      * @return string
      */
-    protected function getTemplate()
+    protected function getTemplate(): string
     {
-        return \dirname(__FILE__).'/Slider.html';
+        return dirname(__FILE__) . '/Slider.html';
     }
 }

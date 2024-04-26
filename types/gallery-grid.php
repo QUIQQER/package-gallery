@@ -1,7 +1,7 @@
 <?php
 
-$start  = 0;
-$max    = $Site->getAttribute('quiqqer.settings.gallery.max');
+$start = 0;
+$max = $Site->getAttribute('quiqqer.settings.gallery.max');
 $folder = $Site->getAttribute('quiqqer.settings.gallery.folderId');
 
 try {
@@ -19,10 +19,10 @@ if (isset($_REQUEST['sheet'])) {
 }
 
 $Gallery = new QUI\Gallery\Controls\Grid([
-    'max'            => $max,
-    'start'          => $start,
-    'folderId'       => $Folder->getId(),
-    'order'          => $Site->getAttribute('quiqqer.settings.gallery.sort'),
+    'max' => $max,
+    'start' => $start,
+    'folderId' => $Folder->getId(),
+    'order' => $Site->getAttribute('quiqqer.settings.gallery.sort'),
     'titleClickable' => $Site->getAttribute('quiqqer.settings.gallery.titleClickable')
 ]);
 
