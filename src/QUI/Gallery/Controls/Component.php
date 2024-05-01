@@ -51,8 +51,8 @@ class Component extends QUI\Control
         $Engine = QUI::getTemplateManager()->getEngine();
         $Project = $this->getProject();
         $Media = $Project->getMedia();
+        $Folder = null;
 
-        /* @var $Folder Folder */
         try {
             $folderId = $this->getAttribute('folderId');
 
@@ -66,6 +66,10 @@ class Component extends QUI\Control
                 return '';
             }
         } catch (QUI\Exception) {
+        }
+
+        if (!$Folder) {
+            return '';
         }
 
         switch ($this->getAttribute('order')) {
