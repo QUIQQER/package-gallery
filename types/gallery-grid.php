@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * This file contains the gallery grid site type
+ *
+ * @var QUI\Projects\Project $Project
+ * @var QUI\Projects\Site $Site
+ * @var QUI\Interfaces\Template\EngineInterface $Engine
+ **/
+
 $start = 0;
 $max = $Site->getAttribute('quiqqer.settings.gallery.max');
 $folder = $Site->getAttribute('quiqqer.settings.gallery.folderId');
