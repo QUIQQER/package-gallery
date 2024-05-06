@@ -6,6 +6,7 @@
 
 namespace QUI\Gallery\Bricks;
 
+use Exception;
 use QUI;
 
 /**
@@ -24,22 +25,22 @@ class GridAdvanced extends QUI\Control
      *
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         // default options
         $this->setAttributes([
-            'class'           => 'quiqqer-gallery-brick-gridAdvanced',
-            'max'             => 12,
-            'start'           => 0,
+            'class' => 'quiqqer-gallery-brick-gridAdvanced',
+            'max' => 12,
+            'start' => 0,
             'entriesPerLine ' => 3,
-            'folder'          => false,
-            'scaleImage'      => true,
-            'addGap'          => true,
-            'showImageTitle'  => false,
-            'order'           => 'name ASC',
-            'usePagination'   => false,
-            'titleClickable'  => 0, // 1 = open image
-            'centerImage'     => true,
+            'folder' => false,
+            'scaleImage' => true,
+            'addGap' => true,
+            'showImageTitle' => false,
+            'order' => 'name ASC',
+            'usePagination' => false,
+            'titleClickable' => 0, // 1 = open image
+            'centerImage' => true,
         ]);
 
         parent::__construct($attributes);
@@ -48,9 +49,10 @@ class GridAdvanced extends QUI\Control
     /**
      * (non-PHPdoc)
      *
+     * @throws Exception
      * @see \QUI\Control::create()
      */
-    public function getBody()
+    public function getBody(): string
     {
         $Engine = QUI::getTemplateManager()->getEngine();
 
@@ -83,31 +85,31 @@ class GridAdvanced extends QUI\Control
         }
 
         $GridAdvancedGallery = new QUI\Gallery\Controls\GridAdvanced([
-            'max'                => $this->getAttribute('max'),
-            'start'              => $this->getAttribute('start'),
-            'entriesPerLine'     => $this->getAttribute('entriesPerLine'),
-            'scaleImage'         => $this->getAttribute('scaleImage'),
-            'addGap'             => $this->getAttribute('addGap'),
-            'showImageTitle'     => $this->getAttribute('showImageTitle'),
-            'centerImage'        => $this->getAttribute('centerImage'),
-            'folderId'           => $Folder->getId(),
-            'class'              => 'quiqqer-gallery-grid',
-            'order'              => $order,
-            'scaleImageOnHover'  => $this->getAttribute('scaleImageOnHover'),
+            'max' => $this->getAttribute('max'),
+            'start' => $this->getAttribute('start'),
+            'entriesPerLine' => $this->getAttribute('entriesPerLine'),
+            'scaleImage' => $this->getAttribute('scaleImage'),
+            'addGap' => $this->getAttribute('addGap'),
+            'showImageTitle' => $this->getAttribute('showImageTitle'),
+            'centerImage' => $this->getAttribute('centerImage'),
+            'folderId' => $Folder->getId(),
+            'class' => 'quiqqer-gallery-grid',
+            'order' => $order,
+            'scaleImageOnHover' => $this->getAttribute('scaleImageOnHover'),
             'darkenImageOnHover' => $this->getAttribute('darkenImageOnHover'),
-            'iconOnHover'        => $this->getAttribute('iconOnHover'),
-            'usePagination'      => false,
-            'titleClickable'     => $this->getAttribute('titleClickable'),
-            'template'           => $this->getAttribute('template')
+            'iconOnHover' => $this->getAttribute('iconOnHover'),
+            'usePagination' => false,
+            'titleClickable' => $this->getAttribute('titleClickable'),
+            'template' => $this->getAttribute('template')
         ]);
 
         $Engine->assign([
-            'this'                    => $this,
+            'this' => $this,
             'htmlGridAdvancedGallery' => $GridAdvancedGallery->create()
         ]);
 
         $this->addCSSFiles($GridAdvancedGallery->getCSSFiles());
 
-        return $Engine->fetch(dirname(__FILE__).'/GridAdvanced.html');
+        return $Engine->fetch(dirname(__FILE__) . '/GridAdvanced.html');
     }
 }

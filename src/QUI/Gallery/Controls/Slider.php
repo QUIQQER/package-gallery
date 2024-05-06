@@ -6,7 +6,11 @@
 
 namespace QUI\Gallery\Controls;
 
+use Exception;
 use QUI;
+use QUI\Projects\Media\Folder;
+
+use function dirname;
 
 /**
  * Class Slider
@@ -20,22 +24,22 @@ class Slider extends QUI\Control
      *
      * @var bool
      */
-    protected $ownImages = [];
+    protected array|bool $ownImages = [];
 
     /**
      * constructor
      *
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         // default options
         $this->setAttributes([
-            'Project'          => false,
-            'folderId'         => false,
-            'class'            => 'quiqqer-gallery-slider',
-            'data-qui'         => 'package/quiqqer/gallery/bin/controls/Slider',
-            'order'            => false,
+            'Project' => false,
+            'folderId' => false,
+            'class' => 'quiqqer-gallery-slider',
+            'data-qui' => 'package/quiqqer/gallery/bin/controls/Slider',
+            'order' => false,
             'placeholderimage' => false,
             'placeholdercolor' => false
         ]);
@@ -43,23 +47,24 @@ class Slider extends QUI\Control
         parent::__construct($attributes);
 
         $this->addCSSFile(
-            OPT_DIR.'quiqqer/gallery/bin/controls/Slider.css'
+            OPT_DIR . 'quiqqer/gallery/bin/controls/Slider.css'
         );
     }
 
     /**
      * (non-PHPdoc)
      *
+     * @throws Exception
      * @see \QUI\Control::create()
      */
-    public function getBody()
+    public function getBody(): string
     {
-        $Engine   = QUI::getTemplateManager()->getEngine();
-        $Project  = $this->getProject();
-        $Media    = $Project->getMedia();
+        $Engine = QUI::getTemplateManager()->getEngine();
+        $Project = $this->getProject();
+        $Media = $Project->getMedia();
         $folderId = $this->getAttribute('folderId');
-        $Folder   = false;
-        $images   = [];
+        $Folder = false;
+        $images = [];
 
         $this->setAttribute(
             'data-qui-options-placeholdercolor',
@@ -82,20 +87,18 @@ class Slider extends QUI\Control
             }
         }
 
-        /* @var $Folder \QUI\Projects\Media\Folder */
-        if (\strpos($folderId, 'image.php') !== false) {
+        /* @var $Folder Folder */
+        if (str_contains($folderId, 'image.php')) {
             try {
                 $Folder = QUI\Projects\Media\Utils::getMediaItemByUrl(
                     $folderId
                 );
-            } catch (QUI\Exception $Exception) {
-                $Folder = false;
+            } catch (QUI\Exception) {
             }
         } elseif ($folderId) {
             try {
                 $Folder = $Media->get((int)$folderId);
-            } catch (QUI\Exception $Exception) {
-                $Folder = false;
+            } catch (QUI\Exception) {
             }
         }
 
@@ -144,13 +147,13 @@ class Slider extends QUI\Control
 
         $Engine->assign([
             'Rewrite' => QUI::getRewrite(),
-            'this'    => $this,
-            'Folder'  => $Folder,
-            'images'  => $images,
-            'Site'    => $this->getSite()
+            'this' => $this,
+            'Folder' => $Folder,
+            'images' => $images,
+            'Site' => $this->getSite()
         ]);
 
-        return $Engine->fetch(\dirname(__FILE__).'/Slider.html');
+        return $Engine->fetch(dirname(__FILE__) . '/Slider.html');
     }
 
     /**
@@ -158,15 +161,16 @@ class Slider extends QUI\Control
      *
      * @param QUI\Projects\Media\Image $Image
      */
-    public function addImage(QUI\Projects\Media\Image $Image)
+    public function addImage(QUI\Projects\Media\Image $Image): void
     {
         $this->ownImages[] = $Image;
     }
 
     /**
-     * @return mixed|QUI\Projects\Site
+     * @return QUI\Interfaces\Projects\Site
+     * @throws QUI\Exception
      */
-    protected function getSite()
+    protected function getSite(): QUI\Interfaces\Projects\Site
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');

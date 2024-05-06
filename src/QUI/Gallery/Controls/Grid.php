@@ -1,13 +1,14 @@
 <?php
 
-
 /**
  * This file contains QUI\Gallery\Controls\Grid
  */
 
 namespace QUI\Gallery\Controls;
 
+use Exception;
 use QUI;
+use QUI\Projects\Media\Folder;
 
 /**
  * Class Grid
@@ -21,25 +22,25 @@ class Grid extends QUI\Control
      *
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         // default options
         $this->setAttributes([
-            'max'            => 9,
-            'start'          => 0,
+            'max' => 9,
+            'start' => 0,
             'entriesPerLine' => 3,
-            'scaleImage'     => true,
-            'addGap'         => true,
-            'border'         => false,
+            'scaleImage' => true,
+            'addGap' => true,
+            'border' => false,
             'showImageTitle' => true,
-            'centerImage'    => true,
-            'Project'        => false,
-            'folderId'       => false,
-            'class'          => 'quiqqer-control-gallery-grid',
-            'order'          => 'title ASC',
-            'usePagination'  => true,
+            'centerImage' => true,
+            'Project' => false,
+            'folderId' => false,
+            'class' => 'quiqqer-control-gallery-grid',
+            'order' => 'title ASC',
+            'usePagination' => true,
             'titleClickable' => 0, // 1 = open image
-            'template'       => 'unsemantic'
+            'template' => 'unsemantic'
         ]);
 
         parent::__construct($attributes);
@@ -48,20 +49,21 @@ class Grid extends QUI\Control
     /**
      * (non-PHPdoc)
      *
+     * @throws Exception
      * @see \QUI\Control::create()
      */
-    public function getBody()
+    public function getBody(): string
     {
-        $Engine     = QUI::getTemplateManager()->getEngine();
-        $Project    = $this->getProject();
-        $Media      = $Project->getMedia();
+        $Engine = QUI::getTemplateManager()->getEngine();
+        $Project = $this->getProject();
+        $Media = $Project->getMedia();
         $Pagination = null;
 
-        /* @var $Folder \QUI\Projects\Media\Folder */
+        /* @var $Folder Folder */
         $Folder = $Media->get($this->getAttribute('folderId'));
 
         $start = $this->getAttribute('start');
-        $max   = $this->getAttribute('max');
+        $max = $this->getAttribute('max');
 
         switch ($this->getAttribute('order')) {
             case 'title DESC':
@@ -110,7 +112,7 @@ class Grid extends QUI\Control
 
             $sheets = ceil($count / $max);
 
-            $Pagination = new QUI\Bricks\Controls\Pagination([
+            $Pagination = new QUI\Controls\Navigating\Pagination([
                 'limit' => false
             ]);
 
@@ -140,31 +142,31 @@ class Grid extends QUI\Control
         }
 
         $Engine->assign([
-            'Rewrite'        => QUI::getRewrite(),
-            'this'           => $this,
-            'perLine'        => $this->getAttribute('entriesPerLine'),
-            'images'         => $images,
-            'Site'           => $this->getSite(),
-            'completeList'   => $completeList,
-            'Pagination'     => $Pagination,
+            'Rewrite' => QUI::getRewrite(),
+            'this' => $this,
+            'perLine' => $this->getAttribute('entriesPerLine'),
+            'images' => $images,
+            'Site' => $this->getSite(),
+            'completeList' => $completeList,
+            'Pagination' => $Pagination,
             'titleClickable' => $this->getAttribute('titleClickable') ? 1 : 0,
-            'scaleImage'     => $scaleImage,
-            'gap'            => $gap,
-            'border'         => $border,
-            'centerImage'    => $centerImage
+            'scaleImage' => $scaleImage,
+            'gap' => $gap,
+            'border' => $border,
+            'centerImage' => $centerImage
         ]);
 
         switch ($this->getAttribute('template')) {
             case 'flexbox':
                 // new template based on css property flex box
-                $css      = dirname(__FILE__) . '/Grid.Flexbox.css';
+                $css = dirname(__FILE__) . '/Grid.Flexbox.css';
                 $template = dirname(__FILE__) . '/Grid.Flexbox.html';
                 break;
 
             case 'unesmantic':
             default:
                 // old template based on unsemantic classes
-                $css      = dirname(__FILE__) . '/Grid.Unsemantic.css';
+                $css = dirname(__FILE__) . '/Grid.Unsemantic.css';
                 $template = dirname(__FILE__) . '/Grid.Unsemantic.html';
                 break;
         }
@@ -175,15 +177,16 @@ class Grid extends QUI\Control
     }
 
     /**
-     * @return mixed|QUI\Projects\Site
+     * @return QUI\Interfaces\Projects\Site
+     * @throws QUI\Exception
      */
-    protected function getSite()
+    protected function getSite(): QUI\Interfaces\Projects\Site
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');
         }
 
-        $Site = \QUI::getRewrite()->getSite();
+        $Site = QUI::getRewrite()->getSite();
 
         $this->setAttribute('Site', $Site);
 
