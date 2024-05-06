@@ -1,5 +1,5 @@
 {
-  "name": "quiqqer\/gallery",
+  "name": "quiqqer/gallery",
   "type": "quiqqer-module",
   "description": "Present your photos, products and pictures in elaborate and beautiful galleries.",
   "license": "GPL-3.0+",
@@ -7,7 +7,7 @@
     {
       "name": "Henning Leutz",
       "email": "leutz@pcsg.de",
-      "homepage": "http:\/\/www.pcsg.de",
+      "homepage": "https://www.pcsg.de",
       "role": "Developer"
     }
   ],
@@ -15,12 +15,12 @@
     "email": "support@pcsg.de"
   },
   "require": {
-    "quiqqer\/quiqqer": ">=1.4|dev-master|dev-dev",
-    "quiqqer-asset\/hammerjs": "*"
+    "quiqqer/core": "^2",
+    "quiqqer-asset/hammerjs": "^2"
   },
   "autoload": {
     "psr-4": {
-      "QUI\\Gallery\\": "src\/QUI\/Gallery"
+      "QUI\\Gallery\\": "src/QUI/Gallery"
     }
   }
 }

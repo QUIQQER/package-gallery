@@ -6,6 +6,8 @@
 
 namespace QUI\Gallery;
 
+use QUI\Template;
+
 /**
  * Class EventHandler
  *
@@ -14,13 +16,10 @@ namespace QUI\Gallery;
 class EventHandler
 {
     /**
-     * @param \QUI\Template $Template
+     * @param Template $Template
      */
-    public static function onTemplateGetHeader($Template)
+    public static function onTemplateGetHeader(Template $Template): void
     {
-        $Template->extendHeaderWithJavaScriptFile(
-            URL_OPT_DIR.'quiqqer/gallery/bin/zoom.js',
-            true
-        );
+        $Template->extendHeaderWithJavaScriptFile(URL_OPT_DIR . 'quiqqer/gallery/bin/zoom.js');
     }
 }
