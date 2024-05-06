@@ -6,6 +6,7 @@
 
 namespace QUI\Gallery\Bricks;
 
+use Exception;
 use QUI;
 
 /**
@@ -24,23 +25,23 @@ class Grid extends QUI\Control
      *
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         // default options
         $this->setAttributes([
-            'max'             => 9,
-            'start'           => 0,
+            'max' => 9,
+            'start' => 0,
             'entriesPerLine ' => 3,
-            'folder'          => false,
-            'scaleImage'      => true,
-            'addGap'          => true,
-            'border'          => false,
-            'showImageTitle'  => true,
-            'centerImage'     => true,
-            'class'           => 'quiqqer-gallery-brick-grid',
-            'order'           => 'title ASC',
-            'usePagination'   => false,
-            'titleClickable'  => 0 // 1 = open image
+            'folder' => false,
+            'scaleImage' => true,
+            'addGap' => true,
+            'border' => false,
+            'showImageTitle' => true,
+            'centerImage' => true,
+            'class' => 'quiqqer-gallery-brick-grid',
+            'order' => 'title ASC',
+            'usePagination' => false,
+            'titleClickable' => 0 // 1 = open image
         ]);
 
         parent::__construct($attributes);
@@ -49,9 +50,10 @@ class Grid extends QUI\Control
     /**
      * (non-PHPdoc)
      *
+     * @throws Exception
      * @see \QUI\Control::create()
      */
-    public function getBody()
+    public function getBody(): string
     {
         $Engine = QUI::getTemplateManager()->getEngine();
 
@@ -87,24 +89,24 @@ class Grid extends QUI\Control
         }
 
         $GridGallery = new QUI\Gallery\Controls\Grid([
-            'max'            => $this->getAttribute('max'),
-            'start'          => $this->getAttribute('start'),
+            'max' => $this->getAttribute('max'),
+            'start' => $this->getAttribute('start'),
             'entriesPerLine' => $this->getAttribute('entriesPerLine'),
-            'scaleImage'     => $this->getAttribute('scaleImage'),
-            'addGap'         => $this->getAttribute('addGap'),
-            'border'         => $this->getAttribute('border'),
+            'scaleImage' => $this->getAttribute('scaleImage'),
+            'addGap' => $this->getAttribute('addGap'),
+            'border' => $this->getAttribute('border'),
             'showImageTitle' => $this->getAttribute('showImageTitle'),
-            'centerImage'    => $this->getAttribute('centerImage'),
-            'folderId'       => $Folder->getId(),
-            'class'          => 'quiqqer-gallery-grid',
-            'order'          => $order,
-            'usePagination'  => false,
+            'centerImage' => $this->getAttribute('centerImage'),
+            'folderId' => $Folder->getId(),
+            'class' => 'quiqqer-gallery-grid',
+            'order' => $order,
+            'usePagination' => false,
             'titleClickable' => $this->getAttribute('titleClickable') ? 1 : 0,
-            'template'       => 'flexbox'
+            'template' => 'flexbox'
         ]);
 
         $Engine->assign([
-            'this'            => $this,
+            'this' => $this,
             'htmlGridGallery' => $GridGallery->create()
         ]);
 
@@ -114,15 +116,16 @@ class Grid extends QUI\Control
     }
 
     /**
-     * @return mixed|QUI\Projects\Site
+     * @return QUI\Interfaces\Projects\Site
+     * @throws QUI\Exception
      */
-    protected function getSite()
+    protected function getSite(): QUI\Interfaces\Projects\Site
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');
         }
 
-        $Site = \QUI::getRewrite()->getSite();
+        $Site = QUI::getRewrite()->getSite();
 
         $this->setAttribute('Site', $Site);
 

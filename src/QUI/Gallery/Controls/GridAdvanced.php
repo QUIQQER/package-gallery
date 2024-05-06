@@ -1,13 +1,14 @@
 <?php
 
-
 /**
  * This file contains QUI\Gallery\Controls\GridAdvanced
  */
 
 namespace QUI\Gallery\Controls;
 
+use Exception;
 use QUI;
+use QUI\Projects\Media\Folder;
 
 /**
  * Class Grid
@@ -21,25 +22,25 @@ class GridAdvanced extends QUI\Control
      *
      * @param array $attributes
      */
-    public function __construct($attributes = [])
+    public function __construct(array $attributes = [])
     {
         // default options
         $this->setAttributes([
-            'class'              => 'quiqqer-control-gallery-gridAdvanced',
-            'max'                => 12,
-            'start'              => 0,
-            'entriesPerLine'     => 3,
-            'addGap'             => true,
-            'showImageTitle'     => false,
-            'Project'            => false,
-            'folderId'           => false,
-            'order'              => 'title ASC',
-            'scaleImageOnHover'  => true,
+            'class' => 'quiqqer-control-gallery-gridAdvanced',
+            'max' => 12,
+            'start' => 0,
+            'entriesPerLine' => 3,
+            'addGap' => true,
+            'showImageTitle' => false,
+            'Project' => false,
+            'folderId' => false,
+            'order' => 'title ASC',
+            'scaleImageOnHover' => true,
             'darkenImageOnHover' => false,
-            'iconOnHover'        => false,
-            'usePagination'      => false,
-            'titleClickable'     => 0, // 1 = open image
-            'template'           => '1' // template number or name
+            'iconOnHover' => false,
+            'usePagination' => false,
+            'titleClickable' => 0, // 1 = open image
+            'template' => '1' // template number or name
         ]);
 
         $this->setJavaScriptControl('package/quiqqer/gallery/bin/controls/GridAdvanced');
@@ -50,24 +51,25 @@ class GridAdvanced extends QUI\Control
     /**
      * (non-PHPdoc)
      *
+     * @throws Exception
      * @see \QUI\Control::create()
      */
-    public function getBody()
+    public function getBody(): string
     {
-        $Engine         = QUI::getTemplateManager()->getEngine();
-        $Project        = $this->getProject();
-        $Media          = $Project->getMedia();
-        $Pagination     = null;
+        $Engine = QUI::getTemplateManager()->getEngine();
+        $Project = $this->getProject();
+        $Media = $Project->getMedia();
+        $Pagination = null;
         $titleClickable = $this->getAttribute('titleClickable') ? 1 : 0;
 
         $this->setJavaScriptControlOption('titleclickable', $titleClickable);
 
 
-        /* @var $Folder \QUI\Projects\Media\Folder */
+        /* @var $Folder Folder */
         $Folder = $Media->get($this->getAttribute('folderId'));
 
         $start = $this->getAttribute('start');
-        $max   = $this->getAttribute('max');
+        $max = $this->getAttribute('max');
 
         switch ($this->getAttribute('order')) {
             case 'random':
@@ -98,7 +100,7 @@ class GridAdvanced extends QUI\Control
         }
 
         $getImagesParams = [
-            'limit' => $start.','.$max,
+            'limit' => $start . ',' . $max,
             'order' => $order
         ];
 
@@ -127,7 +129,7 @@ class GridAdvanced extends QUI\Control
 
             $sheets = ceil($count / $max);
 
-            $Pagination = new QUI\Bricks\Controls\Pagination([
+            $Pagination = new QUI\Controls\Navigating\Pagination([
                 'limit' => false
             ]);
 
@@ -180,39 +182,40 @@ class GridAdvanced extends QUI\Control
         }
 
         $Engine->assign([
-            'Rewrite'            => QUI::getRewrite(),
-            'this'               => $this,
-            'perLine'            => $this->getAttribute('entriesPerLine'),
-            'images'             => $images,
-            'Site'               => $this->getSite(),
-            'completeList'       => $completeList,
-            'Pagination'         => $Pagination,
-            'titleClickable'     => $titleClickable,
-            'gap'                => $gap,
-            'template'           => $template,
-            'scaleImageOnHover'  => $scaleImageOnHover,
+            'Rewrite' => QUI::getRewrite(),
+            'this' => $this,
+            'perLine' => $this->getAttribute('entriesPerLine'),
+            'images' => $images,
+            'Site' => $this->getSite(),
+            'completeList' => $completeList,
+            'Pagination' => $Pagination,
+            'titleClickable' => $titleClickable,
+            'gap' => $gap,
+            'template' => $template,
+            'scaleImageOnHover' => $scaleImageOnHover,
             'darkenImageOnHover' => $darkenImageOnHover,
-            'iconOnHover'        => $iconOnHover,
-            'shuffleImages'      => $shuffleImages,
+            'iconOnHover' => $iconOnHover,
+            'shuffleImages' => $shuffleImages,
             'max' => $max
         ]);
 
 
-        $this->addCSSFile(dirname(__FILE__).'/GridAdvanced.css');
+        $this->addCSSFile(dirname(__FILE__) . '/GridAdvanced.css');
 
-        return $Engine->fetch(dirname(__FILE__).'/GridAdvanced.html');
+        return $Engine->fetch(dirname(__FILE__) . '/GridAdvanced.html');
     }
 
     /**
-     * @return mixed|QUI\Projects\Site
+     * @return QUI\Interfaces\Projects\Site
+     * @throws QUI\Exception
      */
-    protected function getSite()
+    protected function getSite(): QUI\Interfaces\Projects\Site
     {
         if ($this->getAttribute('Site')) {
             return $this->getAttribute('Site');
         }
 
-        $Site = \QUI::getRewrite()->getSite();
+        $Site = QUI::getRewrite()->getSite();
 
         $this->setAttribute('Site', $Site);
 
