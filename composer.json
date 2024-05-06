@@ -15,8 +15,8 @@
     "email": "support@pcsg.de"
   },
   "require": {
-    "quiqqer\/core": "^2",
-    "quiqqer-asset\/hammerjs": "^2"
+    "quiqqer/core": "^2",
+    "quiqqer-asset/hammerjs": "^2"
   },
   "autoload": {
     "psr-4": {
