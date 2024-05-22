@@ -525,6 +525,133 @@
                 </setting>
             </settings>
         </brick>
+
+        <!-- brick: image slider -->
+        <brick control="\QUI\Gallery\Controls\ImageSlider">
+            <title>
+                <locale group="quiqqer/gallery" var="bricks.imageSlider.title" />
+            </title>
+            <description>
+                <locale group="quiqqer/gallery" var="bricks.imageSlider.description" />
+            </description>
+            <settings>
+                <setting name="folderId" class="media-folder">
+                    <locale group="quiqqer/gallery"
+                            var="bricks.imageSlider.settings.folderId"
+                    />
+                </setting>
+                <setting name="folderIds">
+                    <locale group="quiqqer/gallery"
+                            var="bricks.imageSlider.settings.folderIds"
+                    />
+                </setting>
+                <setting name="limit" type="number">
+                    <locale group="quiqqer/gallery"
+                            var="bricks.imageSlider.slider.settings.limit"
+                    />
+                </setting>
+
+                <setting name="order" type="select">
+                    <locale group="quiqqer/bricks" var="brick.control.setting.order"/>
+
+                    <option value="random">
+                        <locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.order.random"/>
+                    </option>
+                    <option value="name ASC">
+                        <locale group="quiqqer/system" var="name_asc"/>
+                    </option>
+                    <option value="name DESC">
+                        <locale group="quiqqer/system" var="name_desc"/>
+                    </option>
+                    <option value="title ASC">
+                        <locale group="quiqqer/system" var="title_asc"/>
+                    </option>
+                    <option value="title DESC">
+                        <locale group="quiqqer/system" var="title_desc"/>
+                    </option>
+                    <option value="c_date ASC">
+                        <locale group="quiqqer/system" var="c_date_asc"/>
+                    </option>
+                    <option value="c_date DESC">
+                        <locale group="quiqqer/system" var="c_date_desc"/>
+                    </option>
+                    <option value="e_date ASC">
+                        <locale group="quiqqer/system" var="e_date_asc"/>
+                    </option>
+                    <option value="e_date DESC">
+                        <locale group="quiqqer/system" var="e_date_desc"/>
+                    </option>
+                    <option value="release_from ASC">
+                        <locale group="quiqqer/system" var="release_from_asc"/>
+                    </option>
+                    <option value="release_from DESC">
+                        <locale group="quiqqer/system" var="release_from_desc"/>
+                    </option>
+                    <option value="priority ASC">
+                        <locale group="quiqqer/system" var="priority_asc"/>
+                    </option>
+                    <option value="priority DESC">
+                        <locale group="quiqqer/system" var="priority_desc"/>
+                    </option>
+                </setting>
+
+                <setting name="sliderHeight" type="number" min="10" max="1000">
+                    <locale group="quiqqer/gallery" var="bricks.imageSlider.settings.sliderHeight"/>
+
+                    <description>
+                        <locale group="quiqqer/gallery" var="bricks.imageSlider.settings.sliderHeight.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="moreLink" data-qui="controls/projects/project/site/Input">
+                    <locale group="quiqqer/gallery" var="bricks.imageSlider.settings.moreLink"/>
+                </setting>
+
+                <setting name="template" type="select">
+                    <locale group="quiqqer/gallery"
+                            var="bricks.imageSlider.settings.template"
+                    />
+
+                    <option value=""></option>
+                    <option value="default">
+                        <locale group="quiqqer/gallery"
+                                var="bricks.imageSlider.settings.template.default"
+                        />
+                    </option>
+                </setting>
+
+                <setting name="imageBehavior" type="select">
+                    <locale group="quiqqer/gallery"
+                            var="bricks.imageSlider.settings.imageBehavior"
+                    />
+
+                    <option value=""></option>
+                    <option value="center">
+                        <locale group="quiqqer/gallery"
+                                var="bricks.imageSlider.settings.imageBehavior.center"
+                        />
+                    </option>
+                    <option value="fill">
+                        <locale group="quiqqer/gallery"
+                                var="bricks.imageSlider.settings.imageBehavior.fill"
+                        />
+                    </option>
+                </setting>
+
+                <!--<setting name="desktopHeight" type="number">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gallery.logo.slider.settings.desktopHeight"
+                    />
+                </setting>
+                <setting name="mobileHeight" type="number">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gallery.logo.slider.settings.mobileHeight"
+                    />
+                </setting>-->
+
+
+            </settings>
+        </brick>
     </bricks>
 
 </quiqqer>
