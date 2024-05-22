@@ -544,6 +544,11 @@
                     <locale group="quiqqer/gallery"
                             var="bricks.imageSlider.settings.folderIds"
                     />
+                    <description>
+                        <locale group="quiqqer/gallery"
+                                var="bricks.imageSlider.settings.folderIds.desc"
+                        />
+                    </description>
                 </setting>
                 <setting name="limit" type="number">
                     <locale group="quiqqer/gallery"
