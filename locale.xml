@@ -268,6 +268,64 @@
             <en><![CDATA[6 images per row]]></en>
         </locale>
 
+        <locale name="quiqqer.gridAdvanced.settings.aspectRatio">
+            <de><![CDATA[Seitenverhältnis (Liste)]]></de>
+            <en><![CDATA[Aspect ratio (list)]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.aspectRatio.desc">
+            <de><![CDATA[Seitenverhältnis der Bilder in der Liste: Diese Einstellung beeinflusst nur die Standardvorlagen (z.B. 2, 3 oder 4 Bilder pro Reihe). Die Vorlagen "Template 1" bis "Template 10" <strong>sind von der Einstellung nicht betroffen.</strong>]]></de>
+            <en><![CDATA[Aspect ratio of the images in the list: This setting only affects the standard templates (e.g., 2, 3, or 4 images per row). The "Template "' to "Template 10" templates <strong>are not affected by this setting.</strong>]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.aspectRatio.none">
+            <de><![CDATA[Kein festgelegtes Seitenverhältnis - die Dimension Bilder hat Vorrang]]></de>
+            <en><![CDATA[No fixed aspect ratio - image dimensions take priority]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.aspectRatio.16-9">
+            <de><![CDATA[16:9 (TV & Videos)]]></de>
+            <en><![CDATA[16:9 (TV & videos)]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.aspectRatio.3-2">
+            <de><![CDATA[3:2 (Fotografie)]]></de>
+            <en><![CDATA[3:2 (Photography)]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.aspectRatio.4-3">
+            <de><![CDATA[4:3 (Fotografie & alte Fernseher)]]></de>
+            <en><![CDATA[4:3 (Photography & old tv screens]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.aspectRatio.1-1">
+            <de><![CDATA[1:1 (quadratisch)]]></de>
+            <en><![CDATA[1:1 (square)]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.aspectRatio.3-4">
+            <de><![CDATA[3:4 (Fotografie & alte Fernseher - vertikal)]]></de>
+            <en><![CDATA[3:4 (Photography & old tv screens - vertical)]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.aspectRatio.2-3">
+            <de><![CDATA[2:3 (Fotografie - vertikal)]]></de>
+            <en><![CDATA[2:3 (Photography - vertical)]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.aspectRatio.9-16">
+            <de><![CDATA[9:16 (TV & Videos - vertikal)]]></de>
+            <en><![CDATA[9:16 (TV & videos - vertical)]]></en>
+        </locale>
+
+        <locale name="quiqqer.gridAdvanced.settings.variableColumnCount">
+            <de><![CDATA[Variable Anzahl der Spalten]]></de>
+            <en><![CDATA[Variable column count]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.variableColumnCount.desc">
+            <de><![CDATA[Wenn die Option aktiviert ist, werden die Spalten automatisch berechnet, sodass sich die Galerie automatisch an Desktops und mobilen Geräten anpasst.<br>Zur Berechnung werden die minimale und maximale Breite benötigt. Der Ausgangspunkt ist die im Option "Template" ausgewählte Anzahl der Bilder pro Reihe, daher gilt die Option nur für die Vorlagen von "2 Bilder pro Reihe" bis "6 Bilder pro Reihe".]]></de>
+            <en><![CDATA[When the option is activated, the columns are automatically calculated, allowing the gallery to adapt automatically on desktops and mobile devices.<br>The calculation requires the minimum and maximum width. The starting point is the number of images per row selected in the "Template" option, so the option applies only to templates from "2 images per row" to "6 images per row".]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.minWidth">
+            <de><![CDATA[Minimale Bilder Breite]]></de>
+            <en><![CDATA[Minimum Image Width]]></en>
+        </locale>
+        <locale name="quiqqer.gridAdvanced.settings.maxWidth">
+            <de><![CDATA[Maximale Bilder Breite]]></de>
+            <en><![CDATA[Maximum image width]]></en>
+        </locale>
+
         <locale name="bricks.gallery.logo.slider.title">
             <de><![CDATA[Galerie: Logo Slider]]></de>
             <en><![CDATA[Gallery: Logo Slider]]></en>

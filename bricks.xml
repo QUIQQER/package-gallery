@@ -269,46 +269,6 @@
                             var="quiqqer.gridAdvanced.settings.folderId"
                     />
                 </setting>
-                <setting name="max" type="number">
-                    <locale group="quiqqer/gallery"
-                            var="quiqqer.gridAdvanced.settings.max"
-                    />
-                </setting>
-
-                <setting name="addGap" type="checkbox">
-                    <locale group="quiqqer/gallery"
-                            var="quiqqer.gridAdvanced.settings.addGap"
-                    />
-                </setting>
-
-                <!--<setting name="showImageTitle" type="checkbox">
-                    <locale group="quiqqer/gallery"
-                            var="quiqqer.gridAdvanced.settings.showImageTitle"
-                    />
-                </setting>-->
-
-                <setting name="template" type="select">
-                    <locale group="quiqqer/gallery"
-                            var="quiqqer.gridAdvanced.settings.template"
-                    />
-
-                    <option value=""></option>
-                    <option value="1"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.1"/></option>
-                    <option value="2"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.2"/></option>
-                    <option value="3"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.3"/></option>
-                    <option value="4"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.4"/></option>
-                    <option value="5"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.5"/></option>
-                    <option value="6"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.6"/></option>
-                    <option value="7"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.7"/></option>
-                    <option value="8"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.8"/></option>
-                    <option value="9"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.9"/></option>
-                    <option value="10"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.10"/></option>
-                    <option value="2perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.2perRow"/></option>
-                    <option value="3perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.3perRow"/></option>
-                    <option value="4perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.4perRow"/></option>
-                    <option value="5perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.5perRow"/></option>
-                    <option value="6perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.6perRow"/></option>
-                </setting>
 
                 <setting name="order" type="select">
                     <locale group="quiqqer/bricks" var="brick.control.setting.order"/>
@@ -352,6 +312,105 @@
                     <option value="priority DESC">
                         <locale group="quiqqer/system" var="priority_desc"/>
                     </option>
+                </setting>
+
+                <setting name="max" type="number">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.max"
+                    />
+                </setting>
+
+                <setting name="addGap" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.addGap"
+                    />
+                </setting>
+
+                <!--<setting name="showImageTitle" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.showImageTitle"
+                    />
+                </setting>-->
+
+                <setting name="template" type="select">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.template"
+                    />
+
+                    <option value=""></option>
+                    <option value="1"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.1"/></option>
+                    <option value="2"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.2"/></option>
+                    <option value="3"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.3"/></option>
+                    <option value="4"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.4"/></option>
+                    <option value="5"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.5"/></option>
+                    <option value="6"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.6"/></option>
+                    <option value="7"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.7"/></option>
+                    <option value="8"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.8"/></option>
+                    <option value="9"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.9"/></option>
+                    <option value="10"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.10"/></option>
+                    <option value="2perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.2perRow"/></option>
+                    <option value="3perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.3perRow"/></option>
+                    <option value="4perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.4perRow"/></option>
+                    <option value="5perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.5perRow"/></option>
+                    <option value="6perRow"><locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.template.6perRow"/></option>
+                </setting>
+
+                <setting name="aspectRatio" type="select">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.aspectRatio"
+                    />
+
+                    <description>
+                        <locale group="quiqqer/gallery"
+                                var="quiqqer.gridAdvanced.settings.aspectRatio.desc"
+                        />
+                    </description>
+
+                    <option value=""></option>
+                    <option value="none">
+                        <locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.aspectRatio.none"/>
+                    </option>
+                    <option value="16/9">
+                        <locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.aspectRatio.16-9"/>
+                    </option>
+                    <option value="3/2">
+                        <locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.aspectRatio.3-2"/>
+                    </option>
+                    <option value="4/3">
+                        <locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.aspectRatio.4-3"/>
+                    </option>
+                    <option value="1/1">
+                        <locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.aspectRatio.1-1"/>
+                    </option>
+                    <option value="3/4">
+                        <locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.aspectRatio.3-4"/>
+                    </option>
+                    <option value="2/3">
+                        <locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.aspectRatio.2-3"/>
+                    </option>
+                    <option value="9/16">
+                        <locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.aspectRatio.9-16"/>
+                    </option>
+
+                </setting>
+
+                <setting name="variableColumnCount" type="checkbox">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.variableColumnCount"
+                    />
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.variableColumnCount.desc"
+                    />
+                </setting>
+                <setting name="minWidth" type="number" min="10" max="1000">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.minWidth"
+                    />
+                </setting>
+                <setting name="maxWidth" type="number" min="10" max="1000">
+                    <locale group="quiqqer/gallery"
+                            var="quiqqer.gridAdvanced.settings.maxWidth"
+                    />
                 </setting>
 
                 <setting name="scaleImageOnHover" type="checkbox">
