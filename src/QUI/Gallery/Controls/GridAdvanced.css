@@ -3,7 +3,8 @@
 }
 
 .quiqqer-control-gallery-gridAdvanced__gap {
-    gap: var(--spacing, 1rem);
+    --_qui-gridAdvanced-gap: var(--qui-gridAdvanced-gap, var(--spacing, 1rem));
+    gap: var(--_qui-gridAdvanced-gap);
 }
 
 .quiqqer-control-gallery-gridAdvanced-entry-wrapper {
@@ -26,7 +27,7 @@
 }
 
 .quiqqer-control-gallery-gridAdvanced-image-img {
-    aspect-ratio: 16/9;
+    /*aspect-ratio: 16/9;*/
     object-fit: cover;
     object-position: center;
     transition: 0.3s ease;
@@ -99,36 +100,23 @@
     z-index: 1;
 }
 
-/* Template 2 per row */
-.galleryGridTemplate-2perRow.quiqqer-control-gallery-gridAdvanced-list {
-    grid-template-columns: repeat(2, 1fr);
-    /*grid-auto-rows: 7%;*/
+/* aspect ratio */
+.quiqqer-control-gallery-gridAdvanced-entry-wrapper {
+    aspect-ratio: var(--_qui-gridAdvanced-aspectRatio, auto);
 }
 
-/* Template 3 per row */
-.galleryGridTemplate-3perRow.quiqqer-control-gallery-gridAdvanced-list {
-    grid-auto-rows: 12vw;
-    grid-template-columns: repeat(3, 1fr);
+/* Template 2 to 6 per row */
+.galleryGridTemplate-2perRow,
+.galleryGridTemplate-3perRow,
+.galleryGridTemplate-4perRow,
+.galleryGridTemplate-5perRow,
+.galleryGridTemplate-6perRow {
+    grid-template-columns: repeat(var(--_qui-gridAdvanced-colNumber), 1fr);
 }
 
-/* Template 4 per row */
-.galleryGridTemplate-4perRow.quiqqer-control-gallery-gridAdvanced-list {
-    gap: 1rem;
-    grid-auto-rows: 12vw;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-/* Template 5 per row */
-.galleryGridTemplate-5perRow.quiqqer-control-gallery-gridAdvanced-list {
-    display: grid;
-    grid-auto-rows: 12vw;
-    grid-template-columns: repeat(5, 1fr);
-}
-
-/* Template 6 per row */
-.galleryGridTemplate-6perRow.quiqqer-control-gallery-gridAdvanced-list {
-    grid-auto-rows: 12vw;
-    grid-template-columns: repeat(6, 1fr);
+/* auto column count */
+.galleryGridTemplate--autoColumn {
+    grid-template-columns: repeat(auto-fit, minmax(min(clamp(var(--_qui-gridAdvanced-minWidth), calc(calc(100% / var(--_qui-gridAdvanced-colNumber)) - var(--_qui-gridAdvanced-gap)), var(--_qui-gridAdvanced-maxWidth)), 100%), 1fr));
 }
 
 /* Template 1 */
