@@ -358,7 +358,7 @@
             <de><![CDATA[Slider-Höhe auf Desktop Geräte)]]></de>
             <en><![CDATA[Slider height on desktop]]></en>
         </locale>
-        <locale name="quiqqer.gallery.logo.slider.settings.desktopHeight">
+        <locale name="quiqqer.gallery.logo.slider.settings.mobileHeight">
             <de><![CDATA[Slider-Höhe auf mobilen Geräten]]></de>
             <en><![CDATA[Slider height on mobile)]]></en>
         </locale>
