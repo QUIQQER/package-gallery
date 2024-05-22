@@ -403,6 +403,64 @@
             <en><![CDATA[More]]></en>
             <pl><![CDATA[Więcej]]></pl>
         </locale>
+
+        <locale name="bricks.imageSlider.title">
+            <de><![CDATA[Priorität aufsteigend]]></de>
+            <en><![CDATA[Priority ascending]]></en>
+        </locale>
+        <locale name="bricks.imageSlider.title">
+            <de><![CDATA[Galerie: Karussell-Slider]]></de>
+            <en><![CDATA[Gallery: Slider-Carousel]]></en>
+        </locale>
+        <locale name="bricks.imageSlider.description">
+            <de><![CDATA[Karussell-Slider mit Bildern]]></de>
+            <en><![CDATA[Slider carousel with images]]></en>
+        </locale>
+        <locale name="bricks.imageSlider.settings.folderId">
+            <de><![CDATA[Media Ordner]]></de>
+            <en><![CDATA[Image folder]]></en>
+        </locale>
+        <locale name="bricks.imageSlider.settings.folderIds">
+            <de><![CDATA[Media Ordner (kommasepariert)]]></de>
+            <en><![CDATA[Image folders (comma separated)]]></en>
+        </locale>
+        <locale name="bricks.imageSlider.settings.sliderHeight">
+            <de><![CDATA[Slider Höhe]]></de>
+            <en><![CDATA[Slider height]]></en>
+        </locale>
+        <locale name="bricks.imageSlider.settings.sliderHeight.desc">
+            <de><![CDATA[Die Einstellung (in Pixel) bestimmt die Höhe der Bilder, die im Slider angezeigt werden.]]></de>
+            <en><![CDATA[This setting (in pixels) determines the height of the images that are displayed in the slider.]]></en>
+        </locale>
+        <locale name="bricks.imageSlider.slider.settings.max">
+            <de><![CDATA[Maximale Bilderanzahl]]></de>
+            <en><![CDATA[Max images]]></en>
+        </locale>
+        <locale name="bricks.imageSlider.settings.moreLink">
+            <de><![CDATA[Link zur Seite mit allen Bildern (optional)]]></de>
+            <en><![CDATA[Link to the page with all images (optional)]]></en>
+        </locale>
+        <locale name="bricks.imageSlider.settings.template">
+            <de><![CDATA[Vorlage]]></de>
+            <en><![CDATA[Template]]></en>
+        </locale>
+        <locale name="bricks.imageSlider.settings.template.default">
+            <de><![CDATA[Standard]]></de>
+            <en><![CDATA[Default]]></en>
+        </locale>
+
+        <locale name="bricks.imageSlider.settings.imageBehavior">
+            <de><![CDATA[Bilder Verhalten]]></de>
+            <en><![CDATA[Images behavior]]></en>
+        </locale>
+        <locale name="bricks.imageSlider.settings.imageBehavior.center">
+            <de><![CDATA[Bilder zentrieren]]></de>
+            <en><![CDATA[Center images]]></en>
+        </locale>
+        <locale name="bricks.imageSlider.settings.imageBehavior.fill">
+            <de><![CDATA[Bilder zentrieren und die gesamte Fläche füllen]]></de>
+            <en><![CDATA[Center images and fill the entire area]]></en>
+        </locale>
     </groups>
 
     <groups name="quiqqer/gallery" datatype="php">
@@ -466,6 +524,7 @@
             <de><![CDATA[Priorität aufsteigend]]></de>
             <en><![CDATA[Priority ascending]]></en>
         </locale>
+
     </groups>
     <groups name="quiqqer/gallery" datatype="js">
         <locale name="quiqqer.gallery.slider.noImages">
