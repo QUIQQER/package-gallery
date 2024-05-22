@@ -424,6 +424,10 @@
             <de><![CDATA[Media Ordner (kommasepariert)]]></de>
             <en><![CDATA[Image folders (comma separated)]]></en>
         </locale>
+        <locale name="bricks.imageSlider.settings.folderIds.desc">
+            <de><![CDATA[Wenn man diese Option nutzt, wird die Einstellung "Media Ordner" ignoriert. Die IDs der Media Ordnern bitte kommasepariert eingeben.]]></de>
+            <en><![CDATA[If you use this option, the “Media folder” setting is ignored. Please enter the IDs of the media folders separated by commas.]]></en>
+        </locale>
         <locale name="bricks.imageSlider.settings.sliderHeight">
             <de><![CDATA[Slider Höhe]]></de>
             <en><![CDATA[Slider height]]></en>
