@@ -436,7 +436,7 @@
             <de><![CDATA[Die Einstellung (in Pixel) bestimmt die Höhe der Bilder, die im Slider angezeigt werden.]]></de>
             <en><![CDATA[This setting (in pixels) determines the height of the images that are displayed in the slider.]]></en>
         </locale>
-        <locale name="bricks.imageSlider.slider.settings.max">
+        <locale name="bricks.imageSlider.slider.settings.limit">
             <de><![CDATA[Maximale Bilderanzahl]]></de>
             <en><![CDATA[Max images]]></en>
         </locale>
