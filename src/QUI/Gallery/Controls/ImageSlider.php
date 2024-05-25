@@ -44,6 +44,8 @@ class ImageSlider extends QUI\Control
         );
 
         parent::__construct($attributes);
+
+        $this->setAttribute('cacheable', 0);
     }
 
     /**
