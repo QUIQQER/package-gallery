@@ -39,6 +39,7 @@ class Grid extends QUI\Control
             'class' => 'quiqqer-control-gallery-grid',
             'order' => 'title ASC',
             'usePagination' => true,
+            'paginationPosition' => 'bottom',
             'titleClickable' => 0, // 1 = open image
             'template' => 'unsemantic'
         ]);
@@ -149,6 +150,7 @@ class Grid extends QUI\Control
             'Site' => $this->getSite(),
             'completeList' => $completeList,
             'Pagination' => $Pagination,
+            'paginationPos' => $this->getAttribute('paginationPosition'),
             'titleClickable' => $this->getAttribute('titleClickable') ? 1 : 0,
             'scaleImage' => $scaleImage,
             'gap' => $gap,

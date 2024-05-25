@@ -1,4 +1,4 @@
-{if $Pagination && $Site}
+{if $Site && $Pagination && ($paginationPos == 'topAndBottom' || $paginationPos == 'top')}
     {$Pagination->create()}
 {/if}
 
@@ -51,6 +51,6 @@
     </div>
 </section>
 
-{if $Pagination && $Site}
+{if $Site && $Pagination && ($paginationPos == 'topAndBottom' || $paginationPos == 'bottom')}
     {$Pagination->create()}
 {/if}
