@@ -586,12 +586,6 @@
                     <option value="e_date DESC">
                         <locale group="quiqqer/system" var="e_date_desc"/>
                     </option>
-                    <option value="release_from ASC">
-                        <locale group="quiqqer/system" var="release_from_asc"/>
-                    </option>
-                    <option value="release_from DESC">
-                        <locale group="quiqqer/system" var="release_from_desc"/>
-                    </option>
                     <option value="priority ASC">
                         <locale group="quiqqer/system" var="priority_asc"/>
                     </option>
