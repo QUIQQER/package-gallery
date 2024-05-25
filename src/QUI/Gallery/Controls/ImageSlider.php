@@ -10,6 +10,7 @@ use QUI;
 
 /**
  * Class Slider
+ *
  * @package QUI\Gallery\Controls\ImageSlider
  */
 class ImageSlider extends QUI\Control
@@ -28,7 +29,7 @@ class ImageSlider extends QUI\Control
             'class' => 'quiqqer-gallery-imageSlider',
             'nodeName' => 'section',
             'site' => '',
-            'order' => false,
+            'order' => 'c_date DESC',
             'limit' => 10,
             'moreLink' => false,
             'Project' => false,
@@ -36,7 +37,7 @@ class ImageSlider extends QUI\Control
             'folderIds' => '', // ids comma separated
             'imageBehavior' => '', // '', 'center', 'fill'
             'data-qui' => 'package/quiqqer/gallery/bin/controls/ImageSlider',
-            'sliderHeight' => 200
+            'sliderHeight' => 200,
         ]);
 
         $this->addCSSFile(
@@ -59,12 +60,14 @@ class ImageSlider extends QUI\Control
         $this->Project = $this->getProject();
         $MoreLink = null;
         $limit = $this->getAttribute('limit');
+        $shuffleImages = false;
 
         if (!is_numeric($limit)) {
             $limit = 10;
         }
 
         switch ($this->getAttribute('order')) {
+            case 'random':
             case 'title DESC':
             case 'title ASC':
             case 'name DESC':
@@ -79,8 +82,14 @@ class ImageSlider extends QUI\Control
                 break;
 
             default:
-                $order = 'name DESC';
+                $order = 'c_date DESC';
                 break;
+        }
+
+        if ($order === 'random') {
+            $this->setJavaScriptControlOption('randomorder', 1);
+            $this->setJavaScriptControlOption('max', $limit);
+            $shuffleImages = true;
         }
 
         $folderIds = $this->getAttribute('folderIds');
@@ -90,23 +99,31 @@ class ImageSlider extends QUI\Control
         }
 
         if ($folderIds && count($folderIds) > 0) {
-            $images = $this->getImagesByFolderIds($folderIds, $order, $limit);
+            $images = $this->getImagesByFolderIds($folderIds, $order, $limit, $shuffleImages);
         } else {
             try {
                 /* @var $Folder \QUI\Projects\Media\Folder */
-                $Folder = QUI\Projects\Media\Utils::getMediaItemByUrl($this->getAttribute('folderId'));
+                $Folder = QUI\Projects\Media\Utils::getMediaItemByUrl(
+                    $this->getAttribute('folderId')
+                );
             } catch (QUI\Exception $Exception) {
                 QUI\System\Log::writeException($Exception);
 
                 return '';
             }
 
-            $images = $Folder->getImages([
+            $query = [
                 'limit' => $limit,
-                'order' => $order
-            ]);
-        }
+                'order' => $order,
+            ];
 
+            // get all images if order is "random"
+            if ($shuffleImages) {
+                unset($query['limit']);
+            }
+
+            $images = $Folder->getImages($query);
+        }
 
         if (!$this->getAttribute('sliderHeight')) {
             $this->setAttribute('sliderHeight', 200);
@@ -138,7 +155,7 @@ class ImageSlider extends QUI\Control
             'this' => $this,
             'images' => $images,
             'MoreLink' => $MoreLink,
-            'imageBehavior' => $imageBehavior
+            'imageBehavior' => $imageBehavior,
         ]);
 
         return $Engine->fetch($this->getTemplate());
@@ -156,13 +173,17 @@ class ImageSlider extends QUI\Control
 
     /**
      * Set custom css variable to the control as inline style
-     * --_qui-gridAdvanced-$name: var(--qui-gridAdvanced-$name, $value);
+     * --_qui-gallery-imageSlider-$name: var(--qui-gallery-imageSlider-$name, $value);
      *
-     * @param $name
-     * @param $value
+     * Example:
+     *     --_qui-gallery-imageSlider-sliderHeight: var(--qui-gallery-imageSlider-sliderHeight, 200px);
+     *
+     * @param string $name
+     * @param string $value
+     *
      * @return void
      */
-    private function setCustomVariable($name, $value): void
+    private function setCustomVariable(string $name, string $value): void
     {
         if (!$name || !$value) {
             return;
@@ -180,9 +201,11 @@ class ImageSlider extends QUI\Control
      * @param array $folderIds
      * @param string $order
      * @param int $limit
+     * @param bool $shuffleImages - if true, get all images
+     *
      * @return array
      */
-    private function getImagesByFolderIds(array $folderIds, string $order, int $limit): array
+    private function getImagesByFolderIds(array $folderIds, string $order, int $limit, bool $shuffleImages = false): array
     {
         $table = QUI::getDBTableName($this->Project->getAttribute('name') . '_media');
         $table_rel = QUI::getDBTableName($this->Project->getAttribute('name') . '_media_relations');
@@ -190,7 +213,8 @@ class ImageSlider extends QUI\Control
         $whereClause = [
             $table_rel . '.child = ' . $table . '.id',
             $table . '.deleted = 0 ',
-            $table . '.type = \'image\''
+            $table . '.type = \'image\'',
+            'active = 1',
         ];
 
         $folderConditions = [];
@@ -206,14 +230,18 @@ class ImageSlider extends QUI\Control
             'select' => 'id',
             'from' => [
                 $table,
-                $table_rel
+                $table_rel,
             ],
             'limit' => $limit,
-            'active' => 1,
-            'where' => $whereClauseString
+            'where' => $whereClauseString,
         ];
 
         $dbQuery['order'] = $order;
+
+        if ($shuffleImages) {
+            unset($dbQuery['limit']);
+            $dbQuery['order'] = 'c_date DESC';
+        }
 
         // database
         try {
@@ -222,6 +250,11 @@ class ImageSlider extends QUI\Control
             QUI\System\Log::writeException($Exception);
 
             return [];
+        }
+
+        if ($shuffleImages && $limit) {
+            shuffle($fetch);
+            $fetch = array_slice($fetch, 0, $limit);
         }
 
         $result = [];
