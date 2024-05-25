@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * This file contains QUI\Gallery\Controls\Grid
  */
@@ -25,21 +24,22 @@ class Grid extends QUI\Control
     {
         // default options
         $this->setAttributes([
-            'max'            => 9,
-            'start'          => 0,
+            'max' => 9,
+            'start' => 0,
             'entriesPerLine' => 3,
-            'scaleImage'     => true,
-            'addGap'         => true,
-            'border'         => false,
+            'scaleImage' => true,
+            'addGap' => true,
+            'border' => false,
             'showImageTitle' => true,
-            'centerImage'    => true,
-            'Project'        => false,
-            'folderId'       => false,
-            'class'          => 'quiqqer-control-gallery-grid',
-            'order'          => 'title ASC',
-            'usePagination'  => true,
+            'centerImage' => true,
+            'Project' => false,
+            'folderId' => false,
+            'class' => 'quiqqer-control-gallery-grid',
+            'order' => 'title ASC',
+            'usePagination' => true,
+            'paginationPosition' => 'bottom',
             'titleClickable' => 0, // 1 = open image
-            'template'       => 'unsemantic'
+            'template' => 'unsemantic'
         ]);
 
         parent::__construct($attributes);
@@ -52,16 +52,16 @@ class Grid extends QUI\Control
      */
     public function getBody()
     {
-        $Engine     = QUI::getTemplateManager()->getEngine();
-        $Project    = $this->getProject();
-        $Media      = $Project->getMedia();
+        $Engine = QUI::getTemplateManager()->getEngine();
+        $Project = $this->getProject();
+        $Media = $Project->getMedia();
         $Pagination = null;
 
         /* @var $Folder \QUI\Projects\Media\Folder */
         $Folder = $Media->get($this->getAttribute('folderId'));
 
         $start = $this->getAttribute('start');
-        $max   = $this->getAttribute('max');
+        $max = $this->getAttribute('max');
 
         switch ($this->getAttribute('order')) {
             case 'title DESC':
@@ -140,31 +140,32 @@ class Grid extends QUI\Control
         }
 
         $Engine->assign([
-            'Rewrite'        => QUI::getRewrite(),
-            'this'           => $this,
-            'perLine'        => $this->getAttribute('entriesPerLine'),
-            'images'         => $images,
-            'Site'           => $this->getSite(),
-            'completeList'   => $completeList,
-            'Pagination'     => $Pagination,
+            'Rewrite' => QUI::getRewrite(),
+            'this' => $this,
+            'perLine' => $this->getAttribute('entriesPerLine'),
+            'images' => $images,
+            'Site' => $this->getSite(),
+            'completeList' => $completeList,
+            'Pagination' => $Pagination,
+            'paginationPos' => $this->getAttribute('paginationPosition'),
             'titleClickable' => $this->getAttribute('titleClickable') ? 1 : 0,
-            'scaleImage'     => $scaleImage,
-            'gap'            => $gap,
-            'border'         => $border,
-            'centerImage'    => $centerImage
+            'scaleImage' => $scaleImage,
+            'gap' => $gap,
+            'border' => $border,
+            'centerImage' => $centerImage
         ]);
 
         switch ($this->getAttribute('template')) {
             case 'flexbox':
                 // new template based on css property flex box
-                $css      = dirname(__FILE__) . '/Grid.Flexbox.css';
+                $css = dirname(__FILE__) . '/Grid.Flexbox.css';
                 $template = dirname(__FILE__) . '/Grid.Flexbox.html';
                 break;
 
             case 'unesmantic':
             default:
                 // old template based on unsemantic classes
-                $css      = dirname(__FILE__) . '/Grid.Unsemantic.css';
+                $css = dirname(__FILE__) . '/Grid.Unsemantic.css';
                 $template = dirname(__FILE__) . '/Grid.Unsemantic.html';
                 break;
         }

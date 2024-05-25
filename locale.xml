@@ -529,6 +529,28 @@
             <en><![CDATA[Priority ascending]]></en>
         </locale>
 
+        <locale name="quiqqer.gallery.settings.paginationPosition">
+            <de><![CDATA[Blätterfunktion (Pagination)]]></de>
+            <en><![CDATA[Pagination]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.paginationPosition.disabled">
+            <de><![CDATA[Deaktiviert]]></de>
+            <en><![CDATA[Disabled]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.paginationPosition.top">
+            <de><![CDATA[Oben]]></de>
+            <en><![CDATA[Top]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.paginationPosition.topAndBottom">
+            <de><![CDATA[Oben und unten]]></de>
+            <en><![CDATA[Top and bottom]]></en>
+        </locale>
+        <locale name="quiqqer.gallery.settings.paginationPosition.bottom">
+            <de><![CDATA[Unten]]></de>
+            <en><![CDATA[Bottom]]></en>
+        </locale>
+
+
     </groups>
     <groups name="quiqqer/gallery" datatype="js">
         <locale name="quiqqer.gallery.slider.noImages">
