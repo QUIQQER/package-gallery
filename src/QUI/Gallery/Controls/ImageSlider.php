@@ -99,7 +99,7 @@ class ImageSlider extends QUI\Control
 
         $folderIds = $this->getAttribute('folderIds');
 
-        if (is_string($folderIds)) {
+        if ($folderIds && is_string($folderIds)) {
             $folderIds = explode(',', $folderIds);
         }
 
