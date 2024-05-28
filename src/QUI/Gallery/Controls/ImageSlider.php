@@ -128,6 +128,11 @@ class ImageSlider extends QUI\Control
             }
 
             $images = $Folder->getImages($query);
+
+            if ($shuffleImages && $limit) {
+                shuffle($images);
+                $images = array_slice($images, 0, $limit);
+            }
         }
 
         if (!$this->getAttribute('sliderHeight')) {
