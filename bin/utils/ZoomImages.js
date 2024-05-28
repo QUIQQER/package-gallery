@@ -47,7 +47,7 @@ define('package/quiqqer/gallery/bin/utils/ZoomImages', function () {
 
                 imageData.push({
                     src  : src,
-                    title: images[i].get('alt'),
+                    title: images[i].get('title'),
                     short: ''
                 });
 
