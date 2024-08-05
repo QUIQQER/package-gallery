@@ -41,6 +41,10 @@ class GridAdvanced extends QUI\Control
             'usePagination' => false,
             'titleClickable' => 0, // 1 = open image
             'centerImage' => true,
+            'aspectRatio' => 'none',
+            'variableColumnCount' => false,
+            'minWidth' => 200,
+            'maxWidth' => 500
         ]);
 
         parent::__construct($attributes);
@@ -100,7 +104,11 @@ class GridAdvanced extends QUI\Control
             'iconOnHover' => $this->getAttribute('iconOnHover'),
             'usePagination' => false,
             'titleClickable' => $this->getAttribute('titleClickable'),
-            'template' => $this->getAttribute('template')
+            'template' => $this->getAttribute('template'),
+            'aspectRatio' => $this->getAttribute('aspectRatio'),
+            'variableColumnCount' => $this->getAttribute('variableColumnCount'),
+            'minWidth' => $this->getAttribute('minWidth'),
+            'maxWidth' => $this->getAttribute('maxWidth')
         ]);
 
         $Engine->assign([

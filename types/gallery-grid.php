@@ -31,7 +31,8 @@ $Gallery = new QUI\Gallery\Controls\Grid([
     'start' => $start,
     'folderId' => $Folder->getId(),
     'order' => $Site->getAttribute('quiqqer.settings.gallery.sort'),
-    'titleClickable' => $Site->getAttribute('quiqqer.settings.gallery.titleClickable')
+    'titleClickable' => $Site->getAttribute('quiqqer.settings.gallery.titleClickable'),
+    'paginationPosition' => $Site->getAttribute('quiqqer.settings.gallery.paginationPosition')
 ]);
 
 $Engine->assign([

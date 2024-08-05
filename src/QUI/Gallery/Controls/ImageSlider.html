@@ -10,10 +10,10 @@
 </div>
 {/if}
 
-<div class="quiqqer-gallery-imageSlider-container">
+<div class="quiqqer-gallery-imageSlider-container {$imageBehavior}">
     <div class="quiqqer-gallery-imageSlider-container-inner">
         <ul class="quiqqer-gallery-imageSlider-container-slide"
-            style="height: {$this->getAttribute('height')}px;"
+            style="height: {$this->getAttribute('sliderHeight')}px;"
         >
             {strip}
             {foreach from=$images item=$Image}
@@ -29,9 +29,9 @@
             {/strip}
 
             {if $MoreLink}
-            <li class="quiqqer-gallery-imageSlider-child">
+            <li class="quiqqer-gallery-imageSlider-child quiqqer-gallery-imageSlider-child--moreLink">
                 <article class="quiqqer-gallery-imageSlider-child-display">
-                    <a href="{url site=$MoreLink}" title="{$MoreLink->getTitle()|escape:'html'}">
+                    <a href="{url site=$MoreLink}" title="{$MoreLink->getAttribute('title')|escape:'html'}">
                         <span class="quiqqer-icon fa fa-angle-right"></span>
                         <span class="quiqqer-gallery-imageSlider-moreLink-text">
                             {locale group="quiqqer/gallery" value="quiqqer.gallery.moreLink"}
