@@ -88,7 +88,7 @@ packages/quiqqer/gallery/src/QUI/Gallery/Controls/Logo/Slider.php:84'
 
             return '';
         }
-                
+        
         $MoreLink = null;
 
         switch ($this->getAttribute('order')) {
