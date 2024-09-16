@@ -121,15 +121,19 @@ packages/quiqqer/gallery/src/QUI/Gallery/Controls/Logo/InfiniteCarousel.php'
             $images = array_slice($images, 0, $this->getAttribute('max'));
         }
 
-        if ($this->getAttribute('imgHeight') &&
+        if (
+            $this->getAttribute('imgHeight') &&
             intval($this->getAttribute('imgHeight')) >= 10 &&
-            intval($this->getAttribute('imgHeight')) <= 500) {
+            intval($this->getAttribute('imgHeight')) <= 500
+        ) {
             $imgHeight = intval($this->getAttribute('imgHeight'));
         }
 
-        if ($this->getAttribute('animationDuration') &&
+        if (
+            $this->getAttribute('animationDuration') &&
             floatval($this->getAttribute('animationDuration')) >= 10 &&
-            floatval($this->getAttribute('animationDuration')) <= 200) {
+            floatval($this->getAttribute('animationDuration')) <= 200
+        ) {
             $animationDuration = floatval($this->getAttribute('animationDuration')) . 's';
         }
 
@@ -145,7 +149,7 @@ packages/quiqqer/gallery/src/QUI/Gallery/Controls/Logo/InfiniteCarousel.php'
             $fadeInOutColor = $this->getAttribute('fadeInOutColor');
         }
 
-        $direction = match($this->getAttribute('direction')) {
+        $direction = match ($this->getAttribute('direction')) {
             'toLeft', 'toRight' => $this->getAttribute('direction'),
             default => 'toLeft'
         };

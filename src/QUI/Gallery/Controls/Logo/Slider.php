@@ -83,9 +83,8 @@ class Slider extends QUI\Control
         if (!$Folder) {
             QUI\System\Log::addNotice(
                 '\QUI\Gallery\Controls\Logo\Slider - No folder with images selected. 
-packages/quiqqer/gallery/src/QUI/Gallery/Controls/Logo/Slider.php:84'
-            );
-
+packages/quiqqer/gallery/src/QUI/Gallery/Controls/Logo/Slider.php:84');
+            
             return '';
         }
         
