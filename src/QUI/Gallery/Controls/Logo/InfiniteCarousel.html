@@ -1,0 +1,39 @@
+{if $this->getAttribute('showTitle') && $this->getAttribute('frontendTitle')}
+    <header class="control-header">
+        <h1>{$this->getAttribute('frontendTitle')}</h1>
+    </header>
+{/if}
+
+{if $this->getAttribute('content') != ""}
+    <div class="control-content">
+        {$this->getAttribute('content')}
+    </div>
+{/if}
+
+<div class="quiqqer-gallery-logoInfiniteCarousel__wrapper {$fadeInOut}" data-qui-infiniteCarousel-wrapper="{$id}">
+    <div class="quiqqer-gallery-logoInfiniteCarousel__list" data-qui-infiniteCarousel-list="{$id}">
+        {strip}
+            {foreach from=$images item=$Image}
+                {assign var=src value={image image=$Image onlysrc=true}}
+                <div class="quiqqer-gallery-logoInfiniteCarousel__item">
+                    {image image=$Image height=$imgHeight data-src="$src" class="quiqqer-gallery-logoInfiniteCarousel__image"}
+                </div>
+            {/foreach}
+        {/strip}
+    </div>
+
+    {* Create as many copies of the container with logos as needed to ensure the effect of "infinity" *}
+    <script>
+        (() => {
+            const Wrapper = document.querySelector('[data-qui-infiniteCarousel-wrapper="{$id}"]');
+            const List = document.querySelector('[data-qui-infiniteCarousel-list="{$id}"]');
+            const neededCopies = Math.round(Wrapper.offsetWidth / List.offsetWidth);
+            let i = 0;
+
+            do {
+                Wrapper.appendChild(List.cloneNode(true));
+                i++;
+            } while (i < neededCopies)
+        })()
+    </script>
+</div>

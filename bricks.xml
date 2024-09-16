@@ -651,6 +651,143 @@
 
             </settings>
         </brick>
+
+        <!-- brick: infinite logo carousel -->
+        <brick control="\QUI\Gallery\Controls\Logo\InfiniteCarousel">
+            <title>
+                <locale group="quiqqer/gallery" var="bricks.infiniteCarousel.title" />
+            </title>
+            <description>
+                <locale group="quiqqer/gallery" var="bricks.infiniteCarousel.description" />
+            </description>
+            <settings>
+                <setting name="folderId" class="media-folder">
+                    <locale group="quiqqer/gallery"
+                            var="bricks.infiniteCarousel.settings.folderId"
+                    />
+                </setting>
+
+                <setting name="limit" type="number">
+                    <locale group="quiqqer/gallery"
+                            var="bricks.infiniteCarousel.settings.limit"
+                    />
+                </setting>
+
+                <setting name="order" type="select">
+                    <locale group="quiqqer/bricks" var="brick.control.setting.order"/>
+
+                    <option value="random">
+                        <locale group="quiqqer/gallery" var="quiqqer.gridAdvanced.settings.order.random"/>
+                    </option>
+                    <option value="name ASC">
+                        <locale group="quiqqer/system" var="name_asc"/>
+                    </option>
+                    <option value="name DESC">
+                        <locale group="quiqqer/system" var="name_desc"/>
+                    </option>
+                    <option value="title ASC">
+                        <locale group="quiqqer/system" var="title_asc"/>
+                    </option>
+                    <option value="title DESC">
+                        <locale group="quiqqer/system" var="title_desc"/>
+                    </option>
+                    <option value="c_date ASC">
+                        <locale group="quiqqer/system" var="c_date_asc"/>
+                    </option>
+                    <option value="c_date DESC">
+                        <locale group="quiqqer/system" var="c_date_desc"/>
+                    </option>
+                    <option value="e_date ASC">
+                        <locale group="quiqqer/system" var="e_date_asc"/>
+                    </option>
+                    <option value="e_date DESC">
+                        <locale group="quiqqer/system" var="e_date_desc"/>
+                    </option>
+                    <option value="priority ASC">
+                        <locale group="quiqqer/system" var="priority_asc"/>
+                    </option>
+                    <option value="priority DESC">
+                        <locale group="quiqqer/system" var="priority_desc"/>
+                    </option>
+                </setting>
+
+                <setting name="imgHeight" type="number" min="10" max="500">
+                    <locale group="quiqqer/gallery" var="bricks.infiniteCarousel.settings.imgHeight"/>
+                </setting>
+
+                <setting name="carouselBlockSpacing" type="select">
+                    <locale group="quiqqer/gallery"
+                            var="bricks.infiniteCarousel.settings.carouselBlockSpacing"
+                    />
+
+                    <option value=""></option>
+                    <option value="none">
+                        <locale group="quiqqer/gallery"
+                                var="bricks.infiniteCarousel.settings.carouselBlockSpacing.none"
+                        />
+                    </option>
+                    <option value="small">
+                        <locale group="quiqqer/gallery"
+                                var="bricks.infiniteCarousel.settings.carouselBlockSpacing.small"
+                        />
+                    </option>
+                    <option value="normal">
+                        <locale group="quiqqer/gallery"
+                                var="bricks.infiniteCarousel.settings.carouselBlockSpacing.normal"
+                        />
+                    </option>
+                    <option value="large">
+                        <locale group="quiqqer/gallery"
+                                var="bricks.infiniteCarousel.settings.carouselBlockSpacing.large"
+                        />
+                    </option>
+                </setting>
+
+                <setting name="animationDuration" type="number" min="1" max="200">
+                    <locale group="quiqqer/gallery" var="bricks.infiniteCarousel.settings.animationDuration"/>
+
+                    <description>
+                        <locale group="quiqqer/gallery" var="bricks.infiniteCarousel.settings.animationDuration.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="stopAnimationOnHover" type="checkbox">
+                    <locale group="quiqqer/gallery" var="bricks.infiniteCarousel.settings.stopAnimationOnHover"/>
+                </setting>
+
+                <setting name="direction" type="select">
+                    <locale group="quiqqer/gallery"
+                            var="bricks.infiniteCarousel.settings.direction"
+                    />
+
+                    <option value=""></option>
+                    <option value="toLeft">
+                        <locale group="quiqqer/gallery"
+                                var="bricks.infiniteCarousel.settings.direction.toLeft"
+                        />
+                    </option>
+                    <option value="toRight">
+                        <locale group="quiqqer/gallery"
+                                var="bricks.infiniteCarousel.settings.direction.toRight"
+                        />
+                    </option>
+                </setting>
+
+                <setting name="fadeInOut" type="checkbox">
+                    <locale group="quiqqer/gallery" var="bricks.infiniteCarousel.settings.fadeInOut"/>
+                    <description>
+                        <locale group="quiqqer/gallery" var="bricks.infiniteCarousel.settings.fadeInOut.desc"/>
+                    </description>
+                </setting>
+
+                <setting name="fadeInOutColor" type="color">
+                    <locale group="quiqqer/gallery" var="bricks.infiniteCarousel.settings.fadeInOutColor"/>
+                    <description>
+                        <locale group="quiqqer/gallery" var="bricks.infiniteCarousel.settings.fadeInOutColor.desc"/>
+                    </description>
+                </setting>
+            </settings>
+        </brick>
     </bricks>
 
 </quiqqer>

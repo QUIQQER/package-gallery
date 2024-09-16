@@ -405,10 +405,6 @@
         </locale>
 
         <locale name="bricks.imageSlider.title">
-            <de><![CDATA[Priorität aufsteigend]]></de>
-            <en><![CDATA[Priority ascending]]></en>
-        </locale>
-        <locale name="bricks.imageSlider.title">
             <de><![CDATA[Galerie: Karussell-Slider]]></de>
             <en><![CDATA[Gallery: Slider-Carousel]]></en>
         </locale>
@@ -464,6 +460,88 @@
         <locale name="bricks.imageSlider.settings.imageBehavior.fill">
             <de><![CDATA[Bilder zentrieren und die gesamte Fläche füllen]]></de>
             <en><![CDATA[Center images and fill the entire area]]></en>
+        </locale>
+
+        <locale name="bricks.infiniteCarousel.title">
+            <de><![CDATA[Galerie: Logo-Karussell]]></de>
+            <en><![CDATA[Gallery: Logo-Carousel]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.description">
+            <de><![CDATA[Unendlicher Logo-Karussell]]></de>
+            <en><![CDATA[Smooth infinity logo carousel]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.folderId">
+            <de><![CDATA[Folder mit Bildern]]></de>
+            <en><![CDATA[Image folder]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.limit">
+            <de><![CDATA[Maximale Anzahl an Logos]]></de>
+            <en><![CDATA[Maximum number of logos]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.imgHeight">
+            <de><![CDATA[Höhe der Bilder]]></de>
+            <en><![CDATA[Image height]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.carouselBlockSpacing">
+            <de><![CDATA[Vertikaler Abstand]]></de>
+            <en><![CDATA[Top and bottom spacing]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.carouselBlockSpacing.none">
+            <de><![CDATA[Kein (standard)]]></de>
+            <en><![CDATA[None (default)]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.carouselBlockSpacing.small">
+            <de><![CDATA[Klein]]></de>
+            <en><![CDATA[Small]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.carouselBlockSpacing.normal">
+            <de><![CDATA[Normal]]></de>
+            <en><![CDATA[Normal]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.carouselBlockSpacing.large">
+            <de><![CDATA[Groß]]></de>
+            <en><![CDATA[Large]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.animationDuration">
+            <de><![CDATA[Animation Geschwindigkeit]]></de>
+            <en><![CDATA[Animation duration]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.animationDuration.desc">
+            <de><![CDATA[Je mehr Bilder desto langsamer muss die Animation sein. Höhere Zahl bedeutet langsamen Durchlauf, kleine Zahl schnelleren. <strong>Standardwert ist 40, was 40 Sekunden entspricht.</strong>]]></de>
+            <en><![CDATA[The more images, the slower the animation must be. A higher number means a slower run, a lower number means a faster run. <strong>The default value is 40, which corresponds to 40 seconds.</strong>]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.stopAnimationOnHover">
+            <de><![CDATA[Animation beim Mouse-Over pausieren]]></de>
+            <en><![CDATA[Stop animation on mouse over]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.direction">
+            <de><![CDATA[Richtung der Animation]]></de>
+            <en><![CDATA[Animation direction]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.direction.toLeft">
+            <de><![CDATA[Von rechts nach links (standard)]]></de>
+            <en><![CDATA[From right to left (default)]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.direction.toRight">
+            <de><![CDATA[Von links nach rechts]]></de>
+            <en><![CDATA[From left to right]]></en>
+        </locale>
+
+        <locale name="bricks.infiniteCarousel.settings.fadeInOut">
+            <de><![CDATA[Ausblenden Effekt]]></de>
+            <en><![CDATA[Fade in / out effect]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.fadeInOut.desc">
+            <de><![CDATA[Wenn die Option aktiviert ist, werden die Logos am Anfang und Ende dem Karussell sanft ein- und ausgeblendet.]]></de>
+            <en><![CDATA[If the option is activated, the logos at the start and end of the carousel will fade in and out gently.]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.fadeInOutColor">
+            <de><![CDATA[Farbe des Übergangs]]></de>
+            <en><![CDATA[Fade in / out color]]></en>
+        </locale>
+        <locale name="bricks.infiniteCarousel.settings.fadeInOutColor.desc">
+            <de><![CDATA[Die hier ausgewählte Farbe muss dem Hintergrund des Karussells entsprechen.]]></de>
+            <en><![CDATA[The colour selected here must match the background of the carousel.]]></en>
         </locale>
     </groups>
 
