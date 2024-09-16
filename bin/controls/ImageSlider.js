@@ -66,7 +66,7 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider', [
 
             this.$scrollLength = (size.x / 1.2).round();
             this.$scrollMax    = this.$Inner.getScrollSize().x - size.x;
-            this.$icons.setStyle('line-height', size.y);
+            // this.$icons.setStyle('line-height', size.y);
             this.$onScroll();
         },
 
@@ -74,9 +74,9 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider', [
          * event : on import
          */
         $onImport: function () {
-            var Elm  = this.getElm(),
-                // var Elm  = this.getElm().getElement('.wrapper').getElement('.quiqqer-bricks-children-slider-container'),
-                size = Elm.getSize();
+            const Elm  = this.getElm(),
+                SliderElm = Elm.getElement('.quiqqer-gallery-imageSlider-container'),
+                size = SliderElm.getSize();
 
             this.$Next = new Element('div', {
                 'class': 'quiqqer-gallery-imageSlider-next hide-on-mobile',
@@ -88,7 +88,7 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider', [
                 events : {
                     click: this.next
                 }
-            }).inject(Elm);
+            }).inject(SliderElm);
 
             this.$Prev = new Element('div', {
                 'class': 'quiqqer-gallery-imageSlider-prev hide-on-mobile',
@@ -99,7 +99,7 @@ define('package/quiqqer/gallery/bin/controls/ImageSlider', [
                 events : {
                     click: this.prev
                 }
-            }).inject(Elm);
+            }).inject(SliderElm);
 
             this.$Inner = Elm.getElement(
                 '.quiqqer-gallery-imageSlider-container-inner'

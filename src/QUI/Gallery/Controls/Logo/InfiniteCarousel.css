@@ -1,0 +1,76 @@
+.quiqqer-gallery-logoInfiniteCarousel {
+    --_qui-gallery-logoInfiniteCarousel--imageSpacing: var(--qui-gallery-logoInfiniteCarousel--imageSpacing, 3rem);
+}
+
+.quiqqer-gallery-logoInfiniteCarousel.toRight {
+    --_qui-gallery-logoInfiniteCarousel--animationStart: translateX(-100%);
+    --_qui-gallery-logoInfiniteCarousel--animationEnd: translateX(0);
+}
+
+.quiqqer-gallery-logoInfiniteCarousel__wrapper {
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    padding-block: var(--_qui-gallery-logoInfiniteCarousel--carouselBlockSpacing);
+}
+
+.quiqqer-gallery-logoInfiniteCarousel__list {
+    display: inline-block;
+    flex-shrink: 0;
+    animation-name: infiniteCarouselSlide;
+    animation-duration: var(--_qui-gallery-logoInfiniteCarousel--animationDuration);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.quiqqer-gallery-logoInfiniteCarousel__wrapper:hover .quiqqer-gallery-logoInfiniteCarousel__list {
+    animation-play-state: var(--_qui-gallery-logoInfiniteCarousel--animationStateOnHover);
+}
+
+.quiqqer-gallery-logoInfiniteCarousel__item {
+    display: inline-block;
+}
+
+.quiqqer-gallery-logoInfiniteCarousel__image {
+    width: auto;
+    height: auto;
+    max-height: var(--_qui-gallery-logoInfiniteCarousel--imageHeight);
+    vertical-align: middle;
+    display: inline-block;
+    margin-inline: var(--_qui-gallery-logoInfiniteCarousel--imageSpacing);
+}
+
+@keyframes infiniteCarouselSlide {
+    from {
+        transform: var(--_qui-gallery-logoInfiniteCarousel--animationStart, translateX(0));
+    }
+
+    to {
+        transform: var(--_qui-gallery-logoInfiniteCarousel--animationEnd, translateX(-100%));
+    }
+}
+
+/* fade in / fade out */
+.quiqqer-gallery-logoInfiniteCarousel__wrapper--fadeInOut {
+    position: relative;
+}
+
+.quiqqer-gallery-logoInfiniteCarousel__wrapper--fadeInOut:before,
+.quiqqer-gallery-logoInfiniteCarousel__wrapper--fadeInOut:after {
+    position: absolute;
+    top: 0;
+    width: 4rem;
+    height: 100%;
+    content: "";
+    z-index: 2;
+}
+
+.quiqqer-gallery-logoInfiniteCarousel__wrapper--fadeInOut:before {
+    left: 0;
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0), var(--_qui-gallery-logoInfiniteCarousel--fadeInOutColor));
+}
+
+.quiqqer-gallery-logoInfiniteCarousel__wrapper--fadeInOut:after {
+    right: 0;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), var(--_qui-gallery-logoInfiniteCarousel--fadeInOutColor));
+}

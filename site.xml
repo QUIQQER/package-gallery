@@ -120,6 +120,7 @@
                 <attribute default="0">quiqqer.settings.gallery.titleClickable</attribute>
                 <attribute default="20">quiqqer.settings.gallery.max</attribute>
                 <attribute default="e_date DESC">quiqqer.settings.gallery.sort</attribute>
+                <attribute default="bottom">quiqqer.settings.gallery.paginationPosition</attribute>
             </attributes>
 
             <!-- list settings -->
@@ -180,6 +181,24 @@
                             </option>
                             <option value="priority ASC">
                                 <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.sort.priorityASC"/>
+                            </option>
+                        </select>
+
+                        <select conf="quiqqer.settings.gallery.paginationPosition">
+                            <text>
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.paginationPosition"/>
+                            </text>
+                            <option value="disabled">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.paginationPosition.disabled"/>
+                            </option>
+                            <option value="top">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.paginationPosition.top"/>
+                            </option>
+                            <option value="topAndBottom">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.paginationPosition.topAndBottom"/>
+                            </option>
+                            <option value="bottom">
+                                <locale group="quiqqer/gallery" var="quiqqer.gallery.settings.paginationPosition.bottom"/>
                             </option>
                         </select>
                     </settings>

@@ -40,7 +40,11 @@ class GridAdvanced extends QUI\Control
             'iconOnHover' => false,
             'usePagination' => false,
             'titleClickable' => 0, // 1 = open image
-            'template' => '1' // template number or name
+            'template' => '1', // template number (1 - 10) or name (2perRow to 6perRow)
+            'aspectRatio' => 'none',
+            'variableColumnCount' => false,
+            'minWidth' => 200,
+            'maxWidth' => 500
         ]);
 
         $this->setJavaScriptControl('package/quiqqer/gallery/bin/controls/GridAdvanced');
@@ -158,6 +162,10 @@ class GridAdvanced extends QUI\Control
             $iconOnHover = 'quiqqer-control-gallery-gridAdvanced__iconOnHover';
         }
 
+        // for commont templates like "3 images per row"
+        $commonTemplate = false;
+        $variableColumnCount = '';
+
         /* template */
         switch ($this->getAttribute('template')) {
             case '1':
@@ -170,15 +178,61 @@ class GridAdvanced extends QUI\Control
             case '8':
             case '9':
             case '10':
+                $template = $this->getAttribute('template');
+                $templateCSS = 'galleryGridTemplate--' . $this->getAttribute('template');
+                break;
+
             case '2perRow':
             case '3perRow':
             case '4perRow':
             case '5perRow':
             case '6perRow':
                 $template = $this->getAttribute('template');
+                $templateCSS = 'galleryGridTemplate--' . $this->getAttribute('template');
+
+                $commonTemplate = true;
                 break;
+
             default:
                 $template = 1;
+                $templateCSS = 'galleryGridTemplate--1';
+        }
+
+        $aspectRatio = false;
+
+        if ($commonTemplate) {
+            $colNumber = intval(substr($template, 0, 1));
+
+            if ($colNumber < 2 || $colNumber > 6) {
+                $colNumber = 3;
+            }
+
+            $this->setCustomVariable('colNumber', $colNumber);
+
+            $aspectRatio = $this->getAttribute('aspectRatio');
+
+            if ($aspectRatio || $aspectRatio !== 'none') {
+                $this->setCustomVariable('aspectRatio', $aspectRatio);
+            }
+
+            if ($this->getAttribute('variableColumnCount')) {
+                $variableColumnCount = 'galleryGridTemplate--autoColumn';
+
+                $minWidth = intval($this->getAttribute('minWidth'));
+
+                if (intval($this->getAttribute('minWidth')) > 10) {
+                    $minWidth = intval($this->getAttribute('minWidth'));
+                }
+
+                $maxWidth = intval($this->getAttribute('maxWidth'));
+
+                if ($maxWidth < 10 || $maxWidth < $minWidth) {
+                    $minWidth = false;
+                }
+
+                $this->setCustomVariable('minWidth', $minWidth . 'px');
+                $this->setCustomVariable('maxWidth', $maxWidth . 'px');
+            }
         }
 
         $Engine->assign([
@@ -192,11 +246,14 @@ class GridAdvanced extends QUI\Control
             'titleClickable' => $titleClickable,
             'gap' => $gap,
             'template' => $template,
+            'templateCSS' => $templateCSS,
             'scaleImageOnHover' => $scaleImageOnHover,
             'darkenImageOnHover' => $darkenImageOnHover,
             'iconOnHover' => $iconOnHover,
             'shuffleImages' => $shuffleImages,
-            'max' => $max
+            'max' => $max,
+            'aspectRatio' => $aspectRatio,
+            'variableColumnCount' => $variableColumnCount
         ]);
 
 
@@ -220,5 +277,25 @@ class GridAdvanced extends QUI\Control
         $this->setAttribute('Site', $Site);
 
         return $Site;
+    }
+
+    /**
+     * Set custom css variable to the control as inline style
+     * --_qui-gridAdvanced-$name: var(--qui-gridAdvanced-$name, $value);
+     *
+     * @param $name
+     * @param $value
+     * @return void
+     */
+    private function setCustomVariable($name, $value): void
+    {
+        if (!$name || !$value) {
+            return;
+        }
+
+        $this->setStyle(
+            '--_qui-gridAdvanced-' . $name,
+            'var(--qui-gridAdvanced-' . $name . ', ' . $value . ')'
+        );
     }
 }
