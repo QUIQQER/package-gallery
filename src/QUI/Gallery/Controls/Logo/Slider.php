@@ -85,10 +85,10 @@ class Slider extends QUI\Control
                 '\QUI\Gallery\Controls\Logo\Slider - No folder with images selected. 
 packages/quiqqer/gallery/src/QUI/Gallery/Controls/Logo/Slider.php:84'
             );
-            
+
             return '';
         }
-        
+
         $MoreLink = null;
 
         switch ($this->getAttribute('order')) {
@@ -144,7 +144,6 @@ packages/quiqqer/gallery/src/QUI/Gallery/Controls/Logo/Slider.php:84'
             'images' => $images,
             'MoreLink' => $MoreLink
         ]);
-
 
         return $Engine->fetch($this->getTemplate());
     }
