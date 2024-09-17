@@ -110,9 +110,13 @@ packages/quiqqer/gallery/src/QUI/Gallery/Controls/Logo/Slider.php:84'
                 break;
         }
 
-        $images = $Folder->getImages([
-            'order' => $order
-        ]);
+        $images = [];
+
+        if ($Folder instanceof Folder) {
+            $images = $Folder->getImages([
+                'order' => $order
+            ]);
+        }
 
         if ($this->getAttribute('max') && count($images) > $this->getAttribute('max')) {
             $images = array_slice($images, 0, $this->getAttribute('max'));

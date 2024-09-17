@@ -21,11 +21,6 @@ parameters:
 			path: src/QUI/Gallery/Controls/ImageSlider.php
 
 		-
-			message: "#^Cannot call method getImages\\(\\) on QUI\\\\Interfaces\\\\Projects\\\\Media\\\\File\\|false\\.$#"
-			count: 1
-			path: src/QUI/Gallery/Controls/Logo/Slider.php
-
-		-
 			message: "#^Call to an undefined method QUI\\\\Interfaces\\\\Projects\\\\Media\\\\File\\:\\:getImages\\(\\)\\.$#"
 			count: 1
 			path: src/QUI/Gallery/Controls/Slider.php

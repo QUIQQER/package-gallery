@@ -211,7 +211,7 @@ class GridAdvanced extends QUI\Control
 
             $aspectRatio = $this->getAttribute('aspectRatio');
 
-            if ($aspectRatio || $aspectRatio !== 'none') {
+            if (is_string($aspectRatio) && $aspectRatio !== 'none') {
                 $this->setCustomVariable('aspectRatio', $aspectRatio);
             }
 
