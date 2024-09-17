@@ -69,6 +69,7 @@ class InfiniteCarousel extends QUI\Control
         $animationStateOnHover = 'running';
         $fadeInOut = '';
         $fadeInOutColor = '#fff';
+        $Site = $this->getAttribute('Site') ? $this->getAttribute('Site') : null;
 
         /* @var $Folder Folder */
         if (str_contains($folderId, 'image.php')) {
@@ -88,7 +89,13 @@ class InfiniteCarousel extends QUI\Control
         if (!$Folder) {
             QUI\System\Log::addNotice(
                 '\QUI\Gallery\Controls\Logo\InfiniteCarousel - No folder with images selected. 
-packages/quiqqer/gallery/src/QUI/Gallery/Controls/Logo/InfiniteCarousel.php'
+                packages/quiqqer/gallery/src/QUI/Gallery/Controls/Logo/InfiniteCarousel.php',
+                [
+                    'brickId' => $this->getAttribute('data-brickid'),
+                    'project' => $this->getProject()->getName(),
+                    'lang' => $this->getProject()->getLang(),
+                    'site' => $Site?->getId()
+                ]
             );
 
             return '';
@@ -119,6 +126,21 @@ packages/quiqqer/gallery/src/QUI/Gallery/Controls/Logo/InfiniteCarousel.php'
 
         if ($this->getAttribute('max') && count($images) > $this->getAttribute('max')) {
             $images = array_slice($images, 0, $this->getAttribute('max'));
+        }
+
+        if (empty($images)) {
+            QUI\System\Log::addNotice(
+                '\QUI\Gallery\Controls\Logo\InfiniteCarousel - No images founded. 
+                packages/quiqqer/gallery/src/QUI/Gallery/Controls/Logo/InfiniteCarousel.php',
+                [
+                    'brickId' => $this->getAttribute('data-brickid'),
+                    'project' => $this->getProject()->getName(),
+                    'lang' => $this->getProject()->getLang(),
+                    'site' => $Site?->getId()
+                 ]
+            );
+
+            return '';
         }
 
         if (
