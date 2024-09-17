@@ -74,9 +74,7 @@ class InfiniteCarousel extends QUI\Control
         /* @var $Folder Folder */
         if (str_contains($folderId, 'image.php')) {
             try {
-                $Folder = QUI\Projects\Media\Utils::getMediaItemByUrl(
-                    $folderId
-                );
+                $Folder = QUI\Projects\Media\Utils::getMediaItemByUrl($folderId);
             } catch (QUI\Exception) {
             }
         } elseif ($folderId) {
@@ -120,9 +118,14 @@ class InfiniteCarousel extends QUI\Control
                 break;
         }
 
-        $images = $Folder->getImages([
-            'order' => $order
-        ]);
+        $images = [];
+
+        if ($Folder instanceof Folder) {
+            $images = $Folder->getImages([
+                'order' => $order
+            ]);
+        }
+
 
         if ($this->getAttribute('max') && count($images) > $this->getAttribute('max')) {
             $images = array_slice($images, 0, $this->getAttribute('max'));
