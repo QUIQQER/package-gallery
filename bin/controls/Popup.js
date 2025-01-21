@@ -369,7 +369,7 @@ define('package/quiqqer/gallery/bin/controls/Popup', [
             if (src.indexOf('__') === -1) {
                 var srcParts = src.split('.');
                 var ending   = srcParts.pop();
-                var maxWidth = QUI.getWindowSize().x;
+                var maxWidth = Math.round(QUI.getWindowSize().x);
 
                 // prevent heavy image size loading
                 src = srcParts.join('.') + '__' + maxWidth + '.' + ending;
