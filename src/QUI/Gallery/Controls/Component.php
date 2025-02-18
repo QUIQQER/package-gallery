@@ -91,14 +91,20 @@ class Component extends QUI\Control
                 break;
         }
 
+        $images = [];
+
+        if (method_exists($Folder, 'getImages')) {
+            $images = $Folder->getImages([
+                'order' => $order
+            ]);
+        }
+
         $Engine->assign([
             'Rewrite' => QUI::getRewrite(),
             'this' => $this,
             'Folder' => $Folder,
             'Site' => $this->getSite(),
-            'images' => $Folder->getImages([
-                'order' => $order
-            ])
+            'images' => $images
         ]);
 
         // css files

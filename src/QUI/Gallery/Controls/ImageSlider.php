@@ -45,7 +45,7 @@ class ImageSlider extends QUI\Control
         ]);
 
         $this->addCSSFile(
-            \dirname(__FILE__) . '/ImageSlider.css'
+            dirname(__FILE__) . '/ImageSlider.css'
         );
 
         parent::__construct($attributes);
@@ -127,9 +127,13 @@ class ImageSlider extends QUI\Control
                 unset($query['limit']);
             }
 
-            $images = $Folder->getImages($query);
+            $images = [];
 
-            if ($shuffleImages && $limit) {
+            if (method_exists($Folder, 'getImages')) {
+                $images = $Folder->getImages($query);
+            }
+
+            if ($shuffleImages && $limit && count($images)) {
                 shuffle($images);
                 $images = array_slice($images, 0, $limit);
             }
@@ -178,7 +182,7 @@ class ImageSlider extends QUI\Control
      */
     protected function getTemplate(): string
     {
-        return \dirname(__FILE__) . '/ImageSlider.html';
+        return dirname(__FILE__) . '/ImageSlider.html';
     }
 
     /**
@@ -215,8 +219,12 @@ class ImageSlider extends QUI\Control
      *
      * @return array
      */
-    private function getImagesByFolderIds(array $folderIds, string $order, int $limit, bool $shuffleImages = false): array
-    {
+    private function getImagesByFolderIds(
+        array $folderIds,
+        string $order,
+        int $limit,
+        bool $shuffleImages = false
+    ): array {
         $table = QUI::getDBTableName($this->Project->getAttribute('name') . '_media');
         $table_rel = QUI::getDBTableName($this->Project->getAttribute('name') . '_media_relations');
 

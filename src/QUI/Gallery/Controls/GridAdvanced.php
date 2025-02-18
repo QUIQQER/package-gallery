@@ -109,6 +109,7 @@ class GridAdvanced extends QUI\Control
         ];
 
         $shuffleImages = false;
+
         if ($order === 'random') {
             $this->setJavaScriptControlOption('randomorder', 1);
             $this->setJavaScriptControlOption('max', $max);
@@ -116,20 +117,29 @@ class GridAdvanced extends QUI\Control
             $shuffleImages = true;
         }
 
-        $images = $Folder->getImages($getImagesParams);
+        $images = [];
+
+        if (method_exists($Folder, 'getImages')) {
+            $images = $Folder->getImages($getImagesParams);
+        }
 
         // completeList is used to navigate in popup per JavaScript (next / prev image)
         $completeList = $images;
 
         if ($this->getAttribute('usePagination')) {
-            // with pagination enabled completeList includes all images from a folder
-            $completeList = $Folder->getImages([
-                'order' => $order
-            ]);
+            $completeList = [];
+            $count = [];
 
-            $count = $Folder->getImages([
-                'count' => true
-            ]);
+            // with pagination enabled completeList includes all images from a folder
+            if (method_exists($Folder, 'getImages')) {
+                $completeList = $Folder->getImages([
+                    'order' => $order
+                ]);
+
+                $count = $Folder->getImages([
+                    'count' => true
+                ]);
+            }
 
             $sheets = ceil($count / $max);
 

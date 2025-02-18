@@ -136,7 +136,7 @@ class Slider extends QUI\Control
                 break;
         }
 
-        if ($Folder) {
+        if ($Folder && method_exists($Folder, 'getImages')) {
             $images = $Folder->getImages([
                 'order' => $order
             ]);
